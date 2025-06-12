@@ -4,67 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>TaskBeacon</title>
-  <link rel="stylesheet" href="styles/main.css"/>
-  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
-</head>
-<body>
-  <div class="container">
-    <header>
-      <h1>🟡 TASKBEACON</h1>
-      <button class="btn">Browse Tasks</button>
-    </header>
 
-    <section class="hero">
-      <h2>STANDARDIZING COGNITIVE TASKS</h2>
-      <p>A platform for visioning and sharing standard cognitive tasks</p>
-    </section>
-
-    <section class="features">
-      <div class="card" id="taps-section">
-        <span class="icon" role="img" aria-label="TAPS icon">📝</span>
-        <h3>STANDARD STRUCTURE</h3>
-        <div class="content" data-src="content/taps.md">Loading...</div>
-      </div>
-      <div class="card" id="psyflow-section">
-        <span class="icon" role="img" aria-label="Psyflow icon">🧠</span>
-        <h3>PSYFLOW FRAMEWORK</h3>
-        <div class="content" data-src="content/psyflow.md">Loading...</div>
-      </div>
-      <div class="card" id="library-section">
-        <span class="icon" role="img" aria-label="Library icon">📚</span>
-        <h3>BROWSE TASK LIBRARY</h3>
-        <div class="content" data-src="content/library.md">Loading...</div>
-      </div>
-    </section>
-
-    <section class="task-library">
-      <h2>TASK LIBRARY</h2>
-      <ul class="content" data-src="content/task-list.md"></ul>
-    </section>
-
-    <footer>
-      <button class="btn">GET STARTED</button>
-    </footer>
-  </div>
-
-  <script src="https://cdn.jsdelivr.net/npm/showdown@2.1.0/dist/showdown.min.js"></script>
-  <script>
-    const converter = new showdown.Converter();
-    document.querySelectorAll('.content').forEach(async element => {
-      const src = element.getAttribute('data-src');
-      if (src) {
-        try {
-          const response = await fetch(src);
-          const text = await response.text();
-          if (element.tagName.toLowerCase() === 'ul') {
-            // convert lines to list items
-            const items = text.split(/\r?\n/).filter(Boolean).map(t => `<li>${converter.makeHtml(t)}</li>`).join('');
-            element.innerHTML = items;
-          } else {
-            element.innerHTML = converter.makeHtml(text);
-          }
-        } catch (err) {
-          element.textContent = 'Content failed to load.';
         }
       }
     });
