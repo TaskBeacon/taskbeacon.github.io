@@ -2,9 +2,120 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>TaskBeacon</title>
 
+  <!-- Fonts and Styles -->
+  <link rel="stylesheet" href="css/style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet" />
+</head>
+
+<body>
+  <header class="header">
+    <div class="logo">
+      <span class="logo-icon" role="img" aria-label="Beacon">📡</span>
+      <span>TaskBeacon</span>
+    </div>
+    <nav class="nav">
+      <button id="menu-button">Menu ▾</button>
+      <ul class="dropdown hidden" id="dropdown-menu">
+        <li><a href="taps.html">TAPS</a></li>
+        <li><a href="psyflow.html">PsyFlow</a></li>
+        <li><a href="tasks.html">Tasks</a></li>
+        <li><a href="future.html">Future Directions</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="container">
+    <!-- Hero -->
+    <section class="hero">
+      <h2>STANDARDIZING COGNITIVE TASKS</h2>
+      <p>A platform for visioning and sharing standard cognitive tasks</p>
+    </section>
+
+    <!-- Main Features (Each as Its Own Row) -->
+    <section class="card" id="taps">
+      <span class="icon" role="img" aria-label="TAPS">📝</span>
+      <div>
+        <h2>TAPS</h2>
+        <div class="content" data-src="content/taps.md">Loading...</div>
+        <a href="taps.html">Learn more →</a>
+      </div>
+    </section>
+
+    <section class="card" id="psyflow">
+      <span class="icon" role="img" aria-label="PsyFlow">🧠</span>
+      <div>
+        <h2>PsyFlow</h2>
+        <div class="content" data-src="content/psyflow.md">Loading...</div>
+        <a href="psyflow.html">Learn more →</a>
+      </div>
+    </section>
+
+    <section class="card" id="tasks">
+      <span class="icon" role="img" aria-label="Tasks">📚</span>
+      <div>
+        <h2>Tasks</h2>
+        <div class="content" data-src="content/tasks.md">Loading...</div>
+        <a href="tasks.html">Browse all →</a>
+      </div>
+    </section>
+
+    <section class="card" id="future">
+      <span class="icon" role="img" aria-label="Future">🚀</span>
+      <div>
+        <h2>Future Directions</h2>
+        <div class="content" data-src="content/future.md">Loading...</div>
+        <a href="future.html">Read about it →</a>
+      </div>
+    </section>
+
+    <!-- Task Library (Optional Section) -->
+    <section class="task-library">
+      <h2>Task Library</h2>
+      <ul class="content" data-src="content/task-list.md"></ul>
+    </section>
+
+    <!-- Core Team -->
+    <section class="team" id="team">
+      <h2>Core Team</h2>
+      <div class="team-grid">
+        <div class="member">
+          <span class="icon" role="img" aria-label="Member">👤</span>
+          <h3>Zhipeng Wen</h3>
+          <p>Principal Investigator</p>
+          <a href="mailto:zhipeng30@foxmail.com">zhipeng30@foxmail.com</a>
+        </div>
+        <!-- Add more members as needed -->
+      </div>
+    </section>
+
+    <footer>
+      <button class="btn">GET STARTED</button>
+    </footer>
+  </main>
+
+  <!-- Scripts -->
+  <script src="js/menu.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/showdown@2.1.0/dist/showdown.min.js"></script>
+  <script>
+    const converter = new showdown.Converter();
+    document.querySelectorAll('.content').forEach(async element => {
+      const src = element.getAttribute('data-src');
+      if (src) {
+        try {
+          const response = await fetch(src);
+          const text = await response.text();
+          if (element.tagName.toLowerCase() === 'ul') {
+            const items = text.split(/\r?\n/).filter(Boolean).map(t => `<li>${converter.makeHtml(t)}</li>`).join('');
+            element.innerHTML = items;
+          } else {
+            element.innerHTML = converter.makeHtml(text);
+          }
+        } catch (err) {
+          element.textContent = 'Content failed to load.';
         }
       }
     });
