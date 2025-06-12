@@ -1,4 +1,4 @@
-Go/No-Go
-Stroop Task
-N-Back
-Dot Probe
+- Go/No-Go Task
+- Stroop Task
+- N-Back Task
+- Dot Probe Task
