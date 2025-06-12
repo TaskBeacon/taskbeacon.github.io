@@ -1,9 +1,26 @@
+:root {
+  --bg-color: #fdfdfd;
+  --text-color: #222;
+  --header-bg: #fff;
+  --border-color: #eee;
+  --card-bg: #fff;
+}
+
 body {
   font-family: 'Inter', sans-serif;
-  background: #fdfdfd;
-  color: #222;
+  background: var(--bg-color);
+  color: var(--text-color);
   margin: 0;
   padding: 0;
+  transition: background 0.3s, color 0.3s;
+}
+
+body.dark {
+  --bg-color: #1d1e20;
+  --text-color: #eaeaea;
+  --header-bg: #2b2d31;
+  --border-color: #555;
+  --card-bg: #2b2d31;
 }
 
 .header {
@@ -11,8 +28,8 @@ body {
   justify-content: space-between;
   align-items: center;
   padding: 1rem 2rem;
-  background: #fff;
-  border-bottom: 2px solid #eee;
+  background: var(--header-bg);
+  border-bottom: 2px solid var(--border-color);
 }
 
 .logo {
@@ -20,11 +37,19 @@ body {
   align-items: center;
   font-weight: 700;
   font-size: 1.5rem;
+  font-family: 'Press Start 2P', cursive;
 }
 
 .logo-icon {
   margin-right: 10px;
   font-size: 32px;
+  image-rendering: pixelated;
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
 }
 
 .nav button {
@@ -34,11 +59,31 @@ body {
   cursor: pointer;
 }
 
+h1, h2 {
+  font-family: 'Press Start 2P', cursive;
+}
+
+.theme-toggle {
+  font-size: 1.2rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: inherit;
+}
+
+.btn {
+  background-color: var(--text-color);
+  color: var(--bg-color);
+  border: 2px solid var(--border-color);
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+}
+
 .dropdown {
   position: absolute;
-  background: white;
+  background: var(--card-bg);
   list-style: none;
-  border: 1px solid #ddd;
+  border: 1px solid var(--border-color);
   margin-top: 10px;
   padding: 0;
   right: 2rem;
@@ -47,12 +92,12 @@ body {
 
 .dropdown li {
   padding: 0.5rem 1rem;
-  border-bottom: 1px solid #eee;
+  border-bottom: 1px solid var(--border-color);
 }
 
 .dropdown li a {
   text-decoration: none;
-  color: #222;
+  color: var(--text-color);
 }
 
 .hidden {
@@ -67,8 +112,8 @@ body {
 
 .card {
   display: flex;
-  background: #fff;
-  border: 1px solid #ddd;
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
   padding: 1rem;
   margin-bottom: 1.5rem;
   align-items: center;
@@ -78,6 +123,7 @@ body {
 .card .icon {
   font-size: 48px;
   margin-right: 1.2rem;
+  image-rendering: pixelated;
 }
 
 .card h2 {
@@ -102,4 +148,5 @@ body {
   font-size: 64px;
   display: block;
   margin-bottom: 0.5rem;
+  image-rendering: pixelated;
 }

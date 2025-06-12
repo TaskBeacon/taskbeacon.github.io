@@ -17,15 +17,18 @@
       <span class="logo-icon" role="img" aria-label="Beacon">📡</span>
       <span>TaskBeacon</span>
     </div>
-    <nav class="nav">
-      <button id="menu-button">Menu ▾</button>
-      <ul class="dropdown hidden" id="dropdown-menu">
-        <li><a href="taps.html">TAPS</a></li>
-        <li><a href="psyflow.html">PsyFlow</a></li>
-        <li><a href="tasks.html">Tasks</a></li>
-        <li><a href="future.html">Future Directions</a></li>
-      </ul>
-    </nav>
+    <div class="header-actions">
+      <nav class="nav">
+        <button id="menu-button">Menu ▾</button>
+        <ul class="dropdown hidden" id="dropdown-menu">
+          <li><a href="taps.html">TAPS</a></li>
+          <li><a href="psyflow.html">PsyFlow</a></li>
+          <li><a href="tasks.html">Tasks</a></li>
+          <li><a href="future.html">Future Directions</a></li>
+        </ul>
+      </nav>
+      <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">🌙</button>
+    </div>
   </header>
 
   <main class="container">
@@ -99,6 +102,7 @@
 
   <!-- Scripts -->
   <script src="js/menu.js"></script>
+  <script src="js/theme.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/showdown@2.1.0/dist/showdown.min.js"></script>
   <script>
     const converter = new showdown.Converter();
