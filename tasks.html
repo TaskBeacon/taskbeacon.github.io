@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Tasks - TaskBeacon</title>
+  <link rel="stylesheet" href="css/style.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet"/>
+</head>
+<body>
+  <header class="header">
+    <div class="logo">
+      <span class="logo-icon" role="img" aria-label="Beacon">📡</span>
+      <span>TaskBeacon</span>
+    </div>
+    <nav class="nav">
+      <button id="menu-button">Menu ▾</button>
+      <ul class="dropdown hidden" id="dropdown-menu">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="taps.html">TAPS</a></li>
+        <li><a href="psyflow.html">PsyFlow</a></li>
+        <li><a href="future.html">Future Directions</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="container">
+    <h1>Tasks</h1>
+    <ul class="content" data-src="content/task-list.md"></ul>
+  </main>
+
+  <script src="js/menu.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/showdown@2.1.0/dist/showdown.min.js"></script>
+  <script>
+    const converter = new showdown.Converter();
+    document.querySelectorAll('.content').forEach(async el => {
+      const src = el.getAttribute('data-src');
+      if (src) {
+        try {
+          const resp = await fetch(src);
+          const text = await resp.text();
+          const items = text.split(/\r?\n/).filter(Boolean).map(t => `<li>${converter.makeHtml(t)}</li>`).join('');
+          el.innerHTML = items;
+        } catch (e) {
+          el.textContent = 'Content failed to load.';
+        }
+      }
+    });
+  </script>
+</body>
+</html>
