@@ -37,12 +37,19 @@ html_theme_options = {
 html_sidebars = {
     "**": [ 
         "sidebar/brand.html",
-
         "sidebar/entries.html",      
         # any further items here would float on the left again
     ]
 }
 
+# -- Path to your “_static” folder -------------------------------------------
+html_static_path = ["_static"]
+
+# -- Add your custom CSS files ----------------------------------------------
+# Paths are relative to html_static_path, so if your file is _static/custom.css:
+html_css_files = [
+    "custom.css",
+]
 
 # Enable extensions
 extensions = [

@@ -2,9 +2,9 @@ TaskBeacon
 ----------
 
 Welcome to **TaskBeacon**, a community-driven platform for sharing, standardizing, and enhancing psychological paradigms.  
-Our mission is to improve **reproducibility and efficiency** in psychological and brain science research through structured formats and LLM-powered experiment generation.
+Our mission is to improve reproducibility and efficiency in psychological and brain science research through structured formats and LLM-powered experiment generation.
 
-TaskBeacon is an open science initiative that offers a suite of tools and resources:
+TaskBeacon offers a suite of tools and resources:
 
 - `TAPS <https://taskbeacon.github.io/taps>`_ – A standardized format for structuring cognitive tasks 
 - `psyflow <https://taskbeacon.github.io/psyflow/>`_ – A Python library for programming cognitive experiments 
@@ -20,7 +20,7 @@ We are continuously expanding the platform to support more automation, customiza
 How to Get Involved
 
 - Explore the repository and documentation  
-- Contribute new tasks or improvements to TAPS and psyflow  
+- Contribute new tasks or improvements to TAPS and psyflow  `Learn more about upload and manage your tasks <https://taskbeacon.github.io/versioning>`_
 - Engage with the community to help shape the platform’s future
 
 Connect with Us
