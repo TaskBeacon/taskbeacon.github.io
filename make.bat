@@ -6,7 +6,7 @@ REM Command file for building Sphinx documentation on Windows
 REM Set up defaults
 IF "%SPHINXBUILD%"=="" SET SPHINXBUILD=sphinx-build
 SET SOURCEDIR=source
-SET BUILDDIR=docs
+SET BUILDDIR=.
 
 REM Check if sphinx-build exists
 %SPHINXBUILD% >NUL 2>&1

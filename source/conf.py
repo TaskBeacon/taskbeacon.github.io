@@ -27,7 +27,7 @@ html_theme = "furo"
 # }
 html_static_path = ['_static']
 
-html_logo = "_static/logo.png"  # add later if you want
+# html_logo = "_static/logo.png"  # add later if you want
 html_theme_options = {
     "sidebar_hide_name": True,
     "light_logo": "logo-light.png",
@@ -36,6 +36,7 @@ html_theme_options = {
 
 html_sidebars = {
     "**": [ 
+        "sidebar/brand.html",
         "sidebar/entries.html",      
         # any further items here would float on the left again
     ]
