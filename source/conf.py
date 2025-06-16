@@ -44,7 +44,6 @@ html_sidebars = {
 
 # -- Path to your “_static” folder -------------------------------------------
 html_static_path = ["_static"]
-
 # -- Add your custom CSS files ----------------------------------------------
 # Paths are relative to html_static_path, so if your file is _static/custom.css:
 html_css_files = [

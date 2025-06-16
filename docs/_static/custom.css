@@ -8,3 +8,13 @@
 .sidebar-cta.entries-box li + li {
   margin-top: 0.25rem;
 }
+
+
+.sidebar-logo {
+  max-width: 200px;   /* adjust as needed */
+  height: auto;
+}
+
+.sidebar-logo-container {
+  text-align: left;
+}
