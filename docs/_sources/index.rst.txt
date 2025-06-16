@@ -1,38 +1,25 @@
-
-
 TaskBeacon
 ----------
 
-Welcome to **TaskBeacon**, a community-driven platform for sharing, standardizing, and enhancing psychological paradigms.  
-Our mission is to improve reproducibility and efficiency in psychological and brain science research through structured formats and LLM-powered experiment generation.
+Welcome to **TaskBeacon**, a community-driven platform for sharing, standardizing, and enhancing psychological paradigms.
 
 TaskBeacon offers a suite of tools and resources:
 
 .. image:: _static/flowchart.png
    :alt: Illustration of TaskBeacon
-   :align: left
-   :width: 100%
+   :align: center
+   :width: 85%
 
-- :doc:`TAPS </taps>` – A standardized format for structuring cognitive tasks 
-- `psyflow <https://taskbeacon.github.io/psyflow/>`_ – A Python library for programming cognitive experiments 
-- `Task Library <https://taskbeacon.github.io/task_index/>`_ – A curated collection of well-documented experimental templates 
+- :doc:`TAPS </taps>` – A standardized format for structuring cognitive tasks  
+- `psyflow <https://taskbeacon.github.io/psyflow/>`_ – A PsychoPy-based library for efficiently building tasks  
+- `Task Library <https://taskbeacon.github.io/task_index/>`_ – A curated collection of well-documented tasks  
 
-TAPS and psyflow make cross-cultural localization efficient by separating task logic from language-specific content and configuration.  
-This modular structure allows researchers to easily adapt paradigms across different languages and cultural contexts without rewriting core code, fostering global accessibility and collaboration.  
-`Learn more about localization <https://taskbeacon.github.io/localization>`_
+TaskBeacon also provides features that enhance reusability, localization, and collaboration:
 
-We are continuously expanding the platform to support more automation, customization, and community collaboration. `Learn more about future directions <https://taskbeacon.github.io/future_directions>`_
+- :doc:`Localization </localization>` - Enables cross-cultural localization by seperating text components from task logic
+- :doc:`Variant tracking </versioning>`- Manage task variant using GitHub branches 
 
+We are continuously working on greater automation in task reporting and programming.  
+`Learn more about future directions <https://taskbeacon.github.io/future_directions>`_
 
-How to Get Involved
-
-- Explore the repository and documentation  
-- Contribute new tasks or improvements to TAPS and psyflow  `Learn more about upload and manage your tasks <https://taskbeacon.github.io/versioning>`_
-- Engage with the community to help shape the platform’s future
-
-Connect with Us
-
-- GitHub: `TaskBeacon Organization <https://github.com/TaskBeacon>`_  
-- Email: zhipeng30@foxmail.com
-
-
+**Join Us**: `TaskBeacon Organization <https://github.com/TaskBeacon>`_

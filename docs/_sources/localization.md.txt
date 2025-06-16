@@ -1,6 +1,3 @@
-# showcase of localiation
+# Localization-friendly design
 
-how to localize the task
-
-
-convert the text to voice
+TAPS and psyflow make cross-cultural localization efficient by cleanly separating task logic from configuration and content. This modular design allows researchers to adapt paradigms without modifying core code, promoting global accessibility and reuse.  
