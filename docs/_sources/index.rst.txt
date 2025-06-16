@@ -1,3 +1,5 @@
+
+
 TaskBeacon
 ----------
 
@@ -6,7 +8,12 @@ Our mission is to improve reproducibility and efficiency in psychological and br
 
 TaskBeacon offers a suite of tools and resources:
 
-- `TAPS <https://taskbeacon.github.io/taps>`_ – A standardized format for structuring cognitive tasks 
+.. image:: _static/flowchart.png
+   :alt: Illustration of TaskBeacon
+   :align: left
+   :width: 100%
+
+- :doc:`TAPS </taps>` – A standardized format for structuring cognitive tasks 
 - `psyflow <https://taskbeacon.github.io/psyflow/>`_ – A Python library for programming cognitive experiments 
 - `Task Library <https://taskbeacon.github.io/task_index/>`_ – A curated collection of well-documented experimental templates 
 

@@ -6,7 +6,7 @@
 <link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" />
 
     <!-- Generated with Sphinx 7.3.7 and Furo 2024.08.06 -->
-        <title>TAPS - TaskBeacon documentation</title>
+        <title>&lt;no title&gt; - TaskBeacon documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?v=354aac6f" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?v=302659d7" />
@@ -199,7 +199,7 @@
 </a><div class="sidebar-cta entries-box">
   <p><strong>Quick Links</strong></p>
   <ul style="list-style: none; padding-left: 0;">
-    <li><a href="#">TAPS Format</a></li>
+    <li><a href="taps.html">TAPS Format</a></li>
     <li><a href="https://taskbeacon.github.io/psyflow/">PsyFlow Library</a></li>
     <li><a href="https://taskbeacon.github.io/task_index/">Task Library</a></li>
     <li><a href="future_directions.html">Future Directions</a></li>
@@ -220,7 +220,7 @@
         </a>
         <div class="content-icon-container">
           <div class="view-this-page">
-  <a class="muted-link" href="_sources/taps.md.txt" title="View this page">
+  <a class="muted-link" href="_sources/psyflow.md.txt" title="View this page">
     <svg><use href="#svg-eye"></use></svg>
     <span class="visually-hidden">View this page</span>
   </a>
@@ -240,49 +240,18 @@
           </label>
         </div>
         <article role="main" id="furo-main-content">
-          <section id="taps">
-<h1>TAPS<a class="headerlink" href="#taps" title="Link to this heading">¶</a></h1>
-<p>The Task and Paradigm Structure (TAPS) provides a standardized folder layout for organizing cognitive tasks in a modular and reproducible way. This structure promotes clarity, cross-task consistency, and ease of reuse—whether in individual research projects or shared task libraries.</p>
-<p>Each task organized under TAPS typically contains the following components:</p>
-<p><code class="docutils literal notranslate"><span class="pre">assets/</span></code>
-Contains all multimedia stimuli used in the task, such as images (.bmp), audio files (.mp3), or videos (.mp4). These files are referenced by the configuration and code but stored independently for clarity.</p>
-<p><code class="docutils literal notranslate"><span class="pre">config/</span></code>
-Includes YAML configuration files (e.g., config.yaml) that define task parameters, stimuli mappings, timing settings, and localization content. This enables flexible task customization without modifying the source code.</p>
-<p><code class="docutils literal notranslate"><span class="pre">data/</span></code>
-Stores participant outputs including raw logs, structured .csv data, and optionally serialized formats like .json. Each session is typically timestamped for easy tracking and reproducibility.</p>
-<p><code class="docutils literal notranslate"><span class="pre">src/</span></code>
-Contains the core Python scripts implementing the task logic and runtime flow (e.g., run_trial.py, controller.py). This code defines how trials are executed, how input is handled, and how responses are recorded.</p>
-<p><code class="docutils literal notranslate"><span class="pre">analysis/</span></code>
-(Optional) Includes scripts to analyze the collected data. Useful for quick validation, pilot analysis, or standardized data summaries.</p>
-<p><code class="docutils literal notranslate"><span class="pre">main.py</span></code>
-A runnable Python entry point that initializes the task using the configuration and source logic. This is typically the file users execute to start the experiment.</p>
-<p><code class="docutils literal notranslate"><span class="pre">README.md</span></code>
-Provides human-readable documentation describing the task’s purpose, structure, configuration, and usage.</p>
-<p>A sample directory tree might look like this:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Task/
-├── assets/             # Multimedia stimuli (images, sounds, videos, etc.)
-│ ├── instruction.mp3
-│ ├── stim1.bmp
-│ ├── stim2.bmp
-│ └── stim3.bmp
-├── config/
-│ └── config.yaml       # YAML-based configuration files for task logic and settings
-├── data/               # Collected participant data and logs
-│ ├── sub-001_task_sst_20250603_143742.json
-│ ├── sub-001_task_sst_20250603_143742.log
-│ └── sub-001_task_sst_20250603_143742.csv
-├── src/                # Source code implementing task flow and logic
-│ ├── __init__.py
-│ ├── run_trial.py
-│ └── controller.py
-├── analysis/            # Optional scripts for analyzing collected data
-│ └── analysis.py
-├── main.py              # Entry point for running the task   
-└── README.md            # Documentation
+          <div class="highlight-mermaid notranslate"><div class="highlight"><pre><span></span>flowchart LR
+    A[YAML&lt;br&gt;Subinfo:&lt;br&gt;- field&lt;br&gt;- mapping] --&gt; B[SubInfo&lt;br&gt;Subinfo Collection]
+    C[YAML&lt;br&gt;Task:&lt;br&gt;- trial n&lt;br&gt;- block n&lt;br&gt;- key&lt;br&gt;- condition] --&gt; D[BlockUnit]
+    D --&gt; E[run_trial (GO)]
+    D --&gt; F[run_trial (Stop)]
+    G[YAML&lt;br&gt;Timing:&lt;br&gt;- duration&lt;br&gt;- Controller:&lt;br&gt;- ssd&lt;br&gt;- min/max] --&gt; E
+    G --&gt; F
+    H[YAML&lt;br&gt;Stimuli:&lt;br&gt;- type&lt;br&gt;- color&lt;br&gt;- text&lt;br&gt;- pos] --&gt; I[StimBank]
+    E --&gt; I
+    F --&gt; I
 </pre></div>
 </div>
-<p>This structure cleanly separates task components—stimuli, configuration, logic, data, and metadata—enabling better task reuse, localization, and version control.</p>
-</section>
 
         </article>
       </div>
