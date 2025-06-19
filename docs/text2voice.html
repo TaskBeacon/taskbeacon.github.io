@@ -247,43 +247,25 @@
         <article role="main" id="furo-main-content">
           <section id="text-to-voice-conversion">
 <h1>Text-to-Voice Conversion<a class="headerlink" href="#text-to-voice-conversion" title="Link to this heading">¶</a></h1>
-<p><code class="docutils literal notranslate"><span class="pre">psyflow</span></code> supports <strong>text-to-speech (TTS)</strong> conversion to enhance accessibility and standardize instruction delivery across different languages. This would:</p>
-<p><strong>Why it matters</strong></p>
-<ul class="simple">
-<li><p>Improves accessibility — especially for children, elderly, or low-literacy participants.</p></li>
-<li><p>Ensures consistent voice delivery across localized versions.</p></li>
-<li><p>Avoids the hassle of recording human voiceovers for each translation.</p></li>
-</ul>
-<p><strong>How It Works</strong></p>
-<p>PsyFlow uses Microsoft’s <code class="docutils literal notranslate"><span class="pre">edge-tts</span></code>, a cloud-based TTS API that converts text to audio (MP3). Voice files are:</p>
-<ul class="simple">
-<li><p>Stored in the <code class="docutils literal notranslate"><span class="pre">assets/</span></code> folder.</p></li>
-<li><p>Automatically skipped if already generated (unless <code class="docutils literal notranslate"><span class="pre">overwrite=True</span></code>).</p></li>
-<li><p>Registered into <code class="docutils literal notranslate"><span class="pre">StimBank</span></code> as new <code class="docutils literal notranslate"><span class="pre">Sound</span></code> stimuli ready for playback.</p></li>
-</ul>
+<p><code class="docutils literal notranslate"><span class="pre">Psyflow</span></code> supports <strong>text-to-speech (TTS)</strong> conversion to enhance accessibility and standardize instruction delivery across different languages.</p>
+<p><strong>Why it matters</strong>: Using text-to-speech improves accessibility—especially for children, elderly individuals, or participants with low literacy. It ensures consistent voice delivery across different language versions and eliminates the need to record human voiceovers for each translation. Moreover, by using standardized synthetic voices, it reduces variability introduced by different experimenters (主试), helping to maintain consistency across sessions and sites.</p>
+<p><strong>How It Works</strong>: <code class="docutils literal notranslate"><span class="pre">Psyflow</span></code> uses Microsoft’s <code class="docutils literal notranslate"><span class="pre">edge-tts</span></code>, a cloud-based TTS API that converts text to audio (MP3). The generated voice files are stored in the <code class="docutils literal notranslate"><span class="pre">assets/</span></code> folder, automatically skipped if they already exist (unless <code class="docutils literal notranslate"><span class="pre">overwrite=True</span></code> is specified), and registered into the <code class="docutils literal notranslate"><span class="pre">StimBank</span></code> as new <code class="docutils literal notranslate"><span class="pre">Sound</span></code> stimuli ready for playback.</p>
 <blockquote>
-<div><p>⚠️ <strong>Note</strong>: An internet connection is required for TTS generation. Offline tools exist but produce lower-quality audio.</p>
+<div><p><strong>Note</strong>: An internet connection is required for TTS generation. Offline tools exist but produce lower-quality audio.</p>
 </div></blockquote>
-<section id="basic-usage">
-<h2>Basic Usage<a class="headerlink" href="#basic-usage" title="Link to this heading">¶</a></h2>
 <section id="convert-existing-text-stimuli-to-voice">
-<h3>Convert Existing Text Stimuli to Voice<a class="headerlink" href="#convert-existing-text-stimuli-to-voice" title="Link to this heading">¶</a></h3>
+<h2>Convert Existing Text Stimuli to Voice<a class="headerlink" href="#convert-existing-text-stimuli-to-voice" title="Link to this heading">¶</a></h2>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">psyflow</span><span class="w"> </span><span class="kn">import</span> <span class="n">StimBank</span>
 <span class="n">stim_bank</span> <span class="o">=</span> <span class="n">StimBank</span><span class="p">(</span><span class="n">config</span><span class="p">)</span>
 <span class="n">stim_bank</span><span class="o">.</span><span class="n">convert_to_voice</span><span class="p">(</span><span class="n">keys</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;instruction_text&quot;</span><span class="p">,</span> <span class="s2">&quot;good_bye&quot;</span><span class="p">],</span> 
 <span class="n">voice</span><span class="o">=</span><span class="s2">&quot;zh-CN-YunyangNeural&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-<ul class="simple">
-<li><p>This will create audio files like <code class="docutils literal notranslate"><span class="pre">instruction_text_voice.mp3</span></code> in <code class="docutils literal notranslate"><span class="pre">assets/</span></code>.</p></li>
-<li><p>The resulting voices will be registered as <code class="docutils literal notranslate"><span class="pre">instruction_text_voice</span></code>, <code class="docutils literal notranslate"><span class="pre">good_bye_voice</span></code> in <code class="docutils literal notranslate"><span class="pre">StimBank</span></code>.</p></li>
-</ul>
-<p>If you plan to use voice:</p>
-<ol class="arabic simple">
-<li><p>Delete any previously generated audio in <code class="docutils literal notranslate"><span class="pre">assets/</span></code> before regenerating.</p></li>
-<li><p>Choose a TTS voice that matches the language of the text.</p></li>
-</ol>
-</section>
+<p>This will create audio files like <code class="docutils literal notranslate"><span class="pre">instruction_text_voice.mp3</span></code> in <code class="docutils literal notranslate"><span class="pre">assets/</span></code>.
+The resulting voices will be registered as <code class="docutils literal notranslate"><span class="pre">instruction_text_voice</span></code>, <code class="docutils literal notranslate"><span class="pre">good_bye_voice</span></code> in <code class="docutils literal notranslate"><span class="pre">StimBank</span></code>.</p>
+<blockquote>
+<div><p>If you plan to use voice output, make sure to delete any previously generated audio files in the <code class="docutils literal notranslate"><span class="pre">assets/</span></code> folder before generating new ones. Additionally, choose a TTS voice that matches the language of the text to ensure natural and accurate pronunciation. By default, “zh-CN-XiaoxiaoNeural” is used.</p>
+</div></blockquote>
 </section>
 <hr class="docutils" />
 <section id="add-voice-from-custom-text">
@@ -296,18 +278,15 @@
 <span class="p">)</span>
 </pre></div>
 </div>
-<ul class="simple">
-<li><p>The result will be registered as <code class="docutils literal notranslate"><span class="pre">welcome_voice</span></code> and available like any other stimulus.</p></li>
-</ul>
+<p>The result will be registered as <code class="docutils literal notranslate"><span class="pre">welcome_voice</span></code> and available like any other stimulus.</p>
 </section>
-<hr class="docutils" />
 <section id="voice-selection">
 <h2>Voice Selection<a class="headerlink" href="#voice-selection" title="Link to this heading">¶</a></h2>
 <p>Use the built-in helper to explore available voices:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">psyflow.tts_utils</span><span class="w"> </span><span class="kn">import</span> <span class="n">list_supported_voices</span>
 
 <span class="c1"># Print all voices</span>
-<span class="n">list_supported_voices</span><span class="p">(</span><span class="n">filter_lang</span><span class="o">=</span><span class="s2">&quot;ja&quot;</span><span class="p">,</span> <span class="n">human_readable</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">list_supported_voices</span><span class="p">(</span><span class="n">human_readable</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
 <span class="c1"># Print all Japanese voices</span>
 <span class="n">list_supported_voices</span><span class="p">(</span><span class="n">filter_lang</span><span class="o">=</span><span class="s2">&quot;ja&quot;</span><span class="p">,</span> <span class="n">human_readable</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
@@ -358,8 +337,9 @@
 <h2>Tips and Caveats<a class="headerlink" href="#tips-and-caveats" title="Link to this heading">¶</a></h2>
 <ul class="simple">
 <li><p><strong>Placeholder Limitation</strong>: The TTS engine does <strong>not</strong> support dynamic text with placeholders such as <code class="docutils literal notranslate"><span class="pre">{duration}</span></code> or <code class="docutils literal notranslate"><span class="pre">{block_num}</span></code>. If your text includes placeholders, it will not be converted as expected — the synthesis may fail or result in unnatural output.</p></li>
+<li><p><strong>Internet Connection Required</strong>: TTS generation relies on Microsoft’s cloud service and requires a stable internet connection. If you’re offline or behind a restrictive network (e.g., with proxy issues), voice generation will fail.</p></li>
 <li><p><strong>Overwrite</strong>: Use <code class="docutils literal notranslate"><span class="pre">overwrite=True</span></code> to regenerate voice files even if they exist. However, be careful with this option, as it assumes you need to regenerate the voice every time you run the task ⚠️.</p></li>
-<li><p><strong>Voice Mismatch</strong>: Always match the voice language to the text language to avoid unnatural pronunciation.</p></li>
+<li><p><strong>Voice Mismatch</strong>: Always match the voice language to the text language to avoid unnatural pronunciation. By default, “zh-CN-XiaoxiaoNeural” is used.</p></li>
 <li><p><strong>Preview Your Audio</strong>: You can test output files manually in the <code class="docutils literal notranslate"><span class="pre">assets/</span></code> folder before running full experiments.<br />
 If a file is empty or not playable, it may cause the task to fail at runtime — try deleting and regenerating the voice file.</p></li>
 </ul>
@@ -404,10 +384,7 @@ If a file is empty or not playable, it may cause the task to fail at runtime —
           <div class="toc-tree">
             <ul>
 <li><a class="reference internal" href="#">Text-to-Voice Conversion</a><ul>
-<li><a class="reference internal" href="#basic-usage">Basic Usage</a><ul>
 <li><a class="reference internal" href="#convert-existing-text-stimuli-to-voice">Convert Existing Text Stimuli to Voice</a></li>
-</ul>
-</li>
 <li><a class="reference internal" href="#add-voice-from-custom-text">Add Voice from Custom Text</a></li>
 <li><a class="reference internal" href="#voice-selection">Voice Selection</a></li>
 <li><a class="reference internal" href="#tips-and-caveats">Tips and Caveats</a></li>

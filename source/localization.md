@@ -222,7 +222,7 @@ translated_config = client.translate_config(
 ```
 More details can be found in {doc}`LLMs <LLMs>`.
 
-### ⚠️ Important Notes ⚠️
+### 3. Important Notes on Task Localization
 
 1. **Always review the auto-translated content.** While LLM-based translation performs well in most cases, it's strongly recommended to have a native speaker verify the accuracy and cultural appropriateness of the translated text.
 
@@ -234,5 +234,5 @@ More details can be found in {doc}`LLMs <LLMs>`.
    1. Delete the original voice files in the `assets/` folder.
    2. Regenerate the audio using a TTS voice that matches the target language.
 
-    See {doc}`text2voice <text2voice>` for details on how to configure voices and view the list of supported options.
+    See {doc}`Text-to-Voice <text2voice>` for details on how to configure voices and view the list of supported options.
 
