@@ -6,7 +6,7 @@
 <link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" />
 
     <!-- Generated with Sphinx 7.3.7 and Furo 2024.08.06 -->
-        <title>versioning - TaskBeacon documentation</title>
+        <title>Task Variant Tracking - TaskBeacon documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?v=354aac6f" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?v=302659d7" />
@@ -179,7 +179,7 @@
           <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
         </button>
       </div>
-      <label class="toc-overlay-icon toc-header-icon no-toc" for="__toc">
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
         <div class="visually-hidden">Toggle table of contents sidebar</div>
         <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
       </label>
@@ -239,18 +239,125 @@
               <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
             </button>
           </div>
-          <label class="toc-overlay-icon toc-content-icon no-toc" for="__toc">
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
             <div class="visually-hidden">Toggle table of contents sidebar</div>
             <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
           </label>
         </div>
         <article role="main" id="furo-main-content">
-          <section id="versioning">
-<h1>versioning<a class="headerlink" href="#versioning" title="Link to this heading">¶</a></h1>
+          <section id="task-variant-tracking">
+<h1>Task Variant Tracking<a class="headerlink" href="#task-variant-tracking" title="Link to this heading">¶</a></h1>
+<p>TaskBeacon supports <strong>task variant tracking</strong> to promote transparency, reproducibility, and collaboration across the research community. Task variant tracking allows the community to build on shared paradigms while keeping modifications clear and organized. It encourages open science and makes experimental replication easier — without losing flexibility.</p>
+<p><strong>Why it matters</strong>: There are countless modifications of popular cognitive tasks in circulation — different stimuli, reward types, modalities, or participant populations.
+Without proper tracking:</p>
 <ul class="simple">
-<li><p>how do we mange the varaints of the tasks</p></li>
-<li><p>how to upload your tasks</p></li>
+<li><p>It becomes hard to understand what version was actually used.</p></li>
+<li><p>Reproducibility is compromised.</p></li>
+<li><p>Collaborative improvements or comparisons are inefficient.</p></li>
 </ul>
+<p>By explicitly documenting task variants, TaskBeacon ensures that users can trace the origin of a task, understand what changed, and reuse versions that best match their research needs.</p>
+<p><strong>How It Works</strong>: Each task in TaskBeacon is hosted in its own GitHub repository. <strong>Variants of a task are stored as Git branches</strong>, with each variant accompanied by a <code class="docutils literal notranslate"><span class="pre">README.md</span></code> file at the root of that branch.</p>
+<p>An Example Structure looks like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>sst/
+├── main/
+│ └── README.md ← base version
+├── audio_sst/
+│ └── README.md ← describes the audio-based SST 
+
+(not accepted as variant)
+├── fast_response_version/
+│ └── README.md ← minor timing changes 
+</pre></div>
+</div>
+<section id="what-counts-as-a-variant">
+<h2>What Counts as a Variant?<a class="headerlink" href="#what-counts-as-a-variant" title="Link to this heading">¶</a></h2>
+<p>Not all changes are meaningful enough to count as a separate variant. Here’s a general guideline:</p>
+<p>✅ Counted as a variant:</p>
+<ul class="simple">
+<li><p>Changing the type of feedback or stimuli (e.g., replacing visual stop signals with audio in SST;Switching from monetary to social rewards in MID)</p></li>
+<li><p>Adding or modifying experimental conditions in a non-trivial way</p></li>
+</ul>
+<p>❌ Not counted as a variant:</p>
+<ul class="simple">
+<li><p>Minor adjustments to trial timing</p></li>
+<li><p>Changing font sizes or button positions</p></li>
+<li><p>Cosmetic or layout-only changes</p></li>
+</ul>
+<p>Variant contributions are reviewed and approved by TaskBeacon’s administrative team to ensure they meet the standard for meaningful differentiation.</p>
+</section>
+<section id="contribute-a-variant">
+<h2>Contribute a Variant<a class="headerlink" href="#contribute-a-variant" title="Link to this heading">¶</a></h2>
+<p>To contribute a new task variant:</p>
+<ol class="arabic simple">
+<li><p><strong>Fork</strong> the GitHub repository of the base task.</p></li>
+<li><p><strong>Create a new branch</strong> for your variant (e.g., <code class="docutils literal notranslate"><span class="pre">social_reward_MID</span></code>).</p></li>
+<li><p><strong>Modify the task code</strong> as needed.</p></li>
+<li><p><strong>Add a <code class="docutils literal notranslate"><span class="pre">README.md</span></code></strong> to the root of your branch. This file should:</p>
+<ul class="simple">
+<li><p>Describe the purpose of the variant.</p></li>
+<li><p>Explain how it differs from the <code class="docutils literal notranslate"><span class="pre">main</span></code> branch or original task.</p></li>
+<li><p>Include your name and affiliation (optional but encouraged).</p></li>
+</ul>
+</li>
+<li><p><strong>Submit a pull request or contact the admin team</strong> to get your branch reviewed and published on TaskBeacon.</p></li>
+</ol>
+</section>
+<section id="contribute-a-new-task">
+<h2>Contribute a New Task<a class="headerlink" href="#contribute-a-new-task" title="Link to this heading">¶</a></h2>
+<p>If you want to contribute an entirely <strong>new task</strong> that doesn’t exist in TaskBeacon yet:</p>
+<ol class="arabic simple">
+<li><p><strong>Create a new public GitHub repository</strong> under your own GitHub account or organization.</p></li>
+<li><p>Structure the task according to the <a class="reference external" href="https://taskbeacon.github.io/taps/">TAPS format</a>.</p></li>
+<li><p>Include a <code class="docutils literal notranslate"><span class="pre">README.md</span></code> with:</p>
+<ul class="simple">
+<li><p>A brief overview of the task</p></li>
+<li><p>Instructions for running it</p></li>
+<li><p>Required dependencies or setup instructions</p></li>
+</ul>
+</li>
+<li><p>When ready, <strong>submit the task</strong> to TaskBeacon by opening an issue or contacting the admin team.</p></li>
+<li><p>The TaskBeacon team will <strong>review and fork</strong> your repository under the official TaskBeacon GitHub organization for indexing.</p></li>
+</ol>
+<p>This workflow ensures that tasks are standardized, documented, and easily discoverable through the TaskBeacon platform.</p>
+</section>
+<section id="behind-the-scenes-how-variants-get-indexed">
+<h2>Behind the Scenes: How Variants Get Indexed<a class="headerlink" href="#behind-the-scenes-how-variants-get-indexed" title="Link to this heading">¶</a></h2>
+<p>TaskBeacon uses a script (<code class="docutils literal notranslate"><span class="pre">fetch_all_task_variants.py</span></code>) to automatically scan task repositories, detect branches, and build a browsable index for the website.</p>
+<p><strong>Here’s how it works</strong>:</p>
+<ol class="arabic simple">
+<li><p>The script queries GitHub’s API to retrieve all public repositories under the TaskBeacon organization.</p></li>
+<li><p>For each repository (excluding core tools like <code class="docutils literal notranslate"><span class="pre">psyflow</span></code> or documentation repos), it:</p>
+<ul class="simple">
+<li><p>Lists all branches</p></li>
+<li><p>Tries to download the <code class="docutils literal notranslate"><span class="pre">README.md</span></code> file from each branch</p></li>
+<li><p>If found, saves it locally and registers the branch as a valid variant</p></li>
+</ul>
+</li>
+<li><p>For each task with one or more variants:</p>
+<ul class="simple">
+<li><p>A task-specific index file is created listing all branches</p></li>
+<li><p>This gets compiled into the global <code class="docutils literal notranslate"><span class="pre">Task</span> <span class="pre">Library</span></code> page on the TaskBeacon site</p></li>
+</ul>
+</li>
+</ol>
+</section>
+<section id="key-logic-simplified">
+<h2>Key Logic (Simplified)<a class="headerlink" href="#key-logic-simplified" title="Link to this heading">¶</a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># For each repo</span>
+<span class="n">branches</span> <span class="o">=</span> <span class="n">fetch_branches</span><span class="p">(</span><span class="n">repo</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">branch</span> <span class="ow">in</span> <span class="n">branches</span><span class="p">:</span>
+    <span class="n">readme_url</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;https://raw.githubusercontent.com/TaskBeacon/</span><span class="si">{</span><span class="n">repo</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">branch</span><span class="si">}</span><span class="s2">/README.md&quot;</span>
+    <span class="k">if</span> <span class="n">download</span><span class="p">(</span><span class="n">readme_url</span><span class="p">):</span>
+        <span class="c1"># Register the branch as a variant</span>
+        <span class="n">add_to_index</span><span class="p">(</span><span class="n">branch</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>This automated process ensures the Task Library always stays up to date with newly submitted variants.</p>
+</section>
+<section id="browse-tasks-and-their-variants">
+<h2>Browse Tasks and their Variants<a class="headerlink" href="#browse-tasks-and-their-variants" title="Link to this heading">¶</a></h2>
+<p>You can explore all registered task variants in the <a class="reference external" href="https://taskbeacon.github.io/task_index/">Task Library</a>. Each entry includes a short description and links to the associated branch on GitHub.</p>
+</section>
 </section>
 
         </article>
@@ -278,8 +385,32 @@
         
       </footer>
     </div>
-    <aside class="toc-drawer no-toc">
+    <aside class="toc-drawer">
       
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">Task Variant Tracking</a><ul>
+<li><a class="reference internal" href="#what-counts-as-a-variant">What Counts as a Variant?</a></li>
+<li><a class="reference internal" href="#contribute-a-variant">Contribute a Variant</a></li>
+<li><a class="reference internal" href="#contribute-a-new-task">Contribute a New Task</a></li>
+<li><a class="reference internal" href="#behind-the-scenes-how-variants-get-indexed">Behind the Scenes: How Variants Get Indexed</a></li>
+<li><a class="reference internal" href="#key-logic-simplified">Key Logic (Simplified)</a></li>
+<li><a class="reference internal" href="#browse-tasks-and-their-variants">Browse Tasks and their Variants</a></li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
       
       
     </aside>

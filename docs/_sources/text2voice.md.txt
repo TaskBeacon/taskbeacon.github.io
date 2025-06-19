@@ -2,7 +2,7 @@
 
 `Psyflow` supports **text-to-speech (TTS)** conversion to enhance accessibility and standardize instruction delivery across different languages. 
 
-**Why it matters**: Using text-to-speech improves accessibility—especially for children, elderly individuals, or participants with low literacy. It ensures consistent voice delivery across different language versions and eliminates the need to record human voiceovers for each translation. Moreover, by using standardized synthetic voices, it reduces variability introduced by different experimenters (主试), helping to maintain consistency across sessions and sites.
+**Why it matters**: Using text-to-speech improves accessibility—especially for children, elderly individuals, or participants with low literacy. It ensures consistent voice delivery across different language versions and eliminates the need to record human voiceovers for each translation. Moreover, by using standardized synthetic voices, it reduces variability introduced by different experimenters, helping to maintain consistency across sessions and sites.
 
 **How It Works**: `Psyflow` uses Microsoft's `edge-tts`, a cloud-based TTS API that converts text to audio (MP3). The generated voice files are stored in the `assets/` folder, automatically skipped if they already exist (unless `overwrite=True` is specified), and registered into the `StimBank` as new `Sound` stimuli ready for playback.
 
