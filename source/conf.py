@@ -32,6 +32,10 @@ html_theme_options = {
     "sidebar_hide_name": True,
     "light_logo": "logo-light.png",
     "dark_logo": "logo-dark.png",
+    "source_repository": "https://github.com/TaskBeacon/taskbeacon.github.io/",
+    "source_branch": "main",
+    "source_directory": "source/",
+
 }
 
 html_sidebars = {
@@ -56,7 +60,10 @@ extensions = [
     "sphinx.ext.autodoc",              # Auto pull docstrings
     "sphinx.ext.napoleon",             # Google/Numpy style docstrings
     "sphinx_autodoc_typehints",        # Type hints in docs
+    "sphinx.ext.viewcode",
+    "sphinx.ext.githubpages",
 ]
+
 
 
 # Allow both .rst and .md files
