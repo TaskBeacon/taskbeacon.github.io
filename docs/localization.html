@@ -6,11 +6,11 @@
 <link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" />
 
     <!-- Generated with Sphinx 7.3.7 and Furo 2024.08.06 -->
-        <title>Localization-friendly design - TaskBeacon documentation</title>
+        <title>Task Localization - TaskBeacon documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?v=354aac6f" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?v=302659d7" />
-    <link rel="stylesheet" type="text/css" href="_static/custom.css?v=81ce6bb8" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css?v=41db8e96" />
     
     
 
@@ -179,7 +179,7 @@
           <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
         </button>
       </div>
-      <label class="toc-overlay-icon toc-header-icon no-toc" for="__toc">
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
         <div class="visually-hidden">Toggle table of contents sidebar</div>
         <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
       </label>
@@ -200,12 +200,14 @@
   <p><strong>Quick Links</strong></p>
   <ul style="list-style: none; padding-left: 0;">
     <li><a href="https://taskbeacon.github.io/">Taskbeacon Home</a></li>
-    <li><a href="taps.html">TAPS Format</a></li>
-    <li><a href="https://taskbeacon.github.io/psyflow/">psyflow framework</a></li>
     <li><a href="https://taskbeacon.github.io/task_index/">Task Library</a></li>
+    <li><a href="taps.html">TAPS Format</a></li>
+    <li><a href="https://taskbeacon.github.io/psyflow/">Psyflow Framework</a></li>
+    <li><a href="text2voice.html">Text-to-Voice</a></li>
     <li><a href="#">Localization</a></li>
+    <li><a href="LLMs.html">LLMs Features</a></li>
     <li><a href="versioning.html">Variant Tracking</a></li>
-    <li><a href="future_directions.html">Future Directions</a></li>
+    
   </ul>
 </div>
       </div>
@@ -237,15 +239,244 @@
               <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
             </button>
           </div>
-          <label class="toc-overlay-icon toc-content-icon no-toc" for="__toc">
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
             <div class="visually-hidden">Toggle table of contents sidebar</div>
             <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
           </label>
         </div>
         <article role="main" id="furo-main-content">
-          <section id="localization-friendly-design">
-<h1>Localization-friendly design<a class="headerlink" href="#localization-friendly-design" title="Link to this heading">¶</a></h1>
-<p>TAPS and psyflow make cross-cultural localization efficient by cleanly separating task logic from configuration and content. This modular design allows researchers to adapt paradigms without modifying core code, promoting global accessibility and reuse.</p>
+          <section id="task-localization">
+<h1>Task Localization<a class="headerlink" href="#task-localization" title="Link to this heading">¶</a></h1>
+<p>TAPS and PsyFlow make cross-cultural localization efficient by cleanly separating task logic from configuration and content. This modular design allows researchers to adapt paradigms across languages and cultural contexts <strong>without modifying the task code</strong>, promoting global accessibility, reproducibility, and reuse.</p>
+<section id="manual-adaptation-quick-and-easy">
+<h2>1. Manual Adaptation (Quick and Easy)<a class="headerlink" href="#manual-adaptation-quick-and-easy" title="Link to this heading">¶</a></h2>
+<p>The simplest way to localize your task is to <strong>manually translate</strong> the <code class="docutils literal notranslate"><span class="pre">config/config.yaml</span></code> file. This is ideal when you’re using LLMs interactively (e.g., ChatGPT, Gemini, DeepSeek, Claude).</p>
+<p>Paste your YAML content directly into an LLM chat window, along with a clear instruction.</p>
+<p><strong>Here’s an example prompt:</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Translate the following YAML fields into Japanese.
+1. The right-hand values of subinfo_mapping (e.g., messages, instructional text).
+2. The text content of stimuls of text and textbox
+3. Do not modify YAML structure, indentation, or key names.
+4. Preserve placeholder variables such as {field}, {duration}, {block_num} exactly as they are.
+5. For multiline text fields, preserve line breaks and do not introduce extra quotation marks or escape characters.
+6. Do not include any commentary, markdown, or explanation—output the translated YAML only.
+7. Output the full yaml content in a code block
+Here is the original yaml content:
+</pre></div>
+</div>
+<p><strong>Orignal config.yaml</strong></p>
+<p>To save space we just show the relevant content.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span># config.yaml
+# === Subject info ===
+subinfo_mapping:
+    subject_id: &quot;被试号&quot;
+    subname: &quot;被试姓名(拼音)&quot;
+    age: &quot;年龄&quot;
+    gender: &quot;性别&quot;
+    Male: &quot;男&quot;
+    Female: &quot;女&quot;
+    registration_failed: &quot;注册失败。&quot;
+    registration_successful: &quot;注册成功！&quot;
+    invalid_input: &quot;字段 {field} 输入无效&quot;
+
+# === Stimuli (for SST task) ===
+stimuli:
+  fixation:
+    type: text
+    text: &quot;+&quot;
+    color: white
+
+  no_response_feedback  :
+    type: text
+    text: |
+      【未按键】
+      请在箭头出现后按键
+    font: SimHei
+    height: 0.78
+
+  block_break:
+    type: text
+    text: |
+      【休息提示】
+
+      第 {block_num} / {total_blocks} 部分完成。
+      击中率：{go_accuracy:.2f}
+      正确停止率：{stop_accuracy:.2f}
+
+      请在充分休息后按【空格键】
+      进入下一部分
+    color: white
+    font: SimHei
+    height: 0.78
+
+
+  instruction_text:
+    type: textbox
+    text: |
+      【停止信号任务说明】
+
+      在本任务中，您将看到箭头指向左或右
+      您的目标是尽快且准确地做出反应
+        - 如果箭头指向左，请用左手食指按【F】
+        - 如果箭头指向右，请用右手食指按【J】
+
+      注意：在某些试次中
+      箭头出现后不久会出现红色箭头
+      当看到红色箭头时
+      请尽力抑制您的反应不要按任何按键
+
+      在没有红色箭头出现时，请快速做出反应
+      出现红色箭头时，请尽量不做出任何按键反应
+
+      准备好后，请按【空格键】开始任务。
+    color: white
+    font: SimHei
+    alignment: center
+    letterHeight: 0.78
+    units: deg
+    size: [20, 5]
+
+  iti_stim:
+    type: text
+    text: &quot;&quot;
+
+  good_bye:
+    type: textbox
+    text: |
+      任务结束
+      
+      感谢您的参与
+      请按【空格键】键退出
+    color: white
+    font: SimHei
+    alignment: center
+    letterHeight: 0.78
+
+</pre></div>
+</div>
+<p>Then copy the translated YAML back into your project and save as a localized config file, e.g., <code class="docutils literal notranslate"><span class="pre">config.ja.yaml</span></code>.</p>
+<p><strong>Translated config.ja.yaml</strong></p>
+<p>To save space we just show the relevant content.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span># config.yaml
+# === Subject info ===
+subinfo_mapping:
+    subject_id: &quot;被験者ID&quot;
+    subname: &quot;被験者氏名（ローマ字）&quot;
+    age: &quot;年齢&quot;
+    gender: &quot;性別&quot;
+    Male: &quot;男性&quot;
+    Female: &quot;女性&quot;
+    registration_failed: &quot;登録に失敗しました。&quot;
+    registration_successful: &quot;登録に成功しました！&quot;
+    invalid_input: &quot;フィールド {field} の入力が無効です&quot;
+
+# === Stimuli (for SST task) ===
+stimuli:
+  fixation:
+    type: text
+    text: &quot;+&quot;
+    color: white
+
+  no_response_feedback  :
+    type: text
+    text: |
+      【未反応】
+      矢印が表示されたらキーを押してください
+    font: SimHei
+    height: 0.78
+
+  block_break:
+    type: text
+    text: |
+      【休憩のお知らせ】
+
+      第 {block_num} / {total_blocks} ブロックが完了しました。
+      命中率：{go_accuracy:.2f}
+      正しく停止できた割合：{stop_accuracy:.2f}
+
+      十分に休憩した後、【スペースキー】を押して
+      次のブロックに進んでください
+    color: white
+    font: SimHei
+    height: 0.78
+
+  instruction_text:
+    type: textbox
+    text: |
+      【ストップシグナル課題の説明】
+
+      この課題では、矢印が左または右を指します。
+      できるだけ素早く正確に反応してください。
+        - 矢印が左を指したら、左手の人差し指で【F】を押してください。
+        - 矢印が右を指したら、右手の人差し指で【J】を押してください。
+
+      注意：一部の試行では、
+      矢印の直後に赤い矢印が表示されることがあります。
+      赤い矢印が表示されたら、
+      反応を抑えてキーを押さないようにしてください。
+
+      赤い矢印が表示されなければ、すぐに反応してください。
+      赤い矢印が表示された場合は、できるだけ反応しないでください。
+
+      準備ができたら【スペースキー】を押して課題を開始してください。
+    color: white
+    font: SimHei
+    alignment: center
+    letterHeight: 0.78
+    units: deg
+    size: [20, 5]
+
+  iti_stim:
+    type: text
+    text: &quot;&quot;
+
+  good_bye:
+    type: textbox
+    text: |
+      課題終了
+      
+      ご参加ありがとうございました
+      【スペースキー】を押して終了してください
+    color: white
+    font: SimHei
+    alignment: center
+    letterHeight: 0.78
+</pre></div>
+</div>
+</section>
+<section id="programmatic-localization-via-api">
+<h2>2. Programmatic Localization via API<a class="headerlink" href="#programmatic-localization-via-api" title="Link to this heading">¶</a></h2>
+<p>For automated localization workflows, use the built-in <code class="docutils literal notranslate"><span class="pre">LLMClient</span></code> class. It supports Google Gemini and DeepSeek (OpenAI-compatible) providers.</p>
+<p>It will translate:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">subinfo_mapping</span></code> labels</p></li>
+<li><p>Any <code class="docutils literal notranslate"><span class="pre">stimuli</span></code> with type <code class="docutils literal notranslate"><span class="pre">text</span></code> or <code class="docutils literal notranslate"><span class="pre">textbox</span></code></p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">psyflow.llm</span><span class="w"> </span><span class="kn">import</span> <span class="n">LLMClient</span>
+<span class="n">client</span> <span class="o">=</span> <span class="n">LLMClient</span><span class="p">(</span><span class="n">provider</span><span class="o">=</span><span class="s2">&quot;gemini&quot;</span><span class="p">,</span> <span class="n">api_key</span><span class="o">=</span><span class="s2">&quot;your-key&quot;</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="s2">&quot;gemini-1.5-flash&quot;</span><span class="p">)</span>
+<span class="n">translated_config</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">translate_config</span><span class="p">(</span>
+    <span class="n">target_language</span><span class="o">=</span><span class="s2">&quot;Japanese&quot;</span>
+<span class="p">)</span>
+<span class="c1"># This translates in-memory without saving to disk.</span>
+</pre></div>
+</div>
+<p>More details can be found in <a class="reference internal" href="LLMs.html"><span class="doc">LLMs</span></a>.</p>
+</section>
+<section id="important-notes">
+<h2>⚠️ Important Notes ⚠️<a class="headerlink" href="#important-notes" title="Link to this heading">¶</a></h2>
+<ol class="arabic">
+<li><p><strong>Always review the auto-translated content.</strong> While LLM-based translation performs well in most cases, it’s strongly recommended to have a native speaker verify the accuracy and cultural appropriateness of the translated text.</p></li>
+<li><p><strong>Leverage text-to-speech (TTS) for multilingual audio delivery.</strong><br />
+Since <code class="docutils literal notranslate"><span class="pre">psyflow</span></code> supports TTS conversion, you can automatically generate audio files from the translated text. This enables consistent and scalable voice presentation across languages—without requiring human recordings.</p>
+<p>If you plan to use voice content:</p>
+<ol class="arabic simple">
+<li><p>Delete the original voice files in the <code class="docutils literal notranslate"><span class="pre">assets/</span></code> folder.</p></li>
+<li><p>Regenerate the audio using a TTS voice that matches the target language.</p></li>
+</ol>
+<p>See <a class="reference internal" href="text2voice.html"><span class="doc">text2voice</span></a> for details on how to configure voices and view the list of supported options.</p>
+</li>
+</ol>
+</section>
 </section>
 
         </article>
@@ -273,8 +504,29 @@
         
       </footer>
     </div>
-    <aside class="toc-drawer no-toc">
+    <aside class="toc-drawer">
       
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">Task Localization</a><ul>
+<li><a class="reference internal" href="#manual-adaptation-quick-and-easy">1. Manual Adaptation (Quick and Easy)</a></li>
+<li><a class="reference internal" href="#programmatic-localization-via-api">2. Programmatic Localization via API</a></li>
+<li><a class="reference internal" href="#important-notes">⚠️ Important Notes ⚠️</a></li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
       
       
     </aside>

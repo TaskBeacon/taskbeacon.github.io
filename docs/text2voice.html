@@ -6,11 +6,11 @@
 <link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" />
 
     <!-- Generated with Sphinx 7.3.7 and Furo 2024.08.06 -->
-        <title>Future Directions - TaskBeacon documentation</title>
+        <title>Text-to-Voice Conversion - TaskBeacon documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?v=354aac6f" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?v=302659d7" />
-    <link rel="stylesheet" type="text/css" href="_static/custom.css?v=81ce6bb8" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css?v=41db8e96" />
     
     
 
@@ -179,7 +179,7 @@
           <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
         </button>
       </div>
-      <label class="toc-overlay-icon toc-header-icon no-toc" for="__toc">
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
         <div class="visually-hidden">Toggle table of contents sidebar</div>
         <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
       </label>
@@ -200,12 +200,14 @@
   <p><strong>Quick Links</strong></p>
   <ul style="list-style: none; padding-left: 0;">
     <li><a href="https://taskbeacon.github.io/">Taskbeacon Home</a></li>
-    <li><a href="taps.html">TAPS Format</a></li>
-    <li><a href="https://taskbeacon.github.io/psyflow/">psyflow framework</a></li>
     <li><a href="https://taskbeacon.github.io/task_index/">Task Library</a></li>
+    <li><a href="taps.html">TAPS Format</a></li>
+    <li><a href="https://taskbeacon.github.io/psyflow/">Psyflow Framework</a></li>
+    <li><a href="#">Text-to-Voice</a></li>
     <li><a href="localization.html">Localization</a></li>
+    <li><a href="LLMs.html">LLMs Features</a></li>
     <li><a href="versioning.html">Variant Tracking</a></li>
-    <li><a href="#">Future Directions</a></li>
+    
   </ul>
 </div>
       </div>
@@ -223,7 +225,7 @@
         </a>
         <div class="content-icon-container">
           <div class="view-this-page">
-  <a class="muted-link" href="_sources/future_directions.md.txt" title="View this page">
+  <a class="muted-link" href="_sources/text2voice.md.txt" title="View this page">
     <svg><use href="#svg-eye"></use></svg>
     <span class="visually-hidden">View this page</span>
   </a>
@@ -237,16 +239,131 @@
               <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
             </button>
           </div>
-          <label class="toc-overlay-icon toc-content-icon no-toc" for="__toc">
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
             <div class="visually-hidden">Toggle table of contents sidebar</div>
             <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
           </label>
         </div>
         <article role="main" id="furo-main-content">
-          <section id="future-directions">
-<h1>Future Directions<a class="headerlink" href="#future-directions" title="Link to this heading">¶</a></h1>
-<p>We plan to explore how large language models can help generate new cognitive tasks from natural language instructions. Automated task generation could accelerate research and expand available paradigms.</p>
-<p>Community feedback and contributions are welcome as we experiment with these ideas.</p>
+          <section id="text-to-voice-conversion">
+<h1>Text-to-Voice Conversion<a class="headerlink" href="#text-to-voice-conversion" title="Link to this heading">¶</a></h1>
+<p><code class="docutils literal notranslate"><span class="pre">psyflow</span></code> supports <strong>text-to-speech (TTS)</strong> conversion to enhance accessibility and standardize instruction delivery across different languages. This would:</p>
+<p><strong>Why it matters</strong></p>
+<ul class="simple">
+<li><p>Improves accessibility — especially for children, elderly, or low-literacy participants.</p></li>
+<li><p>Ensures consistent voice delivery across localized versions.</p></li>
+<li><p>Avoids the hassle of recording human voiceovers for each translation.</p></li>
+</ul>
+<p><strong>How It Works</strong></p>
+<p>PsyFlow uses Microsoft’s <code class="docutils literal notranslate"><span class="pre">edge-tts</span></code>, a cloud-based TTS API that converts text to audio (MP3). Voice files are:</p>
+<ul class="simple">
+<li><p>Stored in the <code class="docutils literal notranslate"><span class="pre">assets/</span></code> folder.</p></li>
+<li><p>Automatically skipped if already generated (unless <code class="docutils literal notranslate"><span class="pre">overwrite=True</span></code>).</p></li>
+<li><p>Registered into <code class="docutils literal notranslate"><span class="pre">StimBank</span></code> as new <code class="docutils literal notranslate"><span class="pre">Sound</span></code> stimuli ready for playback.</p></li>
+</ul>
+<blockquote>
+<div><p>⚠️ <strong>Note</strong>: An internet connection is required for TTS generation. Offline tools exist but produce lower-quality audio.</p>
+</div></blockquote>
+<section id="basic-usage">
+<h2>Basic Usage<a class="headerlink" href="#basic-usage" title="Link to this heading">¶</a></h2>
+<section id="convert-existing-text-stimuli-to-voice">
+<h3>Convert Existing Text Stimuli to Voice<a class="headerlink" href="#convert-existing-text-stimuli-to-voice" title="Link to this heading">¶</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">psyflow</span><span class="w"> </span><span class="kn">import</span> <span class="n">StimBank</span>
+<span class="n">stim_bank</span> <span class="o">=</span> <span class="n">StimBank</span><span class="p">(</span><span class="n">config</span><span class="p">)</span>
+<span class="n">stim_bank</span><span class="o">.</span><span class="n">convert_to_voice</span><span class="p">(</span><span class="n">keys</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;instruction_text&quot;</span><span class="p">,</span> <span class="s2">&quot;good_bye&quot;</span><span class="p">],</span> 
+<span class="n">voice</span><span class="o">=</span><span class="s2">&quot;zh-CN-YunyangNeural&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>This will create audio files like <code class="docutils literal notranslate"><span class="pre">instruction_text_voice.mp3</span></code> in <code class="docutils literal notranslate"><span class="pre">assets/</span></code>.</p></li>
+<li><p>The resulting voices will be registered as <code class="docutils literal notranslate"><span class="pre">instruction_text_voice</span></code>, <code class="docutils literal notranslate"><span class="pre">good_bye_voice</span></code> in <code class="docutils literal notranslate"><span class="pre">StimBank</span></code>.</p></li>
+</ul>
+<p>If you plan to use voice:</p>
+<ol class="arabic simple">
+<li><p>Delete any previously generated audio in <code class="docutils literal notranslate"><span class="pre">assets/</span></code> before regenerating.</p></li>
+<li><p>Choose a TTS voice that matches the language of the text.</p></li>
+</ol>
+</section>
+</section>
+<hr class="docutils" />
+<section id="add-voice-from-custom-text">
+<h2>Add Voice from Custom Text<a class="headerlink" href="#add-voice-from-custom-text" title="Link to this heading">¶</a></h2>
+<p>If you want to add an arbitrary line of text as a voice stimulus:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">stim_bank</span><span class="o">.</span><span class="n">add_voice</span><span class="p">(</span>
+    <span class="n">stim_label</span><span class="o">=</span><span class="s2">&quot;welcome_voice&quot;</span><span class="p">,</span>
+    <span class="n">text</span><span class="o">=</span><span class="s2">&quot;ようこそ。タスクを開始します。&quot;</span><span class="p">,</span>
+    <span class="n">voice</span><span class="o">=</span><span class="s2">&quot;ja-JP-NanamiNeural&quot;</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>The result will be registered as <code class="docutils literal notranslate"><span class="pre">welcome_voice</span></code> and available like any other stimulus.</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="voice-selection">
+<h2>Voice Selection<a class="headerlink" href="#voice-selection" title="Link to this heading">¶</a></h2>
+<p>Use the built-in helper to explore available voices:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">psyflow.tts_utils</span><span class="w"> </span><span class="kn">import</span> <span class="n">list_supported_voices</span>
+
+<span class="c1"># Print all voices</span>
+<span class="n">list_supported_voices</span><span class="p">(</span><span class="n">filter_lang</span><span class="o">=</span><span class="s2">&quot;ja&quot;</span><span class="p">,</span> <span class="n">human_readable</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># Print all Japanese voices</span>
+<span class="n">list_supported_voices</span><span class="p">(</span><span class="n">filter_lang</span><span class="o">=</span><span class="s2">&quot;ja&quot;</span><span class="p">,</span> <span class="n">human_readable</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Sample output:</p>
+<div class="table-wrapper colwidths-auto docutils container">
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>ShortName</p></th>
+<th class="head"><p>Locale</p></th>
+<th class="head"><p>Gender</p></th>
+<th class="head"><p>Personalities</p></th>
+<th class="head"><p>FriendlyName</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>af-ZA-AdriNeural</p></td>
+<td><p>af-ZA</p></td>
+<td><p>Female</p></td>
+<td><p>Friendly, Positive</p></td>
+<td><p>Microsoft Adri Online (Natural) - Afrikaans (South Africa)</p></td>
+</tr>
+<tr class="row-odd"><td><p>af-ZA-WillemNeural</p></td>
+<td><p>af-ZA</p></td>
+<td><p>Male</p></td>
+<td><p>Friendly, Positive</p></td>
+<td><p>Microsoft Willem Online (Natural) - Afrikaans (South Africa)</p></td>
+</tr>
+<tr class="row-even"><td><p>sq-AL-AnilaNeural</p></td>
+<td><p>sq-AL</p></td>
+<td><p>Female</p></td>
+<td><p>Friendly, Positive</p></td>
+<td><p>Microsoft Anila Online (Natural) - Albanian (Albania)</p></td>
+</tr>
+<tr class="row-odd"><td><p>sq-AL-IlirNeural</p></td>
+<td><p>sq-AL</p></td>
+<td><p>Male</p></td>
+<td><p>Friendly, Positive</p></td>
+<td><p>Microsoft Ilir Online (Natural) - Albanian (Albania)</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Alternatively, you can check the list of supported voices <a class="reference external" href="https://gist.github.com/BettyJJ/17cbaa1de96235a7f5773b8690a20462">here</a>.</p>
+</section>
+<section id="tips-and-caveats">
+<h2>Tips and Caveats<a class="headerlink" href="#tips-and-caveats" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p><strong>Placeholder Limitation</strong>: The TTS engine does <strong>not</strong> support dynamic text with placeholders such as <code class="docutils literal notranslate"><span class="pre">{duration}</span></code> or <code class="docutils literal notranslate"><span class="pre">{block_num}</span></code>. If your text includes placeholders, it will not be converted as expected — the synthesis may fail or result in unnatural output.</p></li>
+<li><p><strong>Overwrite</strong>: Use <code class="docutils literal notranslate"><span class="pre">overwrite=True</span></code> to regenerate voice files even if they exist. However, be careful with this option, as it assumes you need to regenerate the voice every time you run the task ⚠️.</p></li>
+<li><p><strong>Voice Mismatch</strong>: Always match the voice language to the text language to avoid unnatural pronunciation.</p></li>
+<li><p><strong>Preview Your Audio</strong>: You can test output files manually in the <code class="docutils literal notranslate"><span class="pre">assets/</span></code> folder before running full experiments.<br />
+If a file is empty or not playable, it may cause the task to fail at runtime — try deleting and regenerating the voice file.</p></li>
+</ul>
+</section>
 </section>
 
         </article>
@@ -274,8 +391,33 @@
         
       </footer>
     </div>
-    <aside class="toc-drawer no-toc">
+    <aside class="toc-drawer">
       
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">Text-to-Voice Conversion</a><ul>
+<li><a class="reference internal" href="#basic-usage">Basic Usage</a><ul>
+<li><a class="reference internal" href="#convert-existing-text-stimuli-to-voice">Convert Existing Text Stimuli to Voice</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#add-voice-from-custom-text">Add Voice from Custom Text</a></li>
+<li><a class="reference internal" href="#voice-selection">Voice Selection</a></li>
+<li><a class="reference internal" href="#tips-and-caveats">Tips and Caveats</a></li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
       
       
     </aside>

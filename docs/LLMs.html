@@ -1,0 +1,484 @@
+<!doctype html>
+<html class="no-js" lang="en" data-content_root="./">
+  <head><meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+<link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" />
+
+    <!-- Generated with Sphinx 7.3.7 and Furo 2024.08.06 -->
+        <title>Large Language Models (LLMs) features - TaskBeacon documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?v=354aac6f" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?v=302659d7" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css?v=41db8e96" />
+    
+    
+
+
+<style>
+  body {
+    --color-code-background: #f8f8f8;
+  --color-code-foreground: black;
+  
+  }
+  @media not print {
+    body[data-theme="dark"] {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+    }
+    @media (prefers-color-scheme: dark) {
+      body:not([data-theme="light"]) {
+        --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+      }
+    }
+  }
+</style></head>
+  <body>
+    
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
+      <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-with-moon" viewBox="0 0 24 24">
+    <title>Auto light/dark, in light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path style="opacity: 50%" d="M 5.411 14.504 C 5.471 14.504 5.532 14.504 5.591 14.504 C 3.639 16.319 4.383 19.569 6.931 20.352 C 7.693 20.586 8.512 20.551 9.25 20.252 C 8.023 23.207 4.056 23.725 2.11 21.184 C 0.166 18.642 1.702 14.949 4.874 14.536 C 5.051 14.512 5.231 14.5 5.411 14.5 L 5.411 14.504 Z"/>
+      <line x1="14.5" y1="3.25" x2="14.5" y2="1.25"/>
+      <line x1="14.5" y1="15.85" x2="14.5" y2="17.85"/>
+      <line x1="10.044" y1="5.094" x2="8.63" y2="3.68"/>
+      <line x1="19" y1="14.05" x2="20.414" y2="15.464"/>
+      <line x1="8.2" y1="9.55" x2="6.2" y2="9.55"/>
+      <line x1="20.8" y1="9.55" x2="22.8" y2="9.55"/>
+      <line x1="10.044" y1="14.006" x2="8.63" y2="15.42"/>
+      <line x1="19" y1="5.05" x2="20.414" y2="3.636"/>
+      <circle cx="14.5" cy="9.55" r="3.6"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon-with-sun" viewBox="0 0 24 24">
+    <title>Auto light/dark, in dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path d="M 8.282 7.007 C 8.385 7.007 8.494 7.007 8.595 7.007 C 5.18 10.184 6.481 15.869 10.942 17.24 C 12.275 17.648 13.706 17.589 15 17.066 C 12.851 22.236 5.91 23.143 2.505 18.696 C -0.897 14.249 1.791 7.786 7.342 7.063 C 7.652 7.021 7.965 7 8.282 7 L 8.282 7.007 Z"/>
+      <line style="opacity: 50%" x1="18" y1="3.705" x2="18" y2="2.5"/>
+      <line style="opacity: 50%" x1="18" y1="11.295" x2="18" y2="12.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="4.816" x2="14.464" y2="3.964"/>
+      <line style="opacity: 50%" x1="20.711" y1="10.212" x2="21.563" y2="11.063"/>
+      <line style="opacity: 50%" x1="14.205" y1="7.5" x2="13.001" y2="7.5"/>
+      <line style="opacity: 50%" x1="21.795" y1="7.5" x2="23" y2="7.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="10.184" x2="14.464" y2="11.036"/>
+      <line style="opacity: 50%" x1="20.711" y1="4.789" x2="21.563" y2="3.937"/>
+      <circle style="opacity: 50%" cx="18" cy="7.5" r="2.169"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-pencil" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-pencil-code">
+      <path d="M4 20h4l10.5 -10.5a2.828 2.828 0 1 0 -4 -4l-10.5 10.5v4" />
+      <path d="M13.5 6.5l4 4" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+  <symbol id="svg-eye" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-eye-code">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
+      <path
+        d="M11.11 17.958c-3.209 -.307 -5.91 -2.293 -8.11 -5.958c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6c-.21 .352 -.427 .688 -.647 1.008" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
+<label class="overlay sidebar-overlay" for="__navigation">
+  <div class="visually-hidden">Hide navigation sidebar</div>
+</label>
+<label class="overlay toc-overlay" for="__toc">
+  <div class="visually-hidden">Hide table of contents sidebar</div>
+</label>
+
+<a class="skip-to-content muted-link" href="#furo-main-content">Skip to content</a>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <div class="visually-hidden">Toggle site navigation sidebar</div>
+        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="index.html"><div class="brand">TaskBeacon  documentation</div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle">
+          <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+          <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+          <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+        <div class="visually-hidden">Toggle table of contents sidebar</div>
+        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="index.html">
+  
+  <div class="sidebar-logo-container">
+    <img class="sidebar-logo only-light" src="_static/logo-light.png" alt="Light Logo"/>
+    <img class="sidebar-logo only-dark" src="_static/logo-dark.png" alt="Dark Logo"/>
+  </div>
+  
+  
+</a><div class="sidebar-cta entries-box">
+  <p><strong>Quick Links</strong></p>
+  <ul style="list-style: none; padding-left: 0;">
+    <li><a href="https://taskbeacon.github.io/">Taskbeacon Home</a></li>
+    <li><a href="https://taskbeacon.github.io/task_index/">Task Library</a></li>
+    <li><a href="taps.html">TAPS Format</a></li>
+    <li><a href="https://taskbeacon.github.io/psyflow/">Psyflow Framework</a></li>
+    <li><a href="text2voice.html">Text-to-Voice</a></li>
+    <li><a href="localization.html">Localization</a></li>
+    <li><a href="#">LLMs Features</a></li>
+    <li><a href="versioning.html">Variant Tracking</a></li>
+    
+  </ul>
+</div>
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <a href="#" class="back-to-top muted-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+          </svg>
+          <span>Back to top</span>
+        </a>
+        <div class="content-icon-container">
+          <div class="view-this-page">
+  <a class="muted-link" href="_sources/LLMs.md.txt" title="View this page">
+    <svg><use href="#svg-eye"></use></svg>
+    <span class="visually-hidden">View this page</span>
+  </a>
+</div>
+<div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle">
+              <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+              <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+              <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
+            <div class="visually-hidden">Toggle table of contents sidebar</div>
+            <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+          </label>
+        </div>
+        <article role="main" id="furo-main-content">
+          <section id="large-language-models-llms-features">
+<h1>Large Language Models (LLMs) features<a class="headerlink" href="#large-language-models-llms-features" title="Link to this heading">¶</a></h1>
+<p>Our library offers a lightweight, unified interface for interacting with Large Language Models (LLMs), currently supporting two providers:</p>
+<p>-<strong>Gemini</strong>, which provides free-tier access to powerful models—ideal for getting started with no cost</p>
+<p>-<strong>Deepseek</strong>, a cost-effective alternative via the OpenAI SDK (for users who don’t have access to Gemini)</p>
+<p>Instead of relying on heavier frameworks like LangChain, we built our own minimal wrapper to keep things simple: no extra dependencies beyond the provider SDKs, a clean and focused API (generate, translate, count_tokens, etc.), and fast, low-overhead execution.</p>
+<section id="verify-the-native-sdks">
+<h2>1. Verify the Native SDKs<a class="headerlink" href="#verify-the-native-sdks" title="Link to this heading">¶</a></h2>
+<section id="google-genai-gemini">
+<h3>1.1 Google-GenAI (Gemini)<a class="headerlink" href="#google-genai-gemini" title="Link to this heading">¶</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">google</span><span class="w"> </span><span class="kn">import</span> <span class="n">genai</span>
+
+<span class="c1"># 1a) Initialize the Gemini client</span>
+<span class="n">genai</span><span class="o">.</span><span class="n">configure</span><span class="p">(</span><span class="n">api_key</span><span class="o">=</span><span class="s2">&quot;…your Gemini API key…&quot;</span><span class="p">)</span>
+<span class="n">client</span> <span class="o">=</span> <span class="n">genai</span><span class="o">.</span><span class="n">Client</span><span class="p">()</span>
+
+<span class="c1"># List available model names</span>
+<span class="n">model_list</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">list</span><span class="p">()</span>
+<span class="n">model_ids</span> <span class="o">=</span> <span class="p">[</span><span class="n">model</span><span class="o">.</span><span class="n">name</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="k">for</span> <span class="n">model</span> <span class="ow">in</span> <span class="n">model_list</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Available models:&quot;</span><span class="p">,</span> <span class="n">model_ids</span><span class="p">)</span>
+<span class="c1"># Available models: [&#39;embedding-gecko-001&#39;, &#39;gemini-1.0-pro-vision-latest&#39;, &#39;gemini-pro-vision&#39;, &#39;gemini-1.5-pro-latest&#39;, &#39;gemini-1.5-pro-002&#39;, &#39;gemini-1.5-pro&#39;, &#39;gemini-1.5-flash-latest&#39;, &#39;gemini-1.5-flash&#39;, &#39;gemini-1.5-flash-002&#39;, &#39;gemini-1.5-flash-8b&#39;, &#39;gemini-1.5-flash-8b-001&#39;, &#39;gemini-1.5-flash-8b-latest&#39;, &#39;gemini-2.5-pro-exp-03-25&#39;, &#39;gemini-2.5-pro-preview-03-25&#39;, &#39;gemini-2.5-flash-preview-04-17&#39;, &#39;gemini-2.5-flash-preview-05-20&#39;, &#39;gemini-2.5-flash&#39;, &#39;gemini-2.5-flash-preview-04-17-thinking&#39;, &#39;gemini-2.5-flash-lite-preview-06-17&#39;, &#39;gemini-2.5-pro-preview-05-06&#39;, &#39;gemini-2.5-pro-preview-06-05&#39;, &#39;gemini-2.5-pro&#39;, &#39;gemini-2.0-flash-exp&#39;, &#39;gemini-2.0-flash&#39;, &#39;gemini-2.0-flash-001&#39;, &#39;gemini-2.0-flash-lite-001&#39;, &#39;gemini-2.0-flash-lite&#39;, &#39;gemini-2.0-flash-lite-preview-02-05&#39;, &#39;gemini-2.0-flash-lite-preview&#39;, &#39;gemini-2.0-pro-exp&#39;, &#39;gemini-2.0-pro-exp-02-05&#39;, &#39;gemini-exp-1206&#39;, &#39;gemini-2.0-flash-thinking-exp-01-21&#39;, &#39;gemini-2.0-flash-thinking-exp&#39;, &#39;gemini-2.0-flash-thinking-exp-1219&#39;, &#39;gemini-2.5-flash-preview-tts&#39;, &#39;gemini-2.5-pro-preview-tts&#39;, &#39;learnlm-2.0-flash-experimental&#39;, &#39;gemma-3-1b-it&#39;, &#39;gemma-3-4b-it&#39;, &#39;gemma-3-12b-it&#39;, &#39;gemma-3-27b-it&#39;, &#39;gemma-3n-e4b-it&#39;, &#39;embedding-001&#39;, &#39;text-embedding-004&#39;, &#39;gemini-embedding-exp-03-07&#39;, &#39;gemini-embedding-exp&#39;, &#39;aqa&#39;, &#39;imagen-3.0-generate-002&#39;, &#39;veo-2.0-generate-001&#39;, &#39;gemini-2.5-flash-preview-native-audio-dialog&#39;, &#39;gemini-2.5-flash-preview-native-audio-dialog-rai-v3&#39;, &#39;gemini-2.5-flash-exp-native-audio-thinking-dialog&#39;, &#39;gemini-2.0-flash-live-001&#39;]</span>
+
+<span class="c1"># 1b) Quick echo</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">generate_content</span><span class="p">(</span>
+    <span class="n">model</span><span class="o">=</span><span class="s2">&quot;gemini-1.5-flash&quot;</span><span class="p">,</span>
+    <span class="n">contents</span><span class="o">=</span><span class="s2">&quot;Hello, how are you?&quot;</span>
+<span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
+<span class="c1"># I am doing well, thank you for asking!  How are you today?</span>
+</pre></div>
+</div>
+</section>
+<section id="openai-deepseek">
+<h3>1.2 OpenAI / Deepseek<a class="headerlink" href="#openai-deepseek" title="Link to this heading">¶</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">openai</span><span class="w"> </span><span class="kn">import</span> <span class="n">OpenAI</span>
+<span class="n">client</span> <span class="o">=</span> <span class="n">OpenAI</span><span class="p">(</span><span class="n">api_key</span><span class="o">=</span><span class="s2">&quot;…your key…&quot;</span><span class="p">,</span> <span class="n">base_url</span><span class="o">=</span><span class="s2">&quot;https://api.deepseek.com&quot;</span><span class="p">)</span>
+
+<span class="c1"># 1a) List raw model names</span>
+<span class="n">model_resp</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">list</span><span class="p">()</span>
+<span class="c1"># extract and print their IDs</span>
+<span class="n">model_ids</span> <span class="o">=</span> <span class="p">[</span><span class="n">m</span><span class="o">.</span><span class="n">id</span> <span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="n">model_resp</span><span class="o">.</span><span class="n">data</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Available models:&quot;</span><span class="p">,</span> <span class="n">model_ids</span><span class="p">)</span>
+<span class="c1"># Available models: [&#39;deepseek-chat&#39;, &#39;deepseek-reasoner&#39;]</span>
+
+<span class="c1"># 1b) Quick echo</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">chat</span><span class="o">.</span><span class="n">completions</span><span class="o">.</span><span class="n">create</span><span class="p">(</span>
+    <span class="n">model</span><span class="o">=</span><span class="s2">&quot;deepseek-chat&quot;</span><span class="p">,</span>
+    <span class="n">messages</span><span class="o">=</span><span class="p">[</span>
+        <span class="p">{</span><span class="s2">&quot;role&quot;</span><span class="p">:</span> <span class="s2">&quot;system&quot;</span><span class="p">,</span> <span class="s2">&quot;content&quot;</span><span class="p">:</span> <span class="s2">&quot;You are a helpful assistant&quot;</span><span class="p">},</span>
+        <span class="p">{</span><span class="s2">&quot;role&quot;</span><span class="p">:</span> <span class="s2">&quot;user&quot;</span><span class="p">,</span> <span class="s2">&quot;content&quot;</span><span class="p">:</span> <span class="s2">&quot;Hello&quot;</span><span class="p">},</span>
+    <span class="p">],</span>
+    <span class="n">stream</span><span class="o">=</span><span class="kc">False</span>
+<span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">choices</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">message</span><span class="o">.</span><span class="n">content</span><span class="p">)</span>
+<span class="c1"># Hello! How can I assist you today? 😊</span>
+
+</pre></div>
+</div>
+</section>
+</section>
+<section id="use-psyflow-llmclient-wrapper">
+<h2>2. Use Psyflow LLMClient Wrapper<a class="headerlink" href="#use-psyflow-llmclient-wrapper" title="Link to this heading">¶</a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">psyflow</span><span class="w"> </span><span class="kn">import</span> <span class="n">LLMClient</span><span class="p">,</span> <span class="n">LLMUtil</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+
+<span class="c1"># 2a) Instantiate</span>
+<span class="n">gemini</span> <span class="o">=</span> <span class="n">LLMClient</span><span class="p">(</span><span class="s2">&quot;gemini&quot;</span><span class="p">,</span> <span class="s2">&quot;…your key…&quot;</span><span class="p">,</span> <span class="s2">&quot;gemini-2.0-flash&quot;</span><span class="p">)</span>
+<span class="n">deep</span>   <span class="o">=</span> <span class="n">LLMClient</span><span class="p">(</span><span class="s2">&quot;deepseek&quot;</span><span class="p">,</span><span class="s2">&quot;…your key…&quot;</span><span class="p">,</span> <span class="s2">&quot;deepseek-chat&quot;</span><span class="p">)</span>
+
+<span class="c1"># 2b) List via wrapper (should match SDK lists)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;🔁 Gemini wrapper sees:&quot;</span><span class="p">,</span> <span class="n">gemini</span><span class="o">.</span><span class="n">list_models</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;🔁 Deepseek wrapper sees:&quot;</span><span class="p">,</span> <span class="n">deep</span><span class="o">.</span><span class="n">list_models</span><span class="p">())</span>
+
+<span class="c1"># 2c) Echo test via wrapper (this will send a hello to the model)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;🔊 Gemini wrapper echo:&quot;</span><span class="p">,</span> <span class="n">gemini</span><span class="o">.</span><span class="n">test</span><span class="p">(</span><span class="n">max_tokens</span><span class="o">=</span><span class="mi">5</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;🔊 Deepseek wrapper echo:&quot;</span><span class="p">,</span> <span class="n">deep</span><span class="o">.</span><span class="n">test</span><span class="p">(</span><span class="n">max_tokens</span><span class="o">=</span><span class="mi">5</span><span class="p">))</span>
+
+
+<span class="c1"># 2d) Echo test via wrapper (send message by setting `ping` parameter)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;🔊 Gemini wrapper echo:&quot;</span><span class="p">,</span> <span class="n">gemini</span><span class="o">.</span><span class="n">test</span><span class="p">(</span><span class="n">ping</span><span class="o">=</span><span class="s1">&#39;who are you?&#39;</span><span class="p">,</span> <span class="n">max_tokens</span><span class="o">=</span><span class="mi">5</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;🔊 Deepseek wrapper echo:&quot;</span><span class="p">,</span> <span class="n">deep</span><span class="o">.</span><span class="n">test</span><span class="p">(</span><span class="n">ping</span><span class="o">=</span><span class="s1">&#39;who are you?&#39;</span><span class="p">,</span> <span class="n">max_tokens</span><span class="o">=</span><span class="mi">5</span><span class="p">))</span>
+</pre></div>
+</div>
+</section>
+<section id="llms-powered-task-documentation">
+<h2>3. LLMs-Powered Task Documentation<a class="headerlink" href="#llms-powered-task-documentation" title="Link to this heading">¶</a></h2>
+<p>Our platform leverages Large Language Models (LLMs) to automatically generate human-readable documentation for cognitive tasks. This feature is designed to help developers, collaborators, and reviewers quickly understand the structure and parameters of a task—without having to dig through source code.</p>
+<p>Our <code class="docutils literal notranslate"><span class="pre">LLMClient</span></code> includes a powerful <code class="docutils literal notranslate"><span class="pre">task2doc()</span></code> utility that lets you <strong>automatically generate a detailed <code class="docutils literal notranslate"><span class="pre">README.md</span></code></strong> file for any PsyFlow-based cognitive task.</p>
+<p><code class="docutils literal notranslate"><span class="pre">task2doc()</span></code> analyzes four types of files:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">main.py</span></code> – overall task and block flow.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">run_trial.py</span></code> – trial-level stimulus and response logic.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">utils.py</span></code> – optional controllers or helpers (if present).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">config/config.yaml</span></code> – all task configuration parameters.</p></li>
+</ul>
+<p>It sends these files, along with a structured instruction, to your selected LLM (e.g., Gemini or DeepSeek) and returns a structured markdown document with:</p>
+<ul class="simple">
+<li><p>Task name and meta info</p></li>
+<li><p>Task overview and flow tables</p></li>
+<li><p>Configuration tables (e.g., stimuli, timing, triggers)</p></li>
+<li><p>Method section for academic papers</p></li>
+</ul>
+<p><strong>Example:</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">psyflow.llm</span><span class="w"> </span><span class="kn">import</span> <span class="n">LLMClient</span>
+
+<span class="n">client</span> <span class="o">=</span> <span class="n">LLMClient</span><span class="p">(</span><span class="n">provider</span><span class="o">=</span><span class="s2">&quot;gemini&quot;</span><span class="p">,</span> <span class="n">api_key</span><span class="o">=</span><span class="s2">&quot;your-key&quot;</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="s2">&quot;gemini-2.5-flash&quot;</span><span class="p">)</span>
+<span class="n">readme_text</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">task2doc</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>This creates a complete README.md based on your current <code class="docutils literal notranslate"><span class="pre">./main.py</span></code>, <code class="docutils literal notranslate"><span class="pre">./src/run_trial.py</span></code>, <code class="docutils literal notranslate"><span class="pre">./src/utils.py</span></code>, and <code class="docutils literal notranslate"><span class="pre">./config/config.yaml</span></code>. If not output_path is specified, it will be saved to <code class="docutils literal notranslate"><span class="pre">./README.md</span></code>.</p>
+<p>Each generated <code class="docutils literal notranslate"><span class="pre">README.md</span></code> is organized into the following sections:</p>
+<ol class="arabic simple">
+<li><p><strong>Task Name</strong> – Extracted from the configuration.</p></li>
+<li><p><strong>Meta Information</strong> – A standardized two-column table including fields like version, author, repository, and software requirements.</p></li>
+<li><p><strong>Task Overview</strong> – A one-paragraph description of the task’s purpose and structure.</p></li>
+<li><p><strong>Task Flow</strong> – Detailed tables explaining the block-level and trial-level logic, including controller logic if applicable.</p></li>
+<li><p><strong>Configuration Summary</strong> – Tables for each config section: subject info, window settings, stimuli, timing, triggers, and adaptive parameters.</p></li>
+<li><p><strong>Methods (for academic writing)</strong> – A well-structured paragraph suitable for use in the Methods section of a scientific manuscript.</p></li>
+</ol>
+<p>This automatic documentation feature reduces the burden on developers, promotes transparency in cognitive task design, and supports open and reproducible science.</p>
+</section>
+<section id="llms-powered-localization">
+<h2>4. LLMs-Powered Localization<a class="headerlink" href="#llms-powered-localization" title="Link to this heading">¶</a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">LLMClient</span></code> also supports automatic translation of task configurations using the <code class="docutils literal notranslate"><span class="pre">translate_config()</span></code> method.  This localization feature enables your task templates to be easily adapted into other languages while preserving placeholder tokens and formatting. By combining this with PsyFlow’s localization-ready structure,  you can easily localize tasks for global deployment.</p>
+<p><code class="docutils literal notranslate"><span class="pre">translate_config()</span></code> translate the following content in configuration:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">subinfo_mapping</span></code> labels (e.g., <code class="docutils literal notranslate"><span class="pre">&quot;age&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;gender&quot;</span></code>)</p></li>
+<li><p>Any <code class="docutils literal notranslate"><span class="pre">stimuli</span></code> entries of type <code class="docutils literal notranslate"><span class="pre">text</span></code> or <code class="docutils literal notranslate"><span class="pre">textbox</span></code> (e.g., instructions or messages)</p></li>
+</ul>
+<p><strong>Example 1: Translate default config (no file saved)</strong><br />
+This reads the default <code class="docutils literal notranslate"><span class="pre">./config/config.yaml</span></code>, performs the translation in memory, and returns the updated config.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">psyflow.llm</span><span class="w"> </span><span class="kn">import</span> <span class="n">LLMClient</span>
+
+<span class="n">client</span> <span class="o">=</span> <span class="n">LLMClient</span><span class="p">(</span><span class="n">provider</span><span class="o">=</span><span class="s2">&quot;deepseek&quot;</span><span class="p">,</span> <span class="n">api_key</span><span class="o">=</span><span class="s2">&quot;your-key&quot;</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="s2">&quot;deepseek-chat&quot;</span><span class="p">)</span>
+
+<span class="n">translated_config</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">translate_config</span><span class="p">(</span><span class="n">target_language</span><span class="o">=</span><span class="s2">&quot;Japanese&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>No file is saved—useful for dynamic translation workflows.</p>
+<p><strong>Example 2: Translate a loaded config dictionary (no file saved)</strong><br />
+You can manually load a config and pass it in to apply translation:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">psyflow</span><span class="w"> </span><span class="kn">import</span> <span class="n">load_config</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">psyflow.llm</span><span class="w"> </span><span class="kn">import</span> <span class="n">LLMClient</span>
+
+<span class="n">client</span> <span class="o">=</span> <span class="n">LLMClient</span><span class="p">(</span><span class="n">provider</span><span class="o">=</span><span class="s2">&quot;deepseek&quot;</span><span class="p">,</span> <span class="n">api_key</span><span class="o">=</span><span class="s2">&quot;your-key&quot;</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="s2">&quot;deepseek-chat&quot;</span><span class="p">)</span>
+
+<span class="n">loaded</span> <span class="o">=</span> <span class="n">load_config</span><span class="p">(</span><span class="s2">&quot;./config/config.yaml&quot;</span><span class="p">)</span>
+
+<span class="n">translated</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">translate_config</span><span class="p">(</span>
+    <span class="n">target_language</span><span class="o">=</span><span class="s2">&quot;Japanese&quot;</span><span class="p">,</span>
+    <span class="n">config</span><span class="o">=</span><span class="n">loaded</span>  <span class="c1"># work on this in-memory config</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Example 3: Translate and save to file</strong><br />
+If <code class="docutils literal notranslate"><span class="pre">output_dir</span></code> is specified, the translated config will be saved to disk.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">translated</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">translate_config</span><span class="p">(</span>
+    <span class="n">target_language</span><span class="o">=</span><span class="s2">&quot;Japanese&quot;</span><span class="p">,</span>
+    <span class="n">config</span><span class="o">=</span><span class="s2">&quot;./config/config.yaml&quot;</span><span class="p">,</span>
+    <span class="n">output_dir</span><span class="o">=</span><span class="s2">&quot;./config&quot;</span><span class="p">,</span>
+    <span class="n">output_name</span><span class="o">=</span><span class="s2">&quot;config.ja.yaml&quot;</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p>This writes the translated YAML to <code class="docutils literal notranslate"><span class="pre">./config/config.ja.yaml</span></code>.</p>
+<p><strong>Optional Parameters</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">prompt</span></code>: Customize the translation instruction if needed.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">deterministic</span></code>, <code class="docutils literal notranslate"><span class="pre">temperature</span></code>, <code class="docutils literal notranslate"><span class="pre">max_tokens</span></code>: Control LLM generation behavior.</p></li>
+<li><p>Works directly with <code class="docutils literal notranslate"><span class="pre">load_config()</span></code> output for in-memory editing.</p></li>
+</ul>
+</section>
+</section>
+
+        </article>
+      </div>
+      <footer>
+        
+        <div class="related-pages">
+          
+          
+        </div>
+        <div class="bottom-of-page">
+          <div class="left-details">
+            <div class="copyright">
+                Copyright &#169; 2025, zhipeng
+            </div>
+            Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+            
+            <a href="https://github.com/pradyunsg/furo">Furo</a>
+            
+          </div>
+          <div class="right-details">
+            
+          </div>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer">
+      
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">Large Language Models (LLMs) features</a><ul>
+<li><a class="reference internal" href="#verify-the-native-sdks">1. Verify the Native SDKs</a><ul>
+<li><a class="reference internal" href="#google-genai-gemini">1.1 Google-GenAI (Gemini)</a></li>
+<li><a class="reference internal" href="#openai-deepseek">1.2 OpenAI / Deepseek</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#use-psyflow-llmclient-wrapper">2. Use Psyflow LLMClient Wrapper</a></li>
+<li><a class="reference internal" href="#llms-powered-task-documentation">3. LLMs-Powered Task Documentation</a></li>
+<li><a class="reference internal" href="#llms-powered-localization">4. LLMs-Powered Localization</a></li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
+      
+      
+    </aside>
+  </div>
+</div><script src="_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/scripts/furo.js?v=5fa4622c"></script>
+    </body>
+</html>

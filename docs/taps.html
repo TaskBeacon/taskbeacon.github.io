@@ -10,7 +10,7 @@
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?v=354aac6f" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?v=302659d7" />
-    <link rel="stylesheet" type="text/css" href="_static/custom.css?v=81ce6bb8" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css?v=41db8e96" />
     
     
 
@@ -200,12 +200,14 @@
   <p><strong>Quick Links</strong></p>
   <ul style="list-style: none; padding-left: 0;">
     <li><a href="https://taskbeacon.github.io/">Taskbeacon Home</a></li>
-    <li><a href="#">TAPS Format</a></li>
-    <li><a href="https://taskbeacon.github.io/psyflow/">psyflow framework</a></li>
     <li><a href="https://taskbeacon.github.io/task_index/">Task Library</a></li>
+    <li><a href="#">TAPS Format</a></li>
+    <li><a href="https://taskbeacon.github.io/psyflow/">Psyflow Framework</a></li>
+    <li><a href="text2voice.html">Text-to-Voice</a></li>
     <li><a href="localization.html">Localization</a></li>
+    <li><a href="LLMs.html">LLMs Features</a></li>
     <li><a href="versioning.html">Variant Tracking</a></li>
-    <li><a href="future_directions.html">Future Directions</a></li>
+    
   </ul>
 </div>
       </div>
@@ -246,21 +248,6 @@
           <section id="taps">
 <h1>TAPS<a class="headerlink" href="#taps" title="Link to this heading">¶</a></h1>
 <p>The Task and Paradigm Structure (TAPS) provides a standardized folder layout for organizing cognitive tasks in a modular and reproducible way. This structure promotes clarity, cross-task consistency, and ease of reuse—whether in individual research projects or shared task libraries.</p>
-<p>Each task organized under TAPS typically contains the following components:</p>
-<p><code class="docutils literal notranslate"><span class="pre">assets/</span></code>
-Contains all multimedia stimuli used in the task, such as images (.bmp), audio files (.mp3), or videos (.mp4). These files are referenced by the configuration and code but stored independently for clarity.</p>
-<p><code class="docutils literal notranslate"><span class="pre">config/</span></code>
-Includes YAML configuration files (e.g., config.yaml) that define task parameters, stimuli mappings, timing settings, and localization content. This enables flexible task customization without modifying the source code.</p>
-<p><code class="docutils literal notranslate"><span class="pre">data/</span></code>
-Stores participant outputs including raw logs, structured .csv data, and optionally serialized formats like .json. Each session is typically timestamped for easy tracking and reproducibility.</p>
-<p><code class="docutils literal notranslate"><span class="pre">src/</span></code>
-Contains the core Python scripts implementing the task logic and runtime flow (e.g., run_trial.py, controller.py). This code defines how trials are executed, how input is handled, and how responses are recorded.</p>
-<p><code class="docutils literal notranslate"><span class="pre">analysis/</span></code>
-(Optional) Includes scripts to analyze the collected data. Useful for quick validation, pilot analysis, or standardized data summaries.</p>
-<p><code class="docutils literal notranslate"><span class="pre">main.py</span></code>
-A runnable Python entry point that initializes the task using the configuration and source logic. This is typically the file users execute to start the experiment.</p>
-<p><code class="docutils literal notranslate"><span class="pre">README.md</span></code>
-Provides human-readable documentation describing the task’s purpose, structure, configuration, and usage.</p>
 <p>A sample directory tree might look like this:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Task/
 ├── assets/             # Multimedia stimuli (images, sounds, videos, etc.)
@@ -284,6 +271,21 @@ Provides human-readable documentation describing the task’s purpose, structure
 └── README.md            # Documentation
 </pre></div>
 </div>
+<p>Each task organized under TAPS typically contains the following components:</p>
+<p><code class="docutils literal notranslate"><span class="pre">assets/</span></code>
+Contains all multimedia stimuli used in the task, such as images (.bmp), audio files (.mp3), or videos (.mp4). These files are referenced by the configuration and code but stored independently for clarity.</p>
+<p><code class="docutils literal notranslate"><span class="pre">config/</span></code>
+Includes YAML configuration files (e.g., config.yaml) that define task parameters, stimuli mappings, timing settings, and localization content. This enables flexible task customization without modifying the source code.</p>
+<p><code class="docutils literal notranslate"><span class="pre">data/</span></code>
+Stores participant outputs including raw logs, structured .csv data, and optionally serialized formats like .json. Each session is typically timestamped for easy tracking and reproducibility.</p>
+<p><code class="docutils literal notranslate"><span class="pre">src/</span></code>
+Contains the core Python scripts implementing the task logic and runtime flow (e.g., run_trial.py, controller.py). This code defines how trials are executed, how input is handled, and how responses are recorded.</p>
+<p><code class="docutils literal notranslate"><span class="pre">analysis/</span></code>
+(Optional) Includes scripts to analyze the collected data. Useful for quick validation, pilot analysis, or standardized data summaries.</p>
+<p><code class="docutils literal notranslate"><span class="pre">main.py</span></code>
+A runnable Python entry point that initializes the task using the configuration and source logic. This is typically the file users execute to start the experiment.</p>
+<p><code class="docutils literal notranslate"><span class="pre">README.md</span></code>
+Provides human-readable documentation describing the task’s purpose, structure, configuration, and usage.</p>
 <p>This structure cleanly separates task components—stimuli, configuration, logic, data, and metadata—enabling better task reuse, localization, and version control.</p>
 </section>
 
