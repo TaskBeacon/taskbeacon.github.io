@@ -1,5 +1,5 @@
 
-## Task Variant Tracking
+## Task Management
 
 TaskBeacon supports **task variant tracking** to promote transparency, reproducibility, and collaboration across the research community. Task variant tracking allows the community to build on shared paradigms while keeping modifications clear and organized. It encourages open science and makes experimental replication easier — without losing flexibility.
 
@@ -28,7 +28,9 @@ sst/
 
 ### What Counts as a Variant?
 
-Not all changes are meaningful enough to count as a separate variant. Here’s a general guideline:
+Not all changes are meaningful enough to count as a separate variant. 
+
+Here’s a general guideline:
 
 ✅ Counted as a variant:
 - Changing the type of feedback or stimuli (e.g., replacing visual stop signals with audio in SST;Switching from monetary to social rewards in MID)
@@ -40,7 +42,6 @@ Not all changes are meaningful enough to count as a separate variant. Here’s a
 - Cosmetic or layout-only changes
 
 Variant contributions are reviewed and approved by TaskBeacon's administrative team to ensure they meet the standard for meaningful differentiation.
-
 
 
 ### Contribute a Variant
@@ -88,7 +89,7 @@ TaskBeacon uses a script (`fetch_all_task_variants.py`) to automatically scan ta
    - A task-specific index file is created listing all branches
    - This gets compiled into the global `Task Library` page on the TaskBeacon site
 
-### Key Logic (Simplified)
+**Key Logic (Simplified)**
 
 ```python
 # For each repo

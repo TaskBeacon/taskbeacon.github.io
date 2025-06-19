@@ -6,7 +6,7 @@
 <link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" />
 
     <!-- Generated with Sphinx 7.3.7 and Furo 2024.08.06 -->
-        <title>Task Variant Tracking - TaskBeacon documentation</title>
+        <title>Task Management - TaskBeacon documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?v=354aac6f" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?v=302659d7" />
@@ -206,7 +206,7 @@
     <li><a href="text2voice.html">Text-to-Voice</a></li>
     <li><a href="localization.html">Localization</a></li>
     <li><a href="LLMs.html">LLMs Features</a></li>
-    <li><a href="#">Variant Tracking</a></li>
+    <li><a href="#">Task Management</a></li>
     
   </ul>
 </div>
@@ -245,8 +245,8 @@
           </label>
         </div>
         <article role="main" id="furo-main-content">
-          <section id="task-variant-tracking">
-<h1>Task Variant Tracking<a class="headerlink" href="#task-variant-tracking" title="Link to this heading">¶</a></h1>
+          <section id="task-management">
+<h1>Task Management<a class="headerlink" href="#task-management" title="Link to this heading">¶</a></h1>
 <p>TaskBeacon supports <strong>task variant tracking</strong> to promote transparency, reproducibility, and collaboration across the research community. Task variant tracking allows the community to build on shared paradigms while keeping modifications clear and organized. It encourages open science and makes experimental replication easier — without losing flexibility.</p>
 <p><strong>Why it matters</strong>: There are countless modifications of popular cognitive tasks in circulation — different stimuli, reward types, modalities, or participant populations.
 Without proper tracking:</p>
@@ -271,7 +271,8 @@ Without proper tracking:</p>
 </div>
 <section id="what-counts-as-a-variant">
 <h2>What Counts as a Variant?<a class="headerlink" href="#what-counts-as-a-variant" title="Link to this heading">¶</a></h2>
-<p>Not all changes are meaningful enough to count as a separate variant. Here’s a general guideline:</p>
+<p>Not all changes are meaningful enough to count as a separate variant.</p>
+<p>Here’s a general guideline:</p>
 <p>✅ Counted as a variant:</p>
 <ul class="simple">
 <li><p>Changing the type of feedback or stimuli (e.g., replacing visual stop signals with audio in SST;Switching from monetary to social rewards in MID)</p></li>
@@ -340,9 +341,7 @@ Without proper tracking:</p>
 </ul>
 </li>
 </ol>
-</section>
-<section id="key-logic-simplified">
-<h2>Key Logic (Simplified)<a class="headerlink" href="#key-logic-simplified" title="Link to this heading">¶</a></h2>
+<p><strong>Key Logic (Simplified)</strong></p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># For each repo</span>
 <span class="n">branches</span> <span class="o">=</span> <span class="n">fetch_branches</span><span class="p">(</span><span class="n">repo</span><span class="p">)</span>
 <span class="k">for</span> <span class="n">branch</span> <span class="ow">in</span> <span class="n">branches</span><span class="p">:</span>
@@ -397,12 +396,11 @@ Without proper tracking:</p>
         <div class="toc-tree-container">
           <div class="toc-tree">
             <ul>
-<li><a class="reference internal" href="#">Task Variant Tracking</a><ul>
+<li><a class="reference internal" href="#">Task Management</a><ul>
 <li><a class="reference internal" href="#what-counts-as-a-variant">What Counts as a Variant?</a></li>
 <li><a class="reference internal" href="#contribute-a-variant">Contribute a Variant</a></li>
 <li><a class="reference internal" href="#contribute-a-new-task">Contribute a New Task</a></li>
 <li><a class="reference internal" href="#behind-the-scenes-how-variants-get-indexed">Behind the Scenes: How Variants Get Indexed</a></li>
-<li><a class="reference internal" href="#key-logic-simplified">Key Logic (Simplified)</a></li>
 <li><a class="reference internal" href="#browse-tasks-and-their-variants">Browse Tasks and their Variants</a></li>
 </ul>
 </li>
