@@ -7,6 +7,14 @@ Our library offers a lightweight, unified interface for interacting with Large L
 
  Instead of relying on heavier frameworks like LangChain, we built our own minimal wrapper to keep things simple: no extra dependencies beyond the provider SDKs, a clean and focused API (generate, translate, count_tokens, etc.), and fast, low-overhead execution. 
 
+**Why It Matters**: Large Language Models (LLMs) significantly enhance the usability and reproducibility of cognitive task development. They enable researchers to translate configuration files for localization, generate detailed documentation from code, and prototype or refine task variants using natural language—all while avoiding repetitive formatting work. By integrating LLMs directly into the PsyFlow ecosystem, we accelerate development, promote clearer communication, and expand accessibility for both developers and collaborators.
+
+
+**How It Works**: The `LLMClient` class in PsyFlow provides a unified and lightweight interface for interacting with different LLM backends. It abstracts away provider-specific details and offers a simple API with methods like `generate()` for general-purpose generation, `translate_config()` for localizing YAML content, `task2doc()` for auto-generating documentation, `test()` for verifying connection and basic output, and `list_models()` to enumerate available models. This modular interface keeps your workflow consistent and efficient across providers like Gemini and DeepSeek.
+
+```{Future Direction}
+In addition to using LLMs for documentation and localization, we are actively expanding support for full task generation from natural language. Our experimental `doc2task()` function allows users to convert a free-form task description into a structured, runnable TAPS-compliant task package. This includes generating key files like `main.py`, `run_trial.py`, and `config.yaml`, enabling rapid prototyping of cognitive tasks with minimal manual coding. As this feature evolves, it will form the foundation of an interactive assistant for building, customizing, and sharing reproducible paradigms directly from natural language input.
+```
 
 ### 1. Verify the Native SDKs
 #### 1.1 Google-GenAI (Gemini)
