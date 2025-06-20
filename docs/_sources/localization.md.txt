@@ -2,6 +2,11 @@
 
 TAPS and PsyFlow make cross-cultural localization efficient by cleanly separating task logic from configuration and content. This modular design allows researchers to adapt paradigms across languages and cultural contexts **without modifying the task code**, promoting global accessibility, reproducibility, and reuse.
 
+**Why It Matters**: Localization is essential for making psychological tasks globally accessible and inclusive. By adapting tasks to different languages and cultural contexts, researchers can extend their reach, maintain standardization across implementations, ensure reproducibility of results, and improve usability for diverse participant groups—including children, older adults, and individuals with limited literacy.
+
+
+**How It Works** In a TAPS-compliant task, all participant-facing content is cleanly separated from the task logic and stored in the `config.yaml` file. Specifically, localization targets the `subinfo_mapping` section (for registration labels and messages) and the `stimuli` section (for all `text` or `textbox` content). This modular structure enables full language adaptation without modifying any core Python code.
+
 
 ### 1. Manual Adaptation (Quick and Easy)
 
@@ -10,7 +15,7 @@ The simplest way to localize your task is to **manually translate** the `config/
 Paste your YAML content directly into an LLM chat window, along with a clear instruction. 
 
 **Here's an example prompt:**
-```
+```{Prompt}
 Translate the following YAML fields into Japanese.
 1. The right-hand values of subinfo_mapping (e.g., messages, instructional text).
 2. The text content of stimuls of text and textbox
@@ -24,7 +29,7 @@ Here is the original yaml content:
 **Orignal config.yaml**
 
 To save space we just show the relevant content.
-```
+```{yaml}
 # config.yaml
 # === Subject info ===
 subinfo_mapping:
@@ -117,7 +122,7 @@ Then copy the translated YAML back into your project and save as a localized con
 **Translated config.ja.yaml** 
 
 To save space we just show the relevant content.
-```
+```{yaml}
 # config.yaml
 # === Subject info ===
 subinfo_mapping:

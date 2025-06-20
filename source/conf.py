@@ -7,14 +7,14 @@
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
 
 project = 'TaskBeacon'
-copyright = '2025, Zhipeng'
-author = 'Zhipeng'
+copyright = '2025, Zhipeng Cao'
+author = 'Zhipeng Cao'
 release = ''
-
+html_title = "TaskBeacon"
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
 
-html_title = "TaskBeacon"
+
 templates_path = ['_templates']
 exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']
 

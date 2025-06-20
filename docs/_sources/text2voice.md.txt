@@ -6,7 +6,9 @@
 
 **How It Works**: `Psyflow` uses Microsoft's `edge-tts`, a cloud-based TTS API that converts text to audio (MP3). The generated voice files are stored in the `assets/` folder, automatically skipped if they already exist (unless `overwrite=True` is specified), and registered into the `StimBank` as new `Sound` stimuli ready for playback.
 
-> **Note**: An internet connection is required for TTS generation. Offline tools exist but produce lower-quality audio.
+```{Note}
+An internet connection is required for TTS generation. Offline tools exist but produce lower-quality audio.
+```
 
 
 ### Convert Existing Text Stimuli to Voice

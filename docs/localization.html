@@ -252,201 +252,18 @@
           <section id="task-localization">
 <h1>Task Localization<a class="headerlink" href="#task-localization" title="Link to this heading">¶</a></h1>
 <p>TAPS and PsyFlow make cross-cultural localization efficient by cleanly separating task logic from configuration and content. This modular design allows researchers to adapt paradigms across languages and cultural contexts <strong>without modifying the task code</strong>, promoting global accessibility, reproducibility, and reuse.</p>
+<p><strong>Why It Matters</strong>: Localization is essential for making psychological tasks globally accessible and inclusive. By adapting tasks to different languages and cultural contexts, researchers can extend their reach, maintain standardization across implementations, ensure reproducibility of results, and improve usability for diverse participant groups—including children, older adults, and individuals with limited literacy.</p>
+<p><strong>How It Works</strong> In a TAPS-compliant task, all participant-facing content is cleanly separated from the task logic and stored in the <code class="docutils literal notranslate"><span class="pre">config.yaml</span></code> file. Specifically, localization targets the <code class="docutils literal notranslate"><span class="pre">subinfo_mapping</span></code> section (for registration labels and messages) and the <code class="docutils literal notranslate"><span class="pre">stimuli</span></code> section (for all <code class="docutils literal notranslate"><span class="pre">text</span></code> or <code class="docutils literal notranslate"><span class="pre">textbox</span></code> content). This modular structure enables full language adaptation without modifying any core Python code.</p>
 <section id="manual-adaptation-quick-and-easy">
 <h2>1. Manual Adaptation (Quick and Easy)<a class="headerlink" href="#manual-adaptation-quick-and-easy" title="Link to this heading">¶</a></h2>
 <p>The simplest way to localize your task is to <strong>manually translate</strong> the <code class="docutils literal notranslate"><span class="pre">config/config.yaml</span></code> file. This is ideal when you’re using LLMs interactively (e.g., ChatGPT, Gemini, DeepSeek, Claude).</p>
 <p>Paste your YAML content directly into an LLM chat window, along with a clear instruction.</p>
 <p><strong>Here’s an example prompt:</strong></p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Translate the following YAML fields into Japanese.
-1. The right-hand values of subinfo_mapping (e.g., messages, instructional text).
-2. The text content of stimuls of text and textbox
-3. Do not modify YAML structure, indentation, or key names.
-4. Preserve placeholder variables such as {field}, {duration}, {block_num} exactly as they are.
-5. For multiline text fields, preserve line breaks and do not introduce extra quotation marks or escape characters.
-6. Do not include any commentary, markdown, or explanation—output the translated YAML only.
-7. Output the full yaml content in a code block
-Here is the original yaml content:
-</pre></div>
-</div>
 <p><strong>Orignal config.yaml</strong></p>
 <p>To save space we just show the relevant content.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span># config.yaml
-# === Subject info ===
-subinfo_mapping:
-    subject_id: &quot;被试号&quot;
-    subname: &quot;被试姓名(拼音)&quot;
-    age: &quot;年龄&quot;
-    gender: &quot;性别&quot;
-    Male: &quot;男&quot;
-    Female: &quot;女&quot;
-    registration_failed: &quot;注册失败。&quot;
-    registration_successful: &quot;注册成功！&quot;
-    invalid_input: &quot;字段 {field} 输入无效&quot;
-
-# === Stimuli (for SST task) ===
-stimuli:
-  fixation:
-    type: text
-    text: &quot;+&quot;
-    color: white
-
-  no_response_feedback  :
-    type: text
-    text: |
-      【未按键】
-      请在箭头出现后按键
-    font: SimHei
-    height: 0.78
-
-  block_break:
-    type: text
-    text: |
-      【休息提示】
-
-      第 {block_num} / {total_blocks} 部分完成。
-      击中率：{go_accuracy:.2f}
-      正确停止率：{stop_accuracy:.2f}
-
-      请在充分休息后按【空格键】
-      进入下一部分
-    color: white
-    font: SimHei
-    height: 0.78
-
-
-  instruction_text:
-    type: textbox
-    text: |
-      【停止信号任务说明】
-
-      在本任务中，您将看到箭头指向左或右
-      您的目标是尽快且准确地做出反应
-        - 如果箭头指向左，请用左手食指按【F】
-        - 如果箭头指向右，请用右手食指按【J】
-
-      注意：在某些试次中
-      箭头出现后不久会出现红色箭头
-      当看到红色箭头时
-      请尽力抑制您的反应不要按任何按键
-
-      在没有红色箭头出现时，请快速做出反应
-      出现红色箭头时，请尽量不做出任何按键反应
-
-      准备好后，请按【空格键】开始任务。
-    color: white
-    font: SimHei
-    alignment: center
-    letterHeight: 0.78
-    units: deg
-    size: [20, 5]
-
-  iti_stim:
-    type: text
-    text: &quot;&quot;
-
-  good_bye:
-    type: textbox
-    text: |
-      任务结束
-      
-      感谢您的参与
-      请按【空格键】键退出
-    color: white
-    font: SimHei
-    alignment: center
-    letterHeight: 0.78
-
-</pre></div>
-</div>
 <p>Then copy the translated YAML back into your project and save as a localized config file, e.g., <code class="docutils literal notranslate"><span class="pre">config.ja.yaml</span></code>.</p>
 <p><strong>Translated config.ja.yaml</strong></p>
 <p>To save space we just show the relevant content.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span># config.yaml
-# === Subject info ===
-subinfo_mapping:
-    subject_id: &quot;被験者ID&quot;
-    subname: &quot;被験者氏名（ローマ字）&quot;
-    age: &quot;年齢&quot;
-    gender: &quot;性別&quot;
-    Male: &quot;男性&quot;
-    Female: &quot;女性&quot;
-    registration_failed: &quot;登録に失敗しました。&quot;
-    registration_successful: &quot;登録に成功しました！&quot;
-    invalid_input: &quot;フィールド {field} の入力が無効です&quot;
-
-# === Stimuli (for SST task) ===
-stimuli:
-  fixation:
-    type: text
-    text: &quot;+&quot;
-    color: white
-
-  no_response_feedback  :
-    type: text
-    text: |
-      【未反応】
-      矢印が表示されたらキーを押してください
-    font: SimHei
-    height: 0.78
-
-  block_break:
-    type: text
-    text: |
-      【休憩のお知らせ】
-
-      第 {block_num} / {total_blocks} ブロックが完了しました。
-      命中率：{go_accuracy:.2f}
-      正しく停止できた割合：{stop_accuracy:.2f}
-
-      十分に休憩した後、【スペースキー】を押して
-      次のブロックに進んでください
-    color: white
-    font: SimHei
-    height: 0.78
-
-  instruction_text:
-    type: textbox
-    text: |
-      【ストップシグナル課題の説明】
-
-      この課題では、矢印が左または右を指します。
-      できるだけ素早く正確に反応してください。
-        - 矢印が左を指したら、左手の人差し指で【F】を押してください。
-        - 矢印が右を指したら、右手の人差し指で【J】を押してください。
-
-      注意：一部の試行では、
-      矢印の直後に赤い矢印が表示されることがあります。
-      赤い矢印が表示されたら、
-      反応を抑えてキーを押さないようにしてください。
-
-      赤い矢印が表示されなければ、すぐに反応してください。
-      赤い矢印が表示された場合は、できるだけ反応しないでください。
-
-      準備ができたら【スペースキー】を押して課題を開始してください。
-    color: white
-    font: SimHei
-    alignment: center
-    letterHeight: 0.78
-    units: deg
-    size: [20, 5]
-
-  iti_stim:
-    type: text
-    text: &quot;&quot;
-
-  good_bye:
-    type: textbox
-    text: |
-      課題終了
-      
-      ご参加ありがとうございました
-      【スペースキー】を押して終了してください
-    color: white
-    font: SimHei
-    alignment: center
-    letterHeight: 0.78
-</pre></div>
-</div>
 </section>
 <section id="programmatic-localization-via-api">
 <h2>2. Programmatic Localization via API<a class="headerlink" href="#programmatic-localization-via-api" title="Link to this heading">¶</a></h2>
@@ -494,7 +311,7 @@ Since <code class="docutils literal notranslate"><span class="pre">psyflow</span
         <div class="bottom-of-page">
           <div class="left-details">
             <div class="copyright">
-                Copyright &#169; 2025, Zhipeng
+                Copyright &#169; 2025, Zhipeng Cao
             </div>
             Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
             
