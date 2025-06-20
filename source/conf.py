@@ -7,14 +7,14 @@
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
 
 project = 'TaskBeacon'
-copyright = '2025, zhipeng'
-author = 'zhipeng'
+copyright = '2025, Zhipeng'
+author = 'Zhipeng'
 release = ''
 
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
 
-
+html_title = "TaskBeacon"
 templates_path = ['_templates']
 exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']
 
@@ -29,7 +29,7 @@ html_static_path = ['_static']
 
 html_logo = "_static/logo-nobg.png"  # add later if you want
 html_theme_options = {
-    "sidebar_hide_name": True,
+    # "sidebar_hide_name": True,
     # "light_logo": "logo-light.png",
     # "dark_logo": "logo-dark.png",
     "source_repository": "https://github.com/TaskBeacon/taskbeacon.github.io/",
