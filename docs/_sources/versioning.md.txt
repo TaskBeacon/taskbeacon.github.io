@@ -44,6 +44,11 @@ Here’s a general guideline:
 Variant contributions are reviewed and approved by TaskBeacon's administrative team to ensure they meet the standard for meaningful differentiation.
 
 
+.. image:: _static/versioning.png
+   :alt: Illustration of Task management
+   :align: center
+   :width: 85%
+
 ### Contribute a Variant
 
 To contribute a new task variant:
@@ -106,7 +111,7 @@ This automated process ensures the Task Library always stays up to date with new
 
 ### Browse Tasks and their Variants
 
-You can explore all registered task variants in the [Task Library](https://taskbeacon.github.io/task_index/). Each entry includes a short description and links to the associated branch on GitHub.
+You can explore all registered task variants in the [Task Library](https://taskbeacon.github.io/task-registry/). Each entry includes a short description and links to the associated branch on GitHub.
 
 
 
