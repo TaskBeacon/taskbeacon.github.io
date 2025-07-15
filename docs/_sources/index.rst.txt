@@ -12,14 +12,14 @@ TaskBeacon offers a suite of tools and resources:
 
 - :doc:`TAPS </taps>` – A standardized format for structuring cognitive tasks  
 - `psyflow <https://taskbeacon.github.io/psyflow/>`_ – A PsychoPy-based library for efficiently building tasks  
-- `Task Library <https://taskbeacon.github.io/task_index/>`_ – A curated collection of well-documented tasks  
+- `Task Library <https://taskbeacon.github.io/task-registry/>`_ – A curated collection of well-documented tasks  
 
 TaskBeacon also provides features that enhance reusability, localization, and collaboration:
 
 - :doc:`Text-to-voice </text2voice>` – Automatically generate voice instructions from translated text for consistent and accessible delivery
 - :doc:`Localization </localization>` – Enables cross-cultural localization by separating text components from task logic  
 - :doc:`LLMs </LLMs>` – Leverage Large Language Models to assist with task documentation and localization  
-- :doc:`Task management </versioning>` – Manage task variants using GitHub branches  
+- :doc:`Track variants </versioning>` – Manage task variants using GitHub branches  
 
 We are continuously working to expand the number of curated tasks and enhance automation in LLM-powered task generation.
 
