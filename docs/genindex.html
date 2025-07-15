@@ -194,7 +194,12 @@
   
   <span class="sidebar-brand-text">TaskBeacon</span>
   
-</a><div class="sidebar-cta entries-box">
+</a><form class="sidebar-search-container" method="get" action="search.html" role="search">
+  <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-cta entries-box">
   <p><strong>Quick Links</strong></p>
   <ul style="list-style: none; padding-left: 0;">
     <li><a href="https://taskbeacon.github.io/">Taskbeacon Home</a></li>

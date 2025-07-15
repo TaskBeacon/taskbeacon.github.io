@@ -41,7 +41,8 @@ html_theme_options = {
 html_sidebars = {
     "**": [ 
         "sidebar/brand.html",
-        "sidebar/entries.html",      
+        "sidebar/search.html",
+        "sidebar/entries.html",     
         # any further items here would float on the left again
     ]
 }
