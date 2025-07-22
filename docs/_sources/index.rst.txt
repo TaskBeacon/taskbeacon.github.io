@@ -24,3 +24,13 @@ TaskBeacon also provides features that enhance reusability, localization, and co
 We are continuously working to expand the number of curated tasks and enhance automation in LLM-powered task generation.
 
 **Join Us**: `TaskBeacon Organization <https://github.com/TaskBeacon>`_
+
+
+.. _license:
+
+License
+=======
+
+This project is licensed under the `MIT License <./LICENSE>`_.
+
+All components of this repository—including the core **PsyFlow** library, individual **tasks**, and their **variants**—are released under the MIT License, unless explicitly stated otherwise in a specific folder.
