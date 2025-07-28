@@ -30,4 +30,4 @@ We are continuously working to expand the number of curated tasks and enhance au
 
 This project is licensed under the `MIT License <https://github.com/TaskBeacon/taskbeacon.github.io/blob/main/LICENSE>`_.
 
-All components of this repository—including the core **PsyFlow** library, individual **tasks**, and their **variants**—are released under the MIT License, unless explicitly stated otherwise in a specific folder.
+All components of this repository—including the core **psyFlow** library, individual **tasks**, and their **variants**—are released under the MIT License, unless explicitly stated otherwise in a specific folder.
