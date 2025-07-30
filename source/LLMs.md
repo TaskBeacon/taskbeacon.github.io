@@ -1,23 +1,78 @@
 ## Large Language Models (LLMs) features
-Our library offers a lightweight, unified interface for interacting with Large Language Models (LLMs), currently supporting two providers: 
 
--**Gemini**, which provides free-tier access to powerful models—ideal for getting started with no cost
+Our library offers two ways to interact with Large Language Models (LLMs):
 
--**Deepseek**, a cost-effective alternative via the OpenAI SDK (for users who don't have access to Gemini)
-
- Instead of relying on heavier frameworks like LangChain, we built our own minimal wrapper to keep things simple: no extra dependencies beyond the provider SDKs, a clean and focused API (generate, translate, count_tokens, etc.), and fast, low-overhead execution. 
+1.  **`psyflow-mcp` (Recommended)**: A lightweight server that provides a simple, high-level interface for common task-related operations like cloning, transforming, and localizing PsyFlow tasks. This is the easiest and recommended way to get started.
+2.  **Built-in `LLMClient` (Lower-Level)**: A minimal wrapper around LLM provider SDKs (Gemini, Deepseek) for more direct control. This is suitable for developers who need to customize the LLM interaction beyond the scope of `psyflow-mcp`.
 
 **Why It Matters**: Large Language Models (LLMs) significantly enhance the usability and reproducibility of cognitive task development. They enable researchers to translate configuration files for localization, generate detailed documentation from code, and prototype or refine task variants using natural language—all while avoiding repetitive formatting work. By integrating LLMs directly into the PsyFlow ecosystem, we accelerate development, promote clearer communication, and expand accessibility for both developers and collaborators.
 
+---
+
+### 1. `psyflow-mcp` (Recommended)
+
+`psyflow-mcp` is a lightweight server that simplifies the use of LLMs for managing PsyFlow tasks. It exposes a set of tools that can be easily integrated with LLM agents like the Gemini CLI or Cursor.
+
+**How It Works**
+
+The `psyflow-mcp` server acts as a bridge between the user's natural language prompts and the underlying PsyFlow task management functions. The workflow is as follows:
+
+.. image:: _static/LLM_flowchart.png
+   :alt: Illustration of the MCP Workflow
+   :align: center
+   :width: 85%
+
+1.  **User Prompt**: The user provides a prompt describing the desired action (e.g., "Create an SST task with sound-based stop signals" or "Give me a French version of the SST task").
+2.  **LLM**: The LLM interprets the prompt and selects the appropriate tool from `psyflow-mcp`.
+3.  **MCP (Model Context Protocol)**: The `psyflow-mcp` server executes the requested tool, which may involve:
+    *   `build_task`: Cloning a task template and preparing it for modification.
+    *   `localize`: Translating a task's configuration file.
+    *   `download_task`: Fetching a task from the registry.
+    *   `list_tasks`: Listing available tasks.
+    *   `list_voices`: Listing available text-to-speech voices.
+
+**Quick Start**
+
+The easiest way to use `psyflow-mcp` is with `uvx`, which handles the installation and execution in a single command.
+
+1.  **Install `uvx`**:
+    ```bash
+    pip install uvx
+    ```
+2.  **Configure your LLM tool**:
+    Create a JSON configuration file for your LLM tool (e.g., Gemini CLI) with the following content:
+    ```json
+    {
+      "name": "psyflow_mcp",
+      "type": "stdio",
+      "description": "Local FastMCP server for PsyFlow task operations. Uses uvx for automatic setup.",
+      "isActive": true,
+      "command": "uvx",
+      "args": [
+        "psyflow_mcp"
+      ]
+    }
+    ```
+    With this setup, your LLM agent can now use the `psyflow_mcp` tools. For more details, refer to the [`psyflow-mcp` documentation](https://github.com/TaskBeacon/psyflow-mcp).
+
+---
+
+### 2. Built-in `LLMClient` (Lower-Level)
+
+Our library also offers a lightweight, unified interface for interacting with Large Language Models (LLMs), currently supporting two providers:
+
+- Gemini, which provides free-tier access to powerful models—ideal for getting started with no cost
+
+- Deepseek, a cost-effective alternative via the OpenAI SDK (for users who don’t have access to Gemini)
+
+Instead of relying on heavier frameworks like LangChain, we built our own minimal wrapper to keep things simple: no extra dependencies beyond the provider SDKs, a clean and focused API (generate, translate, count_tokens, etc.), and fast, low-overhead execution.
 
 **How It Works**: The `LLMClient` class in PsyFlow provides a unified and lightweight interface for interacting with different LLM backends. It abstracts away provider-specific details and offers a simple API with methods like `generate()` for general-purpose generation, `translate_config()` for localizing YAML content, `task2doc()` for auto-generating documentation, `test()` for verifying connection and basic output, and `list_models()` to enumerate available models. This modular interface keeps your workflow consistent and efficient across providers like Gemini and DeepSeek.
 
+#### 2.1. Verify the Native SDKs
 
-In addition to using LLMs for documentation and localization, we are actively expanding support for full task generation from natural language. Our experimental `doc2task()` function allows users to convert a free-form task description into a structured, runnable TAPS-compliant task package. This includes generating key files like `main.py`, `run_trial.py`, and `config.yaml`, enabling rapid prototyping of cognitive tasks with minimal manual coding. As this feature evolves, it will form the foundation of an interactive assistant for building, customizing, and sharing reproducible paradigms directly from natural language input.
+##### 2.1.1. Google-GenAI (Gemini)
 
-
-### 1. Verify the Native SDKs
-#### 1.1 Google-GenAI (Gemini)
 ```python
 from google import genai
 
@@ -40,7 +95,8 @@ print(response.text)
 # I am doing well, thank you for asking!  How are you today?
 ```
 
-#### 1.2 OpenAI / Deepseek
+##### 2.1.2. OpenAI / Deepseek
+
 ```python
 from openai import OpenAI
 client = OpenAI(api_key="…your key…", base_url="https://api.deepseek.com")
@@ -63,12 +119,12 @@ response = client.chat.completions.create(
 )
 print(response.choices[0].message.content)
 # Hello! How can I assist you today? 😊
-
 ```
 
-### 2. Use Psyflow LLMClient Wrapper
+#### 2.2. Use Psyflow LLMClient Wrapper
+
 ```python
-from psyflow import LLMClient, LLMUtil
+from psyflow import LLMClient
 import os
 
 # 2a) Instantiate
@@ -89,10 +145,13 @@ print("🔊 Gemini wrapper echo:", gemini.test(ping='who are you?', max_tokens=5
 print("🔊 Deepseek wrapper echo:", deep.test(ping='who are you?', max_tokens=5))
 ```
 
+---
 
 ### 3. LLMs-Powered Task Documentation
 
 Our platform leverages Large Language Models (LLMs) to automatically generate human-readable documentation for cognitive tasks. This feature is designed to help developers, collaborators, and reviewers quickly understand the structure and parameters of a task—without having to dig through source code.
+
+While this can be done manually with the `LLMClient`, it is more easily accomplished using the `build_task` tool in `psyflow-mcp`.
 
 Our `LLMClient` includes a powerful `task2doc()` utility that lets you **automatically generate a detailed `README.md`** file for any PsyFlow-based cognitive task.
 
@@ -128,10 +187,13 @@ Each generated `README.md` is organized into the following sections:
 
 This automatic documentation feature reduces the burden on developers, promotes transparency in cognitive task design, and supports open and reproducible science.
 
+---
 
 ### 4. LLMs-Powered Localization
 
-The `LLMClient` also supports automatic translation of task configurations using the `translate_config()` method.  This localization feature enables your task templates to be easily adapted into other languages while preserving placeholder tokens and formatting. By combining this with PsyFlow’s localization-ready structure,  you can easily localize tasks for global deployment.
+The `LLMClient` also supports automatic translation of task configurations using the `translate_config()` method. This localization feature enables your task templates to be easily adapted into other languages while preserving placeholder tokens and formatting. By combining this with PsyFlow’s localization-ready structure,  you can easily localize tasks for global deployment.
+
+This is more easily accomplished using the `localize` tool in `psyflow-mcp`.
 
 `translate_config()` translate the following content in configuration:
 - `subinfo_mapping` labels (e.g., `"age"`, `"gender"`)

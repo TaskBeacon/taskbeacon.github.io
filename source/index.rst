@@ -18,10 +18,9 @@ TaskBeacon also provides features that enhance reusability, localization, and co
 
 - :doc:`Text-to-voice </text2voice>` – Automatically generate voice instructions from translated text for consistent and accessible delivery
 - :doc:`Localization </localization>` – Enables cross-cultural localization by separating text components from task logic  
-- :doc:`LLMs </LLMs>` – Leverage Large Language Models to assist with task documentation and localization  
-- :doc:`Track variants </versioning>` – Manage task variants using GitHub branches  
+- :doc:`Track variants </versioning>` – Manage task variants using GitHub branches
+- :doc:`LLMs </LLMs>` – Leverage Large Language Models to assist with task development, documentation and localization    
 
-We are continuously working to expand the number of curated tasks and enhance automation in LLM-powered task generation.
 
 **Join Us**: `TaskBeacon Organization <https://github.com/TaskBeacon>`_
 

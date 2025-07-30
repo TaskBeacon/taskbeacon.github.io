@@ -47,7 +47,7 @@ The result will be registered as `welcome_voice` and available like any other st
 Use the built-in helper to explore available voices:
 
 ```python
-from psyflow.tts_utils import list_supported_voices
+from psyflow import list_supported_voices
 
 # Print all voices
 list_supported_voices(human_readable=True)
