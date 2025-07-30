@@ -268,10 +268,7 @@
 <p><code class="docutils literal notranslate"><span class="pre">psyflow-mcp</span></code> is a lightweight server that simplifies the use of LLMs for managing PsyFlow tasks. It exposes a set of tools that can be easily integrated with LLM agents like the Gemini CLI or Cursor.</p>
 <p><strong>How It Works</strong></p>
 <p>The <code class="docutils literal notranslate"><span class="pre">psyflow-mcp</span></code> server acts as a bridge between the user’s natural language prompts and the underlying PsyFlow task management functions. The workflow is as follows:</p>
-<p>.. image:: _static/LLM_flowchart.png
-:alt: Illustration of the MCP Workflow
-:align: center
-:width: 85%</p>
+<p><img alt="Illustration of the MCP Workflow" src="_images/LLM_flowchart.png" /></p>
 <ol class="arabic simple">
 <li><p><strong>User Prompt</strong>: The user provides a prompt describing the desired action (e.g., “Create an SST task with sound-based stop signals” or “Give me a French version of the SST task”).</p></li>
 <li><p><strong>LLM</strong>: The LLM interprets the prompt and selects the appropriate tool from <code class="docutils literal notranslate"><span class="pre">psyflow-mcp</span></code>.</p></li>

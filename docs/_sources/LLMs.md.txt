@@ -17,10 +17,9 @@ Our library offers two ways to interact with Large Language Models (LLMs):
 
 The `psyflow-mcp` server acts as a bridge between the user's natural language prompts and the underlying PsyFlow task management functions. The workflow is as follows:
 
-.. image:: _static/LLM_flowchart.png
-   :alt: Illustration of the MCP Workflow
-   :align: center
-   :width: 85%
+
+![Illustration of the MCP Workflow](./_static/LLM_flowchart.png)
+
 
 1.  **User Prompt**: The user provides a prompt describing the desired action (e.g., "Create an SST task with sound-based stop signals" or "Give me a French version of the SST task").
 2.  **LLM**: The LLM interprets the prompt and selects the appropriate tool from `psyflow-mcp`.
