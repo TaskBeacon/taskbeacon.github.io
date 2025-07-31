@@ -42,17 +42,17 @@ The easiest way to use `psyflow-mcp` is with `uvx`, which handles the installati
     Create a JSON configuration file for your LLM tool (e.g., Gemini CLI) with the following content:
     ```json
     {
-      "name": "psyflow_mcp",
+      "name": "taskbeacon-mcp",
       "type": "stdio",
       "description": "Local FastMCP server for PsyFlow task operations. Uses uvx for automatic setup.",
       "isActive": true,
       "command": "uvx",
       "args": [
-        "psyflow_mcp"
+        "taskbeacon-mcp"
       ]
     }
     ```
-    With this setup, your LLM agent can now use the `psyflow_mcp` tools. For more details, refer to the [`psyflow-mcp` documentation](https://github.com/TaskBeacon/psyflow-mcp).
+    With this setup, your LLM agent can now use the `taskbeacon-mcp` tools. For more details, refer to the [`taskbeacon-mcp` documentation](https://github.com/TaskBeacon/taskbeacon-mcp).
 
 ---
 
