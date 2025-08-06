@@ -2,28 +2,28 @@
 
 Our library offers two ways to interact with Large Language Models (LLMs):
 
-1.  **`psyflow-mcp` (Recommended)**: A lightweight server that provides a simple, high-level interface for common task-related operations like cloning, transforming, and localizing PsyFlow tasks. This is the easiest and recommended way to get started.
-2.  **Built-in `LLMClient` (Lower-Level)**: A minimal wrapper around LLM provider SDKs (Gemini, Deepseek) for more direct control. This is suitable for developers who need to customize the LLM interaction beyond the scope of `psyflow-mcp`.
+1.  **`taskbeacon-mcp` (Recommended)**: A lightweight server that provides a simple, high-level interface for common task-related operations like cloning, transforming, and localizing PsyFlow tasks. This is the easiest and recommended way to get started.
+2.  **Built-in `LLMClient` (Lower-Level)**: A minimal wrapper around LLM provider SDKs (Gemini, Deepseek) for more direct control. This is suitable for developers who need to customize the LLM interaction beyond the scope of `taskbeacon-mcp`.
 
 **Why It Matters**: Large Language Models (LLMs) significantly enhance the usability and reproducibility of cognitive task development. They enable researchers to translate configuration files for localization, generate detailed documentation from code, and prototype or refine task variants using natural language—all while avoiding repetitive formatting work. By integrating LLMs directly into the PsyFlow ecosystem, we accelerate development, promote clearer communication, and expand accessibility for both developers and collaborators.
 
 ---
 
-### 1. `psyflow-mcp` (Recommended)
+### 1. `taskbeacon-mcp` (Recommended)
 
-`psyflow-mcp` is a lightweight server that simplifies the use of LLMs for managing PsyFlow tasks. It exposes a set of tools that can be easily integrated with LLM agents like the Gemini CLI or Cursor.
+`taskbeacon-mcp` is a lightweight server that simplifies the use of LLMs for managing PsyFlow tasks. It exposes a set of tools that can be easily integrated with LLM agents like the Gemini CLI or Cursor.
 
 **How It Works**
 
-The `psyflow-mcp` server acts as a bridge between the user's natural language prompts and the underlying PsyFlow task management functions. The workflow is as follows:
+The `taskbeacon-mcp` server acts as a bridge between the user's natural language prompts and the underlying PsyFlow task management functions. The workflow is as follows:
 
 
 ![Illustration of the MCP Workflow](./_static/LLM_flowchart.png)
 
 
 1.  **User Prompt**: The user provides a prompt describing the desired action (e.g., "Create an SST task with sound-based stop signals" or "Give me a French version of the SST task").
-2.  **LLM**: The LLM interprets the prompt and selects the appropriate tool from `psyflow-mcp`.
-3.  **MCP (Model Context Protocol)**: The `psyflow-mcp` server executes the requested tool, which may involve:
+2.  **LLM**: The LLM interprets the prompt and selects the appropriate tool from `taskbeacon-mcp`.
+3.  **MCP (Model Context Protocol)**: The `taskbeacon-mcp` server executes the requested tool, which may involve:
     *   `build_task`: Cloning a task template and preparing it for modification.
     *   `localize`: Translating a task's configuration file.
     *   `download_task`: Fetching a task from the registry.
@@ -32,7 +32,7 @@ The `psyflow-mcp` server acts as a bridge between the user's natural language pr
 
 **Quick Start**
 
-The easiest way to use `psyflow-mcp` is with `uvx`, which handles the installation and execution in a single command.
+The easiest way to use `taskbeacon-mcp` is with `uvx`, which handles the installation and execution in a single command.
 
 1.  **Install `uvx`**:
     ```bash
@@ -150,7 +150,7 @@ print("🔊 Deepseek wrapper echo:", deep.test(ping='who are you?', max_tokens=5
 
 Our platform leverages Large Language Models (LLMs) to automatically generate human-readable documentation for cognitive tasks. This feature is designed to help developers, collaborators, and reviewers quickly understand the structure and parameters of a task—without having to dig through source code.
 
-While this can be done manually with the `LLMClient`, it is more easily accomplished using the `build_task` tool in `psyflow-mcp`.
+While this can be done manually with the `LLMClient`, it is more easily accomplished using the `build_task` tool in `taskbeacon-mcp`.
 
 Our `LLMClient` includes a powerful `task2doc()` utility that lets you **automatically generate a detailed `README.md`** file for any PsyFlow-based cognitive task.
 
@@ -192,7 +192,7 @@ This automatic documentation feature reduces the burden on developers, promotes 
 
 The `LLMClient` also supports automatic translation of task configurations using the `translate_config()` method. This localization feature enables your task templates to be easily adapted into other languages while preserving placeholder tokens and formatting. By combining this with PsyFlow’s localization-ready structure,  you can easily localize tasks for global deployment.
 
-This is more easily accomplished using the `localize` tool in `psyflow-mcp`.
+This is more easily accomplished using the `localize` tool in `taskbeacon-mcp`.
 
 `translate_config()` translate the following content in configuration:
 - `subinfo_mapping` labels (e.g., `"age"`, `"gender"`)

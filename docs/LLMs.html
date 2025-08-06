@@ -258,21 +258,21 @@
 <h1>Large Language Models (LLMs) features<a class="headerlink" href="#large-language-models-llms-features" title="Link to this heading">¶</a></h1>
 <p>Our library offers two ways to interact with Large Language Models (LLMs):</p>
 <ol class="arabic simple">
-<li><p><strong><code class="docutils literal notranslate"><span class="pre">psyflow-mcp</span></code> (Recommended)</strong>: A lightweight server that provides a simple, high-level interface for common task-related operations like cloning, transforming, and localizing PsyFlow tasks. This is the easiest and recommended way to get started.</p></li>
-<li><p><strong>Built-in <code class="docutils literal notranslate"><span class="pre">LLMClient</span></code> (Lower-Level)</strong>: A minimal wrapper around LLM provider SDKs (Gemini, Deepseek) for more direct control. This is suitable for developers who need to customize the LLM interaction beyond the scope of <code class="docutils literal notranslate"><span class="pre">psyflow-mcp</span></code>.</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">taskbeacon-mcp</span></code> (Recommended)</strong>: A lightweight server that provides a simple, high-level interface for common task-related operations like cloning, transforming, and localizing PsyFlow tasks. This is the easiest and recommended way to get started.</p></li>
+<li><p><strong>Built-in <code class="docutils literal notranslate"><span class="pre">LLMClient</span></code> (Lower-Level)</strong>: A minimal wrapper around LLM provider SDKs (Gemini, Deepseek) for more direct control. This is suitable for developers who need to customize the LLM interaction beyond the scope of <code class="docutils literal notranslate"><span class="pre">taskbeacon-mcp</span></code>.</p></li>
 </ol>
 <p><strong>Why It Matters</strong>: Large Language Models (LLMs) significantly enhance the usability and reproducibility of cognitive task development. They enable researchers to translate configuration files for localization, generate detailed documentation from code, and prototype or refine task variants using natural language—all while avoiding repetitive formatting work. By integrating LLMs directly into the PsyFlow ecosystem, we accelerate development, promote clearer communication, and expand accessibility for both developers and collaborators.</p>
 <hr class="docutils" />
-<section id="psyflow-mcp-recommended">
-<h2>1. <code class="docutils literal notranslate"><span class="pre">psyflow-mcp</span></code> (Recommended)<a class="headerlink" href="#psyflow-mcp-recommended" title="Link to this heading">¶</a></h2>
-<p><code class="docutils literal notranslate"><span class="pre">psyflow-mcp</span></code> is a lightweight server that simplifies the use of LLMs for managing PsyFlow tasks. It exposes a set of tools that can be easily integrated with LLM agents like the Gemini CLI or Cursor.</p>
+<section id="taskbeacon-mcp-recommended">
+<h2>1. <code class="docutils literal notranslate"><span class="pre">taskbeacon-mcp</span></code> (Recommended)<a class="headerlink" href="#taskbeacon-mcp-recommended" title="Link to this heading">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">taskbeacon-mcp</span></code> is a lightweight server that simplifies the use of LLMs for managing PsyFlow tasks. It exposes a set of tools that can be easily integrated with LLM agents like the Gemini CLI or Cursor.</p>
 <p><strong>How It Works</strong></p>
-<p>The <code class="docutils literal notranslate"><span class="pre">psyflow-mcp</span></code> server acts as a bridge between the user’s natural language prompts and the underlying PsyFlow task management functions. The workflow is as follows:</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">taskbeacon-mcp</span></code> server acts as a bridge between the user’s natural language prompts and the underlying PsyFlow task management functions. The workflow is as follows:</p>
 <p><img alt="Illustration of the MCP Workflow" src="_images/LLM_flowchart.png" /></p>
 <ol class="arabic simple">
 <li><p><strong>User Prompt</strong>: The user provides a prompt describing the desired action (e.g., “Create an SST task with sound-based stop signals” or “Give me a French version of the SST task”).</p></li>
-<li><p><strong>LLM</strong>: The LLM interprets the prompt and selects the appropriate tool from <code class="docutils literal notranslate"><span class="pre">psyflow-mcp</span></code>.</p></li>
-<li><p><strong>MCP (Model Context Protocol)</strong>: The <code class="docutils literal notranslate"><span class="pre">psyflow-mcp</span></code> server executes the requested tool, which may involve:</p>
+<li><p><strong>LLM</strong>: The LLM interprets the prompt and selects the appropriate tool from <code class="docutils literal notranslate"><span class="pre">taskbeacon-mcp</span></code>.</p></li>
+<li><p><strong>MCP (Model Context Protocol)</strong>: The <code class="docutils literal notranslate"><span class="pre">taskbeacon-mcp</span></code> server executes the requested tool, which may involve:</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">build_task</span></code>: Cloning a task template and preparing it for modification.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">localize</span></code>: Translating a task’s configuration file.</p></li>
@@ -283,7 +283,7 @@
 </li>
 </ol>
 <p><strong>Quick Start</strong></p>
-<p>The easiest way to use <code class="docutils literal notranslate"><span class="pre">psyflow-mcp</span></code> is with <code class="docutils literal notranslate"><span class="pre">uvx</span></code>, which handles the installation and execution in a single command.</p>
+<p>The easiest way to use <code class="docutils literal notranslate"><span class="pre">taskbeacon-mcp</span></code> is with <code class="docutils literal notranslate"><span class="pre">uvx</span></code>, which handles the installation and execution in a single command.</p>
 <ol class="arabic">
 <li><p><strong>Install <code class="docutils literal notranslate"><span class="pre">uvx</span></code></strong>:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>uvx
@@ -293,18 +293,18 @@
 <li><p><strong>Configure your LLM tool</strong>:
 Create a JSON configuration file for your LLM tool (e.g., Gemini CLI) with the following content:</p>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;psyflow_mcp&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;taskbeacon-mcp&quot;</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;stdio&quot;</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Local FastMCP server for PsyFlow task operations. Uses uvx for automatic setup.&quot;</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">&quot;isActive&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">&quot;command&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;uvx&quot;</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">&quot;args&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">    </span><span class="s2">&quot;psyflow_mcp&quot;</span>
+<span class="w">    </span><span class="s2">&quot;taskbeacon-mcp&quot;</span>
 <span class="w">  </span><span class="p">]</span>
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>With this setup, your LLM agent can now use the <code class="docutils literal notranslate"><span class="pre">psyflow_mcp</span></code> tools. For more details, refer to the <a class="reference external" href="https://github.com/TaskBeacon/psyflow-mcp"><code class="docutils literal notranslate"><span class="pre">psyflow-mcp</span></code> documentation</a>.</p>
+<p>With this setup, your LLM agent can now use the <code class="docutils literal notranslate"><span class="pre">taskbeacon-mcp</span></code> tools. For more details, refer to the <a class="reference external" href="https://github.com/TaskBeacon/taskbeacon-mcp"><code class="docutils literal notranslate"><span class="pre">taskbeacon-mcp</span></code> documentation</a>.</p>
 </li>
 </ol>
 </section>
@@ -400,7 +400,7 @@ Create a JSON configuration file for your LLM tool (e.g., Gemini CLI) with the f
 <section id="llms-powered-task-documentation">
 <h2>3. LLMs-Powered Task Documentation<a class="headerlink" href="#llms-powered-task-documentation" title="Link to this heading">¶</a></h2>
 <p>Our platform leverages Large Language Models (LLMs) to automatically generate human-readable documentation for cognitive tasks. This feature is designed to help developers, collaborators, and reviewers quickly understand the structure and parameters of a task—without having to dig through source code.</p>
-<p>While this can be done manually with the <code class="docutils literal notranslate"><span class="pre">LLMClient</span></code>, it is more easily accomplished using the <code class="docutils literal notranslate"><span class="pre">build_task</span></code> tool in <code class="docutils literal notranslate"><span class="pre">psyflow-mcp</span></code>.</p>
+<p>While this can be done manually with the <code class="docutils literal notranslate"><span class="pre">LLMClient</span></code>, it is more easily accomplished using the <code class="docutils literal notranslate"><span class="pre">build_task</span></code> tool in <code class="docutils literal notranslate"><span class="pre">taskbeacon-mcp</span></code>.</p>
 <p>Our <code class="docutils literal notranslate"><span class="pre">LLMClient</span></code> includes a powerful <code class="docutils literal notranslate"><span class="pre">task2doc()</span></code> utility that lets you <strong>automatically generate a detailed <code class="docutils literal notranslate"><span class="pre">README.md</span></code></strong> file for any PsyFlow-based cognitive task.</p>
 <p><code class="docutils literal notranslate"><span class="pre">task2doc()</span></code> analyzes four types of files:</p>
 <ul class="simple">
@@ -439,7 +439,7 @@ Create a JSON configuration file for your LLM tool (e.g., Gemini CLI) with the f
 <section id="llms-powered-localization">
 <h2>4. LLMs-Powered Localization<a class="headerlink" href="#llms-powered-localization" title="Link to this heading">¶</a></h2>
 <p>The <code class="docutils literal notranslate"><span class="pre">LLMClient</span></code> also supports automatic translation of task configurations using the <code class="docutils literal notranslate"><span class="pre">translate_config()</span></code> method. This localization feature enables your task templates to be easily adapted into other languages while preserving placeholder tokens and formatting. By combining this with PsyFlow’s localization-ready structure,  you can easily localize tasks for global deployment.</p>
-<p>This is more easily accomplished using the <code class="docutils literal notranslate"><span class="pre">localize</span></code> tool in <code class="docutils literal notranslate"><span class="pre">psyflow-mcp</span></code>.</p>
+<p>This is more easily accomplished using the <code class="docutils literal notranslate"><span class="pre">localize</span></code> tool in <code class="docutils literal notranslate"><span class="pre">taskbeacon-mcp</span></code>.</p>
 <p><code class="docutils literal notranslate"><span class="pre">translate_config()</span></code> translate the following content in configuration:</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">subinfo_mapping</span></code> labels (e.g., <code class="docutils literal notranslate"><span class="pre">&quot;age&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;gender&quot;</span></code>)</p></li>
@@ -528,7 +528,7 @@ If <code class="docutils literal notranslate"><span class="pre">output_dir</span
           <div class="toc-tree">
             <ul>
 <li><a class="reference internal" href="#">Large Language Models (LLMs) features</a><ul>
-<li><a class="reference internal" href="#psyflow-mcp-recommended">1. <code class="docutils literal notranslate"><span class="pre">psyflow-mcp</span></code> (Recommended)</a></li>
+<li><a class="reference internal" href="#taskbeacon-mcp-recommended">1. <code class="docutils literal notranslate"><span class="pre">taskbeacon-mcp</span></code> (Recommended)</a></li>
 <li><a class="reference internal" href="#built-in-llmclient-lower-level">2. Built-in <code class="docutils literal notranslate"><span class="pre">LLMClient</span></code> (Lower-Level)</a><ul>
 <li><a class="reference internal" href="#verify-the-native-sdks">2.1. Verify the Native SDKs</a><ul>
 <li><a class="reference internal" href="#google-genai-gemini">2.1.1. Google-GenAI (Gemini)</a></li>
