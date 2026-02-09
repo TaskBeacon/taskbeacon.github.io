@@ -1,0 +1,38 @@
+﻿<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#ECFEFF"/>
+      <stop offset="1" stop-color="#FFFFFF"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#g)"/>
+  <g opacity="0.08" stroke="#0891B2" stroke-width="2">
+    <path d="M0 70H1200"/>
+    <path d="M0 140H1200"/>
+    <path d="M0 210H1200"/>
+    <path d="M0 280H1200"/>
+    <path d="M0 350H1200"/>
+    <path d="M0 420H1200"/>
+    <path d="M0 490H1200"/>
+    <path d="M0 560H1200"/>
+    <path d="M100 0V630"/>
+    <path d="M200 0V630"/>
+    <path d="M300 0V630"/>
+    <path d="M400 0V630"/>
+    <path d="M500 0V630"/>
+    <path d="M600 0V630"/>
+    <path d="M700 0V630"/>
+    <path d="M800 0V630"/>
+    <path d="M900 0V630"/>
+    <path d="M1000 0V630"/>
+    <path d="M1100 0V630"/>
+  </g>
+  <rect x="96" y="96" width="1008" height="438" rx="28" fill="#FFFFFF" stroke="#A5F3FC"/>
+  <rect x="140" y="152" width="48" height="48" rx="10" fill="#0891B2"/>
+  <text x="208" y="190" font-family="Arial, Helvetica, sans-serif" font-size="36" font-weight="700" fill="#0F172A">TaskBeacon Task Gallery</text>
+  <text x="140" y="250" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="500" fill="#334155">Searchable PsyFlow/TAPS task template repos.</text>
+  <text x="140" y="300" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="500" fill="#475569">Paradigms, modalities, response types, quick start.</text>
+  <rect x="140" y="356" width="260" height="48" rx="14" fill="#059669"/>
+  <text x="170" y="388" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="700" fill="#FFFFFF">taskbeacon.github.io</text>
+</svg>
+

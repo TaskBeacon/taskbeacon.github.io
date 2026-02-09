@@ -1,0 +1,36 @@
+﻿name: Rebuild Task Index (Manual)
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  index:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Rebuild task index
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: npm run index
+
+      - name: Upload index artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: tasks-index
+          path: |
+            src/data/tasks_index.json
+            src/data/readmes

@@ -1,0 +1,482 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-02-09T14:16:30.410Z",
+  "org": "TaskBeacon",
+  "tasks": [
+    {
+      "repo": "T000014-stroop",
+      "full_name": "TaskBeacon/T000014-stroop",
+      "html_url": "https://github.com/TaskBeacon/T000014-stroop",
+      "default_branch": "main",
+      "short_description": "| Field | Value | |----------------------|--------------------------------------------| | Name | Stroop Task | | Version | main (1.0) | | U…",
+      "tags": {
+        "paradigm": [
+          "Stroop",
+          "Rest"
+        ],
+        "response": [],
+        "modality": [
+          "EEG",
+          "fMRI",
+          "behavior"
+        ],
+        "language": []
+      },
+      "keywords": [
+        "Stroop",
+        "Rest"
+      ],
+      "psyflow_version": null,
+      "has_voiceover": null,
+      "last_updated": "2026-02-09T13:34:01Z",
+      "structure": {
+        "config": true,
+        "assets": true,
+        "src": true
+      },
+      "readme_run_anchor": "#run"
+    },
+    {
+      "repo": "T000013-sst-audio",
+      "full_name": "TaskBeacon/T000013-sst-audio",
+      "html_url": "https://github.com/TaskBeacon/T000013-sst-audio",
+      "default_branch": "main",
+      "short_description": "| Field | Value | |----------------------|------------------------------| | Name | Stop-Signal Task (SST-Audio) | | Version | Variant/SST-A…",
+      "tags": {
+        "paradigm": [
+          "SST"
+        ],
+        "response": [],
+        "modality": [
+          "EEG",
+          "behavior"
+        ],
+        "language": []
+      },
+      "keywords": [
+        "SST",
+        "audio"
+      ],
+      "psyflow_version": null,
+      "has_voiceover": null,
+      "last_updated": "2026-02-09T13:33:54Z",
+      "structure": {
+        "config": true,
+        "assets": true,
+        "src": true
+      },
+      "readme_run_anchor": "#run"
+    },
+    {
+      "repo": "T000012-sst",
+      "full_name": "TaskBeacon/T000012-sst",
+      "html_url": "https://github.com/TaskBeacon/T000012-sst",
+      "default_branch": "main",
+      "short_description": "| Field | Value | |----------------------|------------------------------| | Name | Stop-Signal Task (SST) | | Version | main (1.0) | | URL …",
+      "tags": {
+        "paradigm": [
+          "SST"
+        ],
+        "response": [],
+        "modality": [
+          "EEG",
+          "behavior"
+        ],
+        "language": []
+      },
+      "keywords": [
+        "SST"
+      ],
+      "psyflow_version": null,
+      "has_voiceover": null,
+      "last_updated": "2026-02-09T13:33:48Z",
+      "structure": {
+        "config": true,
+        "assets": true,
+        "src": true
+      },
+      "readme_run_anchor": "#run"
+    },
+    {
+      "repo": "T000011-simon",
+      "full_name": "TaskBeacon/T000011-simon",
+      "html_url": "https://github.com/TaskBeacon/T000011-simon",
+      "default_branch": "main",
+      "short_description": "| Field | Value | |----------------------|--------------------------------------------| | Name | Simon Task | | Version | main (1.0) | | UR…",
+      "tags": {
+        "paradigm": [
+          "Simon",
+          "Rest"
+        ],
+        "response": [],
+        "modality": [
+          "EEG",
+          "fMRI",
+          "behavior"
+        ],
+        "language": []
+      },
+      "keywords": [
+        "Simon",
+        "Rest"
+      ],
+      "psyflow_version": null,
+      "has_voiceover": null,
+      "last_updated": "2026-02-09T13:33:40Z",
+      "structure": {
+        "config": true,
+        "assets": true,
+        "src": true
+      },
+      "readme_run_anchor": "#run"
+    },
+    {
+      "repo": "T000010-rest",
+      "full_name": "TaskBeacon/T000010-rest",
+      "html_url": "https://github.com/TaskBeacon/T000010-rest",
+      "default_branch": "main",
+      "short_description": "| Field | Value | |----------------------|------------------------------| | Name |Resting state | | Version |main | | URL / Repository | ht…",
+      "tags": {
+        "paradigm": [
+          "Rest"
+        ],
+        "response": [],
+        "modality": [
+          "EEG",
+          "behavior"
+        ],
+        "language": []
+      },
+      "keywords": [
+        "Rest"
+      ],
+      "psyflow_version": null,
+      "has_voiceover": null,
+      "last_updated": "2026-02-09T13:33:34Z",
+      "structure": {
+        "config": true,
+        "assets": true,
+        "src": true
+      },
+      "readme_run_anchor": "#run"
+    },
+    {
+      "repo": "T000009-prl",
+      "full_name": "TaskBeacon/T000009-prl",
+      "html_url": "https://github.com/TaskBeacon/T000009-prl",
+      "default_branch": "main",
+      "short_description": "| Field | Value | |----------------------|------------------------------| | Name | Probabilistic Reversal Learning (PRL) Task | | Version |…",
+      "tags": {
+        "paradigm": [
+          "PRL"
+        ],
+        "response": [],
+        "modality": [
+          "EEG",
+          "behavior"
+        ],
+        "language": []
+      },
+      "keywords": [
+        "PRL"
+      ],
+      "psyflow_version": null,
+      "has_voiceover": null,
+      "last_updated": "2026-02-09T13:33:27Z",
+      "structure": {
+        "config": true,
+        "assets": true,
+        "src": true
+      },
+      "readme_run_anchor": "#run"
+    },
+    {
+      "repo": "T000008-nback",
+      "full_name": "TaskBeacon/T000008-nback",
+      "html_url": "https://github.com/TaskBeacon/T000008-nback",
+      "default_branch": "main",
+      "short_description": "| Field | Value | |---|---| | Name | N-Back Task | | Version | main (1.0) | | URL / Repository | https://github.com/TaskBeacon/T000008-nbac…",
+      "tags": {
+        "paradigm": [
+          "N-back"
+        ],
+        "response": [
+          "continuous"
+        ],
+        "modality": [
+          "EEG",
+          "behavior"
+        ],
+        "language": []
+      },
+      "keywords": [
+        "N-back",
+        "nback"
+      ],
+      "psyflow_version": null,
+      "has_voiceover": null,
+      "last_updated": "2026-02-09T13:33:19Z",
+      "structure": {
+        "config": true,
+        "assets": true,
+        "src": true
+      },
+      "readme_run_anchor": "#run"
+    },
+    {
+      "repo": "T000007-movie",
+      "full_name": "TaskBeacon/T000007-movie",
+      "html_url": "https://github.com/TaskBeacon/T000007-movie",
+      "default_branch": "main",
+      "short_description": "| Field | Value | |----------------------|------------------------------| | Name | Movie Watching Task | | Version | main (1.0) | | URL / R…",
+      "tags": {
+        "paradigm": [
+          "Movie"
+        ],
+        "response": [],
+        "modality": [
+          "EEG"
+        ],
+        "language": []
+      },
+      "keywords": [
+        "Movie"
+      ],
+      "psyflow_version": null,
+      "has_voiceover": null,
+      "last_updated": "2026-02-09T13:33:09Z",
+      "structure": {
+        "config": true,
+        "assets": true,
+        "src": true
+      },
+      "readme_run_anchor": "#run"
+    },
+    {
+      "repo": "T000006-mid",
+      "full_name": "TaskBeacon/T000006-mid",
+      "html_url": "https://github.com/TaskBeacon/T000006-mid",
+      "default_branch": "main",
+      "short_description": "| Field | Value | |----------------------|------------------------------| | Name | Monetary Incentive Delay (MID) Task | | Version | main (…",
+      "tags": {
+        "paradigm": [
+          "MID"
+        ],
+        "response": [],
+        "modality": [
+          "EEG",
+          "fMRI",
+          "behavior"
+        ],
+        "language": []
+      },
+      "keywords": [
+        "MID"
+      ],
+      "psyflow_version": null,
+      "has_voiceover": null,
+      "last_updated": "2026-02-09T13:33:02Z",
+      "structure": {
+        "config": true,
+        "assets": true,
+        "src": true
+      },
+      "readme_run_anchor": "#run"
+    },
+    {
+      "repo": "T000005-go-nogo",
+      "full_name": "TaskBeacon/T000005-go-nogo",
+      "html_url": "https://github.com/TaskBeacon/T000005-go-nogo",
+      "default_branch": "main",
+      "short_description": "| Field | Value | |----------------------|------------------------------| | Name | Go/No-Go Task | | Version | main (1.0) | | URL / Reposit…",
+      "tags": {
+        "paradigm": [
+          "Go/No-Go"
+        ],
+        "response": [
+          "go/no-go"
+        ],
+        "modality": [
+          "EEG",
+          "behavior"
+        ],
+        "language": []
+      },
+      "keywords": [
+        "Go/No-Go",
+        "go",
+        "nogo"
+      ],
+      "psyflow_version": null,
+      "has_voiceover": null,
+      "last_updated": "2026-02-09T13:32:54Z",
+      "structure": {
+        "config": true,
+        "assets": true,
+        "src": true
+      },
+      "readme_run_anchor": "#run"
+    },
+    {
+      "repo": "T000004-flanker",
+      "full_name": "TaskBeacon/T000004-flanker",
+      "html_url": "https://github.com/TaskBeacon/T000004-flanker",
+      "default_branch": "main",
+      "short_description": "| Field | Value | |----------------------|--------------------------------------------| | Name | Eriksen Flanker Task | | Version | main (1…",
+      "tags": {
+        "paradigm": [
+          "Flanker",
+          "Rest"
+        ],
+        "response": [],
+        "modality": [
+          "EEG",
+          "fMRI",
+          "behavior"
+        ],
+        "language": []
+      },
+      "keywords": [
+        "Flanker",
+        "Rest"
+      ],
+      "psyflow_version": null,
+      "has_voiceover": null,
+      "last_updated": "2026-02-09T13:32:48Z",
+      "structure": {
+        "config": true,
+        "assets": true,
+        "src": true
+      },
+      "readme_run_anchor": "#run"
+    },
+    {
+      "repo": "T000003-emodot",
+      "full_name": "TaskBeacon/T000003-emodot",
+      "html_url": "https://github.com/TaskBeacon/T000003-emodot",
+      "default_branch": "main",
+      "short_description": "| Field | Value | |----------------------|------------------------------| | Name | Emotional Dot-Probe Task (EmoDot) | | Version | main (1.…",
+      "tags": {
+        "paradigm": [],
+        "response": [],
+        "modality": [
+          "EEG",
+          "behavior"
+        ],
+        "language": []
+      },
+      "keywords": [
+        "emodot"
+      ],
+      "psyflow_version": null,
+      "has_voiceover": null,
+      "last_updated": "2026-02-09T13:32:38Z",
+      "structure": {
+        "config": true,
+        "assets": true,
+        "src": true
+      },
+      "readme_run_anchor": "#run"
+    },
+    {
+      "repo": "T000002-bart",
+      "full_name": "TaskBeacon/T000002-bart",
+      "html_url": "https://github.com/TaskBeacon/T000002-bart",
+      "default_branch": "main",
+      "short_description": "| Field | Value | |----------------------|------------------------------| | Name | Balloon Analogue Risk Task (BART) | | Version | main (1.…",
+      "tags": {
+        "paradigm": [
+          "BART"
+        ],
+        "response": [],
+        "modality": [
+          "EEG",
+          "fMRI",
+          "behavior"
+        ],
+        "language": []
+      },
+      "keywords": [
+        "BART"
+      ],
+      "psyflow_version": null,
+      "has_voiceover": null,
+      "last_updated": "2026-02-09T13:31:52Z",
+      "structure": {
+        "config": true,
+        "assets": true,
+        "src": true
+      },
+      "readme_run_anchor": "#run"
+    },
+    {
+      "repo": "T000001-ax-cpt",
+      "full_name": "TaskBeacon/T000001-ax-cpt",
+      "html_url": "https://github.com/TaskBeacon/T000001-ax-cpt",
+      "default_branch": "main",
+      "short_description": "| Field | Value | |---|---| | Name | AX-CPT Task | | Version | main (1.0) | | URL / Repository | https://github.com/TaskBeacon/T000001-ax-c…",
+      "tags": {
+        "paradigm": [
+          "AX-CPT",
+          "CPT"
+        ],
+        "response": [
+          "continuous"
+        ],
+        "modality": [
+          "EEG",
+          "behavior"
+        ],
+        "language": []
+      },
+      "keywords": [
+        "AX-CPT",
+        "CPT",
+        "ax"
+      ],
+      "psyflow_version": null,
+      "has_voiceover": null,
+      "last_updated": "2026-02-09T13:31:46Z",
+      "structure": {
+        "config": true,
+        "assets": true,
+        "src": true
+      },
+      "readme_run_anchor": "#run"
+    },
+    {
+      "repo": "ANT",
+      "full_name": "TaskBeacon/ANT",
+      "html_url": "https://github.com/TaskBeacon/ANT",
+      "default_branch": "main",
+      "short_description": "| Field | Value | | -------------------- | ------------------------------------------ | | Name | Attention Network Test (ANT) | | Version |…",
+      "tags": {
+        "paradigm": [
+          "Flanker",
+          "Rest"
+        ],
+        "response": [],
+        "modality": [
+          "EEG",
+          "fMRI",
+          "behavior"
+        ],
+        "language": []
+      },
+      "keywords": [
+        "Flanker",
+        "Rest",
+        "ANT"
+      ],
+      "psyflow_version": null,
+      "has_voiceover": null,
+      "last_updated": "2025-07-29T06:29:00Z",
+      "structure": {
+        "config": true,
+        "assets": true,
+        "src": true
+      },
+      "readme_run_anchor": "#run"
+    }
+  ]
+}

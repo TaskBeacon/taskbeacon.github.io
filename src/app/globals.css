@@ -1,0 +1,58 @@
+﻿@import url("https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&family=Source+Sans+3:wght@300;400;500;600;700&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply font-sans text-slate-900 bg-white antialiased;
+}
+
+/* Subtle "lab grid" background; keep it quiet for readability. */
+.tb-grid-bg {
+  background-image: linear-gradient(to right, rgba(2, 132, 199, 0.06) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(2, 132, 199, 0.06) 1px, transparent 1px);
+  background-size: 28px 28px;
+  background-position: 0 0;
+}
+
+.tb-focus-ring {
+  @apply focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-2 focus-visible:ring-offset-white;
+}
+
+/* Better markdown defaults than raw browser styles. */
+.tb-prose {
+  @apply prose prose-slate max-w-none prose-headings:font-heading prose-headings:tracking-tight;
+  @apply prose-a:text-brand-800 prose-a:no-underline hover:prose-a:underline;
+  @apply prose-code:font-mono prose-pre:bg-slate-950 prose-pre:text-slate-50;
+  @apply prose-hr:border-slate-200;
+  @apply prose-blockquote:border-brand-200 prose-blockquote:text-slate-700;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+
+
+/* highlight.js minimal theme (dark) */
+.hljs{color:#e2e8f0;}
+.hljs-comment,.hljs-quote{color:#94a3b8;font-style:italic;}
+.hljs-keyword,.hljs-selector-tag,.hljs-subst{color:#7dd3fc;}
+.hljs-string,.hljs-title,.hljs-name,.hljs-type,.hljs-attribute,.hljs-symbol,.hljs-bullet,.hljs-addition{color:#86efac;}
+.hljs-number,.hljs-literal,.hljs-variable,.hljs-template-variable{color:#fcd34d;}
+.hljs-section,.hljs-selector-id,.hljs-selector-class{color:#a78bfa;}
+.hljs-strong{font-weight:700;}
+.hljs-emphasis{font-style:italic;}
+.hljs-deletion{color:#fca5a5;}
+
