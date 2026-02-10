@@ -1,7 +1,7 @@
 ﻿"use client";
 
 import { useMemo, useState } from "react";
-import type { TaskIndexItem, TaskTagFacet } from "@/lib/task-index";
+import type { TaskFacet, TaskIndexItem, TaskTagFacet } from "@/lib/task-index";
 import {
   emptySelectedFacets,
   facetValues,
@@ -10,6 +10,7 @@ import {
 } from "@/lib/task-filter";
 import { TagChip } from "@/components/tag-chip";
 import { TaskCard } from "@/components/task-card";
+import { formatMaturityLabel } from "@/components/maturity-badge";
 
 function FacetSection({
   title,
@@ -19,10 +20,10 @@ function FacetSection({
   onToggle
 }: {
   title: string;
-  facet: TaskTagFacet;
+  facet: TaskFacet;
   values: string[];
   selected: SelectedFacets;
-  onToggle: (facet: TaskTagFacet, value: string) => void;
+  onToggle: (facet: TaskFacet, value: string) => void;
 }) {
   if (values.length === 0) return null;
 
@@ -42,7 +43,7 @@ function FacetSection({
         {values.map((v) => (
           <TagChip
             key={`${facet}:${v}`}
-            label={v}
+            label={facet === "maturity" ? formatMaturityLabel(v) : v}
             selected={selected[facet].has(v)}
             onClick={() => onToggle(facet, v)}
           />
@@ -56,6 +57,7 @@ export function GalleryClient({ tasks }: { tasks: TaskIndexItem[] }) {
   const [query, setQuery] = useState<string>("");
   const [selected, setSelected] = useState<SelectedFacets>(() => emptySelectedFacets());
 
+  const allMaturities = useMemo(() => facetValues(tasks, "maturity"), [tasks]);
   const allParadigms = useMemo(() => facetValues(tasks, "paradigm"), [tasks]);
   const allResponses = useMemo(() => facetValues(tasks, "response"), [tasks]);
   const allModalities = useMemo(() => facetValues(tasks, "modality"), [tasks]);
@@ -65,14 +67,16 @@ export function GalleryClient({ tasks }: { tasks: TaskIndexItem[] }) {
 
   const anyFilters =
     query.trim().length > 0 ||
+    selected.maturity.size > 0 ||
     selected.paradigm.size > 0 ||
     selected.response.size > 0 ||
     selected.modality.size > 0 ||
     selected.language.size > 0;
 
-  function toggleFacet(facet: TaskTagFacet, value: string) {
+  function toggleFacet(facet: TaskFacet, value: string) {
     setSelected((prev) => {
       const next: SelectedFacets = {
+        maturity: new Set(prev.maturity),
         paradigm: new Set(prev.paradigm),
         response: new Set(prev.response),
         modality: new Set(prev.modality),
@@ -121,6 +125,13 @@ export function GalleryClient({ tasks }: { tasks: TaskIndexItem[] }) {
             </div>
           </section>
 
+          <FacetSection
+            title="Maturity"
+            facet="maturity"
+            values={allMaturities}
+            selected={selected}
+            onToggle={toggleFacet}
+          />
           <FacetSection
             title="Paradigm"
             facet="paradigm"
@@ -177,7 +188,7 @@ export function GalleryClient({ tasks }: { tasks: TaskIndexItem[] }) {
               <TaskCard
                 key={t.repo}
                 task={t}
-                onTagClick={(facet, value) => toggleFacet(facet, value)}
+                onTagClick={(facet: TaskTagFacet, value) => toggleFacet(facet, value)}
               />
             ))}
           </div>

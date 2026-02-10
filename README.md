@@ -59,6 +59,11 @@ It:
    - optional metadata `task.yaml` / `task.yml` / `task.json` (repo root)
 4. Produces conservative inferred tags when metadata is missing (primarily from repo name).
 
+Additional parsing:
+
+- If the README includes the standard metadata table, the indexer will use `Short Description`, `PsyFlow Version`, `Language`, and `Voice Name` when present.
+- If the README includes a maturity badge like `![Maturity: smoke_tested]`, the maturity value is extracted and shown on cards.
+
 Rate limits:
 
 - Without token, GitHub API is rate-limited and the script may fail.
@@ -83,6 +88,7 @@ keywords:
   - stroop
   - interference
 
+maturity: "smoke_tested"    # optional (e.g. smoke_tested, piloted)
 psyflow_version: "^0.2.0"  # optional
 has_voiceover: false        # optional
 ```

@@ -1,6 +1,6 @@
 {
-  "schema_version": 1,
-  "generated_at": "2026-02-09T14:16:30.410Z",
+  "schema_version": 2,
+  "generated_at": "2026-02-10T00:47:27.937Z",
   "org": "TaskBeacon",
   "tasks": [
     {
@@ -8,11 +8,11 @@
       "full_name": "TaskBeacon/T000014-stroop",
       "html_url": "https://github.com/TaskBeacon/T000014-stroop",
       "default_branch": "main",
-      "short_description": "| Field | Value | |----------------------|--------------------------------------------| | Name | Stroop Task | | Version | main (1.0) | | U…",
+      "short_description": "A task measuring response inhibition and selective attention.",
+      "maturity": "smoke_tested",
       "tags": {
         "paradigm": [
-          "Stroop",
-          "Rest"
+          "Stroop"
         ],
         "response": [],
         "modality": [
@@ -20,14 +20,15 @@
           "fMRI",
           "behavior"
         ],
-        "language": []
+        "language": [
+          "Chinese"
+        ]
       },
       "keywords": [
-        "Stroop",
-        "Rest"
+        "Stroop"
       ],
-      "psyflow_version": null,
-      "has_voiceover": null,
+      "psyflow_version": "0.1.0",
+      "has_voiceover": true,
       "last_updated": "2026-02-09T13:34:01Z",
       "structure": {
         "config": true,
@@ -41,7 +42,8 @@
       "full_name": "TaskBeacon/T000013-sst-audio",
       "html_url": "https://github.com/TaskBeacon/T000013-sst-audio",
       "default_branch": "main",
-      "short_description": "| Field | Value | |----------------------|------------------------------| | Name | Stop-Signal Task (SST-Audio) | | Version | Variant/SST-A…",
+      "short_description": "A response inhibition task measuring the ability to suppress prepotent motor responses",
+      "maturity": "smoke_tested",
       "tags": {
         "paradigm": [
           "SST"
@@ -51,14 +53,16 @@
           "EEG",
           "behavior"
         ],
-        "language": []
+        "language": [
+          "Chinese"
+        ]
       },
       "keywords": [
         "SST",
         "audio"
       ],
-      "psyflow_version": null,
-      "has_voiceover": null,
+      "psyflow_version": "0.1.0",
+      "has_voiceover": true,
       "last_updated": "2026-02-09T13:33:54Z",
       "structure": {
         "config": true,
@@ -72,7 +76,8 @@
       "full_name": "TaskBeacon/T000012-sst",
       "html_url": "https://github.com/TaskBeacon/T000012-sst",
       "default_branch": "main",
-      "short_description": "| Field | Value | |----------------------|------------------------------| | Name | Stop-Signal Task (SST) | | Version | main (1.0) | | URL …",
+      "short_description": "A response inhibition task measuring the ability to suppress prepotent motor responses",
+      "maturity": "piloted",
       "tags": {
         "paradigm": [
           "SST"
@@ -82,13 +87,15 @@
           "EEG",
           "behavior"
         ],
-        "language": []
+        "language": [
+          "Chinese"
+        ]
       },
       "keywords": [
         "SST"
       ],
-      "psyflow_version": null,
-      "has_voiceover": null,
+      "psyflow_version": "0.1.0",
+      "has_voiceover": true,
       "last_updated": "2026-02-09T13:33:48Z",
       "structure": {
         "config": true,
@@ -102,11 +109,11 @@
       "full_name": "TaskBeacon/T000011-simon",
       "html_url": "https://github.com/TaskBeacon/T000011-simon",
       "default_branch": "main",
-      "short_description": "| Field | Value | |----------------------|--------------------------------------------| | Name | Simon Task | | Version | main (1.0) | | UR…",
+      "short_description": "A task measuring response conflict and cognitive control.",
+      "maturity": "smoke_tested",
       "tags": {
         "paradigm": [
-          "Simon",
-          "Rest"
+          "Simon"
         ],
         "response": [],
         "modality": [
@@ -114,14 +121,15 @@
           "fMRI",
           "behavior"
         ],
-        "language": []
+        "language": [
+          "Chinese"
+        ]
       },
       "keywords": [
-        "Simon",
-        "Rest"
+        "Simon"
       ],
-      "psyflow_version": null,
-      "has_voiceover": null,
+      "psyflow_version": "0.1.0",
+      "has_voiceover": true,
       "last_updated": "2026-02-09T13:33:40Z",
       "structure": {
         "config": true,
@@ -135,7 +143,8 @@
       "full_name": "TaskBeacon/T000010-rest",
       "html_url": "https://github.com/TaskBeacon/T000010-rest",
       "default_branch": "main",
-      "short_description": "| Field | Value | |----------------------|------------------------------| | Name |Resting state | | Version |main | | URL / Repository | ht…",
+      "short_description": "EC + EO",
+      "maturity": "piloted",
       "tags": {
         "paradigm": [
           "Rest"
@@ -145,13 +154,15 @@
           "EEG",
           "behavior"
         ],
-        "language": []
+        "language": [
+          "Chinese"
+        ]
       },
       "keywords": [
         "Rest"
       ],
-      "psyflow_version": null,
-      "has_voiceover": null,
+      "psyflow_version": "0.1.0",
+      "has_voiceover": true,
       "last_updated": "2026-02-09T13:33:34Z",
       "structure": {
         "config": true,
@@ -165,7 +176,8 @@
       "full_name": "TaskBeacon/T000009-prl",
       "html_url": "https://github.com/TaskBeacon/T000009-prl",
       "default_branch": "main",
-      "short_description": "| Field | Value | |----------------------|------------------------------| | Name | Probabilistic Reversal Learning (PRL) Task | | Version |…",
+      "short_description": "A task where participants learn stimulus-reward associations that reverse unpredictably.",
+      "maturity": "piloted",
       "tags": {
         "paradigm": [
           "PRL"
@@ -175,13 +187,15 @@
           "EEG",
           "behavior"
         ],
-        "language": []
+        "language": [
+          "Chinese"
+        ]
       },
       "keywords": [
         "PRL"
       ],
-      "psyflow_version": null,
-      "has_voiceover": null,
+      "psyflow_version": "0.1.0",
+      "has_voiceover": true,
       "last_updated": "2026-02-09T13:33:27Z",
       "structure": {
         "config": true,
@@ -195,7 +209,8 @@
       "full_name": "TaskBeacon/T000008-nback",
       "html_url": "https://github.com/TaskBeacon/T000008-nback",
       "default_branch": "main",
-      "short_description": "| Field | Value | |---|---| | Name | N-Back Task | | Version | main (1.0) | | URL / Repository | https://github.com/TaskBeacon/T000008-nbac…",
+      "short_description": "An N-Back task with 1-back and 2-back conditions.",
+      "maturity": "smoke_tested",
       "tags": {
         "paradigm": [
           "N-back"
@@ -207,14 +222,16 @@
           "EEG",
           "behavior"
         ],
-        "language": []
+        "language": [
+          "Chinese"
+        ]
       },
       "keywords": [
         "N-back",
         "nback"
       ],
-      "psyflow_version": null,
-      "has_voiceover": null,
+      "psyflow_version": "0.1.0",
+      "has_voiceover": true,
       "last_updated": "2026-02-09T13:33:19Z",
       "structure": {
         "config": true,
@@ -228,7 +245,8 @@
       "full_name": "TaskBeacon/T000007-movie",
       "html_url": "https://github.com/TaskBeacon/T000007-movie",
       "default_branch": "main",
-      "short_description": "| Field | Value | |----------------------|------------------------------| | Name | Movie Watching Task | | Version | main (1.0) | | URL / R…",
+      "short_description": "A passive video-watching task with a centered movie clip for EEG studies",
+      "maturity": "piloted",
       "tags": {
         "paradigm": [
           "Movie"
@@ -237,13 +255,15 @@
         "modality": [
           "EEG"
         ],
-        "language": []
+        "language": [
+          "Chinese"
+        ]
       },
       "keywords": [
         "Movie"
       ],
-      "psyflow_version": null,
-      "has_voiceover": null,
+      "psyflow_version": "0.1.0",
+      "has_voiceover": true,
       "last_updated": "2026-02-09T13:33:09Z",
       "structure": {
         "config": true,
@@ -257,7 +277,8 @@
       "full_name": "TaskBeacon/T000006-mid",
       "html_url": "https://github.com/TaskBeacon/T000006-mid",
       "default_branch": "main",
-      "short_description": "| Field | Value | |----------------------|------------------------------| | Name | Monetary Incentive Delay (MID) Task | | Version | main (…",
+      "short_description": "A task measuring reward anticipation and feedback processing using adaptive timing",
+      "maturity": "piloted",
       "tags": {
         "paradigm": [
           "MID"
@@ -268,13 +289,15 @@
           "fMRI",
           "behavior"
         ],
-        "language": []
+        "language": [
+          "Chinese"
+        ]
       },
       "keywords": [
         "MID"
       ],
-      "psyflow_version": null,
-      "has_voiceover": null,
+      "psyflow_version": "0.1.0",
+      "has_voiceover": true,
       "last_updated": "2026-02-09T13:33:02Z",
       "structure": {
         "config": true,
@@ -288,7 +311,8 @@
       "full_name": "TaskBeacon/T000005-go-nogo",
       "html_url": "https://github.com/TaskBeacon/T000005-go-nogo",
       "default_branch": "main",
-      "short_description": "| Field | Value | |----------------------|------------------------------| | Name | Go/No-Go Task | | Version | main (1.0) | | URL / Reposit…",
+      "short_description": "A task measuring the ability to respond to target stimuli and inhibit responses to non-target stimuli.",
+      "maturity": "smoke_tested",
       "tags": {
         "paradigm": [
           "Go/No-Go"
@@ -300,15 +324,17 @@
           "EEG",
           "behavior"
         ],
-        "language": []
+        "language": [
+          "Chinese"
+        ]
       },
       "keywords": [
         "Go/No-Go",
         "go",
         "nogo"
       ],
-      "psyflow_version": null,
-      "has_voiceover": null,
+      "psyflow_version": "0.1.0",
+      "has_voiceover": true,
       "last_updated": "2026-02-09T13:32:54Z",
       "structure": {
         "config": true,
@@ -322,11 +348,11 @@
       "full_name": "TaskBeacon/T000004-flanker",
       "html_url": "https://github.com/TaskBeacon/T000004-flanker",
       "default_branch": "main",
-      "short_description": "| Field | Value | |----------------------|--------------------------------------------| | Name | Eriksen Flanker Task | | Version | main (1…",
+      "short_description": "A task measuring response inhibition and selective attention.",
+      "maturity": "smoke_tested",
       "tags": {
         "paradigm": [
-          "Flanker",
-          "Rest"
+          "Flanker"
         ],
         "response": [],
         "modality": [
@@ -334,14 +360,15 @@
           "fMRI",
           "behavior"
         ],
-        "language": []
+        "language": [
+          "Chinese"
+        ]
       },
       "keywords": [
-        "Flanker",
-        "Rest"
+        "Flanker"
       ],
-      "psyflow_version": null,
-      "has_voiceover": null,
+      "psyflow_version": "0.1.0",
+      "has_voiceover": true,
       "last_updated": "2026-02-09T13:32:48Z",
       "structure": {
         "config": true,
@@ -355,7 +382,8 @@
       "full_name": "TaskBeacon/T000003-emodot",
       "html_url": "https://github.com/TaskBeacon/T000003-emodot",
       "default_branch": "main",
-      "short_description": "| Field | Value | |----------------------|------------------------------| | Name | Emotional Dot-Probe Task (EmoDot) | | Version | main (1.…",
+      "short_description": "A task for assessing attentional bias toward emotional facial stimuli",
+      "maturity": "piloted",
       "tags": {
         "paradigm": [],
         "response": [],
@@ -363,13 +391,15 @@
           "EEG",
           "behavior"
         ],
-        "language": []
+        "language": [
+          "Chinese"
+        ]
       },
       "keywords": [
         "emodot"
       ],
-      "psyflow_version": null,
-      "has_voiceover": null,
+      "psyflow_version": "0.1.0",
+      "has_voiceover": true,
       "last_updated": "2026-02-09T13:32:38Z",
       "structure": {
         "config": true,
@@ -383,7 +413,8 @@
       "full_name": "TaskBeacon/T000002-bart",
       "html_url": "https://github.com/TaskBeacon/T000002-bart",
       "default_branch": "main",
-      "short_description": "| Field | Value | |----------------------|------------------------------| | Name | Balloon Analogue Risk Task (BART) | | Version | main (1.…",
+      "short_description": "A task measuring risk-taking behavior using the classic BART paradigm.",
+      "maturity": "smoke_tested",
       "tags": {
         "paradigm": [
           "BART"
@@ -394,13 +425,15 @@
           "fMRI",
           "behavior"
         ],
-        "language": []
+        "language": [
+          "Chinese"
+        ]
       },
       "keywords": [
         "BART"
       ],
-      "psyflow_version": null,
-      "has_voiceover": null,
+      "psyflow_version": "0.1.0",
+      "has_voiceover": true,
       "last_updated": "2026-02-09T13:31:52Z",
       "structure": {
         "config": true,
@@ -414,7 +447,8 @@
       "full_name": "TaskBeacon/T000001-ax-cpt",
       "html_url": "https://github.com/TaskBeacon/T000001-ax-cpt",
       "default_branch": "main",
-      "short_description": "| Field | Value | |---|---| | Name | AX-CPT Task | | Version | main (1.0) | | URL / Repository | https://github.com/TaskBeacon/T000001-ax-c…",
+      "short_description": "A task measuring cognitive control, context processing, and goal maintenance.",
+      "maturity": "smoke_tested",
       "tags": {
         "paradigm": [
           "AX-CPT",
@@ -427,15 +461,17 @@
           "EEG",
           "behavior"
         ],
-        "language": []
+        "language": [
+          "Chinese"
+        ]
       },
       "keywords": [
         "AX-CPT",
         "CPT",
         "ax"
       ],
-      "psyflow_version": null,
-      "has_voiceover": null,
+      "psyflow_version": "0.1.0",
+      "has_voiceover": true,
       "last_updated": "2026-02-09T13:31:46Z",
       "structure": {
         "config": true,
@@ -449,11 +485,11 @@
       "full_name": "TaskBeacon/ANT",
       "html_url": "https://github.com/TaskBeacon/ANT",
       "default_branch": "main",
-      "short_description": "| Field | Value | | -------------------- | ------------------------------------------ | | Name | Attention Network Test (ANT) | | Version |…",
+      "short_description": "A task measuring alerting, orienting, and executive control networks.",
+      "maturity": null,
       "tags": {
         "paradigm": [
-          "Flanker",
-          "Rest"
+          "ANT"
         ],
         "response": [],
         "modality": [
@@ -461,15 +497,15 @@
           "fMRI",
           "behavior"
         ],
-        "language": []
+        "language": [
+          "Chinese"
+        ]
       },
       "keywords": [
-        "Flanker",
-        "Rest",
         "ANT"
       ],
-      "psyflow_version": null,
-      "has_voiceover": null,
+      "psyflow_version": "0.1.0",
+      "has_voiceover": true,
       "last_updated": "2025-07-29T06:29:00Z",
       "structure": {
         "config": true,

@@ -5,6 +5,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
 import { CopyButton } from "@/components/copy-button";
+import { MaturityBadge } from "@/components/maturity-badge";
 import { Markdown } from "@/components/markdown";
 import { formatShortDate } from "@/lib/format";
 import { findTaskByRepo, getTasks, taskLinks } from "@/lib/task-index";
@@ -131,6 +132,13 @@ export default function TaskPage({ params }: { params: { repo: string } }) {
                     {formatShortDate(task.last_updated)}
                   </div>
                 </div>
+
+                {task.maturity ? (
+                  <div className="flex items-center justify-between gap-3">
+                    <div className="text-slate-600">Maturity</div>
+                    <MaturityBadge maturity={task.maturity} className="shrink-0" />
+                  </div>
+                ) : null}
 
                 {task.psyflow_version ? (
                   <div className="flex items-center justify-between gap-3">

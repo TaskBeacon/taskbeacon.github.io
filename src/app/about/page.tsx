@@ -90,6 +90,7 @@ keywords:
   - stroop
   - interference
 
+maturity: "smoke_tested"    # optional (e.g. smoke_tested, piloted)
 psyflow_version: "^0.2.0"  # optional
 has_voiceover: false        # optional`}</code>
             </pre>

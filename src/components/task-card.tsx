@@ -5,6 +5,7 @@ import type { TaskIndexItem, TaskTagFacet } from "@/lib/task-index";
 import { taskLinks } from "@/lib/task-index";
 import { formatShortDate } from "@/lib/format";
 import { TagChip } from "@/components/tag-chip";
+import { MaturityBadge } from "@/components/maturity-badge";
 import { IconArrowRight, IconDownload, IconGithub, IconPlay } from "@/components/icons";
 
 function TagRow({
@@ -52,7 +53,7 @@ export function TaskCard({
     <div className="group flex h-full flex-col rounded-2xl border border-slate-200 bg-white/85 p-5 shadow-sm transition-colors hover:border-brand-200 hover:bg-white">
       <div className="flex items-start justify-between gap-4">
         <div className="min-w-0">
-          <div className="flex items-center gap-2">
+          <div className="flex flex-wrap items-center gap-2">
             <Link
               className="tb-focus-ring rounded-md font-heading text-base font-semibold tracking-tight text-slate-900 hover:text-brand-900"
               href={`/tasks/${encodeURIComponent(task.repo)}`}
@@ -60,6 +61,7 @@ export function TaskCard({
               {task.repo}
             </Link>
             <IconArrowRight className="size-4 text-slate-400 transition-colors group-hover:text-brand-700" />
+            {task.maturity ? <MaturityBadge maturity={task.maturity} /> : null}
           </div>
           <div className="mt-2 text-sm leading-6 text-slate-700">
             {task.short_description || "No description provided."}

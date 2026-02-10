@@ -171,6 +171,76 @@ function stripMarkdownInline(s) {
     .trim();
 }
 
+function truncate(s, max = 140) {
+  const t = String(s ?? "").trim();
+  if (!t) return "";
+  return t.length > max ? `${t.slice(0, max - 1)}?` : t;
+}
+
+function readmeTableValue(markdown, fieldName) {
+  const wanted = String(fieldName ?? "").trim().toLowerCase();
+  if (!wanted) return "";
+
+  const lines = String(markdown ?? "").split(/\r?\n/);
+  for (const line of lines) {
+    const t = String(line ?? "").trim();
+    if (!t.startsWith("|")) continue;
+
+    // Separator rows like: |-----|-----|
+    if (/^\|\s*:?-+:?\s*\|/.test(t)) continue;
+
+    let cols = t.split("|").map((c) => c.trim());
+    while (cols.length && cols[0] === "") cols = cols.slice(1);
+    while (cols.length && cols[cols.length - 1] === "") cols = cols.slice(0, -1);
+    if (cols.length < 2) continue;
+
+    const key = String(cols[0] ?? "").trim().toLowerCase();
+    if (!key || key !== wanted) continue;
+
+    const value = stripMarkdownInline(cols.slice(1).join(" | "));
+    if (!value) continue;
+    return value;
+  }
+
+  return "";
+}
+
+function normalizeLanguageLabel(v) {
+  const s = String(v ?? "").trim();
+  if (!s) return "";
+  const lower = s.toLowerCase();
+  if (lower === "en" || /\benglish\b/i.test(lower)) return "English";
+  if (lower === "zh" || /^zh\b/.test(lower) || /\bchinese\b/i.test(lower) || /\u4e2d\u6587/.test(s)) return "Chinese";
+  return s;
+}
+
+function normalizeMaturity(v) {
+  const s = String(v ?? "").trim();
+  if (!s) return "";
+  return s.toLowerCase().replace(/\s+/g, "_");
+}
+
+function extractMaturityFromReadme(markdown) {
+  const fromTable = readmeTableValue(markdown, "Maturity");
+  if (fromTable) return fromTable;
+
+  const m1 = /!\[\s*Maturity\s*:\s*([^\]]+?)\s*\]/i.exec(String(markdown ?? ""));
+  if (m1?.[1]) return m1[1].trim();
+
+  // shields.io style: .../badge/Maturity-smoke_tested-...
+  const m2 = /badge\/Maturity-([^\-\s\)]+)-/i.exec(String(markdown ?? ""));
+  if (m2?.[1]) {
+    try {
+      return decodeURIComponent(m2[1]).trim();
+    } catch {
+      return String(m2[1]).trim();
+    }
+  }
+
+  return "";
+}
+
+
 function firstParagraphDescription(markdown) {
   const text = String(markdown ?? "").replace(/<!--([\s\S]*?)-->/g, "");
   const lines = text.split(/\r?\n/).map((l) => l.trim());
@@ -254,7 +324,9 @@ function inferTagsFromRepo(repoName, markdown) {
   const language = [];
   // Only infer language when explicitly stated.
   if (/\blanguage\s*:\s*en\b/i.test(hay) || /\benglish\b/i.test(hay))
-    language.push("en");
+    language.push("English");
+  if (/\blanguage\s*:\s*zh\b/i.test(hay) || /\bchinese\b/i.test(hay) || /\u4e2d\u6587/.test(hay))
+    language.push("Chinese");
 
   return {
     paradigm: uniq(paradigm),
@@ -354,8 +426,14 @@ async function buildIndex() {
     const readmeUrl = `${GH_API}/repos/${encodeURIComponent(ORG)}/${encodeURIComponent(repo)}/readme`;
     const readme = await ghGetRaw(readmeUrl, { allow404: true });
 
+    const shortFromReadmeTable = readmeTableValue(readme, "Short Description");
     const shortFromReadme = firstParagraphDescription(readme);
     const shortFromRepo = String(r.description ?? "").trim();
+
+    const maturity = normalizeMaturity(
+      (typeof meta?.maturity === "string" ? meta.maturity : "") ||
+        extractMaturityFromReadme(readme)
+    ) || null;
 
     const tagsFromMeta = normalizeTags(meta?.tags);
     const tagsInferred = inferTagsFromRepo(repo, readme);
@@ -367,6 +445,14 @@ async function buildIndex() {
       language: uniq([...(tagsFromMeta.language ?? []), ...(tagsInferred.language ?? [])])
     };
 
+    // Prefer explicit README table language if present.
+    const languageFromReadme = normalizeLanguageLabel(readmeTableValue(readme, "Language"));
+    if (languageFromReadme) {
+      tags.language = uniq([...(tags.language ?? []), languageFromReadme]);
+    }
+
+    tags.language = uniq((tags.language ?? []).map(normalizeLanguageLabel).filter(Boolean));
+
     const keywords = uniq([
       ...toArray(meta?.keywords).map(String),
       ...tags.paradigm,
@@ -377,13 +463,29 @@ async function buildIndex() {
     ]);
 
     let short_description = String(meta?.short_description ?? "").trim();
-    if (!short_description) short_description = shortFromRepo;
+    if (!short_description) short_description = shortFromReadmeTable;
     if (!short_description) short_description = shortFromReadme;
+    if (!short_description) short_description = shortFromRepo;
     if (!short_description) {
       const p = tags.paradigm?.[0];
       short_description = p
         ? `${p} task template (PsyFlow/TAPS).`
         : `${repo} task template (PsyFlow/TAPS).`;
+    }
+
+    short_description = truncate(short_description);
+
+    let psyflow_version = meta?.psyflow_version ?? null;
+    if (!psyflow_version) {
+      const v = readmeTableValue(readme, "PsyFlow Version");
+      psyflow_version = v || null;
+    }
+
+    let has_voiceover =
+      typeof meta?.has_voiceover === "boolean" ? meta.has_voiceover : null;
+    if (has_voiceover === null) {
+      const voiceName = readmeTableValue(readme, "Voice Name");
+      if (voiceName) has_voiceover = true;
     }
 
     const run_anchor = readme ? detectRunAnchor(readme) : "#run";
@@ -394,11 +496,11 @@ async function buildIndex() {
       html_url: r.html_url,
       default_branch: r.default_branch,
       short_description,
+      maturity,
       tags,
       keywords,
-      psyflow_version: meta?.psyflow_version ?? null,
-      has_voiceover:
-        typeof meta?.has_voiceover === "boolean" ? meta.has_voiceover : null,
+      psyflow_version,
+      has_voiceover,
       last_updated: r.pushed_at || r.updated_at,
       structure,
       readme_run_anchor: run_anchor
@@ -416,7 +518,7 @@ async function buildIndex() {
   tasks.sort((a, b) => (a.last_updated < b.last_updated ? 1 : -1));
 
   const index = {
-    schema_version: 1,
+    schema_version: 2,
     generated_at: new Date().toISOString(),
     org: ORG,
     tasks

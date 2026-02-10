@@ -2,6 +2,8 @@ import rawIndex from "@/data/tasks_index.json";
 
 export type TaskTagFacet = "paradigm" | "response" | "modality" | "language";
 
+export type TaskFacet = TaskTagFacet | "maturity";
+
 export type TaskTags = Record<TaskTagFacet, string[]>;
 
 export type TaskStructure = {
@@ -16,6 +18,7 @@ export type TaskIndexItem = {
   html_url: string;
   default_branch: string;
   short_description: string;
+  maturity?: string | null;
   tags: TaskTags;
   keywords: string[];
   psyflow_version?: string | null;
