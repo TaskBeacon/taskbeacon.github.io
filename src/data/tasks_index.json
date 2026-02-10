@@ -1,8 +1,45 @@
 {
   "schema_version": 2,
-  "generated_at": "2026-02-10T00:47:27.937Z",
+  "generated_at": "2026-02-10T01:39:05.417Z",
   "org": "TaskBeacon",
   "tasks": [
+    {
+      "repo": "ANT",
+      "full_name": "TaskBeacon/ANT",
+      "html_url": "https://github.com/TaskBeacon/ANT",
+      "default_branch": "main",
+      "short_description": "A task measuring alerting, orienting, and executive control networks.",
+      "maturity": "smoke_tested",
+      "tags": {
+        "paradigm": [
+          "ANT"
+        ],
+        "response": [],
+        "modality": [
+          "behavior",
+          "EEG",
+          "fMRI"
+        ],
+        "language": [
+          "Chinese"
+        ]
+      },
+      "keywords": [
+        "ant",
+        "attention",
+        "networks",
+        "flanker"
+      ],
+      "psyflow_version": "0.1.0",
+      "has_voiceover": true,
+      "last_updated": "2026-02-10T01:38:41Z",
+      "structure": {
+        "config": true,
+        "assets": true,
+        "src": true
+      },
+      "readme_run_anchor": "#run"
+    },
     {
       "repo": "T000014-stroop",
       "full_name": "TaskBeacon/T000014-stroop",
@@ -473,40 +510,6 @@
       "psyflow_version": "0.1.0",
       "has_voiceover": true,
       "last_updated": "2026-02-09T13:31:46Z",
-      "structure": {
-        "config": true,
-        "assets": true,
-        "src": true
-      },
-      "readme_run_anchor": "#run"
-    },
-    {
-      "repo": "ANT",
-      "full_name": "TaskBeacon/ANT",
-      "html_url": "https://github.com/TaskBeacon/ANT",
-      "default_branch": "main",
-      "short_description": "A task measuring alerting, orienting, and executive control networks.",
-      "maturity": null,
-      "tags": {
-        "paradigm": [
-          "ANT"
-        ],
-        "response": [],
-        "modality": [
-          "EEG",
-          "fMRI",
-          "behavior"
-        ],
-        "language": [
-          "Chinese"
-        ]
-      },
-      "keywords": [
-        "ANT"
-      ],
-      "psyflow_version": "0.1.0",
-      "has_voiceover": true,
-      "last_updated": "2025-07-29T06:29:00Z",
       "structure": {
         "config": true,
         "assets": true,

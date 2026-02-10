@@ -10,6 +10,9 @@ import {
 } from "@/lib/task-filter";
 import { TagChip } from "@/components/tag-chip";
 import { TaskCard } from "@/components/task-card";
+import { TaskRow } from "@/components/task-row";
+import clsx from "@/components/utils/clsx";
+import { IconViewGrid, IconViewList } from "@/components/icons";
 import { formatMaturityLabel } from "@/components/maturity-badge";
 
 function FacetSection({
@@ -53,15 +56,58 @@ function FacetSection({
   );
 }
 
+function ViewToggle({
+  view,
+  setView
+}: {
+  view: "list" | "cards";
+  setView: (v: "list" | "cards") => void;
+}) {
+  return (
+    <div
+      className="inline-flex rounded-xl border border-slate-200 bg-white p-1 shadow-sm"
+      role="group"
+      aria-label="Gallery view"
+    >
+      <button
+        type="button"
+        aria-pressed={view === "list"}
+        className={clsx(
+          "tb-focus-ring inline-flex items-center gap-2 rounded-lg px-3 py-2 text-xs font-semibold transition-colors",
+          view === "list"
+            ? "bg-brand-700 text-white"
+            : "text-slate-800 hover:bg-brand-50 hover:text-brand-900"
+        )}
+        onClick={() => setView("list")}
+      >
+        <IconViewList className="size-4" />
+        List
+      </button>
+      <button
+        type="button"
+        aria-pressed={view === "cards"}
+        className={clsx(
+          "tb-focus-ring inline-flex items-center gap-2 rounded-lg px-3 py-2 text-xs font-semibold transition-colors",
+          view === "cards"
+            ? "bg-brand-700 text-white"
+            : "text-slate-800 hover:bg-brand-50 hover:text-brand-900"
+        )}
+        onClick={() => setView("cards")}
+      >
+        <IconViewGrid className="size-4" />
+        Cards
+      </button>
+    </div>
+  );
+}
+
 export function GalleryClient({ tasks }: { tasks: TaskIndexItem[] }) {
   const [query, setQuery] = useState<string>("");
   const [selected, setSelected] = useState<SelectedFacets>(() => emptySelectedFacets());
+  const [view, setView] = useState<"list" | "cards">("list");
 
   const allMaturities = useMemo(() => facetValues(tasks, "maturity"), [tasks]);
   const allParadigms = useMemo(() => facetValues(tasks, "paradigm"), [tasks]);
-  const allResponses = useMemo(() => facetValues(tasks, "response"), [tasks]);
-  const allModalities = useMemo(() => facetValues(tasks, "modality"), [tasks]);
-  const allLanguages = useMemo(() => facetValues(tasks, "language"), [tasks]);
 
   const filtered = useMemo(() => filterTasks(tasks, query, selected), [tasks, query, selected]);
 
@@ -105,23 +151,27 @@ export function GalleryClient({ tasks }: { tasks: TaskIndexItem[] }) {
               id="search"
               value={query}
               onChange={(e) => setQuery(e.target.value)}
-              placeholder="e.g. stroop, sst, EEG"
+              placeholder="e.g. stroop, sst"
               className="tb-focus-ring mt-2 w-full rounded-xl border border-slate-200 bg-white px-3 py-2 text-sm text-slate-900 placeholder:text-slate-400"
             />
-            <div className="mt-3 flex items-center justify-between gap-3">
+            <div className="mt-3 flex flex-wrap items-center justify-between gap-3">
               <div className="text-sm text-slate-600">
                 Showing <span className="font-semibold text-slate-900">{filtered.length}</span> of{" "}
                 <span className="font-semibold text-slate-900">{tasks.length}</span>
               </div>
-              {anyFilters ? (
-                <button
-                  type="button"
-                  className="tb-focus-ring rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm font-semibold text-slate-800 shadow-sm hover:border-brand-200 hover:bg-brand-50"
-                  onClick={clearAll}
-                >
-                  Clear
-                </button>
-              ) : null}
+
+              <div className="flex flex-wrap items-center gap-2">
+                {anyFilters ? (
+                  <button
+                    type="button"
+                    className="tb-focus-ring rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm font-semibold text-slate-800 shadow-sm hover:border-brand-200 hover:bg-brand-50"
+                    onClick={clearAll}
+                  >
+                    Clear
+                  </button>
+                ) : null}
+                <ViewToggle view={view} setView={setView} />
+              </div>
             </div>
           </section>
 
@@ -136,27 +186,6 @@ export function GalleryClient({ tasks }: { tasks: TaskIndexItem[] }) {
             title="Paradigm"
             facet="paradigm"
             values={allParadigms}
-            selected={selected}
-            onToggle={toggleFacet}
-          />
-          <FacetSection
-            title="Response Type"
-            facet="response"
-            values={allResponses}
-            selected={selected}
-            onToggle={toggleFacet}
-          />
-          <FacetSection
-            title="Modality"
-            facet="modality"
-            values={allModalities}
-            selected={selected}
-            onToggle={toggleFacet}
-          />
-          <FacetSection
-            title="Language"
-            facet="language"
-            values={allLanguages}
             selected={selected}
             onToggle={toggleFacet}
           />
@@ -181,6 +210,16 @@ export function GalleryClient({ tasks }: { tasks: TaskIndexItem[] }) {
                 Reset
               </button>
             </div>
+          </div>
+        ) : view === "list" ? (
+          <div className="space-y-3">
+            {filtered.map((t) => (
+              <TaskRow
+                key={t.repo}
+                task={t}
+                onTagClick={(facet: TaskTagFacet, value) => toggleFacet(facet, value)}
+              />
+            ))}
           </div>
         ) : (
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">

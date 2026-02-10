@@ -2,8 +2,8 @@
 
 Public, statically deployed website that lists and showcases TaskBeacon task template repositories (PsyFlow/TAPS tasks) as a searchable, filterable gallery.
 
-- Gallery: task cards, tags, last updated, links to repo/Run/download
-- Task detail pages: README rendering + quick start + metadata panel
+- Gallery: list (default) and card views, maturity + paradigm tags, last updated, links to repo/download/clone
+- Task detail pages: README rendering + quick start + metadata panel + link to the README Run section
 - Robust indexing: GitHub API repo list + README + optional `task.yaml`/`task.json`
 - Deployment: GitHub Pages static export via GitHub Actions
 
