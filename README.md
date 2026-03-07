@@ -1,30 +1,30 @@
-﻿# TaskBeacon Task Gallery (Website)
+# TaskBeacon Task Gallery
 
-Public, statically deployed website that lists and showcases TaskBeacon task template repositories (PsyFlow/TAPS tasks) as a searchable, filterable gallery.
+Public, statically deployed website that lists TaskBeacon task repositories as a searchable gallery and, when available, attaches a matched browser preview to the main task card.
 
-- Gallery: list (default) and card views, maturity + paradigm tags, last updated, links to repo/download/clone
-- Task detail pages: README rendering + quick start + metadata panel + link to the README Run section
-- Robust indexing: GitHub API repo list + README + optional `task.yaml`/`task.json`
-- Deployment: GitHub Pages static export via GitHub Actions
+- Gallery: list and card views, maturity + paradigm filters, last updated, repo/download links
+- Task detail pages: README rendering, quick start, metadata, local access panel, optional web preview panel
+- Companion detection: baseline tasks automatically pick up matching HTML repos when they share the same `slug` and the companion declares `variant: html`
+- Deployment: static export to GitHub Pages via GitHub Actions
 
 ## Tech
 
 - Next.js (App Router) with static export (`output: "export"`)
 - Tailwind CSS
-- Markdown rendering via `react-markdown` (+ GFM + code highlighting)
+- Markdown rendering via `react-markdown` with GFM and code highlighting
 
 ## Local Dev
 
-Prereqs: Node 20+ (Node 22 works).
+Prereqs: Node 20+.
 
 ```bash
 cd taskbeacon.github.io
 npm install
 
-# Build/refresh the index (optional; works without token but rate-limited)
+# Refresh the generated index and README snapshots.
 npm run index
 
-# Build the static site into ./out
+# Build the static site into ./out.
 npm run build
 ```
 
@@ -32,7 +32,7 @@ Optional: set `GITHUB_TOKEN` locally to increase GitHub API rate limits.
 
 ```bash
 # macOS/Linux
-export GITHUB_TOKEN=... 
+export GITHUB_TOKEN=...
 
 # Windows PowerShell
 $env:GITHUB_TOKEN = "..."
@@ -42,8 +42,8 @@ $env:GITHUB_TOKEN = "..."
 
 Indexing is a build-time step that generates:
 
-- `src/data/tasks_index.json` (task metadata used by the UI)
-- `src/data/readmes/*.md` (README snapshots for static rendering)
+- `src/data/tasks_index.json`
+- `src/data/readmes/*.md`
 
 The indexer lives at:
 
@@ -51,78 +51,100 @@ The indexer lives at:
 
 It:
 
-1. Lists public repos in the `TaskBeacon` org (GitHub API, paginated `per_page=100`).
-2. Excludes non-task repos via a denylist (see `DENYLIST` in the script).
-3. For each repo, fetches:
-   - README (raw)
-   - repo root contents (to detect `config/`, `assets/`, `src/` and metadata files)
-   - optional metadata `task.yaml` / `task.yml` / `task.json` (repo root)
-4. Produces conservative inferred tags when metadata is missing (primarily from repo name).
+1. Lists public repos in the `TaskBeacon` org.
+2. Excludes non-task repos via `DENYLIST`.
+3. Fetches README content, repo root contents, and optional metadata files.
+4. Builds a normalized task record for each task repo.
+5. Merges matching HTML companions into the main task card as `web_variant`.
+
+Supported metadata files, in priority order:
+
+- `taskbeacon.yaml`
+- `taskbeacon.yml`
+- `task.yaml`
+- `task.yml`
+- `task.json`
 
 Additional parsing:
 
-- If the README includes the standard metadata table, the indexer will use `Short Description`, `PsyFlow Version`, `Language`, and `Voice Name` when present.
-- If the README includes a maturity badge like `![Maturity: smoke_tested]`, the maturity value is extracted and shown on cards.
+- README metadata tables can still provide `Short Description`, `PsyFlow Version`, `Language`, and `Voice Name`.
+- README maturity badges like `![Maturity: smoke_tested]` are still supported.
+
+Companion matching:
+
+- Main task: usually `variant: baseline`
+- Web companion: `variant: html`
+- Shared key: `slug`
+
+If both exist, the website keeps the main task card and adds:
+
+- `Run Preview`
+- `Repo`
+- `Download`
+
+for the matched HTML companion.
 
 Rate limits:
 
-- Without token, GitHub API is rate-limited and the script may fail.
-- If the script fails but an older `src/data/tasks_index.json` exists, it will fall back to the existing index so `npm run build` still works.
+- Without a token, GitHub API requests may fail.
+- If indexing fails but an older `src/data/tasks_index.json` exists, the build falls back to the existing index.
 
-## Metadata Schema (`task.yaml`)
+## Recommended Metadata
 
-If a task repo includes `task.yaml` (or `task.yml`) at repo root, the indexer reads it.
-Supported fields:
+Preferred metadata is `taskbeacon.yaml` at repo root.
+
+Example:
 
 ```yaml
-name: "T000014-stroop"
-short_description: "Classic Stroop color-word interference task template."
+id: T000006
+slug: mid
+title: "Monetary Incentive Delay (MID) Task"
+acquisition: eeg
+variant: baseline
+maturity: piloted
+version:
+  release_tag: "1.1.2"
 
 tags:
-  paradigm: ["Stroop"]
-  response: ["2-choice"]
-  modality: ["behavior"]
-  language: ["en"]
+  paradigm: ["MID"]
+  modality: ["EEG"]
+  language: ["Chinese"]
 
 keywords:
-  - stroop
-  - interference
-
-maturity: "smoke_tested"    # optional (e.g. smoke_tested, piloted)
-psyflow_version: "^0.2.0"  # optional
-has_voiceover: false        # optional
+  - mid
+  - reward
 ```
 
-Notes:
+HTML companion example:
 
-- `tags.*` values must be arrays of strings.
-- Keep tags stable and human-readable (e.g., `"N-back"`, not `"nback"`).
+```yaml
+id: H000006
+slug: mid
+title: "Monetary Incentive Delay (MID) Task"
+acquisition: behavior
+variant: html
+maturity: prototype
+version:
+  release_tag: "0.1.0"
+```
 
-## Deployment (GitHub Pages)
+## Deployment
 
-- GitHub Action workflow: `.github/workflows/pages.yml`
-- Triggered on push to `main`, manual dispatch, and weekly schedule.
+- Workflow: `.github/workflows/pages.yml`
+- Triggers: push to `main`, manual dispatch, and weekly schedule
 
-What CI does:
+CI does:
 
 1. `npm ci`
-2. `npm run index` (uses `secrets.GITHUB_TOKEN` automatically)
-3. `npm run build` (static export to `out/`)
-4. Upload `out/` as Pages artifact + deploy
+2. `npm run index`
+3. `npm run build`
+4. Upload `out/` and deploy to GitHub Pages
 
 Repository settings required:
 
 - Settings -> Pages
-- Source: GitHub Actions
+- Source: `GitHub Actions`
 
 ## Excluding Non-Task Repos
 
-Update the denylist in `scripts/build-index.mjs`:
-
-- `DENYLIST` contains known non-task repos (e.g., `task-registry`, `.github`, `psyflow`, `taskbeacon.github.io`).
-
-## PR Notes
-
-This repo historically contained a Sphinx build under `docs/`.
-The Next.js site builds to `out/` for GitHub Pages, and does not modify `docs/`.
-
+Update `DENYLIST` in `scripts/build-index.mjs` for repos that should never appear in the gallery.

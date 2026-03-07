@@ -5,6 +5,9 @@ import { parse as parseYaml } from "yaml";
 const ORG = process.env.TASKBEACON_ORG || "TaskBeacon";
 const TOKEN =
   process.env.GITHUB_TOKEN || process.env.GH_TOKEN || process.env.GITHUB_PAT || "";
+const PAGES_ORIGIN =
+  process.env.TASKBEACON_PAGES_ORIGIN || `https://${String(ORG).toLowerCase()}.github.io`;
+const LOCAL_WORKSPACE_ROOT = process.env.TASKBEACON_LOCAL_WORKSPACE || path.resolve(process.cwd(), "..");
 
 const GH_API = "https://api.github.com";
 const OUT_INDEX = path.join(process.cwd(), "src", "data", "tasks_index.json");
@@ -40,6 +43,14 @@ const PARADIGM_MAP = [
   { re: /\bcpt\b/i, label: "CPT" },
   { re: /\brest\b/i, label: "Rest" },
   { re: /\bmovie\b/i, label: "Movie" }
+];
+
+const METADATA_FILES = [
+  "taskbeacon.yaml",
+  "taskbeacon.yml",
+  "task.yaml",
+  "task.yml",
+  "task.json"
 ];
 
 function ghHeaders(extra = {}) {
@@ -174,7 +185,7 @@ function stripMarkdownInline(s) {
 function truncate(s, max = 140) {
   const t = String(s ?? "").trim();
   if (!t) return "";
-  return t.length > max ? `${t.slice(0, max - 1)}?` : t;
+  return t.length > max ? `${t.slice(0, max - 3)}...` : t;
 }
 
 function readmeTableValue(markdown, fieldName) {
@@ -218,6 +229,46 @@ function normalizeMaturity(v) {
   const s = String(v ?? "").trim();
   if (!s) return "";
   return s.toLowerCase().replace(/\s+/g, "_");
+}
+
+function normalizeVariant(v) {
+  const s = String(v ?? "").trim();
+  if (!s) return null;
+  return s.toLowerCase().replace(/\s+/g, "_");
+}
+
+function normalizeModalityLabel(v) {
+  const s = String(v ?? "").trim();
+  if (!s) return "";
+  const lower = s.toLowerCase();
+  if (lower === "eeg") return "EEG";
+  if (lower === "fmri") return "fMRI";
+  if (lower === "behavior" || lower === "behaviour") return "behavior";
+  return s;
+}
+
+function normalizeAcquisition(v) {
+  return normalizeModalityLabel(v);
+}
+
+function inferSlugFromRepo(repo) {
+  return String(repo ?? "")
+    .replace(/^[A-Z]\d{6}[-_]/i, "")
+    .trim()
+    .toLowerCase();
+}
+
+function inferPagesRunUrl(repo, explicitUrl = null) {
+  if (explicitUrl) return String(explicitUrl);
+  return `${PAGES_ORIGIN}/${encodeURIComponent(String(repo ?? "").trim())}/`;
+}
+
+function isHtmlVariant(item) {
+  return normalizeVariant(item?.variant) === "html";
+}
+
+function downloadZipUrl(htmlUrl, defaultBranch) {
+  return `${htmlUrl}/archive/refs/heads/${defaultBranch}.zip`;
 }
 
 function extractMaturityFromReadme(markdown) {
@@ -290,7 +341,7 @@ function firstParagraphDescription(markdown) {
     if (pipeCount >= 6) continue;
 
     const max = 140;
-    return raw.length > max ? `${raw.slice(0, max - 1)}…` : raw;
+    return raw.length > max ? `${raw.slice(0, max - 3)}...` : raw;
   }
 
   return "";
@@ -369,6 +420,239 @@ function safeFilename(name) {
   return String(name).replace(/[^a-zA-Z0-9._-]/g, "_");
 }
 
+function buildTaskItem({
+  repo,
+  full_name,
+  html_url,
+  default_branch,
+  last_updated,
+  repo_description,
+  structure,
+  meta,
+  readme
+}) {
+  const shortFromReadmeTable = readmeTableValue(readme, "Short Description");
+  const shortFromReadme = firstParagraphDescription(readme);
+  const shortFromRepo = String(repo_description ?? "").trim();
+
+  const maturity =
+    normalizeMaturity(
+      (typeof meta?.maturity === "string" ? meta.maturity : "") ||
+        extractMaturityFromReadme(readme)
+    ) || null;
+
+  const acquisition = normalizeAcquisition(meta?.acquisition);
+  const variant = normalizeVariant(meta?.variant);
+  const tagsFromMeta = normalizeTags(meta?.tags);
+  if (acquisition) {
+    tagsFromMeta.modality = uniq([...(tagsFromMeta.modality ?? []), acquisition]);
+  }
+  const tagsInferred = inferTagsFromRepo(repo, readme);
+
+  const tags = {
+    paradigm: uniq([...(tagsFromMeta.paradigm ?? []), ...(tagsInferred.paradigm ?? [])]),
+    response: uniq([...(tagsFromMeta.response ?? []), ...(tagsInferred.response ?? [])]),
+    modality: uniq([...(tagsFromMeta.modality ?? []), ...(tagsInferred.modality ?? [])]),
+    language: uniq([...(tagsFromMeta.language ?? []), ...(tagsInferred.language ?? [])])
+  };
+
+  const languageFromReadme = normalizeLanguageLabel(readmeTableValue(readme, "Language"));
+  if (languageFromReadme) {
+    tags.language = uniq([...(tags.language ?? []), languageFromReadme]);
+  }
+
+  tags.language = uniq((tags.language ?? []).map(normalizeLanguageLabel).filter(Boolean));
+
+  const title = String(meta?.title ?? meta?.name ?? repo).trim() || repo;
+  const slug = String(meta?.slug ?? inferSlugFromRepo(repo)).trim().toLowerCase() || repo.toLowerCase();
+  const id = String(meta?.id ?? meta?.name ?? repo).trim() || repo;
+  const release_tag = String(meta?.version?.release_tag ?? meta?.release_tag ?? "").trim() || null;
+  const explicitRunUrl =
+    meta?.links?.run_url ??
+    meta?.preview?.run_url ??
+    meta?.deploy?.run_url ??
+    meta?.web?.run_url ??
+    null;
+
+  const keywords = uniq([
+    ...toArray(meta?.keywords).map(String),
+    ...tags.paradigm,
+    slug,
+    ...(repo
+      .replace(/^[A-Z]\d{6}-/i, "")
+      .split(/[-_]+/)
+      .filter(Boolean))
+  ]);
+
+  let short_description = String(meta?.short_description ?? "").trim();
+  if (!short_description) short_description = shortFromReadmeTable;
+  if (!short_description) short_description = shortFromReadme;
+  if (!short_description) short_description = shortFromRepo;
+  if (!short_description) {
+    const p = tags.paradigm?.[0];
+    short_description =
+      variant === "html"
+        ? `${title} web preview built for browser-based task walkthroughs.`
+        : p
+          ? `${p} task template (PsyFlow/TAPS).`
+          : `${repo} task template (PsyFlow/TAPS).`;
+  }
+
+  short_description = truncate(short_description);
+
+  let psyflow_version = meta?.psyflow_version ?? null;
+  if (!psyflow_version) {
+    const v = readmeTableValue(readme, "PsyFlow Version");
+    psyflow_version = v || null;
+  }
+
+  let has_voiceover =
+    typeof meta?.has_voiceover === "boolean" ? meta.has_voiceover : null;
+  if (has_voiceover === null) {
+    const voiceName = readmeTableValue(readme, "Voice Name");
+    if (voiceName) has_voiceover = true;
+  }
+
+  const run_anchor = readme ? detectRunAnchor(readme) : "#run";
+
+  return {
+    id,
+    slug,
+    title,
+    acquisition: acquisition || null,
+    variant,
+    release_tag,
+    repo,
+    full_name,
+    html_url,
+    default_branch,
+    short_description,
+    maturity,
+    tags,
+    keywords,
+    psyflow_version,
+    has_voiceover,
+    last_updated,
+    structure,
+    readme_run_anchor: run_anchor,
+    run_url: variant === "html" ? inferPagesRunUrl(repo, explicitRunUrl) : null,
+    web_variant: null
+  };
+}
+
+function discoverLocalHtmlTasks(existingRepos) {
+  if (!fs.existsSync(LOCAL_WORKSPACE_ROOT)) {
+    return [];
+  }
+
+  const entries = fs.readdirSync(LOCAL_WORKSPACE_ROOT, { withFileTypes: true });
+  const items = [];
+
+  for (const entry of entries) {
+    if (!entry.isDirectory() || !/^H\d{6}[-_]/i.test(entry.name)) continue;
+    if (existingRepos.has(entry.name)) continue;
+
+    const repoDir = path.join(LOCAL_WORKSPACE_ROOT, entry.name);
+    const rootNames = new Set(fs.readdirSync(repoDir));
+    const metaFile = METADATA_FILES.find((name) => rootNames.has(name)) || null;
+    if (!metaFile) continue;
+    const metaPath = path.join(repoDir, metaFile);
+
+    let meta = null;
+    try {
+      const raw = fs.readFileSync(metaPath, "utf8");
+      meta = metaFile.endsWith(".json") ? safeJsonParse(raw) : parseYaml(raw);
+    } catch {
+      meta = null;
+    }
+
+    if (normalizeVariant(meta?.variant) !== "html") continue;
+
+    const readmePath = path.join(repoDir, "README.md");
+    const readme = fs.existsSync(readmePath) ? fs.readFileSync(readmePath, "utf8") : "";
+    const stats = fs.statSync(metaPath);
+
+    items.push(
+      buildTaskItem({
+        repo: entry.name,
+        full_name: `${ORG}/${entry.name}`,
+        html_url: `https://github.com/${ORG}/${entry.name}`,
+        default_branch: "main",
+        last_updated: stats.mtime.toISOString(),
+        repo_description: "",
+        structure: {
+          config: rootNames.has("config"),
+          assets: rootNames.has("assets"),
+          src: rootNames.has("src")
+        },
+        meta,
+        readme
+      })
+    );
+  }
+
+  return items;
+}
+
+function pickPrimaryTask(items) {
+  return (
+    items.find((item) => normalizeVariant(item.variant) === "baseline") ||
+    items.find((item) => /^T\d{6}[-_]/i.test(item.repo)) ||
+    items[0]
+  );
+}
+
+function toWebVariant(item) {
+  return {
+    repo: item.repo,
+    title: item.title,
+    html_url: item.html_url,
+    default_branch: item.default_branch,
+    short_description: item.short_description,
+    maturity: item.maturity ?? null,
+    acquisition: item.acquisition ?? null,
+    variant: item.variant ?? null,
+    release_tag: item.release_tag ?? null,
+    last_updated: item.last_updated,
+    run_url: item.run_url ?? inferPagesRunUrl(item.repo),
+    download_zip: downloadZipUrl(item.html_url, item.default_branch)
+  };
+}
+
+function mergeHtmlCompanions(items) {
+  const groups = new Map();
+  for (const item of items) {
+    const key = item.slug || item.repo.toLowerCase();
+    if (!groups.has(key)) groups.set(key, []);
+    groups.get(key).push(item);
+  }
+
+  const merged = [];
+  for (const groupItems of groups.values()) {
+    const htmlItems = groupItems.filter((item) => isHtmlVariant(item));
+    const nonHtmlItems = groupItems.filter((item) => !isHtmlVariant(item));
+
+    if (htmlItems.length === 0 || nonHtmlItems.length === 0) {
+      merged.push(...groupItems);
+      continue;
+    }
+
+    const primary = pickPrimaryTask(nonHtmlItems);
+    const webVariant = toWebVariant(
+      [...htmlItems].sort((a, b) => (a.last_updated < b.last_updated ? 1 : -1))[0]
+    );
+
+    merged.push({ ...primary, web_variant: webVariant });
+    for (const item of nonHtmlItems) {
+      if (item.repo !== primary.repo) {
+        merged.push(item);
+      }
+    }
+  }
+
+  return merged;
+}
+
 async function buildIndex() {
   ensureDir(path.dirname(OUT_INDEX));
   ensureDir(OUT_READMES_DIR);
@@ -397,11 +681,11 @@ async function buildIndex() {
       src: rootNames.has("src")
     };
 
-    const metaCandidates = ["task.yaml", "task.yml", "task.json"];
+    const metaCandidates = METADATA_FILES;
     const metaFile = metaCandidates.find((f) => rootNames.has(f)) || null;
 
     const looksLikeTask =
-      /^T\d{6}[-_]/i.test(repo) ||
+      /^[TH]\d{6}[-_]/i.test(repo) ||
       Boolean(metaFile) ||
       (structure.src && (structure.config || structure.assets));
     if (!looksLikeTask) continue;
@@ -426,85 +710,17 @@ async function buildIndex() {
     const readmeUrl = `${GH_API}/repos/${encodeURIComponent(ORG)}/${encodeURIComponent(repo)}/readme`;
     const readme = await ghGetRaw(readmeUrl, { allow404: true });
 
-    const shortFromReadmeTable = readmeTableValue(readme, "Short Description");
-    const shortFromReadme = firstParagraphDescription(readme);
-    const shortFromRepo = String(r.description ?? "").trim();
-
-    const maturity = normalizeMaturity(
-      (typeof meta?.maturity === "string" ? meta.maturity : "") ||
-        extractMaturityFromReadme(readme)
-    ) || null;
-
-    const tagsFromMeta = normalizeTags(meta?.tags);
-    const tagsInferred = inferTagsFromRepo(repo, readme);
-
-    const tags = {
-      paradigm: uniq([...(tagsFromMeta.paradigm ?? []), ...(tagsInferred.paradigm ?? [])]),
-      response: uniq([...(tagsFromMeta.response ?? []), ...(tagsInferred.response ?? [])]),
-      modality: uniq([...(tagsFromMeta.modality ?? []), ...(tagsInferred.modality ?? [])]),
-      language: uniq([...(tagsFromMeta.language ?? []), ...(tagsInferred.language ?? [])])
-    };
-
-    // Prefer explicit README table language if present.
-    const languageFromReadme = normalizeLanguageLabel(readmeTableValue(readme, "Language"));
-    if (languageFromReadme) {
-      tags.language = uniq([...(tags.language ?? []), languageFromReadme]);
-    }
-
-    tags.language = uniq((tags.language ?? []).map(normalizeLanguageLabel).filter(Boolean));
-
-    const keywords = uniq([
-      ...toArray(meta?.keywords).map(String),
-      ...tags.paradigm,
-      ...(repo
-        .replace(/^T\d{6}-/i, "")
-        .split(/[-_]+/)
-        .filter(Boolean))
-    ]);
-
-    let short_description = String(meta?.short_description ?? "").trim();
-    if (!short_description) short_description = shortFromReadmeTable;
-    if (!short_description) short_description = shortFromReadme;
-    if (!short_description) short_description = shortFromRepo;
-    if (!short_description) {
-      const p = tags.paradigm?.[0];
-      short_description = p
-        ? `${p} task template (PsyFlow/TAPS).`
-        : `${repo} task template (PsyFlow/TAPS).`;
-    }
-
-    short_description = truncate(short_description);
-
-    let psyflow_version = meta?.psyflow_version ?? null;
-    if (!psyflow_version) {
-      const v = readmeTableValue(readme, "PsyFlow Version");
-      psyflow_version = v || null;
-    }
-
-    let has_voiceover =
-      typeof meta?.has_voiceover === "boolean" ? meta.has_voiceover : null;
-    if (has_voiceover === null) {
-      const voiceName = readmeTableValue(readme, "Voice Name");
-      if (voiceName) has_voiceover = true;
-    }
-
-    const run_anchor = readme ? detectRunAnchor(readme) : "#run";
-
-    const item = {
+    const item = buildTaskItem({
       repo,
       full_name: r.full_name,
       html_url: r.html_url,
       default_branch: r.default_branch,
-      short_description,
-      maturity,
-      tags,
-      keywords,
-      psyflow_version,
-      has_voiceover,
       last_updated: r.pushed_at || r.updated_at,
+      repo_description: r.description,
       structure,
-      readme_run_anchor: run_anchor
-    };
+      meta,
+      readme
+    });
 
     tasks.push(item);
 
@@ -515,13 +731,17 @@ async function buildIndex() {
     }
   }
 
-  tasks.sort((a, b) => (a.last_updated < b.last_updated ? 1 : -1));
+  const existingRepos = new Set(tasks.map((task) => task.repo));
+  tasks.push(...discoverLocalHtmlTasks(existingRepos));
+
+  const mergedTasks = mergeHtmlCompanions(tasks);
+  mergedTasks.sort((a, b) => (a.last_updated < b.last_updated ? 1 : -1));
 
   const index = {
-    schema_version: 2,
+    schema_version: 3,
     generated_at: new Date().toISOString(),
     org: ORG,
-    tasks
+    tasks: mergedTasks
   };
 
   fs.writeFileSync(OUT_INDEX, JSON.stringify(index, null, 2) + "\n", "utf8");

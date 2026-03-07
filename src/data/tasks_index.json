@@ -1,5 +1,5 @@
 {
-  "schema_version": 2,
+  "schema_version": 3,
   "generated_at": "2026-02-10T01:39:05.417Z",
   "org": "TaskBeacon",
   "tasks": [
@@ -310,6 +310,12 @@
       "readme_run_anchor": "#run"
     },
     {
+      "id": "T000006",
+      "slug": "mid",
+      "title": "Monetary Incentive Delay (MID) Task",
+      "acquisition": "EEG",
+      "variant": "baseline",
+      "release_tag": "1.1.2",
       "repo": "T000006-mid",
       "full_name": "TaskBeacon/T000006-mid",
       "html_url": "https://github.com/TaskBeacon/T000006-mid",
@@ -341,7 +347,22 @@
         "assets": true,
         "src": true
       },
-      "readme_run_anchor": "#run"
+      "readme_run_anchor": "#run",
+      "run_url": null,
+      "web_variant": {
+        "repo": "H000006-mid",
+        "title": "Monetary Incentive Delay (MID) Task",
+        "html_url": "https://github.com/TaskBeacon/H000006-mid",
+        "default_branch": "main",
+        "short_description": "HTML/browser preview of the Monetary Incentive Delay task built with psyflow-web.",
+        "maturity": "prototype",
+        "acquisition": "behavior",
+        "variant": "html",
+        "release_tag": "0.1.0",
+        "last_updated": "2026-03-06T09:13:27.3316330Z",
+        "run_url": "https://taskbeacon.github.io/H000006-mid/",
+        "download_zip": "https://github.com/TaskBeacon/H000006-mid/archive/refs/heads/main.zip"
+      }
     },
     {
       "repo": "T000005-go-nogo",

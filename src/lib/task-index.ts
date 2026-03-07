@@ -12,7 +12,28 @@ export type TaskStructure = {
   src?: boolean;
 };
 
+export type TaskWebVariant = {
+  repo: string;
+  title: string;
+  html_url: string;
+  default_branch: string;
+  short_description: string;
+  maturity?: string | null;
+  acquisition?: string | null;
+  variant?: string | null;
+  release_tag?: string | null;
+  last_updated: string;
+  run_url: string;
+  download_zip: string;
+};
+
 export type TaskIndexItem = {
+  id?: string;
+  slug?: string;
+  title?: string;
+  acquisition?: string | null;
+  variant?: string | null;
+  release_tag?: string | null;
   repo: string;
   full_name: string;
   html_url: string;
@@ -26,6 +47,8 @@ export type TaskIndexItem = {
   last_updated: string;
   structure?: TaskStructure;
   readme_run_anchor?: string;
+  run_url?: string | null;
+  web_variant?: TaskWebVariant | null;
 };
 
 export type TaskIndex = {
@@ -53,7 +76,10 @@ export function findTaskByRepo(
 
 export function taskLinks(t: TaskIndexItem) {
   const repo = t.html_url;
-  const run = `${repo}${t.readme_run_anchor || "#run"}`;
+  const run =
+    t.variant === "html" && t.run_url
+      ? t.run_url
+      : `${repo}${t.readme_run_anchor || "#run"}`;
   const downloadZip = `${repo}/archive/refs/heads/${t.default_branch}.zip`;
   return { repo, run, downloadZip };
 }
