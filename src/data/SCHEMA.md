@@ -64,5 +64,5 @@ Optional:
 - `taskbeacon.yaml` and `taskbeacon.yml` are preferred metadata sources. The indexer still accepts `task.yaml`, `task.yml`, and `task.json` for backward compatibility.
 - `short_description` is taken from metadata first, then README table fields, then the README first paragraph, then the GitHub repo description.
 - `maturity` is taken from metadata when present; otherwise it is parsed from README badges like `![Maturity: smoke_tested]`.
-- `run_url` is mainly used for standalone HTML tasks.
+- `run_url` is used for HTML tasks and web companions. By default it points to the shared `psyflow-web` GitHub Pages runner with `?task=<repo>`, unless metadata overrides it.
 - `web_variant` is attached to a main task when the indexer finds a companion repo with the same `slug` and `variant: html`.

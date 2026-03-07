@@ -7,6 +7,10 @@ const TOKEN =
   process.env.GITHUB_TOKEN || process.env.GH_TOKEN || process.env.GITHUB_PAT || "";
 const PAGES_ORIGIN =
   process.env.TASKBEACON_PAGES_ORIGIN || `https://${String(ORG).toLowerCase()}.github.io`;
+const HTML_RUNNER_REPO = process.env.TASKBEACON_HTML_RUNNER_REPO || "psyflow-web";
+const HTML_RUNNER_URL =
+  process.env.TASKBEACON_HTML_RUNNER_URL ||
+  `${PAGES_ORIGIN}/${encodeURIComponent(HTML_RUNNER_REPO)}/`;
 const LOCAL_WORKSPACE_ROOT = process.env.TASKBEACON_LOCAL_WORKSPACE || path.resolve(process.cwd(), "..");
 
 const GH_API = "https://api.github.com";
@@ -258,9 +262,11 @@ function inferSlugFromRepo(repo) {
     .toLowerCase();
 }
 
-function inferPagesRunUrl(repo, explicitUrl = null) {
+function inferHtmlRunUrl(repo, explicitUrl = null) {
   if (explicitUrl) return String(explicitUrl);
-  return `${PAGES_ORIGIN}/${encodeURIComponent(String(repo ?? "").trim())}/`;
+  const url = new URL(String(HTML_RUNNER_URL));
+  url.searchParams.set("task", String(repo ?? "").trim());
+  return url.toString();
 }
 
 function isHtmlVariant(item) {
@@ -535,7 +541,7 @@ function buildTaskItem({
     last_updated,
     structure,
     readme_run_anchor: run_anchor,
-    run_url: variant === "html" ? inferPagesRunUrl(repo, explicitRunUrl) : null,
+    run_url: variant === "html" ? inferHtmlRunUrl(repo, explicitRunUrl) : null,
     web_variant: null
   };
 }
@@ -614,7 +620,7 @@ function toWebVariant(item) {
     variant: item.variant ?? null,
     release_tag: item.release_tag ?? null,
     last_updated: item.last_updated,
-    run_url: item.run_url ?? inferPagesRunUrl(item.repo),
+    run_url: item.run_url ?? inferHtmlRunUrl(item.repo),
     download_zip: downloadZipUrl(item.html_url, item.default_branch)
   };
 }

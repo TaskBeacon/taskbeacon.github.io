@@ -360,7 +360,7 @@
         "variant": "html",
         "release_tag": "0.1.0",
         "last_updated": "2026-03-06T09:13:27.3316330Z",
-        "run_url": "https://taskbeacon.github.io/H000006-mid/",
+        "run_url": "https://taskbeacon.github.io/psyflow-web/?task=H000006-mid",
         "download_zip": "https://github.com/TaskBeacon/H000006-mid/archive/refs/heads/main.zip"
       }
     },

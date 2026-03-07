@@ -84,6 +84,14 @@ If both exist, the website keeps the main task card and adds:
 
 for the matched HTML companion.
 
+By default, HTML companions run through the shared `psyflow-web` GitHub Pages runner:
+
+```text
+https://taskbeacon.github.io/psyflow-web/?task=H000006-mid
+```
+
+You can override this with metadata such as `links.run_url` when needed.
+
 Rate limits:
 
 - Without a token, GitHub API requests may fail.
