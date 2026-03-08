@@ -1,119 +1,20 @@
 {
   "schema_version": 3,
-  "generated_at": "2026-02-10T01:39:05.417Z",
+  "generated_at": "2026-03-08T14:02:38.477Z",
   "org": "TaskBeacon",
   "tasks": [
     {
-      "repo": "ANT",
-      "full_name": "TaskBeacon/ANT",
-      "html_url": "https://github.com/TaskBeacon/ANT",
-      "default_branch": "main",
-      "short_description": "A task measuring alerting, orienting, and executive control networks.",
-      "maturity": "smoke_tested",
-      "tags": {
-        "paradigm": [
-          "ANT"
-        ],
-        "response": [],
-        "modality": [
-          "behavior",
-          "EEG",
-          "fMRI"
-        ],
-        "language": [
-          "Chinese"
-        ]
-      },
-      "keywords": [
-        "ant",
-        "attention",
-        "networks",
-        "flanker"
-      ],
-      "psyflow_version": "0.1.0",
-      "has_voiceover": true,
-      "last_updated": "2026-02-10T01:38:41Z",
-      "structure": {
-        "config": true,
-        "assets": true,
-        "src": true
-      },
-      "readme_run_anchor": "#run"
-    },
-    {
-      "repo": "T000014-stroop",
-      "full_name": "TaskBeacon/T000014-stroop",
-      "html_url": "https://github.com/TaskBeacon/T000014-stroop",
-      "default_branch": "main",
-      "short_description": "A task measuring response inhibition and selective attention.",
-      "maturity": "smoke_tested",
-      "tags": {
-        "paradigm": [
-          "Stroop"
-        ],
-        "response": [],
-        "modality": [
-          "EEG",
-          "fMRI",
-          "behavior"
-        ],
-        "language": [
-          "Chinese"
-        ]
-      },
-      "keywords": [
-        "Stroop"
-      ],
-      "psyflow_version": "0.1.0",
-      "has_voiceover": true,
-      "last_updated": "2026-02-09T13:34:01Z",
-      "structure": {
-        "config": true,
-        "assets": true,
-        "src": true
-      },
-      "readme_run_anchor": "#run"
-    },
-    {
-      "repo": "T000013-sst-audio",
-      "full_name": "TaskBeacon/T000013-sst-audio",
-      "html_url": "https://github.com/TaskBeacon/T000013-sst-audio",
-      "default_branch": "main",
-      "short_description": "A response inhibition task measuring the ability to suppress prepotent motor responses",
-      "maturity": "smoke_tested",
-      "tags": {
-        "paradigm": [
-          "SST"
-        ],
-        "response": [],
-        "modality": [
-          "EEG",
-          "behavior"
-        ],
-        "language": [
-          "Chinese"
-        ]
-      },
-      "keywords": [
-        "SST",
-        "audio"
-      ],
-      "psyflow_version": "0.1.0",
-      "has_voiceover": true,
-      "last_updated": "2026-02-09T13:33:54Z",
-      "structure": {
-        "config": true,
-        "assets": true,
-        "src": true
-      },
-      "readme_run_anchor": "#run"
-    },
-    {
+      "id": "T000012",
+      "slug": "sst",
+      "title": "Stop-Signal Task (SST)",
+      "acquisition": "EEG",
+      "variant": "baseline",
+      "release_tag": "v1.1.2",
       "repo": "T000012-sst",
       "full_name": "TaskBeacon/T000012-sst",
       "html_url": "https://github.com/TaskBeacon/T000012-sst",
       "default_branch": "main",
-      "short_description": "A response inhibition task measuring the ability to suppress prepotent motor responses",
+      "short_description": "Response inhibition task with adaptive stop-signal delay (SSD) using go/stop directional arrow trials.",
       "maturity": "piloted",
       "tags": {
         "paradigm": [
@@ -131,23 +32,436 @@
       "keywords": [
         "SST"
       ],
-      "psyflow_version": "0.1.0",
+      "psyflow_version": "0.1.9",
       "has_voiceover": true,
-      "last_updated": "2026-02-09T13:33:48Z",
+      "last_updated": "2026-03-04T11:57:00Z",
       "structure": {
         "config": true,
         "assets": true,
         "src": true
       },
-      "readme_run_anchor": "#run"
+      "readme_run_anchor": "#run-modes",
+      "run_url": null,
+      "web_variant": null
     },
     {
+      "id": "T000022",
+      "slug": "passive-lottery",
+      "title": "Passive Lottery Task",
+      "acquisition": "behavior",
+      "variant": "baseline",
+      "release_tag": "v0.2.3-dev",
+      "repo": "T000022-passive-lottery",
+      "full_name": "TaskBeacon/T000022-passive-lottery",
+      "html_url": "https://github.com/TaskBeacon/T000022-passive-lottery",
+      "default_branch": "main",
+      "short_description": "Passive observation task for gain/loss/mixed lottery outcomes with deterministic profile-driven sampling.",
+      "maturity": "draft",
+      "tags": {
+        "paradigm": [],
+        "response": [],
+        "modality": [
+          "behavior"
+        ],
+        "language": [
+          "Chinese"
+        ]
+      },
+      "keywords": [
+        "passive-lottery",
+        "passive",
+        "lottery"
+      ],
+      "psyflow_version": "0.1.9",
+      "has_voiceover": true,
+      "last_updated": "2026-03-04T00:43:32Z",
+      "structure": {
+        "config": true,
+        "assets": true,
+        "src": true
+      },
+      "readme_run_anchor": "#run",
+      "run_url": null,
+      "web_variant": null
+    },
+    {
+      "id": "T000021",
+      "slug": "drifting-double-bandit",
+      "title": "Drifting Double-Bandit Task",
+      "acquisition": "behavior",
+      "variant": "baseline",
+      "release_tag": "v0.2.3-dev",
+      "repo": "T000021-drifting-double-bandit",
+      "full_name": "TaskBeacon/T000021-drifting-double-bandit",
+      "html_url": "https://github.com/TaskBeacon/T000021-drifting-double-bandit",
+      "default_branch": "main",
+      "short_description": "Restless two-armed bandit task for exploration-exploitation behavior under non-stationary rewards.",
+      "maturity": "draft",
+      "tags": {
+        "paradigm": [],
+        "response": [],
+        "modality": [
+          "behavior"
+        ],
+        "language": [
+          "Chinese"
+        ]
+      },
+      "keywords": [
+        "drifting-double-bandit",
+        "drifting",
+        "double",
+        "bandit"
+      ],
+      "psyflow_version": "0.1.9",
+      "has_voiceover": true,
+      "last_updated": "2026-03-04T00:40:04Z",
+      "structure": {
+        "config": true,
+        "assets": true,
+        "src": true
+      },
+      "readme_run_anchor": "#run",
+      "run_url": null,
+      "web_variant": null
+    },
+    {
+      "id": "T000020",
+      "slug": "one-armed-bandit",
+      "title": "One-Armed Bandit Task",
+      "acquisition": "behavior",
+      "variant": "baseline",
+      "release_tag": "v0.2.2-dev",
+      "repo": "T000020-one-armed-bandit",
+      "full_name": "TaskBeacon/T000020-one-armed-bandit",
+      "html_url": "https://github.com/TaskBeacon/T000020-one-armed-bandit",
+      "default_branch": "main",
+      "short_description": "Two-option bandit learning task with block-wise probability reversals.",
+      "maturity": "draft",
+      "tags": {
+        "paradigm": [],
+        "response": [],
+        "modality": [
+          "behavior"
+        ],
+        "language": [
+          "Chinese"
+        ]
+      },
+      "keywords": [
+        "one-armed-bandit",
+        "one",
+        "armed",
+        "bandit"
+      ],
+      "psyflow_version": "0.1.9",
+      "has_voiceover": true,
+      "last_updated": "2026-03-02T14:00:27Z",
+      "structure": {
+        "config": true,
+        "assets": true,
+        "src": true
+      },
+      "readme_run_anchor": "#run",
+      "run_url": null,
+      "web_variant": null
+    },
+    {
+      "id": "T000019",
+      "slug": "eefrt",
+      "title": "EEfRT Task",
+      "acquisition": "behavior",
+      "variant": "baseline",
+      "release_tag": "v0.2.1-dev",
+      "repo": "T000019-eefrt",
+      "full_name": "TaskBeacon/T000019-eefrt",
+      "html_url": "https://github.com/TaskBeacon/T000019-eefrt",
+      "default_branch": "main",
+      "short_description": "Effort Expenditure for Rewards Task with probabilistic reward outcomes.",
+      "maturity": "draft",
+      "tags": {
+        "paradigm": [],
+        "response": [],
+        "modality": [
+          "behavior"
+        ],
+        "language": [
+          "Chinese"
+        ]
+      },
+      "keywords": [
+        "eefrt"
+      ],
+      "psyflow_version": "0.1.9",
+      "has_voiceover": true,
+      "last_updated": "2026-03-02T13:54:20Z",
+      "structure": {
+        "config": true,
+        "assets": true,
+        "src": true
+      },
+      "readme_run_anchor": "#run",
+      "run_url": null,
+      "web_variant": null
+    },
+    {
+      "id": "T000018",
+      "slug": "oddball-mmn",
+      "title": "Oddball Task (MMN/P3)",
+      "acquisition": "EEG",
+      "variant": "baseline",
+      "release_tag": "v0.2.0-dev",
+      "repo": "T000018-oddball-mmn",
+      "full_name": "TaskBeacon/T000018-oddball-mmn",
+      "html_url": "https://github.com/TaskBeacon/T000018-oddball-mmn",
+      "default_branch": "main",
+      "short_description": "Three-stimulus visual oddball task for MMN/P3-style novelty and target detection ERP paradigms",
+      "maturity": "draft",
+      "tags": {
+        "paradigm": [],
+        "response": [],
+        "modality": [
+          "EEG"
+        ],
+        "language": [
+          "Chinese"
+        ]
+      },
+      "keywords": [
+        "oddball-mmn",
+        "oddball",
+        "mmn"
+      ],
+      "psyflow_version": "0.1.9",
+      "has_voiceover": true,
+      "last_updated": "2026-03-02T13:49:14Z",
+      "structure": {
+        "config": true,
+        "assets": true,
+        "src": true
+      },
+      "readme_run_anchor": "#run",
+      "run_url": null,
+      "web_variant": null
+    },
+    {
+      "id": "T000017",
+      "slug": "delay-discounting",
+      "title": "Delay Discounting Task",
+      "acquisition": "behavior",
+      "variant": "baseline",
+      "release_tag": "v0.2.1-dev",
+      "repo": "T000017-delay-discounting",
+      "full_name": "TaskBeacon/T000017-delay-discounting",
+      "html_url": "https://github.com/TaskBeacon/T000017-delay-discounting",
+      "default_branch": "main",
+      "short_description": "MCQ-27 style intertemporal choice task (smaller-sooner vs larger-later)",
+      "maturity": "draft",
+      "tags": {
+        "paradigm": [],
+        "response": [],
+        "modality": [
+          "behavior"
+        ],
+        "language": [
+          "Chinese"
+        ]
+      },
+      "keywords": [
+        "delay-discounting",
+        "delay",
+        "discounting"
+      ],
+      "psyflow_version": "0.1.9",
+      "has_voiceover": true,
+      "last_updated": "2026-03-02T13:43:34Z",
+      "structure": {
+        "config": true,
+        "assets": true,
+        "src": true
+      },
+      "readme_run_anchor": "#run",
+      "run_url": null,
+      "web_variant": null
+    },
+    {
+      "id": "T000016",
+      "slug": "card-sorting",
+      "title": "Card Sorting Task (WCST-style)",
+      "acquisition": "behavior",
+      "variant": "baseline",
+      "release_tag": "v0.1.1-dev",
+      "repo": "T000016-card-sorting",
+      "full_name": "TaskBeacon/T000016-card-sorting",
+      "html_url": "https://github.com/TaskBeacon/T000016-card-sorting",
+      "default_branch": "main",
+      "short_description": "Rule-based card sorting task for cognitive flexibility and set-shifting",
+      "maturity": "draft",
+      "tags": {
+        "paradigm": [],
+        "response": [],
+        "modality": [
+          "behavior"
+        ],
+        "language": [
+          "Chinese"
+        ]
+      },
+      "keywords": [
+        "card-sorting",
+        "card",
+        "sorting"
+      ],
+      "psyflow_version": "0.1.9",
+      "has_voiceover": true,
+      "last_updated": "2026-03-02T13:40:44Z",
+      "structure": {
+        "config": true,
+        "assets": true,
+        "src": true
+      },
+      "readme_run_anchor": "#run",
+      "run_url": null,
+      "web_variant": null
+    },
+    {
+      "id": "T000015",
+      "slug": "ant",
+      "title": "Attention Network Test (ANT)",
+      "acquisition": "EEG",
+      "variant": "baseline",
+      "release_tag": "v1.1.2",
+      "repo": "T000015-ant",
+      "full_name": "TaskBeacon/T000015-ant",
+      "html_url": "https://github.com/TaskBeacon/T000015-ant",
+      "default_branch": "main",
+      "short_description": "ANT implementation measuring alerting, orienting, and executive-control effects from cue and flanker manipulations.",
+      "maturity": "smoke_tested",
+      "tags": {
+        "paradigm": [
+          "ANT"
+        ],
+        "response": [],
+        "modality": [
+          "EEG",
+          "behavior"
+        ],
+        "language": [
+          "Chinese"
+        ]
+      },
+      "keywords": [
+        "ANT"
+      ],
+      "psyflow_version": "0.1.9",
+      "has_voiceover": true,
+      "last_updated": "2026-03-02T13:25:10Z",
+      "structure": {
+        "config": true,
+        "assets": true,
+        "src": true
+      },
+      "readme_run_anchor": "#run-modes",
+      "run_url": null,
+      "web_variant": null
+    },
+    {
+      "id": "T000014",
+      "slug": "stroop",
+      "title": "Stroop Task",
+      "acquisition": "EEG",
+      "variant": "baseline",
+      "release_tag": "v1.1.2",
+      "repo": "T000014-stroop",
+      "full_name": "TaskBeacon/T000014-stroop",
+      "html_url": "https://github.com/TaskBeacon/T000014-stroop",
+      "default_branch": "main",
+      "short_description": "Classic color-word Stroop task measuring interference control (congruent vs incongruent trials).",
+      "maturity": "smoke_tested",
+      "tags": {
+        "paradigm": [
+          "Stroop"
+        ],
+        "response": [],
+        "modality": [
+          "EEG",
+          "behavior"
+        ],
+        "language": [
+          "Chinese"
+        ]
+      },
+      "keywords": [
+        "Stroop"
+      ],
+      "psyflow_version": "0.1.9",
+      "has_voiceover": true,
+      "last_updated": "2026-03-02T13:04:59Z",
+      "structure": {
+        "config": true,
+        "assets": true,
+        "src": true
+      },
+      "readme_run_anchor": "#run-modes",
+      "run_url": null,
+      "web_variant": null
+    },
+    {
+      "id": "T000013",
+      "slug": "sst-audio",
+      "title": "Stop-Signal Task (SST-Audio)",
+      "acquisition": "EEG",
+      "variant": "audio",
+      "release_tag": "v1.1.2",
+      "repo": "T000013-sst-audio",
+      "full_name": "TaskBeacon/T000013-sst-audio",
+      "html_url": "https://github.com/TaskBeacon/T000013-sst-audio",
+      "default_branch": "main",
+      "short_description": "Auditory stop-signal variant of SST with adaptive stop-signal delay (SSD).",
+      "maturity": "smoke_tested",
+      "tags": {
+        "paradigm": [
+          "SST"
+        ],
+        "response": [],
+        "modality": [
+          "EEG",
+          "behavior"
+        ],
+        "language": [
+          "Chinese"
+        ]
+      },
+      "keywords": [
+        "SST",
+        "sst-audio",
+        "audio"
+      ],
+      "psyflow_version": "0.1.9",
+      "has_voiceover": true,
+      "last_updated": "2026-03-02T12:54:49Z",
+      "structure": {
+        "config": true,
+        "assets": true,
+        "src": true
+      },
+      "readme_run_anchor": "#run-modes",
+      "run_url": null,
+      "web_variant": null
+    },
+    {
+      "id": "T000011",
+      "slug": "simon",
+      "title": "Simon Task",
+      "acquisition": "EEG",
+      "variant": "baseline",
+      "release_tag": "v1.2.0",
       "repo": "T000011-simon",
       "full_name": "TaskBeacon/T000011-simon",
       "html_url": "https://github.com/TaskBeacon/T000011-simon",
       "default_branch": "main",
-      "short_description": "A task measuring response conflict and cognitive control.",
-      "maturity": "smoke_tested",
+      "short_description": "A Simon conflict task measuring color-based response control under irrelevant spatial interference.",
+      "maturity": "piloted",
       "tags": {
         "paradigm": [
           "Simon"
@@ -155,7 +469,6 @@
         "response": [],
         "modality": [
           "EEG",
-          "fMRI",
           "behavior"
         ],
         "language": [
@@ -165,22 +478,30 @@
       "keywords": [
         "Simon"
       ],
-      "psyflow_version": "0.1.0",
+      "psyflow_version": "0.1.9",
       "has_voiceover": true,
-      "last_updated": "2026-02-09T13:33:40Z",
+      "last_updated": "2026-03-02T12:24:15Z",
       "structure": {
         "config": true,
         "assets": true,
         "src": true
       },
-      "readme_run_anchor": "#run"
+      "readme_run_anchor": "#run",
+      "run_url": null,
+      "web_variant": null
     },
     {
+      "id": "T000010",
+      "slug": "rest",
+      "title": "Resting-state Task (EC+EO)",
+      "acquisition": "EEG",
+      "variant": "baseline",
+      "release_tag": "v1.2.0",
       "repo": "T000010-rest",
       "full_name": "TaskBeacon/T000010-rest",
       "html_url": "https://github.com/TaskBeacon/T000010-rest",
       "default_branch": "main",
-      "short_description": "EC + EO",
+      "short_description": "Eyes-closed / eyes-open resting-state paradigm for EEG baseline acquisition",
       "maturity": "piloted",
       "tags": {
         "paradigm": [
@@ -198,17 +519,25 @@
       "keywords": [
         "Rest"
       ],
-      "psyflow_version": "0.1.0",
+      "psyflow_version": "0.1.9",
       "has_voiceover": true,
-      "last_updated": "2026-02-09T13:33:34Z",
+      "last_updated": "2026-03-02T12:11:21Z",
       "structure": {
         "config": true,
         "assets": true,
         "src": true
       },
-      "readme_run_anchor": "#run"
+      "readme_run_anchor": "#run",
+      "run_url": null,
+      "web_variant": null
     },
     {
+      "id": "T000009",
+      "slug": "prl",
+      "title": "Probabilistic Reversal Learning (PRL) Task",
+      "acquisition": "EEG",
+      "variant": "baseline",
+      "release_tag": "1.1.2",
       "repo": "T000009-prl",
       "full_name": "TaskBeacon/T000009-prl",
       "html_url": "https://github.com/TaskBeacon/T000009-prl",
@@ -233,15 +562,23 @@
       ],
       "psyflow_version": "0.1.0",
       "has_voiceover": true,
-      "last_updated": "2026-02-09T13:33:27Z",
+      "last_updated": "2026-03-02T12:01:13Z",
       "structure": {
         "config": true,
         "assets": true,
         "src": true
       },
-      "readme_run_anchor": "#run"
+      "readme_run_anchor": "#run",
+      "run_url": null,
+      "web_variant": null
     },
     {
+      "id": "T000008",
+      "slug": "nback",
+      "title": "N-Back Task",
+      "acquisition": "EEG",
+      "variant": "baseline",
+      "release_tag": "1.1.2",
       "repo": "T000008-nback",
       "full_name": "TaskBeacon/T000008-nback",
       "html_url": "https://github.com/TaskBeacon/T000008-nback",
@@ -269,20 +606,28 @@
       ],
       "psyflow_version": "0.1.0",
       "has_voiceover": true,
-      "last_updated": "2026-02-09T13:33:19Z",
+      "last_updated": "2026-03-02T11:46:18Z",
       "structure": {
         "config": true,
         "assets": true,
         "src": true
       },
-      "readme_run_anchor": "#run"
+      "readme_run_anchor": "#run",
+      "run_url": null,
+      "web_variant": null
     },
     {
+      "id": "T000007",
+      "slug": "movie",
+      "title": "Movie Watching Task",
+      "acquisition": "EEG",
+      "variant": "baseline",
+      "release_tag": "1.1.2",
       "repo": "T000007-movie",
       "full_name": "TaskBeacon/T000007-movie",
       "html_url": "https://github.com/TaskBeacon/T000007-movie",
       "default_branch": "main",
-      "short_description": "A passive video-watching task with a centered movie clip for EEG studies",
+      "short_description": "Passive movie-viewing EEG task with centered movie stimulus",
       "maturity": "piloted",
       "tags": {
         "paradigm": [
@@ -290,7 +635,8 @@
         ],
         "response": [],
         "modality": [
-          "EEG"
+          "EEG",
+          "behavior"
         ],
         "language": [
           "Chinese"
@@ -299,15 +645,17 @@
       "keywords": [
         "Movie"
       ],
-      "psyflow_version": "0.1.0",
+      "psyflow_version": "0.1.9",
       "has_voiceover": true,
-      "last_updated": "2026-02-09T13:33:09Z",
+      "last_updated": "2026-03-02T11:35:13Z",
       "structure": {
         "config": true,
         "assets": true,
         "src": true
       },
-      "readme_run_anchor": "#run"
+      "readme_run_anchor": "#run",
+      "run_url": null,
+      "web_variant": null
     },
     {
       "id": "T000006",
@@ -339,9 +687,9 @@
       "keywords": [
         "MID"
       ],
-      "psyflow_version": "0.1.0",
+      "psyflow_version": "0.1.8",
       "has_voiceover": true,
-      "last_updated": "2026-02-09T13:33:02Z",
+      "last_updated": "2026-03-02T11:29:05Z",
       "structure": {
         "config": true,
         "assets": true,
@@ -354,22 +702,28 @@
         "title": "Monetary Incentive Delay (MID) Task",
         "html_url": "https://github.com/TaskBeacon/H000006-mid",
         "default_branch": "main",
-        "short_description": "HTML/browser preview of the Monetary Incentive Delay task built with psyflow-web.",
+        "short_description": "HTML/browser preview of the Monetary Incentive Delay task built with psyflow-web. The within-trial procedure, timing, controller, and ins...",
         "maturity": "prototype",
         "acquisition": "behavior",
         "variant": "html",
         "release_tag": "0.1.0",
-        "last_updated": "2026-03-06T09:13:27.3316330Z",
+        "last_updated": "2026-03-07T06:23:32Z",
         "run_url": "https://taskbeacon.github.io/psyflow-web/?task=H000006-mid",
         "download_zip": "https://github.com/TaskBeacon/H000006-mid/archive/refs/heads/main.zip"
       }
     },
     {
+      "id": "T000005",
+      "slug": "go-nogo",
+      "title": "Go/No-Go Task",
+      "acquisition": "EEG",
+      "variant": "baseline",
+      "release_tag": "v1.2.0",
       "repo": "T000005-go-nogo",
       "full_name": "TaskBeacon/T000005-go-nogo",
       "html_url": "https://github.com/TaskBeacon/T000005-go-nogo",
       "default_branch": "main",
-      "short_description": "A task measuring the ability to respond to target stimuli and inhibit responses to non-target stimuli.",
+      "short_description": "Response inhibition task with prepotent Go trials and NoGo withholding.",
       "maturity": "smoke_tested",
       "tags": {
         "paradigm": [
@@ -388,25 +742,34 @@
       },
       "keywords": [
         "Go/No-Go",
+        "go-nogo",
         "go",
         "nogo"
       ],
-      "psyflow_version": "0.1.0",
+      "psyflow_version": "0.1.8",
       "has_voiceover": true,
-      "last_updated": "2026-02-09T13:32:54Z",
+      "last_updated": "2026-03-02T10:02:17Z",
       "structure": {
         "config": true,
         "assets": true,
         "src": true
       },
-      "readme_run_anchor": "#run"
+      "readme_run_anchor": "#run",
+      "run_url": null,
+      "web_variant": null
     },
     {
+      "id": "T000004",
+      "slug": "flanker",
+      "title": "Flanker Task",
+      "acquisition": "EEG",
+      "variant": "baseline",
+      "release_tag": "v1.2.0",
       "repo": "T000004-flanker",
       "full_name": "TaskBeacon/T000004-flanker",
       "html_url": "https://github.com/TaskBeacon/T000004-flanker",
       "default_branch": "main",
-      "short_description": "A task measuring response inhibition and selective attention.",
+      "short_description": "Arrow-based Flanker task for selective attention and interference control (behavior/EEG).",
       "maturity": "smoke_tested",
       "tags": {
         "paradigm": [
@@ -415,7 +778,6 @@
         "response": [],
         "modality": [
           "EEG",
-          "fMRI",
           "behavior"
         ],
         "language": [
@@ -425,22 +787,30 @@
       "keywords": [
         "Flanker"
       ],
-      "psyflow_version": "0.1.0",
+      "psyflow_version": "0.1.9",
       "has_voiceover": true,
-      "last_updated": "2026-02-09T13:32:48Z",
+      "last_updated": "2026-03-02T09:29:31Z",
       "structure": {
         "config": true,
         "assets": true,
         "src": true
       },
-      "readme_run_anchor": "#run"
+      "readme_run_anchor": "#run",
+      "run_url": null,
+      "web_variant": null
     },
     {
+      "id": "T000003",
+      "slug": "emodot",
+      "title": "Emotional Dot-Probe Task (EmoDot)",
+      "acquisition": "EEG",
+      "variant": "baseline",
+      "release_tag": "v1.1.3",
       "repo": "T000003-emodot",
       "full_name": "TaskBeacon/T000003-emodot",
       "html_url": "https://github.com/TaskBeacon/T000003-emodot",
       "default_branch": "main",
-      "short_description": "A task for assessing attentional bias toward emotional facial stimuli",
+      "short_description": "Emotional/neutral face-pair dot-probe task for attentional bias and EEG",
       "maturity": "piloted",
       "tags": {
         "paradigm": [],
@@ -456,22 +826,30 @@
       "keywords": [
         "emodot"
       ],
-      "psyflow_version": "0.1.0",
+      "psyflow_version": "0.1.9",
       "has_voiceover": true,
-      "last_updated": "2026-02-09T13:32:38Z",
+      "last_updated": "2026-03-02T08:51:18Z",
       "structure": {
         "config": true,
         "assets": true,
         "src": true
       },
-      "readme_run_anchor": "#run"
+      "readme_run_anchor": "#run",
+      "run_url": null,
+      "web_variant": null
     },
     {
+      "id": "T000002",
+      "slug": "bart",
+      "title": "Balloon Analogue Risk Task (BART)",
+      "acquisition": "EEG",
+      "variant": "baseline",
+      "release_tag": "v1.1.0",
       "repo": "T000002-bart",
       "full_name": "TaskBeacon/T000002-bart",
       "html_url": "https://github.com/TaskBeacon/T000002-bart",
       "default_branch": "main",
-      "short_description": "A task measuring risk-taking behavior using the classic BART paradigm.",
+      "short_description": "A risk-taking task based on BART with color-specific burst profiles.",
       "maturity": "smoke_tested",
       "tags": {
         "paradigm": [
@@ -480,7 +858,6 @@
         "response": [],
         "modality": [
           "EEG",
-          "fMRI",
           "behavior"
         ],
         "language": [
@@ -492,15 +869,23 @@
       ],
       "psyflow_version": "0.1.0",
       "has_voiceover": true,
-      "last_updated": "2026-02-09T13:31:52Z",
+      "last_updated": "2026-03-02T08:08:44Z",
       "structure": {
         "config": true,
         "assets": true,
         "src": true
       },
-      "readme_run_anchor": "#run"
+      "readme_run_anchor": "#run",
+      "run_url": null,
+      "web_variant": null
     },
     {
+      "id": "T000001",
+      "slug": "ax-cpt",
+      "title": "AX-CPT Task",
+      "acquisition": "EEG",
+      "variant": "baseline",
+      "release_tag": null,
       "repo": "T000001-ax-cpt",
       "full_name": "TaskBeacon/T000001-ax-cpt",
       "html_url": "https://github.com/TaskBeacon/T000001-ax-cpt",
@@ -528,15 +913,509 @@
         "CPT",
         "ax"
       ],
-      "psyflow_version": "0.1.0",
+      "psyflow_version": "0.1.8",
       "has_voiceover": true,
-      "last_updated": "2026-02-09T13:31:46Z",
+      "last_updated": "2026-03-02T07:29:33Z",
       "structure": {
         "config": true,
         "assets": true,
         "src": true
       },
-      "readme_run_anchor": "#run"
+      "readme_run_anchor": "#run",
+      "run_url": null,
+      "web_variant": {
+        "repo": "H000001-ax-cpt",
+        "title": "AX-CPT Task",
+        "html_url": "https://github.com/TaskBeacon/H000001-ax-cpt",
+        "default_branch": "main",
+        "short_description": "HTML/browser preview of the AX-CPT task built with psyflow-web. The within-trial procedure, task rules, timing, weighted condition genera...",
+        "maturity": "prototype",
+        "acquisition": "behavior",
+        "variant": "html",
+        "release_tag": "0.1.0",
+        "last_updated": "2026-03-08T14:00:39Z",
+        "run_url": "https://taskbeacon.github.io/psyflow-web/?task=H000001-ax-cpt",
+        "download_zip": "https://github.com/TaskBeacon/H000001-ax-cpt/archive/refs/heads/main.zip"
+      }
+    },
+    {
+      "id": "T000034",
+      "slug": "cyberball",
+      "title": "Cyberball Task",
+      "acquisition": "behavior",
+      "variant": "baseline",
+      "release_tag": "v0.1.1-dev",
+      "repo": "T000034-cyberball",
+      "full_name": "TaskBeacon/T000034-cyberball",
+      "html_url": "https://github.com/TaskBeacon/T000034-cyberball",
+      "default_branch": "main",
+      "short_description": "Three-player virtual ball-toss paradigm for social inclusion and ostracism.",
+      "maturity": "draft",
+      "tags": {
+        "paradigm": [],
+        "response": [
+          "continuous"
+        ],
+        "modality": [
+          "behavior"
+        ],
+        "language": [
+          "English"
+        ]
+      },
+      "keywords": [
+        "cyberball"
+      ],
+      "psyflow_version": "0.1.9",
+      "has_voiceover": true,
+      "last_updated": "2026-03-02T05:04:07Z",
+      "structure": {
+        "config": true,
+        "assets": true,
+        "src": true
+      },
+      "readme_run_anchor": "#run",
+      "run_url": null,
+      "web_variant": null
+    },
+    {
+      "id": "T000033",
+      "slug": "visual-search",
+      "title": "Visual Search Task",
+      "acquisition": "behavior",
+      "variant": "baseline",
+      "release_tag": "v0.1.1-dev",
+      "repo": "T000033-visual-search",
+      "full_name": "TaskBeacon/T000033-visual-search",
+      "html_url": "https://github.com/TaskBeacon/T000033-visual-search",
+      "default_branch": "main",
+      "short_description": "Feature vs conjunction visual search with present/absent decisions.",
+      "maturity": "draft",
+      "tags": {
+        "paradigm": [],
+        "response": [],
+        "modality": [
+          "behavior"
+        ],
+        "language": [
+          "English"
+        ]
+      },
+      "keywords": [
+        "visual-search",
+        "visual",
+        "search"
+      ],
+      "psyflow_version": "0.1.9",
+      "has_voiceover": true,
+      "last_updated": "2026-03-02T04:55:33Z",
+      "structure": {
+        "config": true,
+        "assets": true,
+        "src": true
+      },
+      "readme_run_anchor": "#run",
+      "run_url": null,
+      "web_variant": null
+    },
+    {
+      "id": "T000032",
+      "slug": "antisaccade",
+      "title": "Antisaccade Task",
+      "acquisition": "behavior",
+      "variant": "baseline",
+      "release_tag": "v0.1.2-dev",
+      "repo": "T000032-antisaccade",
+      "full_name": "TaskBeacon/T000032-antisaccade",
+      "html_url": "https://github.com/TaskBeacon/T000032-antisaccade",
+      "default_branch": "main",
+      "short_description": "Rule-dependent inhibitory control with prosaccade versus antisaccade responses.",
+      "maturity": "draft",
+      "tags": {
+        "paradigm": [],
+        "response": [],
+        "modality": [
+          "behavior"
+        ],
+        "language": [
+          "Chinese"
+        ]
+      },
+      "keywords": [
+        "antisaccade"
+      ],
+      "psyflow_version": "0.1.9",
+      "has_voiceover": true,
+      "last_updated": "2026-03-02T04:48:24Z",
+      "structure": {
+        "config": true,
+        "assets": true,
+        "src": true
+      },
+      "readme_run_anchor": "#run",
+      "run_url": null,
+      "web_variant": null
+    },
+    {
+      "id": "T000031",
+      "slug": "loss-aversion-framing",
+      "title": "Loss Aversion / Framing Task",
+      "acquisition": "behavior",
+      "variant": "baseline",
+      "release_tag": "v0.1.2-dev",
+      "repo": "T000031-loss-aversion-framing",
+      "full_name": "TaskBeacon/T000031-loss-aversion-framing",
+      "html_url": "https://github.com/TaskBeacon/T000031-loss-aversion-framing",
+      "default_branch": "main",
+      "short_description": "Sure-vs-risk decision task with gain, loss, and mixed framing conditions.",
+      "maturity": "draft",
+      "tags": {
+        "paradigm": [],
+        "response": [],
+        "modality": [
+          "behavior"
+        ],
+        "language": [
+          "Chinese"
+        ]
+      },
+      "keywords": [
+        "loss-aversion-framing",
+        "loss",
+        "aversion",
+        "framing"
+      ],
+      "psyflow_version": "0.1.9",
+      "has_voiceover": true,
+      "last_updated": "2026-03-02T04:42:24Z",
+      "structure": {
+        "config": true,
+        "assets": true,
+        "src": true
+      },
+      "readme_run_anchor": "#run",
+      "run_url": null,
+      "web_variant": null
+    },
+    {
+      "id": "T000030",
+      "slug": "iowa-gambling",
+      "title": "Iowa Gambling Task",
+      "acquisition": "behavior",
+      "variant": "baseline",
+      "release_tag": "v0.1.2-dev",
+      "repo": "T000030-iowa-gambling",
+      "full_name": "TaskBeacon/T000030-iowa-gambling",
+      "html_url": "https://github.com/TaskBeacon/T000030-iowa-gambling",
+      "default_branch": "main",
+      "short_description": "Four-deck decision task probing long-term reward/loss learning under uncertainty.",
+      "maturity": "draft",
+      "tags": {
+        "paradigm": [],
+        "response": [],
+        "modality": [
+          "behavior"
+        ],
+        "language": [
+          "Chinese"
+        ]
+      },
+      "keywords": [
+        "iowa-gambling",
+        "iowa",
+        "gambling"
+      ],
+      "psyflow_version": "0.1.9",
+      "has_voiceover": true,
+      "last_updated": "2026-03-02T04:36:27Z",
+      "structure": {
+        "config": true,
+        "assets": true,
+        "src": true
+      },
+      "readme_run_anchor": "#run",
+      "run_url": null,
+      "web_variant": null
+    },
+    {
+      "id": "T000029",
+      "slug": "cambridge-gambling",
+      "title": "Cambridge Gambling Task",
+      "acquisition": "behavior",
+      "variant": "baseline",
+      "release_tag": "v0.2.0-dev",
+      "repo": "T000029-cambridge-gambling",
+      "full_name": "TaskBeacon/T000029-cambridge-gambling",
+      "html_url": "https://github.com/TaskBeacon/T000029-cambridge-gambling",
+      "default_branch": "main",
+      "short_description": "Explicit-risk decision task with red/blue probability judgment and proportional betting.",
+      "maturity": "draft",
+      "tags": {
+        "paradigm": [],
+        "response": [],
+        "modality": [
+          "behavior"
+        ],
+        "language": [
+          "Chinese"
+        ]
+      },
+      "keywords": [
+        "cambridge-gambling",
+        "cambridge",
+        "gambling"
+      ],
+      "psyflow_version": "0.1.9",
+      "has_voiceover": true,
+      "last_updated": "2026-03-02T04:28:41Z",
+      "structure": {
+        "config": true,
+        "assets": true,
+        "src": true
+      },
+      "readme_run_anchor": "#run",
+      "run_url": null,
+      "web_variant": null
+    },
+    {
+      "id": "T000028",
+      "slug": "weather-prediction",
+      "title": "Weather Prediction Task",
+      "acquisition": "behavior",
+      "variant": "baseline",
+      "release_tag": "v0.2.0-dev",
+      "repo": "T000028-weather-prediction",
+      "full_name": "TaskBeacon/T000028-weather-prediction",
+      "html_url": "https://github.com/TaskBeacon/T000028-weather-prediction",
+      "default_branch": "main",
+      "short_description": "Probabilistic category learning task using multi-cue card combinations to predict weather outcomes.",
+      "maturity": "draft",
+      "tags": {
+        "paradigm": [],
+        "response": [],
+        "modality": [
+          "behavior"
+        ],
+        "language": [
+          "Chinese"
+        ]
+      },
+      "keywords": [
+        "weather-prediction",
+        "weather",
+        "prediction"
+      ],
+      "psyflow_version": "0.1.9",
+      "has_voiceover": true,
+      "last_updated": "2026-03-02T04:19:38Z",
+      "structure": {
+        "config": true,
+        "assets": true,
+        "src": true
+      },
+      "readme_run_anchor": "#run",
+      "run_url": null,
+      "web_variant": null
+    },
+    {
+      "id": "T000027",
+      "slug": "task-switching",
+      "title": "Task Switching Task",
+      "acquisition": "behavior",
+      "variant": "baseline",
+      "release_tag": "v0.2.0-dev",
+      "repo": "T000027-task-switching",
+      "full_name": "TaskBeacon/T000027-task-switching",
+      "html_url": "https://github.com/TaskBeacon/T000027-task-switching",
+      "default_branch": "main",
+      "short_description": "Cued task-switching paradigm with explicit rule transitions and switch-cost metrics.",
+      "maturity": "draft",
+      "tags": {
+        "paradigm": [],
+        "response": [],
+        "modality": [
+          "behavior"
+        ],
+        "language": [
+          "Chinese"
+        ]
+      },
+      "keywords": [
+        "task-switching",
+        "task",
+        "switching"
+      ],
+      "psyflow_version": "0.1.9",
+      "has_voiceover": true,
+      "last_updated": "2026-03-02T04:11:07Z",
+      "structure": {
+        "config": true,
+        "assets": true,
+        "src": true
+      },
+      "readme_run_anchor": "#run",
+      "run_url": null,
+      "web_variant": null
+    },
+    {
+      "id": "T000026",
+      "slug": "mcgurk",
+      "title": "McGurk Effect Task",
+      "acquisition": "behavior",
+      "variant": "baseline",
+      "release_tag": "v0.2.0-dev",
+      "repo": "T000026-mcgurk",
+      "full_name": "TaskBeacon/T000026-mcgurk",
+      "html_url": "https://github.com/TaskBeacon/T000026-mcgurk",
+      "default_branch": "main",
+      "short_description": "Audiovisual speech integration task with congruent, incongruent, and audio-only trials for measuring McGurk fusion reports.",
+      "maturity": "draft",
+      "tags": {
+        "paradigm": [],
+        "response": [],
+        "modality": [
+          "behavior"
+        ],
+        "language": [
+          "Chinese"
+        ]
+      },
+      "keywords": [
+        "mcgurk"
+      ],
+      "psyflow_version": "0.1.9",
+      "has_voiceover": true,
+      "last_updated": "2026-03-02T03:59:11Z",
+      "structure": {
+        "config": true,
+        "assets": true,
+        "src": true
+      },
+      "readme_run_anchor": "#run",
+      "run_url": null,
+      "web_variant": null
+    },
+    {
+      "id": "T000025",
+      "slug": "dictator-game",
+      "title": "Dictator Game",
+      "acquisition": "behavior",
+      "variant": "baseline",
+      "release_tag": "v0.2.2-dev",
+      "repo": "T000025-dictator-game",
+      "full_name": "TaskBeacon/T000025-dictator-game",
+      "html_url": "https://github.com/TaskBeacon/T000025-dictator-game",
+      "default_branch": "main",
+      "short_description": "Three-option allocation decisions (generous/equal/selfish) under different stake levels.",
+      "maturity": "draft",
+      "tags": {
+        "paradigm": [],
+        "response": [],
+        "modality": [
+          "behavior"
+        ],
+        "language": [
+          "Chinese"
+        ]
+      },
+      "keywords": [
+        "dictator-game",
+        "dictator",
+        "game"
+      ],
+      "psyflow_version": "0.1.9",
+      "has_voiceover": true,
+      "last_updated": "2026-03-02T03:52:52Z",
+      "structure": {
+        "config": true,
+        "assets": true,
+        "src": true
+      },
+      "readme_run_anchor": "#run",
+      "run_url": null,
+      "web_variant": null
+    },
+    {
+      "id": "T000024",
+      "slug": "trust-game",
+      "title": "Trust Game",
+      "acquisition": "behavior",
+      "variant": "baseline",
+      "release_tag": "v0.2.2-dev",
+      "repo": "T000024-trust-game",
+      "full_name": "TaskBeacon/T000024-trust-game",
+      "html_url": "https://github.com/TaskBeacon/T000024-trust-game",
+      "default_branch": "main",
+      "short_description": "Investment vs keep decisions across partners with different return tendencies.",
+      "maturity": "draft",
+      "tags": {
+        "paradigm": [],
+        "response": [],
+        "modality": [
+          "behavior"
+        ],
+        "language": [
+          "Chinese"
+        ]
+      },
+      "keywords": [
+        "trust-game",
+        "trust",
+        "game"
+      ],
+      "psyflow_version": "0.1.9",
+      "has_voiceover": true,
+      "last_updated": "2026-03-02T03:38:01Z",
+      "structure": {
+        "config": true,
+        "assets": true,
+        "src": true
+      },
+      "readme_run_anchor": "#run",
+      "run_url": null,
+      "web_variant": null
+    },
+    {
+      "id": "T000023",
+      "slug": "ultimatum-game",
+      "title": "Ultimatum Game",
+      "acquisition": "behavior",
+      "variant": "baseline",
+      "release_tag": "v0.3.1-dev",
+      "repo": "T000023-ultimatum-game",
+      "full_name": "TaskBeacon/T000023-ultimatum-game",
+      "html_url": "https://github.com/TaskBeacon/T000023-ultimatum-game",
+      "default_branch": "main",
+      "short_description": "Responder-side accept/reject decisions for fairness-manipulated monetary allocation offers.",
+      "maturity": "draft",
+      "tags": {
+        "paradigm": [],
+        "response": [],
+        "modality": [
+          "behavior",
+          "EEG",
+          "fMRI"
+        ],
+        "language": [
+          "Chinese"
+        ]
+      },
+      "keywords": [
+        "ultimatum-game",
+        "ultimatum",
+        "game"
+      ],
+      "psyflow_version": "0.1.9",
+      "has_voiceover": true,
+      "last_updated": "2026-03-02T02:25:05Z",
+      "structure": {
+        "config": true,
+        "assets": true,
+        "src": true
+      },
+      "readme_run_anchor": "#run",
+      "run_url": null,
+      "web_variant": null
     }
   ]
 }
