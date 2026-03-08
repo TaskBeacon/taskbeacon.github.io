@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import { Markdown } from "@/components/markdown";
 import { TaskChannelCard } from "@/components/task-channel-card";
 import type { TaskIndexItem } from "@/lib/task-index";
+import { taskDetailHref } from "@/lib/routes";
 import {
   localCloneCommand,
   taskHandle,
@@ -103,7 +104,7 @@ export function TaskDrawer({
             <div className="flex items-center gap-2">
               <Link
                 className="tb-focus-ring rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm font-semibold text-slate-800 hover:border-brand-200 hover:bg-brand-50"
-                href={`/tasks/${encodeURIComponent(task.repo)}`}
+                href={taskDetailHref(task.repo)}
               >
                 Open full page
               </Link>

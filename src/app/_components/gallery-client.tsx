@@ -9,12 +9,10 @@ import {
   type SelectedFacets
 } from "@/lib/task-filter";
 import { TagChip } from "@/components/tag-chip";
-import { TaskCard } from "@/components/task-card";
 import { TaskRow } from "@/components/task-row";
 import { TaskDrawer } from "@/components/task-drawer";
-import clsx from "@/components/utils/clsx";
-import { IconViewGrid, IconViewList } from "@/components/icons";
 import { formatMaturityLabel } from "@/components/maturity-badge";
+import { formatIsoDateTime } from "@/lib/format";
 
 function FacetSection({
   title,
@@ -66,55 +64,15 @@ function FacetSection({
   );
 }
 
-function ViewToggle({
-  view,
-  setView
+export function GalleryClient({
+  tasks,
+  generatedAt
 }: {
-  view: "list" | "cards";
-  setView: (view: "list" | "cards") => void;
+  tasks: TaskIndexItem[];
+  generatedAt: string;
 }) {
-  return (
-    <div
-      className="inline-flex rounded-xl border border-slate-200 bg-white p-1 shadow-sm"
-      role="group"
-      aria-label="Gallery view"
-    >
-      <button
-        type="button"
-        aria-pressed={view === "list"}
-        className={clsx(
-          "tb-focus-ring inline-flex items-center gap-2 rounded-lg px-3 py-2 text-xs font-semibold transition-colors",
-          view === "list"
-            ? "bg-brand-700 text-white"
-            : "text-slate-800 hover:bg-brand-50 hover:text-brand-900"
-        )}
-        onClick={() => setView("list")}
-      >
-        <IconViewList className="size-4" />
-        List
-      </button>
-      <button
-        type="button"
-        aria-pressed={view === "cards"}
-        className={clsx(
-          "tb-focus-ring inline-flex items-center gap-2 rounded-lg px-3 py-2 text-xs font-semibold transition-colors",
-          view === "cards"
-            ? "bg-brand-700 text-white"
-            : "text-slate-800 hover:bg-brand-50 hover:text-brand-900"
-        )}
-        onClick={() => setView("cards")}
-      >
-        <IconViewGrid className="size-4" />
-        Cards
-      </button>
-    </div>
-  );
-}
-
-export function GalleryClient({ tasks }: { tasks: TaskIndexItem[] }) {
   const [query, setQuery] = useState<string>("");
   const [selected, setSelected] = useState<SelectedFacets>(() => emptySelectedFacets());
-  const [view, setView] = useState<"list" | "cards">("list");
   const [activeRepo, setActiveRepo] = useState<string | null>(null);
   const [openFacets, setOpenFacets] = useState<{ maturity: boolean; paradigm: boolean }>({
     maturity: true,
@@ -124,6 +82,14 @@ export function GalleryClient({ tasks }: { tasks: TaskIndexItem[] }) {
   const deferredQuery = useDeferredValue(query);
   const allMaturities = useMemo(() => facetValues(tasks, "maturity"), [tasks]);
   const allParadigms = useMemo(() => facetValues(tasks, "paradigm"), [tasks]);
+  const previewCount = useMemo(() => tasks.filter((task) => task.web_variant).length, [tasks]);
+  const paradigmCount = useMemo(
+    () =>
+      new Set(
+        tasks.flatMap((task) => task.tags?.paradigm ?? []).map((value) => value.toLowerCase())
+      ).size,
+    [tasks]
+  );
   const filtered = useMemo(
     () => filterTasks(tasks, deferredQuery, selected),
     [deferredQuery, selected, tasks]
@@ -162,55 +128,102 @@ export function GalleryClient({ tasks }: { tasks: TaskIndexItem[] }) {
   }
 
   return (
-    <section id="explorer" className="space-y-5">
+    <section className="space-y-6">
       <div className="rounded-[32px] border border-slate-200 bg-white/90 p-5 shadow-sm">
-        <div className="flex flex-col gap-5">
-          <div className="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
-            <div className="min-w-0 flex-1">
+        <div className="flex flex-col gap-6">
+          <div className="flex flex-col gap-4 xl:flex-row xl:items-end xl:justify-between">
+            <div>
               <div className="text-[11px] font-semibold uppercase tracking-[0.18em] text-slate-500">
-                Task explorer
+                Tasks
               </div>
-              <div className="mt-2 font-heading text-2xl font-semibold tracking-tight text-slate-900">
-                Browse canonical local tasks and attached browser previews.
+              <div className="mt-2 font-heading text-3xl font-semibold tracking-tight text-slate-900">
+                Browse canonical local tasks and aligned previews.
               </div>
               <div className="mt-2 max-w-3xl text-sm leading-6 text-slate-700">
-                Search by task name, repo, paradigm, or ID. Switch between a dense list and a flow-oriented card browser, then expand any task to load its README snapshot on demand.
+                This page keeps the denser explorer layout: filter from the left, scan the list on
+                the right, and open README-backed details only when needed.
               </div>
             </div>
 
-            <div className="flex flex-wrap items-center gap-2">
-              {anyFilters ? (
-                <button
-                  type="button"
-                  className="tb-focus-ring rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm font-semibold text-slate-800 shadow-sm hover:border-brand-200 hover:bg-brand-50"
-                  onClick={clearAll}
-                >
-                  Clear filters
-                </button>
-              ) : null}
-              <ViewToggle view={view} setView={setView} />
-            </div>
-          </div>
-
-          <div className="grid gap-4 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-end">
-            <label className="block" htmlFor="task-explorer-search">
-              <span className="text-xs font-semibold uppercase tracking-wide text-slate-600">Search</span>
-              <input
-                id="task-explorer-search"
-                value={query}
-                onChange={(event) => setQuery(event.target.value)}
-                placeholder="e.g. stroop, T000012, H000006, EEG"
-                className="tb-focus-ring mt-2 w-full rounded-2xl border border-slate-200 bg-white px-4 py-3 text-sm text-slate-900 placeholder:text-slate-400"
-              />
-            </label>
-
             <div className="rounded-2xl border border-slate-200 bg-slate-50/85 px-4 py-3 text-sm text-slate-700 shadow-sm">
-              Showing <span className="font-semibold text-slate-900">{filtered.length}</span> of{" "}
-              <span className="font-semibold text-slate-900">{tasks.length}</span> tasks
+              Index updated{" "}
+              <span className="font-semibold text-slate-900">
+                {formatIsoDateTime(generatedAt)}
+              </span>
             </div>
           </div>
 
-          <div className="grid gap-3 lg:grid-cols-2">
+          <div className="grid gap-3 md:grid-cols-2 xl:grid-cols-4">
+            <div className="rounded-2xl border border-slate-200 bg-slate-50/85 p-4 shadow-sm">
+              <div className="text-[11px] font-semibold uppercase tracking-wide text-slate-500">
+                Total tasks
+              </div>
+              <div className="mt-2 font-heading text-2xl font-semibold text-slate-900">
+                {tasks.length}
+              </div>
+            </div>
+            <div className="rounded-2xl border border-slate-200 bg-slate-50/85 p-4 shadow-sm">
+              <div className="text-[11px] font-semibold uppercase tracking-wide text-slate-500">
+                Matching now
+              </div>
+              <div className="mt-2 font-heading text-2xl font-semibold text-slate-900">
+                {filtered.length}
+              </div>
+            </div>
+            <div className="rounded-2xl border border-slate-200 bg-slate-50/85 p-4 shadow-sm">
+              <div className="text-[11px] font-semibold uppercase tracking-wide text-slate-500">
+                Previews
+              </div>
+              <div className="mt-2 font-heading text-2xl font-semibold text-slate-900">
+                {previewCount}
+              </div>
+            </div>
+            <div className="rounded-2xl border border-slate-200 bg-slate-50/85 p-4 shadow-sm">
+              <div className="text-[11px] font-semibold uppercase tracking-wide text-slate-500">
+                Paradigms
+              </div>
+              <div className="mt-2 font-heading text-2xl font-semibold text-slate-900">
+                {paradigmCount}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className="grid grid-cols-1 gap-6 lg:grid-cols-12">
+        <aside className="lg:col-span-4 xl:col-span-3">
+          <div className="sticky top-24 space-y-4">
+            <section className="rounded-2xl border border-slate-200 bg-white/90 p-4 shadow-sm">
+              <label className="block" htmlFor="task-explorer-search">
+                <span className="text-xs font-semibold uppercase tracking-wide text-slate-600">
+                  Search
+                </span>
+                <input
+                  id="task-explorer-search"
+                  value={query}
+                  onChange={(event) => setQuery(event.target.value)}
+                  placeholder="e.g. stroop, T000012, H000006, EEG"
+                  className="tb-focus-ring mt-2 w-full rounded-2xl border border-slate-200 bg-white px-4 py-3 text-sm text-slate-900 placeholder:text-slate-400"
+                />
+              </label>
+
+              <div className="mt-4 flex flex-wrap items-center justify-between gap-3">
+                <div className="text-sm text-slate-700">
+                  Showing <span className="font-semibold text-slate-900">{filtered.length}</span>{" "}
+                  of <span className="font-semibold text-slate-900">{tasks.length}</span>
+                </div>
+                {anyFilters ? (
+                  <button
+                    type="button"
+                    className="tb-focus-ring rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm font-semibold text-slate-800 shadow-sm hover:border-brand-200 hover:bg-brand-50"
+                    onClick={clearAll}
+                  >
+                    Clear
+                  </button>
+                ) : null}
+              </div>
+            </section>
+
             <FacetSection
               title="Maturity"
               facet="maturity"
@@ -234,50 +247,39 @@ export function GalleryClient({ tasks }: { tasks: TaskIndexItem[] }) {
               }
             />
           </div>
-        </div>
-      </div>
+        </aside>
 
-      {filtered.length === 0 ? (
-        <div className="rounded-[32px] border border-slate-200 bg-white/90 p-10 text-center shadow-sm">
-          <div className="font-heading text-lg font-semibold tracking-tight text-slate-900">
-            No matches
-          </div>
-          <div className="mt-2 text-sm text-slate-700">
-            Try clearing filters or searching by paradigm name, repo handle, or task ID.
-          </div>
-          <div className="mt-5">
-            <button
-              type="button"
-              className="tb-focus-ring rounded-lg bg-cta-500 px-4 py-2 text-sm font-semibold text-white shadow-sm hover:bg-cta-600"
-              onClick={clearAll}
-            >
-              Reset explorer
-            </button>
-          </div>
-        </div>
-      ) : view === "list" ? (
-        <div className="space-y-3">
-          {filtered.map((task) => (
-            <TaskRow
-              key={task.repo}
-              task={task}
-              onTagClick={(facet: TaskTagFacet, value) => toggleFacet(facet, value)}
-              onOpen={(nextTask) => setActiveRepo(nextTask.repo)}
-            />
-          ))}
-        </div>
-      ) : (
-        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-          {filtered.map((task) => (
-            <TaskCard
-              key={task.repo}
-              task={task}
-              onTagClick={(facet: TaskTagFacet, value) => toggleFacet(facet, value)}
-              onOpen={(nextTask) => setActiveRepo(nextTask.repo)}
-            />
-          ))}
-        </div>
-      )}
+        <section className="space-y-3 lg:col-span-8 xl:col-span-9">
+          {filtered.length === 0 ? (
+            <div className="rounded-[32px] border border-slate-200 bg-white/90 p-10 text-center shadow-sm">
+              <div className="font-heading text-lg font-semibold tracking-tight text-slate-900">
+                No matches
+              </div>
+              <div className="mt-2 text-sm text-slate-700">
+                Try clearing filters or searching by paradigm name, repo handle, or task ID.
+              </div>
+              <div className="mt-5">
+                <button
+                  type="button"
+                  className="tb-focus-ring rounded-lg bg-cta-500 px-4 py-2 text-sm font-semibold text-white shadow-sm hover:bg-cta-600"
+                  onClick={clearAll}
+                >
+                  Reset explorer
+                </button>
+              </div>
+            </div>
+          ) : (
+            filtered.map((task) => (
+              <TaskRow
+                key={task.repo}
+                task={task}
+                onTagClick={(facet: TaskTagFacet, value) => toggleFacet(facet, value)}
+                onOpen={(nextTask) => setActiveRepo(nextTask.repo)}
+              />
+            ))
+          )}
+        </section>
+      </div>
 
       <TaskDrawer task={activeTask} onClose={() => setActiveRepo(null)} />
     </section>

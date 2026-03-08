@@ -8,6 +8,7 @@ import { TagChip } from "@/components/tag-chip";
 import { MaturityBadge } from "@/components/maturity-badge";
 import { TaskChannelCard } from "@/components/task-channel-card";
 import { TaskFlowPlaceholder } from "@/components/task-flow-placeholder";
+import { taskDetailHref } from "@/lib/routes";
 
 function allTags(task: TaskIndexItem) {
   return [
@@ -42,7 +43,7 @@ export function TaskCard({
             </div>
             <Link
               className="tb-focus-ring mt-3 inline-block rounded-md font-heading text-2xl font-semibold tracking-tight text-slate-900 hover:text-brand-900"
-              href={`/tasks/${encodeURIComponent(task.repo)}`}
+              href={taskDetailHref(task.repo)}
             >
               {taskTitle(task)}
             </Link>
@@ -133,7 +134,7 @@ export function TaskCard({
           </button>
           <Link
             className="tb-focus-ring rounded-lg border border-slate-200 bg-white px-4 py-2 text-sm font-semibold text-slate-800 shadow-sm hover:border-brand-200 hover:bg-brand-50"
-            href={`/tasks/${encodeURIComponent(task.repo)}`}
+            href={taskDetailHref(task.repo)}
           >
             Open full page
           </Link>

@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { tasksPageHref } from "@/lib/routes";
 
 function Mark() {
   return (
@@ -20,7 +21,7 @@ export function SiteHeader() {
             <Mark />
           </Link>
 
-          <nav className="flex items-center gap-2 text-sm">
+          <nav className="flex flex-wrap items-center justify-end gap-1 text-sm">
             <Link
               className="tb-focus-ring rounded-md px-3 py-2 font-medium text-slate-700 hover:text-slate-900"
               href="/"
@@ -29,22 +30,50 @@ export function SiteHeader() {
             </Link>
             <Link
               className="tb-focus-ring rounded-md px-3 py-2 font-medium text-slate-700 hover:text-slate-900"
-              href="/#explorer"
+              href={tasksPageHref()}
             >
               Tasks
             </Link>
             <Link
               className="tb-focus-ring rounded-md px-3 py-2 font-medium text-slate-700 hover:text-slate-900"
-              href="/about"
+              href="/tutorial/"
             >
-              About
+              Tutorial
             </Link>
             <Link
-              className="tb-focus-ring rounded-md bg-cta-500 px-3 py-2 font-semibold text-white shadow-sm transition-colors hover:bg-cta-600"
-              href="/about#contribute"
+              className="tb-focus-ring rounded-md px-3 py-2 font-medium text-slate-700 hover:text-slate-900"
+              href="/framework/"
             >
-              Add Your Task
+              Framework
             </Link>
+            <Link
+              className="tb-focus-ring rounded-md px-3 py-2 font-medium text-slate-700 hover:text-slate-900"
+              href="/contribute/"
+            >
+              Contribute
+            </Link>
+            <Link
+              className="tb-focus-ring rounded-md px-3 py-2 font-medium text-slate-700 hover:text-slate-900"
+              href="/teams/"
+            >
+              Teams
+            </Link>
+            <a
+              className="tb-focus-ring rounded-md bg-cta-500 px-3 py-2 font-semibold text-white shadow-sm transition-colors hover:bg-cta-600"
+              href="https://taskbeacon.github.io/psyflow-web"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Preview
+            </a>
+            <a
+              className="tb-focus-ring rounded-md px-3 py-2 font-medium text-slate-700 hover:text-slate-900"
+              href="https://github.com/TaskBeacon"
+              target="_blank"
+              rel="noreferrer"
+            >
+              GitHub
+            </a>
           </nav>
         </div>
       </div>

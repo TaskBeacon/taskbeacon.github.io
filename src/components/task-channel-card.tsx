@@ -18,7 +18,14 @@ type CopyAction = {
   text: string;
 };
 
-export type TaskChannelAction = LinkAction | CopyAction;
+type ButtonAction = {
+  type: "button";
+  label: string;
+  onClick: () => void;
+  emphasis?: "primary" | "secondary";
+};
+
+export type TaskChannelAction = LinkAction | CopyAction | ButtonAction;
 
 const ICONS = {
   download: IconDownload,
@@ -89,6 +96,25 @@ export function TaskChannelCard({
                   compact ? "px-2.5 py-2" : ""
                 )}
               />
+            );
+          }
+
+          if (action.type === "button") {
+            const isPrimary = action.emphasis === "primary";
+            return (
+              <button
+                key={`${repo}:${action.label}`}
+                type="button"
+                className={clsx(
+                  "tb-focus-ring inline-flex items-center gap-2 rounded-lg px-3 py-2 text-xs font-semibold shadow-sm transition-colors",
+                  isPrimary
+                    ? "bg-cta-500 text-white hover:bg-cta-600"
+                    : "border border-slate-200 bg-white text-slate-800 hover:border-brand-200 hover:bg-brand-50"
+                )}
+                onClick={action.onClick}
+              >
+                {action.label}
+              </button>
             );
           }
 

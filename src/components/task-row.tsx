@@ -1,6 +1,5 @@
 "use client";
 
-import Link from "next/link";
 import type { TaskIndexItem, TaskTagFacet } from "@/lib/task-index";
 import { formatShortDate } from "@/lib/format";
 import { localCloneCommand, taskHandle, taskTitle } from "@/lib/task-display";
@@ -24,12 +23,9 @@ export function TaskRow({
       <div className="flex flex-wrap items-start justify-between gap-4">
         <div className="min-w-0 flex-1">
           <div className="flex flex-wrap items-center gap-2">
-            <Link
-              className="tb-focus-ring rounded-md font-heading text-xl font-semibold tracking-tight text-slate-900 hover:text-brand-900"
-              href={`/tasks/${encodeURIComponent(task.repo)}`}
-            >
+            <div className="font-heading text-xl font-semibold tracking-tight text-slate-900">
               {taskTitle(task)}
-            </Link>
+            </div>
             {task.maturity ? <MaturityBadge maturity={task.maturity} /> : null}
             {preview ? (
               <span className="rounded-full border border-brand-200 bg-brand-50 px-2.5 py-1 text-[11px] font-semibold text-brand-900">
@@ -70,7 +66,7 @@ export function TaskRow({
         </div>
       </div>
 
-      <div className="mt-5 grid gap-3 xl:grid-cols-3">
+      <div className="mt-5 grid gap-3 xl:grid-cols-2">
         <TaskChannelCard
           eyebrow="Local / PsyFlow"
           handle={taskHandle(task)}
@@ -85,7 +81,8 @@ export function TaskRow({
               label: "Download",
               href: `${task.html_url}/archive/refs/heads/${task.default_branch}.zip`,
               icon: "download"
-            }
+            },
+            { type: "button", label: "Expand details", onClick: () => onOpen(task) }
           ]}
         />
 
@@ -103,40 +100,17 @@ export function TaskRow({
             ]}
           />
         ) : (
-          <section className="rounded-2xl border border-dashed border-slate-200 bg-slate-50/70 p-4">
+          <section className="rounded-2xl border border-dashed border-slate-200 bg-slate-50/70 p-4 shadow-sm">
             <div className="text-[11px] font-semibold uppercase tracking-[0.18em] text-slate-500">
               Preview
             </div>
             <div className="mt-2 text-sm font-semibold text-slate-900">No browser preview yet</div>
             <div className="mt-2 text-sm leading-6 text-slate-700">
-              The canonical local task is available now. Add an HTML companion later to surface a live preview here.
+              The canonical local task is available now. Add an HTML companion later to surface a
+              live preview here.
             </div>
           </section>
         )}
-
-        <section className="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm">
-          <div className="text-[11px] font-semibold uppercase tracking-[0.18em] text-slate-500">
-            Details
-          </div>
-          <div className="mt-2 text-sm leading-6 text-slate-700">
-            Expand the tracked README snapshot to inspect task flow, configuration notes, and rendered assets without leaving the explorer.
-          </div>
-          <div className="mt-4 flex flex-wrap gap-2">
-            <button
-              type="button"
-              className="tb-focus-ring rounded-lg bg-brand-700 px-3 py-2 text-xs font-semibold text-white shadow-sm hover:bg-brand-800"
-              onClick={() => onOpen(task)}
-            >
-              Expand details
-            </button>
-            <Link
-              className="tb-focus-ring rounded-lg border border-slate-200 bg-white px-3 py-2 text-xs font-semibold text-slate-800 hover:border-brand-200 hover:bg-brand-50"
-              href={`/tasks/${encodeURIComponent(task.repo)}`}
-            >
-              Open full page
-            </Link>
-          </div>
-        </section>
       </div>
     </article>
   );

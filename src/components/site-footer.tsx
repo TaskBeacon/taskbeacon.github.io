@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { tasksPageHref } from "@/lib/routes";
 
 export function SiteFooter() {
   return (
@@ -17,9 +18,21 @@ export function SiteFooter() {
           <div className="flex items-center gap-3 text-sm">
             <Link
               className="tb-focus-ring rounded-md px-3 py-2 font-medium text-slate-700 hover:text-slate-900"
-              href="/#explorer"
+              href={tasksPageHref()}
             >
               Tasks
+            </Link>
+            <Link
+              className="tb-focus-ring rounded-md px-3 py-2 font-medium text-slate-700 hover:text-slate-900"
+              href="/framework/"
+            >
+              Framework
+            </Link>
+            <Link
+              className="tb-focus-ring rounded-md px-3 py-2 font-medium text-slate-700 hover:text-slate-900"
+              href="/contribute/"
+            >
+              Contribute
             </Link>
             <a
               className="tb-focus-ring rounded-md px-3 py-2 font-medium text-slate-700 hover:text-slate-900"
@@ -29,12 +42,14 @@ export function SiteFooter() {
             >
               GitHub Org
             </a>
-            <Link
+            <a
               className="tb-focus-ring rounded-md px-3 py-2 font-medium text-slate-700 hover:text-slate-900"
-              href="/about"
+              href="https://taskbeacon.github.io/psyflow-web"
+              target="_blank"
+              rel="noreferrer"
             >
-              Contribute
-            </Link>
+              Preview
+            </a>
           </div>
         </div>
 

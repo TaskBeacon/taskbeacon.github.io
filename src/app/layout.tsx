@@ -5,16 +5,16 @@ import { SiteHeader } from "@/components/site-header";
 
 export const metadata: Metadata = {
   title: {
-    default: "TaskBeacon Task Gallery",
+    default: "TaskBeacon",
     template: "%s | TaskBeacon"
   },
   description:
-    "A searchable, filterable gallery of PsyFlow/TAPS task templates maintained under the TaskBeacon GitHub organization.",
+    "TaskBeacon organizes reusable PsyFlow and TAPS tasks, browser previews, tutorials, framework references, and contribution workflows.",
   metadataBase: new URL("https://taskbeacon.github.io"),
   openGraph: {
-    title: "TaskBeacon Task Gallery",
+    title: "TaskBeacon",
     description:
-      "Discover, search, and reuse PsyFlow/TAPS task templates: paradigms, modalities, response types, and more.",
+      "Reusable local tasks, aligned browser previews, and a clearer path from paradigm to deployment.",
     type: "website",
     url: "https://taskbeacon.github.io/",
     images: [{ url: "/og.svg" }]
@@ -40,4 +40,3 @@ export default function RootLayout({
     </html>
   );
 }
-

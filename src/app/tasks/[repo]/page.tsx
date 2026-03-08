@@ -11,6 +11,7 @@ import { TaskAccessPanel } from "@/components/task-access-panel";
 import { formatShortDate } from "@/lib/format";
 import { compactMeta, localCloneCommand, taskHandle, taskTitle } from "@/lib/task-display";
 import { findTaskByRepo, getTasks, taskLinks } from "@/lib/task-index";
+import { tasksPageHref } from "@/lib/routes";
 
 export const dynamicParams = false;
 
@@ -72,9 +73,9 @@ export default function TaskPage({ params }: { params: { repo: string } }) {
       <div className="flex flex-wrap items-center justify-between gap-3">
         <Link
           className="tb-focus-ring rounded-md text-sm font-semibold text-brand-800 hover:underline"
-          href="/#explorer"
+          href={tasksPageHref()}
         >
-          Back to explorer
+          Back to tasks
         </Link>
 
         <div className="flex flex-wrap items-center gap-2">
