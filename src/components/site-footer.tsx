@@ -7,14 +7,20 @@ export function SiteFooter() {
         <div className="flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
           <div className="text-sm text-slate-700">
             <div className="font-heading font-semibold text-slate-900">
-              TaskBeacon Task Gallery
+              TaskBeacon
             </div>
             <div className="mt-1">
-              Community-maintained PsyFlow/TAPS task templates.
+              Community-maintained PsyFlow and TAPS tasks with aligned browser previews.
             </div>
           </div>
 
           <div className="flex items-center gap-3 text-sm">
+            <Link
+              className="tb-focus-ring rounded-md px-3 py-2 font-medium text-slate-700 hover:text-slate-900"
+              href="/#explorer"
+            >
+              Tasks
+            </Link>
             <a
               className="tb-focus-ring rounded-md px-3 py-2 font-medium text-slate-700 hover:text-slate-900"
               href="https://github.com/TaskBeacon"
@@ -39,4 +45,3 @@ export function SiteFooter() {
     </footer>
   );
 }
-

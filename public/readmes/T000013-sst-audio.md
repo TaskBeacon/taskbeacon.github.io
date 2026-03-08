@@ -1,13 +1,13 @@
-# Stop-Signal Task (SST)
+# Stop-Signal Task (SST-Audio)
 
-![Maturity: piloted](https://img.shields.io/badge/Maturity-piloted-16a34a?style=flat-square&labelColor=111827)
+![Maturity: smoke_tested](https://img.shields.io/badge/Maturity-smoke_tested-d97706?style=flat-square&labelColor=111827)
 
 | Field | Value |
 |---|---|
-| Name | Stop-Signal Task (SST) |
+| Name | Stop-Signal Task (SST-Audio) |
 | Version | v1.1.2 |
-| URL / Repository | https://github.com/TaskBeacon/T000012-sst |
-| Short Description | Response inhibition task with adaptive stop-signal delay (SSD) using go/stop directional arrow trials. |
+| URL / Repository | https://github.com/TaskBeacon/T000013-sst-audio |
+| Short Description | Auditory stop-signal variant of SST with adaptive stop-signal delay (SSD). |
 | Created By | Zhipeng Cao (zhipeng30@foxmail.com) |
 | Date Updated | 2026-03-02 |
 | PsyFlow Version | 0.1.9 |
@@ -25,19 +25,17 @@
 
 ## 1. Task Overview
 
-This SST measures the ability to suppress an already prepared motor response. Participants respond quickly to left/right white arrows on go trials. On stop trials, the arrow turns red after a stop-signal delay (SSD); participants should withhold responding. SSD is updated online with a staircase controller targeting approximately 50% stop success.
+This auditory SST measures response inhibition. Participants respond to directional arrows on go trials. On stop trials, an auditory beep appears after a stop-signal delay (SSD), and participants should withhold the response. SSD is updated online with a staircase controller targeting approximately 50% stop success.
 
 ## 2. Task Flow
-
-![Task flow](./task_flow.png)
 
 ### Block-Level Flow
 
 | Step | Description |
 |---|---|
-| Setup | Load config, initialize runtime context (`human/qa/sim`), open window, load stimuli, initialize triggers and SSD controller. |
-| Instruction | Show participant instructions (voice optional in human mode). |
-| Block Loop | For each block, generate constrained go/stop condition list and run trial loop. |
+| Setup | Load config, initialize runtime context (`human/qa/sim`), open window, load stimuli/audio, initialize triggers and SSD controller. |
+| Instruction | Show instructions (voice optional in human mode). |
+| Block Loop | Generate constrained go/stop conditions and run trial loop. |
 | Block Summary | Compute go hit rate and stop success rate, then show break screen. |
 | Finalize | Show goodbye screen, send `exp_end`, save CSV, close trigger runtime, quit PsychoPy. |
 
@@ -46,9 +44,9 @@ This SST measures the ability to suppress an already prepared motor response. Pa
 | Step | Description |
 |---|---|
 | Fixation | Present fixation cross for sampled duration (`0.8` to `1.0` s). |
-| Go Trial | Show white arrow, collect response up to `go_duration`. Timeout logs go miss and shows miss feedback. |
+| Go Trial | Show white arrow, collect response up to `go_duration`; timeout logs go miss and shows miss feedback. |
 | Stop Trial (Phase 1) | Show white arrow during SSD (`pre_stop_go_window`) and capture early responses. |
-| Stop Trial (Phase 2) | Replace with red arrow (`stop_signal_window`) for remaining go window and capture failed-stop responses. |
+| Stop Trial (Phase 2) | Continue go arrow while presenting auditory stop signal (`stop_signal_window`); capture failed-stop responses. |
 | Update | Mark stop success/failure and update SSD staircase. |
 
 ### Controller Logic
@@ -56,7 +54,7 @@ This SST measures the ability to suppress an already prepared motor response. Pa
 | Component | Description |
 |---|---|
 | Controller | 1-up/1-down SSD staircase in `src/utils.py`. |
-| Target | `target_success = 0.5` for stop success convergence. |
+| Target | `target_success = 0.5` stop success convergence. |
 | Bounds | SSD constrained to `0.05` to `0.5` seconds. |
 | Step | SSD step size `0.05` seconds. |
 | Pooling | Shared SSD by default (`condition_specific = false`). |
@@ -91,10 +89,10 @@ All runtime settings are in `config/config.yaml` (with `config_qa.yaml` and sim 
 |---|---|---|
 | `fixation` | `text` | Central fixation cross. |
 | `go_left` / `go_right` | `shape` | White directional arrows for go responses. |
-| `stop_left` / `stop_right` | `shape` | Red directional arrows as stop signals. |
+| `stop_signal` | `sound` | Auditory beep stop signal (`assets/beep.mp3`). |
 | `no_response_feedback` | `text` | Message shown after go timeout. |
 | `block_break` | `text` | Inter-block summary with go/stop metrics. |
-| `instruction_text` | `textbox` | Chinese instructions (voice-convertible in human mode). |
+| `instruction_text` | `textbox` | Chinese instructions for auditory stop rule. |
 | `good_bye` | `textbox` | End-of-task message. |
 
 ### d. Timing
@@ -135,6 +133,6 @@ All runtime settings are in `config/config.yaml` (with `config_qa.yaml` and sim 
 
 ## 4. Methods (for academic publication)
 
-Participants completed a stop-signal task comprising directional go responses and infrequent stop-signal inhibition trials. On each trial, a fixation cross preceded a directional arrow. Participants responded to white arrows with left/right button presses. On stop trials, the arrow changed to red after a variable stop-signal delay (SSD), and participants were instructed to withhold responses.
+Participants completed an auditory stop-signal task with directional go responses and infrequent stop-signal inhibition trials. Each trial began with fixation, then a directional arrow requiring a left/right button response. On stop trials, a brief auditory beep was presented after a variable stop-signal delay (SSD), and participants were instructed to withhold responding.
 
-The task used an adaptive staircase controller to adjust SSD online based on stop-trial outcomes (increase after successful stopping, decrease after failed stopping), targeting approximately 50% stop success. Trial-level events (including go onset, stop onset, and response classes) were trigger-marked for synchronization with behavioral/EEG analysis pipelines.
+SSD was updated online using a staircase rule (increase after successful inhibition, decrease after failed inhibition), targeting approximately 50% stop success. Go/stop onset and response events were trigger-marked to support synchronized behavioral and EEG analyses.

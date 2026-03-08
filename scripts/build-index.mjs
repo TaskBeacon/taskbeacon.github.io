@@ -15,12 +15,17 @@ const LOCAL_WORKSPACE_ROOT = process.env.TASKBEACON_LOCAL_WORKSPACE || path.reso
 
 const GH_API = "https://api.github.com";
 const OUT_INDEX = path.join(process.cwd(), "src", "data", "tasks_index.json");
-const OUT_READMES_DIR = path.join(
+const OUT_SOURCE_READMES_DIR = path.join(
   process.cwd(),
   "src",
   "data",
   "readmes"
 );
+const OUT_PUBLIC_READMES_DIR = path.join(process.cwd(), "public", "readmes");
+const TMP_ROOT = path.join(process.cwd(), ".tmp", "index-build");
+const TMP_INDEX = path.join(TMP_ROOT, "tasks_index.json");
+const TMP_SOURCE_READMES_DIR = path.join(TMP_ROOT, "source-readmes");
+const TMP_PUBLIC_READMES_DIR = path.join(TMP_ROOT, "public-readmes");
 
 const DENYLIST = new Set([
   "task-registry",
@@ -422,6 +427,23 @@ function ensureDir(p) {
   fs.mkdirSync(p, { recursive: true });
 }
 
+function resetDir(dir) {
+  fs.rmSync(dir, { recursive: true, force: true });
+  ensureDir(dir);
+}
+
+function replaceDir(sourceDir, targetDir) {
+  fs.rmSync(targetDir, { recursive: true, force: true });
+  ensureDir(path.dirname(targetDir));
+  fs.renameSync(sourceDir, targetDir);
+}
+
+function replaceFile(sourceFile, targetFile) {
+  fs.rmSync(targetFile, { force: true });
+  ensureDir(path.dirname(targetFile));
+  fs.renameSync(sourceFile, targetFile);
+}
+
 function safeFilename(name) {
   return String(name).replace(/[^a-zA-Z0-9._-]/g, "_");
 }
@@ -540,6 +562,7 @@ function buildTaskItem({
     has_voiceover,
     last_updated,
     structure,
+    readme_snapshot_path: `/readmes/${safeFilename(repo)}.md`,
     readme_run_anchor: run_anchor,
     run_url: variant === "html" ? inferHtmlRunUrl(repo, explicitRunUrl) : null,
     web_variant: null
@@ -595,6 +618,12 @@ function discoverLocalHtmlTasks(existingRepos) {
         readme
       })
     );
+
+    if (readme) {
+      const fileName = `${safeFilename(entry.name)}.md`;
+      fs.writeFileSync(path.join(TMP_SOURCE_READMES_DIR, fileName), readme, "utf8");
+      fs.writeFileSync(path.join(TMP_PUBLIC_READMES_DIR, fileName), readme, "utf8");
+    }
   }
 
   return items;
@@ -610,6 +639,7 @@ function pickPrimaryTask(items) {
 
 function toWebVariant(item) {
   return {
+    id: item.id ?? null,
     repo: item.repo,
     title: item.title,
     html_url: item.html_url,
@@ -661,7 +691,9 @@ function mergeHtmlCompanions(items) {
 
 async function buildIndex() {
   ensureDir(path.dirname(OUT_INDEX));
-  ensureDir(OUT_READMES_DIR);
+  resetDir(TMP_ROOT);
+  resetDir(TMP_SOURCE_READMES_DIR);
+  resetDir(TMP_PUBLIC_READMES_DIR);
 
   const repos = await listOrgRepos();
 
@@ -732,8 +764,9 @@ async function buildIndex() {
 
     // Persist README into the repo for static rendering.
     if (readme) {
-      const outReadmePath = path.join(OUT_READMES_DIR, `${safeFilename(repo)}.md`);
-      fs.writeFileSync(outReadmePath, readme, "utf8");
+      const fileName = `${safeFilename(repo)}.md`;
+      fs.writeFileSync(path.join(TMP_SOURCE_READMES_DIR, fileName), readme, "utf8");
+      fs.writeFileSync(path.join(TMP_PUBLIC_READMES_DIR, fileName), readme, "utf8");
     }
   }
 
@@ -744,13 +777,17 @@ async function buildIndex() {
   mergedTasks.sort((a, b) => (a.last_updated < b.last_updated ? 1 : -1));
 
   const index = {
-    schema_version: 3,
+    schema_version: 4,
     generated_at: new Date().toISOString(),
     org: ORG,
     tasks: mergedTasks
   };
 
-  fs.writeFileSync(OUT_INDEX, JSON.stringify(index, null, 2) + "\n", "utf8");
+  fs.writeFileSync(TMP_INDEX, JSON.stringify(index, null, 2) + "\n", "utf8");
+  replaceDir(TMP_SOURCE_READMES_DIR, OUT_SOURCE_READMES_DIR);
+  replaceDir(TMP_PUBLIC_READMES_DIR, OUT_PUBLIC_READMES_DIR);
+  replaceFile(TMP_INDEX, OUT_INDEX);
+  fs.rmSync(TMP_ROOT, { recursive: true, force: true });
   return index;
 }
 
@@ -773,6 +810,7 @@ async function main() {
       console.warn(
         `Using existing ${path.relative(process.cwd(), OUT_INDEX)} (stale).`
       );
+      fs.rmSync(TMP_ROOT, { recursive: true, force: true });
       process.exit(0);
     }
 

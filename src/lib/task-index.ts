@@ -13,6 +13,7 @@ export type TaskStructure = {
 };
 
 export type TaskWebVariant = {
+  id?: string | null;
   repo: string;
   title: string;
   html_url: string;
@@ -46,6 +47,7 @@ export type TaskIndexItem = {
   has_voiceover?: boolean | null;
   last_updated: string;
   structure?: TaskStructure;
+  readme_snapshot_path: string;
   readme_run_anchor?: string;
   run_url?: string | null;
   web_variant?: TaskWebVariant | null;

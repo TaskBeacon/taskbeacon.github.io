@@ -2,46 +2,27 @@
 
 import Link from "next/link";
 import type { TaskIndexItem, TaskTagFacet } from "@/lib/task-index";
-import { taskLinks } from "@/lib/task-index";
 import { formatShortDate } from "@/lib/format";
+import { localCloneCommand, taskHandle, taskTitle } from "@/lib/task-display";
 import { TagChip } from "@/components/tag-chip";
 import { MaturityBadge } from "@/components/maturity-badge";
-import { CopyButton } from "@/components/copy-button";
-import { TaskAccessPanel } from "@/components/task-access-panel";
-
-function taskTitle(task: TaskIndexItem) {
-  return String(task.title ?? "").trim() || task.repo;
-}
-
-function localMeta(task: TaskIndexItem) {
-  const parts = [];
-  if (task.acquisition) parts.push(task.acquisition);
-  if (task.release_tag) parts.push(`Release ${task.release_tag}`);
-  return parts.join(" • ") || "PsyFlow/TAPS";
-}
-
-function webMeta(task: NonNullable<TaskIndexItem["web_variant"]>) {
-  const parts = ["HTML preview"];
-  if (task.acquisition) parts.push(task.acquisition);
-  if (task.release_tag) parts.push(`Release ${task.release_tag}`);
-  return parts.join(" • ");
-}
+import { TaskChannelCard } from "@/components/task-channel-card";
 
 export function TaskRow({
   task,
-  onTagClick
+  onTagClick,
+  onOpen
 }: {
   task: TaskIndexItem;
   onTagClick?: (facet: TaskTagFacet, value: string) => void;
+  onOpen: (task: TaskIndexItem) => void;
 }) {
-  const links = taskLinks(task);
-  const cloneCmd = `git clone ${task.html_url}.git`;
-  const webVariant = task.web_variant;
+  const preview = task.web_variant;
 
   return (
-    <article className="group rounded-3xl border border-slate-200 bg-white/90 p-5 shadow-sm transition-all hover:border-brand-200 hover:shadow-md">
+    <article className="rounded-[28px] border border-slate-200 bg-white/90 p-5 shadow-sm transition-all hover:border-brand-200 hover:shadow-md">
       <div className="flex flex-wrap items-start justify-between gap-4">
-        <div className="min-w-0">
+        <div className="min-w-0 flex-1">
           <div className="flex flex-wrap items-center gap-2">
             <Link
               className="tb-focus-ring rounded-md font-heading text-xl font-semibold tracking-tight text-slate-900 hover:text-brand-900"
@@ -50,14 +31,17 @@ export function TaskRow({
               {taskTitle(task)}
             </Link>
             {task.maturity ? <MaturityBadge maturity={task.maturity} /> : null}
-            {webVariant ? (
+            {preview ? (
               <span className="rounded-full border border-brand-200 bg-brand-50 px-2.5 py-1 text-[11px] font-semibold text-brand-900">
-                Web preview
+                Preview ready
               </span>
             ) : null}
           </div>
 
           <div className="mt-2 flex flex-wrap items-center gap-2 text-xs text-slate-600">
+            <code className="rounded-full border border-slate-200 bg-slate-50 px-2.5 py-1 font-mono text-[11px] text-slate-700">
+              {taskHandle(task)}
+            </code>
             <code className="rounded-full border border-slate-200 bg-slate-50 px-2.5 py-1 font-mono text-[11px] text-slate-700">
               {task.repo}
             </code>
@@ -86,46 +70,73 @@ export function TaskRow({
         </div>
       </div>
 
-      <div className="mt-5 grid gap-3 xl:grid-cols-2">
-        <TaskAccessPanel
-          eyebrow="Local Task"
-          title={taskTitle(task)}
+      <div className="mt-5 grid gap-3 xl:grid-cols-3">
+        <TaskChannelCard
+          eyebrow="Local / PsyFlow"
+          handle={taskHandle(task)}
           repo={task.repo}
-          description="Canonical local repository for installation, review, and modification."
-          meta={localMeta(task)}
+          releaseTag={task.release_tag}
           tone="local"
+          size="compact"
           actions={[
-            { label: "Run Guide", href: links.run, icon: "play", emphasis: "secondary" },
-            { label: "Repo", href: links.repo, icon: "github", emphasis: "secondary" },
-            { label: "Download", href: links.downloadZip, icon: "download", emphasis: "secondary" }
+            { type: "copy", label: "Copy Clone", text: localCloneCommand(task) },
+            { label: "Open Repo", href: task.html_url, icon: "github" },
+            {
+              label: "Download",
+              href: `${task.html_url}/archive/refs/heads/${task.default_branch}.zip`,
+              icon: "download"
+            }
           ]}
         />
 
-        {webVariant ? (
-          <TaskAccessPanel
-            eyebrow="Web Preview"
-            title={webVariant.title || taskTitle(task)}
-            repo={webVariant.repo}
-            description={
-              webVariant.short_description ||
-              "Matched browser companion for live walkthroughs and participant-facing previews."
-            }
-            meta={webMeta(webVariant)}
+        {preview ? (
+          <TaskChannelCard
+            eyebrow="Preview"
+            handle={taskHandle(preview)}
+            repo={preview.repo}
+            releaseTag={preview.release_tag}
             tone="web"
+            size="compact"
             actions={[
-              { label: "Run Preview", href: webVariant.run_url, icon: "play", emphasis: "primary" },
-              { label: "Repo", href: webVariant.html_url, icon: "github", emphasis: "secondary" },
-              { label: "Download", href: webVariant.download_zip, icon: "download", emphasis: "secondary" }
+              { label: "Run Preview", href: preview.run_url, icon: "play", emphasis: "primary" },
+              { label: "Open Repo", href: preview.html_url, icon: "github" }
             ]}
           />
-        ) : null}
-      </div>
+        ) : (
+          <section className="rounded-2xl border border-dashed border-slate-200 bg-slate-50/70 p-4">
+            <div className="text-[11px] font-semibold uppercase tracking-[0.18em] text-slate-500">
+              Preview
+            </div>
+            <div className="mt-2 text-sm font-semibold text-slate-900">No browser preview yet</div>
+            <div className="mt-2 text-sm leading-6 text-slate-700">
+              The canonical local task is available now. Add an HTML companion later to surface a live preview here.
+            </div>
+          </section>
+        )}
 
-      <div className="mt-4 flex flex-wrap items-center justify-between gap-3 rounded-2xl border border-slate-200 bg-slate-50 px-3 py-2">
-        <code className="overflow-x-auto text-xs font-semibold text-slate-800">
-          {cloneCmd}
-        </code>
-        <CopyButton text={cloneCmd} label="Copy clone" />
+        <section className="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm">
+          <div className="text-[11px] font-semibold uppercase tracking-[0.18em] text-slate-500">
+            Details
+          </div>
+          <div className="mt-2 text-sm leading-6 text-slate-700">
+            Expand the tracked README snapshot to inspect task flow, configuration notes, and rendered assets without leaving the explorer.
+          </div>
+          <div className="mt-4 flex flex-wrap gap-2">
+            <button
+              type="button"
+              className="tb-focus-ring rounded-lg bg-brand-700 px-3 py-2 text-xs font-semibold text-white shadow-sm hover:bg-brand-800"
+              onClick={() => onOpen(task)}
+            >
+              Expand details
+            </button>
+            <Link
+              className="tb-focus-ring rounded-lg border border-slate-200 bg-white px-3 py-2 text-xs font-semibold text-slate-800 hover:border-brand-200 hover:bg-brand-50"
+              href={`/tasks/${encodeURIComponent(task.repo)}`}
+            >
+              Open full page
+            </Link>
+          </div>
+        </section>
       </div>
     </article>
   );

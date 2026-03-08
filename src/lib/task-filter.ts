@@ -21,9 +21,14 @@ export function matchesQuery(t: TaskIndexItem, query: string) {
   if (!q) return true;
 
   const haystack = [
+    t.id ?? "",
+    t.title ?? "",
     t.repo,
     t.short_description ?? "",
     t.maturity ?? "",
+    t.web_variant?.id ?? "",
+    t.web_variant?.repo ?? "",
+    t.web_variant?.title ?? "",
     ...(t.keywords ?? []),
     ...(t.tags.paradigm ?? []),
     ...(t.tags.response ?? []),

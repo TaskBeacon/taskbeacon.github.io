@@ -25,7 +25,13 @@ export function SiteHeader() {
               className="tb-focus-ring rounded-md px-3 py-2 font-medium text-slate-700 hover:text-slate-900"
               href="/"
             >
-              Gallery
+              Home
+            </Link>
+            <Link
+              className="tb-focus-ring rounded-md px-3 py-2 font-medium text-slate-700 hover:text-slate-900"
+              href="/#explorer"
+            >
+              Tasks
             </Link>
             <Link
               className="tb-focus-ring rounded-md px-3 py-2 font-medium text-slate-700 hover:text-slate-900"
@@ -45,4 +51,3 @@ export function SiteHeader() {
     </header>
   );
 }
-

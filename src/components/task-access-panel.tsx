@@ -23,7 +23,8 @@ export function TaskAccessPanel({
   description,
   meta,
   tone = "local",
-  actions
+  actions,
+  extraActions
 }: {
   eyebrow: string;
   title: string;
@@ -32,6 +33,7 @@ export function TaskAccessPanel({
   meta?: string | null;
   tone?: "local" | "web";
   actions: TaskAccessAction[];
+  extraActions?: React.ReactNode;
 }) {
   const panelClassName =
     tone === "web"
@@ -83,6 +85,7 @@ export function TaskAccessPanel({
             </a>
           );
         })}
+        {extraActions}
       </div>
     </section>
   );

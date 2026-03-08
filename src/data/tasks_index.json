@@ -1,5 +1,5 @@
 {
-  "schema_version": 3,
+  "schema_version": 4,
   "generated_at": "2026-03-08T14:02:38.477Z",
   "org": "TaskBeacon",
   "tasks": [
@@ -42,7 +42,8 @@
       },
       "readme_run_anchor": "#run-modes",
       "run_url": null,
-      "web_variant": null
+      "web_variant": null,
+      "readme_snapshot_path": "/readmes/T000012-sst.md"
     },
     {
       "id": "T000022",
@@ -82,7 +83,8 @@
       },
       "readme_run_anchor": "#run",
       "run_url": null,
-      "web_variant": null
+      "web_variant": null,
+      "readme_snapshot_path": "/readmes/T000022-passive-lottery.md"
     },
     {
       "id": "T000021",
@@ -123,7 +125,8 @@
       },
       "readme_run_anchor": "#run",
       "run_url": null,
-      "web_variant": null
+      "web_variant": null,
+      "readme_snapshot_path": "/readmes/T000021-drifting-double-bandit.md"
     },
     {
       "id": "T000020",
@@ -164,7 +167,8 @@
       },
       "readme_run_anchor": "#run",
       "run_url": null,
-      "web_variant": null
+      "web_variant": null,
+      "readme_snapshot_path": "/readmes/T000020-one-armed-bandit.md"
     },
     {
       "id": "T000019",
@@ -202,7 +206,8 @@
       },
       "readme_run_anchor": "#run",
       "run_url": null,
-      "web_variant": null
+      "web_variant": null,
+      "readme_snapshot_path": "/readmes/T000019-eefrt.md"
     },
     {
       "id": "T000018",
@@ -242,7 +247,8 @@
       },
       "readme_run_anchor": "#run",
       "run_url": null,
-      "web_variant": null
+      "web_variant": null,
+      "readme_snapshot_path": "/readmes/T000018-oddball-mmn.md"
     },
     {
       "id": "T000017",
@@ -282,7 +288,8 @@
       },
       "readme_run_anchor": "#run",
       "run_url": null,
-      "web_variant": null
+      "web_variant": null,
+      "readme_snapshot_path": "/readmes/T000017-delay-discounting.md"
     },
     {
       "id": "T000016",
@@ -322,7 +329,8 @@
       },
       "readme_run_anchor": "#run",
       "run_url": null,
-      "web_variant": null
+      "web_variant": null,
+      "readme_snapshot_path": "/readmes/T000016-card-sorting.md"
     },
     {
       "id": "T000015",
@@ -363,7 +371,8 @@
       },
       "readme_run_anchor": "#run-modes",
       "run_url": null,
-      "web_variant": null
+      "web_variant": null,
+      "readme_snapshot_path": "/readmes/T000015-ant.md"
     },
     {
       "id": "T000014",
@@ -404,7 +413,8 @@
       },
       "readme_run_anchor": "#run-modes",
       "run_url": null,
-      "web_variant": null
+      "web_variant": null,
+      "readme_snapshot_path": "/readmes/T000014-stroop.md"
     },
     {
       "id": "T000013",
@@ -447,7 +457,8 @@
       },
       "readme_run_anchor": "#run-modes",
       "run_url": null,
-      "web_variant": null
+      "web_variant": null,
+      "readme_snapshot_path": "/readmes/T000013-sst-audio.md"
     },
     {
       "id": "T000011",
@@ -488,7 +499,8 @@
       },
       "readme_run_anchor": "#run",
       "run_url": null,
-      "web_variant": null
+      "web_variant": null,
+      "readme_snapshot_path": "/readmes/T000011-simon.md"
     },
     {
       "id": "T000010",
@@ -529,7 +541,8 @@
       },
       "readme_run_anchor": "#run",
       "run_url": null,
-      "web_variant": null
+      "web_variant": null,
+      "readme_snapshot_path": "/readmes/T000010-rest.md"
     },
     {
       "id": "T000009",
@@ -570,7 +583,8 @@
       },
       "readme_run_anchor": "#run",
       "run_url": null,
-      "web_variant": null
+      "web_variant": null,
+      "readme_snapshot_path": "/readmes/T000009-prl.md"
     },
     {
       "id": "T000008",
@@ -614,7 +628,8 @@
       },
       "readme_run_anchor": "#run",
       "run_url": null,
-      "web_variant": null
+      "web_variant": null,
+      "readme_snapshot_path": "/readmes/T000008-nback.md"
     },
     {
       "id": "T000007",
@@ -655,7 +670,8 @@
       },
       "readme_run_anchor": "#run",
       "run_url": null,
-      "web_variant": null
+      "web_variant": null,
+      "readme_snapshot_path": "/readmes/T000007-movie.md"
     },
     {
       "id": "T000006",
@@ -709,8 +725,10 @@
         "release_tag": "0.1.0",
         "last_updated": "2026-03-07T06:23:32Z",
         "run_url": "https://taskbeacon.github.io/psyflow-web/?task=H000006-mid",
-        "download_zip": "https://github.com/TaskBeacon/H000006-mid/archive/refs/heads/main.zip"
-      }
+        "download_zip": "https://github.com/TaskBeacon/H000006-mid/archive/refs/heads/main.zip",
+        "id": "H000006"
+      },
+      "readme_snapshot_path": "/readmes/T000006-mid.md"
     },
     {
       "id": "T000005",
@@ -756,7 +774,8 @@
       },
       "readme_run_anchor": "#run",
       "run_url": null,
-      "web_variant": null
+      "web_variant": null,
+      "readme_snapshot_path": "/readmes/T000005-go-nogo.md"
     },
     {
       "id": "T000004",
@@ -797,7 +816,8 @@
       },
       "readme_run_anchor": "#run",
       "run_url": null,
-      "web_variant": null
+      "web_variant": null,
+      "readme_snapshot_path": "/readmes/T000004-flanker.md"
     },
     {
       "id": "T000003",
@@ -836,7 +856,8 @@
       },
       "readme_run_anchor": "#run",
       "run_url": null,
-      "web_variant": null
+      "web_variant": null,
+      "readme_snapshot_path": "/readmes/T000003-emodot.md"
     },
     {
       "id": "T000002",
@@ -877,7 +898,8 @@
       },
       "readme_run_anchor": "#run",
       "run_url": null,
-      "web_variant": null
+      "web_variant": null,
+      "readme_snapshot_path": "/readmes/T000002-bart.md"
     },
     {
       "id": "T000001",
@@ -935,8 +957,10 @@
         "release_tag": "0.1.0",
         "last_updated": "2026-03-08T14:00:39Z",
         "run_url": "https://taskbeacon.github.io/psyflow-web/?task=H000001-ax-cpt",
-        "download_zip": "https://github.com/TaskBeacon/H000001-ax-cpt/archive/refs/heads/main.zip"
-      }
+        "download_zip": "https://github.com/TaskBeacon/H000001-ax-cpt/archive/refs/heads/main.zip",
+        "id": "H000001"
+      },
+      "readme_snapshot_path": "/readmes/T000001-ax-cpt.md"
     },
     {
       "id": "T000034",
@@ -976,7 +1000,8 @@
       },
       "readme_run_anchor": "#run",
       "run_url": null,
-      "web_variant": null
+      "web_variant": null,
+      "readme_snapshot_path": "/readmes/T000034-cyberball.md"
     },
     {
       "id": "T000033",
@@ -1016,7 +1041,8 @@
       },
       "readme_run_anchor": "#run",
       "run_url": null,
-      "web_variant": null
+      "web_variant": null,
+      "readme_snapshot_path": "/readmes/T000033-visual-search.md"
     },
     {
       "id": "T000032",
@@ -1054,7 +1080,8 @@
       },
       "readme_run_anchor": "#run",
       "run_url": null,
-      "web_variant": null
+      "web_variant": null,
+      "readme_snapshot_path": "/readmes/T000032-antisaccade.md"
     },
     {
       "id": "T000031",
@@ -1095,7 +1122,8 @@
       },
       "readme_run_anchor": "#run",
       "run_url": null,
-      "web_variant": null
+      "web_variant": null,
+      "readme_snapshot_path": "/readmes/T000031-loss-aversion-framing.md"
     },
     {
       "id": "T000030",
@@ -1135,7 +1163,8 @@
       },
       "readme_run_anchor": "#run",
       "run_url": null,
-      "web_variant": null
+      "web_variant": null,
+      "readme_snapshot_path": "/readmes/T000030-iowa-gambling.md"
     },
     {
       "id": "T000029",
@@ -1175,7 +1204,8 @@
       },
       "readme_run_anchor": "#run",
       "run_url": null,
-      "web_variant": null
+      "web_variant": null,
+      "readme_snapshot_path": "/readmes/T000029-cambridge-gambling.md"
     },
     {
       "id": "T000028",
@@ -1215,7 +1245,8 @@
       },
       "readme_run_anchor": "#run",
       "run_url": null,
-      "web_variant": null
+      "web_variant": null,
+      "readme_snapshot_path": "/readmes/T000028-weather-prediction.md"
     },
     {
       "id": "T000027",
@@ -1255,7 +1286,8 @@
       },
       "readme_run_anchor": "#run",
       "run_url": null,
-      "web_variant": null
+      "web_variant": null,
+      "readme_snapshot_path": "/readmes/T000027-task-switching.md"
     },
     {
       "id": "T000026",
@@ -1293,7 +1325,8 @@
       },
       "readme_run_anchor": "#run",
       "run_url": null,
-      "web_variant": null
+      "web_variant": null,
+      "readme_snapshot_path": "/readmes/T000026-mcgurk.md"
     },
     {
       "id": "T000025",
@@ -1333,7 +1366,8 @@
       },
       "readme_run_anchor": "#run",
       "run_url": null,
-      "web_variant": null
+      "web_variant": null,
+      "readme_snapshot_path": "/readmes/T000025-dictator-game.md"
     },
     {
       "id": "T000024",
@@ -1373,7 +1407,8 @@
       },
       "readme_run_anchor": "#run",
       "run_url": null,
-      "web_variant": null
+      "web_variant": null,
+      "readme_snapshot_path": "/readmes/T000024-trust-game.md"
     },
     {
       "id": "T000023",
@@ -1415,7 +1450,8 @@
       },
       "readme_run_anchor": "#run",
       "run_url": null,
-      "web_variant": null
+      "web_variant": null,
+      "readme_snapshot_path": "/readmes/T000023-ultimatum-game.md"
     }
   ]
 }

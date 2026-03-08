@@ -1,6 +1,6 @@
-﻿"use client";
+"use client";
 
-import { useMemo, useState } from "react";
+import { useDeferredValue, useMemo, useState } from "react";
 import type { TaskFacet, TaskIndexItem, TaskTagFacet } from "@/lib/task-index";
 import {
   emptySelectedFacets,
@@ -11,6 +11,7 @@ import {
 import { TagChip } from "@/components/tag-chip";
 import { TaskCard } from "@/components/task-card";
 import { TaskRow } from "@/components/task-row";
+import { TaskDrawer } from "@/components/task-drawer";
 import clsx from "@/components/utils/clsx";
 import { IconViewGrid, IconViewList } from "@/components/icons";
 import { formatMaturityLabel } from "@/components/maturity-badge";
@@ -20,38 +21,47 @@ function FacetSection({
   facet,
   values,
   selected,
-  onToggle
+  onToggle,
+  isOpen,
+  onToggleOpen
 }: {
   title: string;
   facet: TaskFacet;
   values: string[];
   selected: SelectedFacets;
   onToggle: (facet: TaskFacet, value: string) => void;
+  isOpen: boolean;
+  onToggleOpen: () => void;
 }) {
   if (values.length === 0) return null;
 
   return (
-    <section className="rounded-2xl border border-slate-200 bg-white/80 p-4 shadow-sm">
-      <div className="flex items-center justify-between gap-3">
+    <section className="rounded-2xl border border-slate-200 bg-slate-50/85 p-4 shadow-sm">
+      <button
+        type="button"
+        className="tb-focus-ring flex w-full items-center justify-between gap-3 rounded-lg text-left"
+        onClick={onToggleOpen}
+      >
         <h3 className="font-heading text-sm font-semibold tracking-tight text-slate-900">
           {title}
         </h3>
-        {selected[facet].size > 0 ? (
-          <div className="text-xs font-semibold text-brand-800">
-            {selected[facet].size} selected
-          </div>
-        ) : null}
-      </div>
-      <div className="mt-3 flex flex-wrap gap-2">
-        {values.map((v) => (
-          <TagChip
-            key={`${facet}:${v}`}
-            label={facet === "maturity" ? formatMaturityLabel(v) : v}
-            selected={selected[facet].has(v)}
-            onClick={() => onToggle(facet, v)}
-          />
-        ))}
-      </div>
+        <div className="text-xs font-semibold text-slate-600">
+          {selected[facet].size > 0 ? `${selected[facet].size} selected` : `${values.length} options`}
+        </div>
+      </button>
+
+      {isOpen ? (
+        <div className="mt-3 flex flex-wrap gap-2">
+          {values.map((value) => (
+            <TagChip
+              key={`${facet}:${value}`}
+              label={facet === "maturity" ? formatMaturityLabel(value) : value}
+              selected={selected[facet].has(value)}
+              onClick={() => onToggle(facet, value)}
+            />
+          ))}
+        </div>
+      ) : null}
     </section>
   );
 }
@@ -61,7 +71,7 @@ function ViewToggle({
   setView
 }: {
   view: "list" | "cards";
-  setView: (v: "list" | "cards") => void;
+  setView: (view: "list" | "cards") => void;
 }) {
   return (
     <div
@@ -105,11 +115,23 @@ export function GalleryClient({ tasks }: { tasks: TaskIndexItem[] }) {
   const [query, setQuery] = useState<string>("");
   const [selected, setSelected] = useState<SelectedFacets>(() => emptySelectedFacets());
   const [view, setView] = useState<"list" | "cards">("list");
+  const [activeRepo, setActiveRepo] = useState<string | null>(null);
+  const [openFacets, setOpenFacets] = useState<{ maturity: boolean; paradigm: boolean }>({
+    maturity: true,
+    paradigm: true
+  });
 
+  const deferredQuery = useDeferredValue(query);
   const allMaturities = useMemo(() => facetValues(tasks, "maturity"), [tasks]);
   const allParadigms = useMemo(() => facetValues(tasks, "paradigm"), [tasks]);
-
-  const filtered = useMemo(() => filterTasks(tasks, query, selected), [tasks, query, selected]);
+  const filtered = useMemo(
+    () => filterTasks(tasks, deferredQuery, selected),
+    [deferredQuery, selected, tasks]
+  );
+  const activeTask = useMemo(
+    () => tasks.find((task) => task.repo === activeRepo) ?? null,
+    [activeRepo, tasks]
+  );
 
   const anyFilters =
     query.trim().length > 0 ||
@@ -120,13 +142,13 @@ export function GalleryClient({ tasks }: { tasks: TaskIndexItem[] }) {
     selected.language.size > 0;
 
   function toggleFacet(facet: TaskFacet, value: string) {
-    setSelected((prev) => {
+    setSelected((current) => {
       const next: SelectedFacets = {
-        maturity: new Set(prev.maturity),
-        paradigm: new Set(prev.paradigm),
-        response: new Set(prev.response),
-        modality: new Set(prev.modality),
-        language: new Set(prev.language)
+        maturity: new Set(current.maturity),
+        paradigm: new Set(current.paradigm),
+        response: new Set(current.response),
+        modality: new Set(current.modality),
+        language: new Set(current.language)
       };
       if (next[facet].has(value)) next[facet].delete(value);
       else next[facet].add(value);
@@ -140,99 +162,124 @@ export function GalleryClient({ tasks }: { tasks: TaskIndexItem[] }) {
   }
 
   return (
-    <div className="grid grid-cols-1 gap-6 lg:grid-cols-12">
-      <aside className="lg:col-span-4 xl:col-span-3">
-        <div className="sticky top-24 space-y-4">
-          <section className="rounded-2xl border border-slate-200 bg-white/85 p-4 shadow-sm">
-            <label className="block text-xs font-semibold uppercase tracking-wide text-slate-600" htmlFor="search">
-              Search
+    <section id="explorer" className="space-y-5">
+      <div className="rounded-[32px] border border-slate-200 bg-white/90 p-5 shadow-sm">
+        <div className="flex flex-col gap-5">
+          <div className="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
+            <div className="min-w-0 flex-1">
+              <div className="text-[11px] font-semibold uppercase tracking-[0.18em] text-slate-500">
+                Task explorer
+              </div>
+              <div className="mt-2 font-heading text-2xl font-semibold tracking-tight text-slate-900">
+                Browse canonical local tasks and attached browser previews.
+              </div>
+              <div className="mt-2 max-w-3xl text-sm leading-6 text-slate-700">
+                Search by task name, repo, paradigm, or ID. Switch between a dense list and a flow-oriented card browser, then expand any task to load its README snapshot on demand.
+              </div>
+            </div>
+
+            <div className="flex flex-wrap items-center gap-2">
+              {anyFilters ? (
+                <button
+                  type="button"
+                  className="tb-focus-ring rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm font-semibold text-slate-800 shadow-sm hover:border-brand-200 hover:bg-brand-50"
+                  onClick={clearAll}
+                >
+                  Clear filters
+                </button>
+              ) : null}
+              <ViewToggle view={view} setView={setView} />
+            </div>
+          </div>
+
+          <div className="grid gap-4 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-end">
+            <label className="block" htmlFor="task-explorer-search">
+              <span className="text-xs font-semibold uppercase tracking-wide text-slate-600">Search</span>
+              <input
+                id="task-explorer-search"
+                value={query}
+                onChange={(event) => setQuery(event.target.value)}
+                placeholder="e.g. stroop, T000012, H000006, EEG"
+                className="tb-focus-ring mt-2 w-full rounded-2xl border border-slate-200 bg-white px-4 py-3 text-sm text-slate-900 placeholder:text-slate-400"
+              />
             </label>
-            <input
-              id="search"
-              value={query}
-              onChange={(e) => setQuery(e.target.value)}
-              placeholder="e.g. stroop, sst"
-              className="tb-focus-ring mt-2 w-full rounded-xl border border-slate-200 bg-white px-3 py-2 text-sm text-slate-900 placeholder:text-slate-400"
+
+            <div className="rounded-2xl border border-slate-200 bg-slate-50/85 px-4 py-3 text-sm text-slate-700 shadow-sm">
+              Showing <span className="font-semibold text-slate-900">{filtered.length}</span> of{" "}
+              <span className="font-semibold text-slate-900">{tasks.length}</span> tasks
+            </div>
+          </div>
+
+          <div className="grid gap-3 lg:grid-cols-2">
+            <FacetSection
+              title="Maturity"
+              facet="maturity"
+              values={allMaturities}
+              selected={selected}
+              onToggle={toggleFacet}
+              isOpen={openFacets.maturity}
+              onToggleOpen={() =>
+                setOpenFacets((current) => ({ ...current, maturity: !current.maturity }))
+              }
             />
-            <div className="mt-3 flex flex-wrap items-center justify-between gap-3">
-              <div className="text-sm text-slate-600">
-                Showing <span className="font-semibold text-slate-900">{filtered.length}</span> of{" "}
-                <span className="font-semibold text-slate-900">{tasks.length}</span>
-              </div>
-
-              <div className="flex flex-wrap items-center gap-2">
-                {anyFilters ? (
-                  <button
-                    type="button"
-                    className="tb-focus-ring rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm font-semibold text-slate-800 shadow-sm hover:border-brand-200 hover:bg-brand-50"
-                    onClick={clearAll}
-                  >
-                    Clear
-                  </button>
-                ) : null}
-                <ViewToggle view={view} setView={setView} />
-              </div>
-            </div>
-          </section>
-
-          <FacetSection
-            title="Maturity"
-            facet="maturity"
-            values={allMaturities}
-            selected={selected}
-            onToggle={toggleFacet}
-          />
-          <FacetSection
-            title="Paradigm"
-            facet="paradigm"
-            values={allParadigms}
-            selected={selected}
-            onToggle={toggleFacet}
-          />
+            <FacetSection
+              title="Paradigm"
+              facet="paradigm"
+              values={allParadigms}
+              selected={selected}
+              onToggle={toggleFacet}
+              isOpen={openFacets.paradigm}
+              onToggleOpen={() =>
+                setOpenFacets((current) => ({ ...current, paradigm: !current.paradigm }))
+              }
+            />
+          </div>
         </div>
-      </aside>
+      </div>
 
-      <section className="lg:col-span-8 xl:col-span-9">
-        {filtered.length === 0 ? (
-          <div className="rounded-2xl border border-slate-200 bg-white/85 p-10 text-center shadow-sm">
-            <div className="font-heading text-lg font-semibold tracking-tight text-slate-900">
-              No matches
-            </div>
-            <div className="mt-2 text-sm text-slate-700">
-              Try clearing filters or searching by paradigm name (e.g., Stroop, SST, N-back).
-            </div>
-            <div className="mt-5">
-              <button
-                type="button"
-                className="tb-focus-ring rounded-lg bg-cta-500 px-4 py-2 text-sm font-semibold text-white shadow-sm hover:bg-cta-600"
-                onClick={clearAll}
-              >
-                Reset
-              </button>
-            </div>
+      {filtered.length === 0 ? (
+        <div className="rounded-[32px] border border-slate-200 bg-white/90 p-10 text-center shadow-sm">
+          <div className="font-heading text-lg font-semibold tracking-tight text-slate-900">
+            No matches
           </div>
-        ) : view === "list" ? (
-          <div className="space-y-3">
-            {filtered.map((t) => (
-              <TaskRow
-                key={t.repo}
-                task={t}
-                onTagClick={(facet: TaskTagFacet, value) => toggleFacet(facet, value)}
-              />
-            ))}
+          <div className="mt-2 text-sm text-slate-700">
+            Try clearing filters or searching by paradigm name, repo handle, or task ID.
           </div>
-        ) : (
-          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-            {filtered.map((t) => (
-              <TaskCard
-                key={t.repo}
-                task={t}
-                onTagClick={(facet: TaskTagFacet, value) => toggleFacet(facet, value)}
-              />
-            ))}
+          <div className="mt-5">
+            <button
+              type="button"
+              className="tb-focus-ring rounded-lg bg-cta-500 px-4 py-2 text-sm font-semibold text-white shadow-sm hover:bg-cta-600"
+              onClick={clearAll}
+            >
+              Reset explorer
+            </button>
           </div>
-        )}
-      </section>
-    </div>
+        </div>
+      ) : view === "list" ? (
+        <div className="space-y-3">
+          {filtered.map((task) => (
+            <TaskRow
+              key={task.repo}
+              task={task}
+              onTagClick={(facet: TaskTagFacet, value) => toggleFacet(facet, value)}
+              onOpen={(nextTask) => setActiveRepo(nextTask.repo)}
+            />
+          ))}
+        </div>
+      ) : (
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+          {filtered.map((task) => (
+            <TaskCard
+              key={task.repo}
+              task={task}
+              onTagClick={(facet: TaskTagFacet, value) => toggleFacet(facet, value)}
+              onOpen={(nextTask) => setActiveRepo(nextTask.repo)}
+            />
+          ))}
+        </div>
+      )}
+
+      <TaskDrawer task={activeTask} onClose={() => setActiveRepo(null)} />
+    </section>
   );
 }
