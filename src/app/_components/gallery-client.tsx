@@ -1,7 +1,7 @@
 "use client";
 
 import { useDeferredValue, useMemo, useState } from "react";
-import type { TaskFacet, TaskIndexItem, TaskTagFacet } from "@/lib/task-index";
+import type { TaskFacet, TaskIndexItem } from "@/lib/task-index";
 import {
   emptySelectedFacets,
   facetValues,
@@ -264,7 +264,6 @@ export function GalleryClient({
               <TaskRow
                 key={task.repo}
                 task={task}
-                onTagClick={(facet: TaskTagFacet, value) => toggleFacet(facet, value)}
                 onOpen={(nextTask) => setActiveRepo(nextTask.repo)}
               />
             ))
