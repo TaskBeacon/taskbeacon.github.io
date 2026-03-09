@@ -53,13 +53,13 @@ export function TaskChannelCard({
   const compact = size === "compact";
   const panelClassName =
     tone === "web"
-      ? "border-brand-200 bg-gradient-to-br from-brand-50 via-white to-cyan-50"
-      : "border-slate-200 bg-slate-50/85";
+      ? "border-brand-200 bg-[linear-gradient(135deg,rgba(236,254,255,0.96),rgba(255,255,255,0.94),rgba(255,247,237,0.92))]"
+      : "border-brand-100 bg-[linear-gradient(135deg,rgba(255,255,255,0.96),rgba(236,254,255,0.86))]";
 
   return (
     <section
       className={clsx(
-        "rounded-2xl border shadow-sm",
+        "rounded-[24px] border shadow-[0_16px_40px_rgba(14,165,233,0.08)]",
         panelClassName,
         compact ? "p-3" : "p-4"
       )}
@@ -108,8 +108,8 @@ export function TaskChannelCard({
                 className={clsx(
                   "tb-focus-ring inline-flex items-center gap-2 rounded-lg px-3 py-2 text-xs font-semibold shadow-sm transition-colors",
                   isPrimary
-                    ? "bg-cta-500 text-white hover:bg-cta-600"
-                    : "border border-slate-200 bg-white text-slate-800 hover:border-brand-200 hover:bg-brand-50"
+                    ? "w-full justify-center bg-gradient-to-r from-cta-500 to-cta-600 text-white shadow-[0_12px_24px_rgba(245,158,11,0.24)] hover:-translate-y-0.5"
+                    : "border border-brand-100 bg-white text-slate-800 hover:border-brand-200 hover:bg-brand-50"
                 )}
                 onClick={action.onClick}
               >
@@ -127,8 +127,8 @@ export function TaskChannelCard({
               className={clsx(
                 "tb-focus-ring inline-flex items-center gap-2 rounded-lg px-3 py-2 text-xs font-semibold shadow-sm transition-colors",
                 isPrimary
-                  ? "bg-cta-500 text-white hover:bg-cta-600"
-                  : "border border-slate-200 bg-white text-slate-800 hover:border-brand-200 hover:bg-brand-50"
+                  ? "bg-gradient-to-r from-cta-500 to-cta-600 text-white shadow-[0_12px_24px_rgba(245,158,11,0.24)] hover:-translate-y-0.5"
+                  : "border border-brand-100 bg-white text-slate-800 hover:border-brand-200 hover:bg-brand-50"
               )}
               href={action.href}
               target="_blank"

@@ -2,7 +2,7 @@ import rawIndex from "@/data/tasks_index.json";
 
 export type TaskTagFacet = "paradigm" | "response" | "modality" | "language";
 
-export type TaskFacet = TaskTagFacet | "maturity";
+export type TaskFacet = TaskTagFacet | "maturity" | "preview";
 
 export type TaskTags = Record<TaskTagFacet, string[]>;
 

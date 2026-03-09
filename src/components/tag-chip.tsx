@@ -21,8 +21,8 @@ export function TagChip({
         "tb-focus-ring inline-flex items-center gap-2 rounded-full border px-3 py-1 text-xs font-semibold transition-colors",
         "cursor-pointer",
         selected
-          ? "border-brand-700 bg-brand-700 text-white"
-          : "border-slate-200 bg-white text-slate-800 hover:border-brand-300 hover:bg-brand-50"
+          ? "border-brand-600 bg-gradient-to-r from-brand-600 to-brand-700 text-white"
+          : "border-brand-100 bg-white/92 text-slate-800 hover:border-brand-300 hover:bg-brand-50"
       )}
       onClick={onClick}
     >
@@ -30,4 +30,3 @@ export function TagChip({
     </button>
   );
 }
-

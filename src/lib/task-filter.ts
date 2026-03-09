@@ -1,4 +1,4 @@
-﻿import type { TaskFacet, TaskIndexItem, TaskTagFacet } from "@/lib/task-index";
+import type { TaskFacet, TaskIndexItem, TaskTagFacet } from "@/lib/task-index";
 
 function norm(s: string) {
   return s.trim().toLowerCase();
@@ -9,6 +9,7 @@ export type SelectedFacets = Record<TaskFacet, Set<string>>;
 export function emptySelectedFacets(): SelectedFacets {
   return {
     maturity: new Set(),
+    preview: new Set(),
     paradigm: new Set(),
     response: new Set(),
     modality: new Set(),
@@ -51,8 +52,18 @@ function matchesMaturity(t: TaskIndexItem, wanted: Set<string>) {
   return false;
 }
 
+function matchesPreview(t: TaskIndexItem, wanted: Set<string>) {
+  if (!wanted || wanted.size === 0) return true;
+  const hasPreview = Boolean(t.web_variant);
+  const normalized = Array.from(wanted).map(norm);
+  if (normalized.includes("with preview") && hasPreview) return true;
+  if (normalized.includes("without preview") && !hasPreview) return true;
+  return false;
+}
+
 export function matchesFacets(t: TaskIndexItem, selected: SelectedFacets) {
   if (!matchesMaturity(t, selected.maturity)) return false;
+  if (!matchesPreview(t, selected.preview)) return false;
 
   const facets: TaskTagFacet[] = ["paradigm", "response", "modality", "language"];
   for (const facet of facets) {
@@ -79,7 +90,11 @@ export function filterTasks(
   return tasks
     .filter((t) => matchesQuery(t, query))
     .filter((t) => matchesFacets(t, selected))
-    .sort((a, b) => (a.last_updated < b.last_updated ? 1 : -1));
+    .sort((a, b) => {
+      const labelA = String(a.title ?? a.repo).toLowerCase();
+      const labelB = String(b.title ?? b.repo).toLowerCase();
+      return labelA.localeCompare(labelB);
+    });
 }
 
 export function facetValues(tasks: TaskIndexItem[], facet: TaskFacet) {
@@ -91,6 +106,12 @@ export function facetValues(tasks: TaskIndexItem[], facet: TaskFacet) {
       if (v) set.add(v);
     }
     return Array.from(set).sort((a, b) => a.localeCompare(b));
+  }
+
+  if (facet === "preview") {
+    if (tasks.some((t) => t.web_variant)) set.add("With preview");
+    if (tasks.some((t) => !t.web_variant)) set.add("Without preview");
+    return Array.from(set);
   }
 
   for (const t of tasks) {

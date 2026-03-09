@@ -17,10 +17,11 @@ export function ResourceCard({
   external?: boolean;
 }) {
   const className =
-    "group rounded-[28px] border border-slate-200 bg-white/90 p-5 shadow-sm transition-all hover:-translate-y-0.5 hover:border-brand-200 hover:shadow-md";
+    "group relative overflow-hidden rounded-[32px] border border-white/80 bg-white/86 p-5 shadow-[0_18px_50px_rgba(14,165,233,0.10)] transition-all hover:-translate-y-1 hover:border-brand-200 hover:shadow-[0_22px_56px_rgba(245,158,11,0.14)]";
 
   const body = (
     <>
+      <div className="absolute inset-x-0 top-0 h-20 bg-[radial-gradient(circle_at_top_left,_rgba(34,211,238,0.22),_transparent_42%),radial-gradient(circle_at_top_right,_rgba(245,158,11,0.18),_transparent_34%)]" />
       <div className="text-[11px] font-semibold uppercase tracking-[0.18em] text-slate-500">
         {eyebrow}
       </div>

@@ -19,7 +19,7 @@ export function TaskRow({
   const preview = task.web_variant;
 
   return (
-    <article className="rounded-[28px] border border-slate-200 bg-white/90 p-5 shadow-sm transition-all hover:border-brand-200 hover:shadow-md">
+    <article className="rounded-[32px] border border-white/80 bg-white/88 p-5 shadow-[0_18px_44px_rgba(14,165,233,0.08)] transition-all hover:-translate-y-0.5 hover:border-brand-200 hover:shadow-[0_24px_56px_rgba(245,158,11,0.12)]">
       <div className="flex flex-wrap items-start justify-between gap-4">
         <div className="min-w-0 flex-1">
           <div className="flex flex-wrap items-center gap-2">
@@ -28,7 +28,7 @@ export function TaskRow({
             </div>
             {task.maturity ? <MaturityBadge maturity={task.maturity} /> : null}
             {preview ? (
-              <span className="rounded-full border border-brand-200 bg-brand-50 px-2.5 py-1 text-[11px] font-semibold text-brand-900">
+              <span className="rounded-full border border-brand-200 bg-brand-50 px-2.5 py-1 text-[11px] font-semibold text-brand-800">
                 Preview ready
               </span>
             ) : null}
@@ -56,7 +56,7 @@ export function TaskRow({
           </div>
         </div>
 
-        <div className="rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-right">
+        <div className="rounded-[24px] border border-brand-100 bg-[linear-gradient(135deg,rgba(236,254,255,0.86),rgba(255,255,255,0.92))] px-4 py-3 text-right">
           <div className="text-[11px] font-semibold uppercase tracking-wide text-slate-500">
             Updated
           </div>
@@ -75,14 +75,14 @@ export function TaskRow({
           tone="local"
           size="compact"
           actions={[
+            { type: "button", label: "Expand details", emphasis: "primary", onClick: () => onOpen(task) },
             { type: "copy", label: "Copy Clone", text: localCloneCommand(task) },
             { label: "Open Repo", href: task.html_url, icon: "github" },
             {
               label: "Download",
               href: `${task.html_url}/archive/refs/heads/${task.default_branch}.zip`,
               icon: "download"
-            },
-            { type: "button", label: "Expand details", onClick: () => onOpen(task) }
+            }
           ]}
         />
 
@@ -100,7 +100,7 @@ export function TaskRow({
             ]}
           />
         ) : (
-          <section className="rounded-2xl border border-dashed border-slate-200 bg-slate-50/70 p-4 shadow-sm">
+          <section className="rounded-[24px] border border-dashed border-brand-100 bg-[linear-gradient(135deg,rgba(255,255,255,0.92),rgba(236,254,255,0.76))] p-4 shadow-sm">
             <div className="text-[11px] font-semibold uppercase tracking-[0.18em] text-slate-500">
               Preview
             </div>

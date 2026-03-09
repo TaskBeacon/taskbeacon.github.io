@@ -9,18 +9,18 @@ export default function Page() {
   const tasks = index.tasks ?? [];
   const previewCount = tasks.filter((task) => task.web_variant).length;
   const voiceCount = tasks.filter((task) => task.has_voiceover).length;
-  const paradigmCount = new Set(
+  const taskTypeCount = new Set(
     tasks.flatMap((task) => task.tags?.paradigm ?? []).map((value) => value.toLowerCase())
   ).size;
 
   return (
     <div className="space-y-10">
-      <section className="overflow-hidden rounded-[36px] border border-slate-200 bg-white/90 shadow-sm">
+      <section className="overflow-hidden rounded-[40px] border border-white/80 bg-white/82 shadow-[0_24px_80px_rgba(14,165,233,0.14)]">
         <div className="relative p-8 sm:p-10">
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,_rgba(34,211,238,0.16),_transparent_35%),radial-gradient(circle_at_bottom_right,_rgba(5,150,105,0.12),_transparent_30%)]" />
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,_rgba(34,211,238,0.22),_transparent_34%),radial-gradient(circle_at_top_right,_rgba(245,158,11,0.18),_transparent_28%),radial-gradient(circle_at_bottom_right,_rgba(14,165,233,0.14),_transparent_30%)]" />
 
           <div className="relative max-w-4xl">
-            <div className="text-[11px] font-semibold uppercase tracking-[0.24em] text-brand-900">
+            <div className="text-[11px] font-semibold uppercase tracking-[0.24em] text-brand-800">
               TaskBeacon platform
             </div>
             <h1 className="mt-4 font-heading text-4xl font-semibold tracking-tight text-slate-900 sm:text-5xl">
@@ -35,19 +35,19 @@ export default function Page() {
 
             <div className="mt-7 flex flex-wrap gap-3">
               <Link
-                className="tb-focus-ring inline-flex items-center justify-center rounded-xl bg-cta-500 px-4 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-cta-600"
+                className="tb-focus-ring inline-flex items-center justify-center rounded-2xl bg-gradient-to-r from-cta-500 to-cta-600 px-4 py-2.5 text-sm font-semibold text-white shadow-[0_14px_30px_rgba(245,158,11,0.24)] hover:-translate-y-0.5"
                 href="/tasks/"
               >
                 Open Tasks
               </Link>
               <Link
-                className="tb-focus-ring inline-flex items-center justify-center rounded-xl border border-slate-200 bg-white px-4 py-2.5 text-sm font-semibold text-slate-900 shadow-sm hover:border-brand-200 hover:bg-brand-50"
+                className="tb-focus-ring inline-flex items-center justify-center rounded-2xl border border-brand-100 bg-white px-4 py-2.5 text-sm font-semibold text-slate-900 shadow-sm hover:border-brand-200 hover:bg-brand-50"
                 href="/framework/"
               >
                 Explore Framework
               </Link>
               <a
-                className="tb-focus-ring inline-flex items-center justify-center rounded-xl border border-slate-200 bg-white px-4 py-2.5 text-sm font-semibold text-slate-900 shadow-sm hover:border-brand-200 hover:bg-brand-50"
+                className="tb-focus-ring inline-flex items-center justify-center rounded-2xl border border-brand-100 bg-white px-4 py-2.5 text-sm font-semibold text-slate-900 shadow-sm hover:border-brand-200 hover:bg-brand-50"
                 href="https://taskbeacon.github.io/psyflow-web"
                 target="_blank"
                 rel="noreferrer"
@@ -58,7 +58,7 @@ export default function Page() {
           </div>
 
           <div className="relative mt-8 grid gap-3 md:grid-cols-2 xl:grid-cols-4">
-            <div className="rounded-2xl border border-slate-200 bg-white/90 p-4 shadow-sm">
+            <div className="rounded-[24px] border border-brand-100 bg-white/90 p-4 shadow-sm">
               <div className="text-[11px] font-semibold uppercase tracking-wide text-slate-500">
                 Tasks
               </div>
@@ -66,7 +66,7 @@ export default function Page() {
                 {tasks.length}
               </div>
             </div>
-            <div className="rounded-2xl border border-slate-200 bg-white/90 p-4 shadow-sm">
+            <div className="rounded-[24px] border border-brand-100 bg-white/90 p-4 shadow-sm">
               <div className="text-[11px] font-semibold uppercase tracking-wide text-slate-500">
                 Web previews
               </div>
@@ -74,15 +74,15 @@ export default function Page() {
                 {previewCount}
               </div>
             </div>
-            <div className="rounded-2xl border border-slate-200 bg-white/90 p-4 shadow-sm">
+            <div className="rounded-[24px] border border-brand-100 bg-white/90 p-4 shadow-sm">
               <div className="text-[11px] font-semibold uppercase tracking-wide text-slate-500">
-                Paradigms
+                Task types
               </div>
               <div className="mt-2 font-heading text-3xl font-semibold text-slate-900">
-                {paradigmCount}
+                {taskTypeCount}
               </div>
             </div>
-            <div className="rounded-2xl border border-slate-200 bg-white/90 p-4 shadow-sm">
+            <div className="rounded-[24px] border border-brand-100 bg-white/90 p-4 shadow-sm">
               <div className="text-[11px] font-semibold uppercase tracking-wide text-slate-500">
                 Voice-ready
               </div>
@@ -92,7 +92,7 @@ export default function Page() {
             </div>
           </div>
 
-          <div className="relative mt-4 rounded-2xl border border-slate-200 bg-slate-50/85 px-4 py-3 text-sm text-slate-700 shadow-sm">
+          <div className="relative mt-4 rounded-[24px] border border-white/70 bg-[linear-gradient(135deg,rgba(255,255,255,0.96),rgba(236,254,255,0.9),rgba(255,247,237,0.88))] px-4 py-3 text-sm text-slate-700 shadow-sm">
             Index updated{" "}
             <span className="font-semibold text-slate-900">
               {formatIsoDateTime(index.generated_at)}
@@ -120,7 +120,7 @@ export default function Page() {
       </section>
 
       <section className="grid gap-4 lg:grid-cols-[1.25fr_0.9fr]">
-        <div className="rounded-[32px] border border-slate-200 bg-white/90 p-6 shadow-sm">
+        <div className="rounded-[32px] border border-white/80 bg-white/88 p-6 shadow-[0_18px_50px_rgba(14,165,233,0.10)]">
           <div className="text-[11px] font-semibold uppercase tracking-[0.18em] text-slate-500">
             Why this structure
           </div>
@@ -139,7 +139,7 @@ export default function Page() {
           </div>
         </div>
 
-        <div className="rounded-[32px] border border-slate-200 bg-slate-50/85 p-6 shadow-sm">
+        <div className="rounded-[32px] border border-white/80 bg-[linear-gradient(135deg,rgba(255,255,255,0.94),rgba(236,254,255,0.88),rgba(255,247,237,0.86))] p-6 shadow-[0_18px_50px_rgba(245,158,11,0.12)]">
           <div className="text-[11px] font-semibold uppercase tracking-[0.18em] text-slate-500">
             Primary workflow
           </div>
