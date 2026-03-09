@@ -18,11 +18,11 @@ export function TagChip({
       type="button"
       title={title}
       className={clsx(
-        "tb-focus-ring inline-flex items-center gap-2 rounded-full border px-3 py-1 text-xs font-semibold transition-colors",
-        "cursor-pointer",
+        "tb-focus-ring inline-flex items-center gap-2 rounded-full border-2 px-3 py-1 text-xs font-bold transition-colors",
+        "border-[#25314d] cursor-pointer",
         selected
-          ? "border-brand-600 bg-gradient-to-r from-brand-600 to-brand-700 text-white"
-          : "border-brand-100 bg-white/92 text-slate-800 hover:border-brand-300 hover:bg-brand-50"
+          ? "bg-[#39d95d] text-white"
+          : "bg-white text-[#25314d] hover:bg-[#e2f3fb]"
       )}
       onClick={onClick}
     >

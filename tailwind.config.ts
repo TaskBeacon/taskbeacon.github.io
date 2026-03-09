@@ -7,24 +7,24 @@ export default {
     extend: {
       colors: {
         brand: {
-          50: "#ECFEFF",
-          100: "#CFFAFE",
-          200: "#A5F3FC",
-          300: "#67E8F9",
-          400: "#22D3EE",
-          500: "#06B6D4",
-          600: "#0EA5E9",
-          700: "#0284C7",
-          800: "#0F4C81",
-          900: "#123B63"
+          50: "#EEF5FB",
+          100: "#D9EAF7",
+          200: "#B8D6EF",
+          300: "#90BDE4",
+          400: "#5E9FD6",
+          500: "#377FBE",
+          600: "#2B679B",
+          700: "#254F78",
+          800: "#243D5F",
+          900: "#22314E"
         },
         cta: {
-          500: "#F59E0B",
-          600: "#D97706"
+          500: "#39D95D",
+          600: "#29BB48"
         }
       },
       fontFamily: {
-        heading: ["Space Grotesk", "ui-sans-serif", "system-ui", "sans-serif"],
+        heading: ["Baloo 2", "ui-sans-serif", "system-ui", "sans-serif"],
         sans: ["DM Sans", "ui-sans-serif", "system-ui", "sans-serif"],
         mono: [
           "ui-monospace",
@@ -38,7 +38,7 @@ export default {
         ]
       },
       boxShadow: {
-        crisp: "0 8px 30px rgba(14, 165, 233, 0.12), 0 18px 46px rgba(245, 158, 11, 0.10)"
+        crisp: "0 6px 0 #25314d"
       },
       keyframes: {
         "fade-up": {

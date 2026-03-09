@@ -7,6 +7,14 @@ import { TagChip } from "@/components/tag-chip";
 import { MaturityBadge } from "@/components/maturity-badge";
 import { TaskChannelCard } from "@/components/task-channel-card";
 
+function taskInitials(task: TaskIndexItem) {
+  return taskTitle(task)
+    .split(/\s+/)
+    .slice(0, 2)
+    .map((part) => part[0]?.toUpperCase() ?? "")
+    .join("");
+}
+
 export function TaskRow({
   task,
   onTagClick,
@@ -19,54 +27,57 @@ export function TaskRow({
   const preview = task.web_variant;
 
   return (
-    <article className="rounded-[32px] border border-white/80 bg-white/88 p-5 shadow-[0_18px_44px_rgba(14,165,233,0.08)] transition-all hover:-translate-y-0.5 hover:border-brand-200 hover:shadow-[0_24px_56px_rgba(245,158,11,0.12)]">
+    <article className="tb-frame bg-[#fffdf9] p-5">
       <div className="flex flex-wrap items-start justify-between gap-4">
-        <div className="min-w-0 flex-1">
-          <div className="flex flex-wrap items-center gap-2">
-            <div className="font-heading text-xl font-semibold tracking-tight text-slate-900">
-              {taskTitle(task)}
+        <div className="flex min-w-0 flex-1 gap-4">
+          <div className="grid size-14 shrink-0 place-items-center rounded-2xl border-2 border-[#25314d] bg-[#b9dceb]">
+            <span className="font-heading text-lg font-bold text-[#25314d]">
+              {taskInitials(task)}
+            </span>
+          </div>
+
+          <div className="min-w-0 flex-1">
+            <div className="flex flex-wrap items-center gap-2">
+              <div className="font-heading text-2xl font-bold leading-tight text-[#25314d]">
+                {taskTitle(task)}
+              </div>
+              {task.maturity ? <MaturityBadge maturity={task.maturity} /> : null}
+              {preview ? (
+                <span className="rounded-full bg-[#ecffe5] px-3 py-1 text-[11px] font-bold text-[#25314d]">
+                  Preview ready
+                </span>
+              ) : null}
             </div>
-            {task.maturity ? <MaturityBadge maturity={task.maturity} /> : null}
-            {preview ? (
-              <span className="rounded-full border border-brand-200 bg-brand-50 px-2.5 py-1 text-[11px] font-semibold text-brand-800">
-                Preview ready
-              </span>
-            ) : null}
-          </div>
 
-          <div className="mt-2 flex flex-wrap items-center gap-2 text-xs text-slate-600">
-            <code className="rounded-full border border-slate-200 bg-slate-50 px-2.5 py-1 font-mono text-[11px] text-slate-700">
-              {taskHandle(task)}
-            </code>
-            <code className="rounded-full border border-slate-200 bg-slate-50 px-2.5 py-1 font-mono text-[11px] text-slate-700">
-              {task.repo}
-            </code>
-            {(task.tags?.paradigm ?? []).map((value) => (
-              <TagChip
-                key={`${task.repo}:paradigm:${value}`}
-                label={value}
-                title={`Filter by paradigm: ${value}`}
-                onClick={onTagClick ? () => onTagClick("paradigm", value) : undefined}
-              />
-            ))}
-          </div>
+            <div className="mt-2 flex flex-wrap items-center gap-2 text-xs text-slate-600">
+              <code className="rounded-full border-2 border-[#25314d] bg-white px-2.5 py-1 font-mono text-[11px] font-semibold text-[#25314d]">
+                {taskHandle(task)}
+              </code>
+              <code className="rounded-full border-2 border-[#25314d] bg-white px-2.5 py-1 font-mono text-[11px] font-semibold text-[#25314d]">
+                {task.repo}
+              </code>
+              {(task.tags?.paradigm ?? []).map((value) => (
+                <TagChip
+                  key={`${task.repo}:paradigm:${value}`}
+                  label={value}
+                  title={`Filter by task type: ${value}`}
+                  onClick={onTagClick ? () => onTagClick("paradigm", value) : undefined}
+                />
+              ))}
+            </div>
 
-          <div className="mt-3 max-w-3xl text-sm leading-6 text-slate-700">
-            {task.short_description || "No description provided."}
+            <div className="mt-3 max-w-3xl text-sm leading-6 text-slate-700">
+              {task.short_description || "No description provided."}
+            </div>
           </div>
         </div>
 
-        <div className="rounded-[24px] border border-brand-100 bg-[linear-gradient(135deg,rgba(236,254,255,0.86),rgba(255,255,255,0.92))] px-4 py-3 text-right">
-          <div className="text-[11px] font-semibold uppercase tracking-wide text-slate-500">
-            Updated
-          </div>
-          <div className="mt-1 text-sm font-semibold text-slate-900">
-            {formatShortDate(task.last_updated)}
-          </div>
+        <div className="rounded-full bg-[#e2f3fb] px-4 py-2 text-sm font-bold text-[#25314d]">
+          Updated {formatShortDate(task.last_updated)}
         </div>
       </div>
 
-      <div className="mt-5 grid gap-3 xl:grid-cols-2">
+      <div className="mt-6 grid gap-4 xl:grid-cols-2">
         <TaskChannelCard
           eyebrow="Local / PsyFlow"
           handle={taskHandle(task)}
@@ -100,14 +111,16 @@ export function TaskRow({
             ]}
           />
         ) : (
-          <section className="rounded-[24px] border border-dashed border-brand-100 bg-[linear-gradient(135deg,rgba(255,255,255,0.92),rgba(236,254,255,0.76))] p-4 shadow-sm">
-            <div className="text-[11px] font-semibold uppercase tracking-[0.18em] text-slate-500">
+          <section className="tb-frame-soft bg-[#fff8f0] p-4">
+            <div className="text-[11px] font-bold uppercase tracking-[0.18em] text-slate-500">
               Preview
             </div>
-            <div className="mt-2 text-sm font-semibold text-slate-900">No browser preview yet</div>
+            <div className="mt-2 font-heading text-xl font-bold text-[#25314d]">
+              No browser preview yet
+            </div>
             <div className="mt-2 text-sm leading-6 text-slate-700">
-              The canonical local task is available now. Add an HTML companion later to surface a
-              live preview here.
+              The canonical local task is ready now. Attach an HTML companion later to surface a
+              runnable preview here.
             </div>
           </section>
         )}

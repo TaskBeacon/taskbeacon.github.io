@@ -34,22 +34,20 @@ function FacetSection({
   if (values.length === 0) return null;
 
   return (
-    <section className="rounded-[24px] border border-white/80 bg-white/88 p-4 shadow-[0_16px_40px_rgba(14,165,233,0.08)]">
+    <section className="tb-frame-soft p-4">
       <button
         type="button"
         className="tb-focus-ring flex w-full items-center justify-between gap-3 rounded-lg text-left"
         onClick={onToggleOpen}
       >
-        <h3 className="font-heading text-sm font-semibold tracking-tight text-slate-900">
-          {title}
-        </h3>
-        <div className="text-xs font-semibold text-slate-600">
+        <h3 className="font-heading text-xl font-bold text-[#25314d]">{title}</h3>
+        <div className="text-xs font-bold text-slate-600">
           {selected[facet].size > 0 ? `${selected[facet].size} selected` : `${values.length} options`}
         </div>
       </button>
 
       {isOpen ? (
-        <div className="mt-3 flex flex-wrap gap-2">
+        <div className="mt-4 flex flex-wrap gap-2">
           {values.map((value) => (
             <TagChip
               key={`${facet}:${value}`}
@@ -130,63 +128,53 @@ export function GalleryClient({
   }
 
   return (
-    <section className="space-y-6">
-      <div className="rounded-[36px] border border-white/80 bg-white/84 p-5 shadow-[0_20px_60px_rgba(14,165,233,0.12)]">
-        <div className="flex flex-col gap-6">
-          <div className="flex flex-col gap-4 xl:flex-row xl:items-end xl:justify-between">
-            <div>
-              <div className="text-[11px] font-semibold uppercase tracking-[0.18em] text-brand-800">
-                Tasks
-              </div>
-              <div className="mt-2 font-heading text-3xl font-semibold tracking-tight text-slate-900">
-                Browse canonical local tasks and aligned previews.
-              </div>
-              <div className="mt-2 max-w-3xl text-sm leading-6 text-slate-700">
-                Filter from the left, scan a cleaner alphabetical list on the right, and expand
-                README-backed details only when you need deeper context.
-              </div>
-            </div>
-
-            <div className="rounded-[24px] border border-white/80 bg-[linear-gradient(135deg,rgba(255,255,255,0.94),rgba(236,254,255,0.88),rgba(255,247,237,0.86))] px-4 py-3 text-sm text-slate-700 shadow-sm">
-              Index updated{" "}
-              <span className="font-semibold text-slate-900">
-                {formatIsoDateTime(generatedAt)}
-              </span>
-            </div>
+    <section className="space-y-8">
+      <div className="grid gap-8 lg:grid-cols-[1fr_360px] lg:items-center">
+        <div>
+          <div className="tb-badge">Task Explorer</div>
+          <div className="mt-5 font-heading text-5xl font-bold leading-[0.94] text-[#25314d] sm:text-6xl">
+            Find The Right Task,
+            <br />
+            <span className="text-[#39d95d]">Filter Faster,</span>
+            <br />
+            Expand Only What Matters.
+          </div>
+          <div className="mt-5 max-w-2xl text-base leading-8 text-slate-700">
+            This explorer keeps the denser list workflow while adopting the clearer, stronger page
+            language from the rest of the site.
           </div>
 
-          <div className="grid gap-3 md:grid-cols-2 xl:grid-cols-4">
-            <div className="rounded-[24px] border border-brand-100 bg-white/90 p-4 shadow-sm">
-              <div className="text-[11px] font-semibold uppercase tracking-wide text-slate-500">
-                Total tasks
-              </div>
-              <div className="mt-2 font-heading text-2xl font-semibold text-slate-900">
-                {tasks.length}
-              </div>
+          <div className="mt-8 flex flex-wrap gap-8">
+            <div>
+              <div className="font-heading text-3xl font-bold text-[#25314d]">{tasks.length}</div>
+              <div className="text-sm text-slate-600">Total tasks</div>
             </div>
-            <div className="rounded-[24px] border border-brand-100 bg-white/90 p-4 shadow-sm">
-              <div className="text-[11px] font-semibold uppercase tracking-wide text-slate-500">
-                Matching now
-              </div>
-              <div className="mt-2 font-heading text-2xl font-semibold text-slate-900">
-                {filtered.length}
-              </div>
+            <div>
+              <div className="font-heading text-3xl font-bold text-[#25314d]">{previewCount}</div>
+              <div className="text-sm text-slate-600">With preview</div>
             </div>
-            <div className="rounded-[24px] border border-brand-100 bg-white/90 p-4 shadow-sm">
-              <div className="text-[11px] font-semibold uppercase tracking-wide text-slate-500">
-                Previews
-              </div>
-              <div className="mt-2 font-heading text-2xl font-semibold text-slate-900">
-                {previewCount}
-              </div>
+            <div>
+              <div className="font-heading text-3xl font-bold text-[#25314d]">{voiceCount}</div>
+              <div className="text-sm text-slate-600">Voice-ready</div>
             </div>
-            <div className="rounded-[24px] border border-brand-100 bg-white/90 p-4 shadow-sm">
-              <div className="text-[11px] font-semibold uppercase tracking-wide text-slate-500">
-                Voice-ready
-              </div>
-              <div className="mt-2 font-heading text-2xl font-semibold text-slate-900">
-                {voiceCount}
-              </div>
+          </div>
+        </div>
+
+        <div className="tb-frame bg-[#fffdf9] p-5">
+          <div className="text-sm font-bold text-slate-600">Quick Snapshot</div>
+          <div className="mt-3 font-heading text-2xl font-bold text-[#25314d]">
+            Explorer Updated
+          </div>
+          <div className="mt-2 text-sm text-slate-600">{formatIsoDateTime(generatedAt)}</div>
+
+          <div className="mt-5 space-y-3">
+            <div className="tb-frame-soft bg-[#eef8ff] px-4 py-3">
+              <div className="text-xs font-bold uppercase tracking-[0.18em] text-slate-500">Order</div>
+              <div className="mt-1 text-sm font-bold text-[#25314d]">Alphabetical by task title</div>
+            </div>
+            <div className="tb-frame-soft bg-[#fff8f0] px-4 py-3">
+              <div className="text-xs font-bold uppercase tracking-[0.18em] text-slate-500">Details</div>
+              <div className="mt-1 text-sm font-bold text-[#25314d]">Expand from Local / PsyFlow only</div>
             </div>
           </div>
         </div>
@@ -195,31 +183,27 @@ export function GalleryClient({
       <div className="grid grid-cols-1 gap-6 lg:grid-cols-12">
         <aside className="lg:col-span-4 xl:col-span-3">
           <div className="sticky top-24 space-y-4">
-            <section className="rounded-[24px] border border-white/80 bg-white/90 p-4 shadow-[0_16px_40px_rgba(14,165,233,0.08)]">
+            <section className="tb-frame p-4">
               <label className="block" htmlFor="task-explorer-search">
-                <span className="text-xs font-semibold uppercase tracking-wide text-slate-600">
+                <span className="text-xs font-bold uppercase tracking-[0.18em] text-slate-500">
                   Search
                 </span>
                 <input
                   id="task-explorer-search"
                   value={query}
                   onChange={(event) => setQuery(event.target.value)}
-                  placeholder="e.g. stroop, T000012, H000006, EEG"
-                  className="tb-focus-ring mt-2 w-full rounded-2xl border border-brand-100 bg-white px-4 py-3 text-sm text-slate-900 placeholder:text-slate-400"
+                  placeholder="Search title, task ID, preview ID, repo..."
+                  className="tb-focus-ring mt-3 w-full rounded-[18px] border-2 border-[#25314d] bg-white px-4 py-3 text-sm text-[#25314d] placeholder:text-slate-400"
                 />
               </label>
 
               <div className="mt-4 flex flex-wrap items-center justify-between gap-3">
                 <div className="text-sm text-slate-700">
-                  Showing <span className="font-semibold text-slate-900">{filtered.length}</span>{" "}
-                  of <span className="font-semibold text-slate-900">{tasks.length}</span>
+                  Showing <span className="font-bold text-[#25314d]">{filtered.length}</span> of{" "}
+                  <span className="font-bold text-[#25314d]">{tasks.length}</span>
                 </div>
                 {anyFilters ? (
-                  <button
-                    type="button"
-                    className="tb-focus-ring rounded-2xl border border-brand-100 bg-white px-3 py-2 text-sm font-semibold text-slate-800 shadow-sm hover:border-brand-200 hover:bg-brand-50"
-                    onClick={clearAll}
-                  >
+                  <button type="button" className="tb-focus-ring tb-button-secondary text-sm" onClick={clearAll}>
                     Clear
                   </button>
                 ) : null}
@@ -249,7 +233,7 @@ export function GalleryClient({
               }
             />
             <FacetSection
-              title="Paradigm / Task Type"
+              title="Task Type"
               facet="paradigm"
               values={allParadigms}
               selected={selected}
@@ -262,21 +246,15 @@ export function GalleryClient({
           </div>
         </aside>
 
-        <section className="space-y-3 lg:col-span-8 xl:col-span-9">
+        <section className="space-y-4 lg:col-span-8 xl:col-span-9">
           {filtered.length === 0 ? (
-            <div className="rounded-[32px] border border-white/80 bg-white/90 p-10 text-center shadow-[0_18px_44px_rgba(14,165,233,0.08)]">
-              <div className="font-heading text-lg font-semibold tracking-tight text-slate-900">
-                No matches
-              </div>
-              <div className="mt-2 text-sm text-slate-700">
-                Try clearing filters or searching by task name, repo handle, or task ID.
+            <div className="tb-frame p-10 text-center">
+              <div className="font-heading text-3xl font-bold text-[#25314d]">No matches</div>
+              <div className="mt-3 text-sm text-slate-700">
+                Try clearing filters or searching by task name, repo handle, or preview ID.
               </div>
               <div className="mt-5">
-                <button
-                  type="button"
-                  className="tb-focus-ring rounded-2xl bg-gradient-to-r from-cta-500 to-cta-600 px-4 py-2 text-sm font-semibold text-white shadow-[0_12px_24px_rgba(245,158,11,0.24)] hover:-translate-y-0.5"
-                  onClick={clearAll}
-                >
+                <button type="button" className="tb-focus-ring tb-button-primary" onClick={clearAll}>
                   Reset explorer
                 </button>
               </div>

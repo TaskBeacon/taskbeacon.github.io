@@ -16,17 +16,13 @@ const PRIMARY_LINKS = [
 
 function Mark() {
   return (
-    <span className="inline-flex items-center gap-3 font-heading text-sm font-semibold tracking-tight text-slate-900">
-      <span className="relative grid size-9 place-items-center rounded-2xl bg-gradient-to-br from-brand-400 via-brand-500 to-brand-700 shadow-[0_10px_26px_rgba(14,165,233,0.28)]">
-        <span className="absolute right-1 top-1 size-2 rounded-full bg-cta-500" aria-hidden="true" />
-        <span className="block size-4 rounded-[0.6rem] border border-white/70 bg-white/85" aria-hidden="true" />
-      </span>
-      <span className="flex flex-col leading-none">
-        <span>TaskBeacon</span>
-        <span className="mt-1 text-[10px] font-medium uppercase tracking-[0.22em] text-brand-700">
-          Tasks + Preview
+    <span className="inline-flex items-center gap-3 font-sans text-sm font-bold text-[#25314d]">
+      <span className="grid size-10 place-items-center rounded-2xl border-2 border-[#25314d] bg-[#f5c1b5]">
+        <span className="grid size-5 place-items-center rounded-lg border-2 border-[#25314d] bg-[#b9dceb]">
+          <span className="block size-1.5 rounded-full bg-[#25314d]" aria-hidden="true" />
         </span>
       </span>
+      <span className="font-heading text-2xl leading-none">TaskBeacon</span>
     </span>
   );
 }
@@ -42,7 +38,7 @@ function NavLink({
 }) {
   return (
     <Link
-      className="tb-focus-ring rounded-full px-3 py-2 font-medium text-slate-700 transition-colors hover:bg-brand-50 hover:text-brand-800"
+      className="tb-focus-ring rounded-full px-3 py-2 text-sm font-medium text-slate-600 transition-colors hover:text-[#25314d]"
       href={href}
       onClick={onNavigate}
     >
@@ -57,37 +53,37 @@ export function SiteHeader() {
   return (
     <header className="fixed left-0 right-0 top-0 z-50">
       <div className="mx-auto w-full max-w-7xl px-4 pt-4 sm:px-6 lg:px-8">
-        <div className="rounded-[28px] border border-white/70 bg-white/82 px-4 py-3 shadow-crisp backdrop-blur supports-[backdrop-filter]:bg-white/75">
+        <div className="tb-frame bg-[#fffdf9] px-4 py-3">
           <div className="flex items-center justify-between gap-4">
             <Link className="tb-focus-ring rounded-xl" href="/" onClick={() => setOpen(false)}>
               <Mark />
             </Link>
 
-            <nav className="hidden items-center gap-1 text-sm lg:flex">
+            <nav className="hidden items-center gap-1 lg:flex">
               {PRIMARY_LINKS.map((link) => (
                 <NavLink key={link.href} {...link} />
               ))}
               <a
-                className="tb-focus-ring rounded-full bg-gradient-to-r from-cta-500 to-cta-600 px-4 py-2 font-semibold text-white shadow-[0_12px_30px_rgba(245,158,11,0.24)] transition-transform hover:-translate-y-0.5"
-                href="https://taskbeacon.github.io/psyflow-web"
-                target="_blank"
-                rel="noreferrer"
-              >
-                Preview
-              </a>
-              <a
-                className="tb-focus-ring rounded-full px-3 py-2 font-medium text-slate-700 transition-colors hover:bg-brand-50 hover:text-brand-800"
+                className="tb-focus-ring rounded-full px-3 py-2 text-sm font-medium text-slate-600 transition-colors hover:text-[#25314d]"
                 href="https://github.com/TaskBeacon"
                 target="_blank"
                 rel="noreferrer"
               >
                 GitHub
               </a>
+              <a
+                className="tb-focus-ring tb-button-primary px-5 py-3 text-sm"
+                href="https://taskbeacon.github.io/psyflow-web"
+                target="_blank"
+                rel="noreferrer"
+              >
+                Open Preview
+              </a>
             </nav>
 
             <button
               type="button"
-              className="tb-focus-ring inline-flex items-center justify-center rounded-2xl border border-brand-100 bg-white/90 p-2 text-brand-800 shadow-sm lg:hidden"
+              className="tb-focus-ring tb-frame-soft p-2 lg:hidden"
               onClick={() => setOpen((current) => !current)}
               aria-expanded={open}
               aria-label={open ? "Close navigation menu" : "Open navigation menu"}
@@ -97,25 +93,25 @@ export function SiteHeader() {
           </div>
 
           {open ? (
-            <div className="mt-4 grid gap-2 rounded-[24px] border border-brand-100 bg-[linear-gradient(135deg,rgba(255,255,255,0.95),rgba(236,254,255,0.92),rgba(255,247,237,0.92))] p-3 lg:hidden">
+            <div className="mt-4 space-y-2 rounded-[24px] border-2 border-[#25314d] bg-[#fffdf9] p-3 shadow-[0_5px_0_#25314d] lg:hidden">
               {PRIMARY_LINKS.map((link) => (
                 <NavLink key={link.href} {...link} onNavigate={() => setOpen(false)} />
               ))}
               <a
-                className="tb-focus-ring inline-flex items-center justify-center rounded-2xl bg-gradient-to-r from-cta-500 to-cta-600 px-4 py-3 text-sm font-semibold text-white shadow-[0_12px_30px_rgba(245,158,11,0.24)]"
-                href="https://taskbeacon.github.io/psyflow-web"
-                target="_blank"
-                rel="noreferrer"
-              >
-                Open Preview
-              </a>
-              <a
-                className="tb-focus-ring inline-flex items-center justify-center rounded-2xl border border-brand-100 bg-white px-4 py-3 text-sm font-semibold text-slate-800"
+                className="tb-focus-ring tb-button-secondary w-full text-sm"
                 href="https://github.com/TaskBeacon"
                 target="_blank"
                 rel="noreferrer"
               >
                 GitHub Org
+              </a>
+              <a
+                className="tb-focus-ring tb-button-primary w-full text-sm"
+                href="https://taskbeacon.github.io/psyflow-web"
+                target="_blank"
+                rel="noreferrer"
+              >
+                Open Preview
               </a>
             </div>
           ) : null}
