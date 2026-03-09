@@ -90,16 +90,6 @@ export default function Page() {
         </div>
 
         <div className="relative">
-          <div className="absolute -left-3 top-20 grid size-14 place-items-center rounded-2xl border-2 border-[#25314d] bg-[#ddd7f4] shadow-[0_5px_0_#25314d]">
-            <span className="font-heading text-lg font-bold text-[#25314d]">T</span>
-          </div>
-          <div className="absolute -right-2 top-6 grid size-16 place-items-center rounded-2xl border-2 border-[#25314d] bg-[#f5c1b5] shadow-[0_5px_0_#25314d]">
-            <span className="font-heading text-lg font-bold text-[#25314d]">H</span>
-          </div>
-          <div className="absolute -right-3 bottom-10 grid size-12 place-items-center rounded-full border-2 border-[#25314d] bg-[#c9f7b9] shadow-[0_4px_0_#25314d]">
-            <span className="text-sm font-bold text-[#25314d]">+</span>
-          </div>
-
           <div className="tb-frame bg-[#fffdf9] p-6">
             {featuredTask ? (
               <>

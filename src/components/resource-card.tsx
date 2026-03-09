@@ -8,14 +8,6 @@ const TONES = [
   { bg: "bg-[#ddd7f4]", pill: "bg-[#f1eeff]" }
 ];
 
-function initialsFromTitle(title: string) {
-  return title
-    .split(/\s+/)
-    .slice(0, 2)
-    .map((part) => part[0]?.toUpperCase() ?? "")
-    .join("");
-}
-
 export function ResourceCard({
   eyebrow = "Resource",
   title,
@@ -36,17 +28,16 @@ export function ResourceCard({
   const body = (
     <>
       <div className="flex items-start justify-between gap-4">
-        <div className={`grid size-14 place-items-center rounded-2xl border-2 border-[#25314d] ${tone.bg}`}>
-          <span className="font-heading text-lg font-bold text-[#25314d]">
-            {initialsFromTitle(title)}
-          </span>
-        </div>
         <span className={`rounded-full px-3 py-1 text-xs font-bold text-[#25314d] ${tone.pill}`}>
           {eyebrow}
         </span>
+        <span
+          className={`mt-1 block h-3 w-14 shrink-0 rounded-full border-2 border-[#25314d] ${tone.bg}`}
+          aria-hidden="true"
+        />
       </div>
 
-      <div className="mt-5 font-heading text-2xl font-bold leading-tight text-[#25314d]">
+      <div className="mt-4 font-heading text-2xl font-bold leading-tight text-[#25314d] sm:text-[1.95rem]">
         {title}
       </div>
       <div className="mt-3 text-sm leading-6 text-slate-700">{description}</div>

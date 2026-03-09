@@ -30,15 +30,21 @@ function Mark() {
 function NavLink({
   href,
   label,
-  onNavigate
+  onNavigate,
+  mobile = false
 }: {
   href: string;
   label: string;
   onNavigate?: () => void;
+  mobile?: boolean;
 }) {
   return (
     <Link
-      className="tb-focus-ring rounded-full px-3 py-2 text-sm font-medium text-slate-600 transition-colors hover:text-[#25314d]"
+      className={
+        mobile
+          ? "tb-focus-ring block w-full rounded-[18px] border-2 border-[#25314d] bg-[#fffdf9] px-4 py-3 text-left text-base font-bold text-[#25314d] shadow-[0_4px_0_#25314d] transition-transform hover:-translate-y-px"
+          : "tb-focus-ring rounded-full px-3 py-2 text-sm font-medium text-slate-600 transition-colors hover:text-[#25314d]"
+      }
       href={href}
       onClick={onNavigate}
     >
@@ -93,26 +99,30 @@ export function SiteHeader() {
           </div>
 
           {open ? (
-            <div className="mt-4 space-y-2 rounded-[24px] border-2 border-[#25314d] bg-[#fffdf9] p-3 shadow-[0_5px_0_#25314d] lg:hidden">
+            <div className="mt-4 rounded-[24px] border-2 border-[#25314d] bg-[#fffdf9] p-3 shadow-[0_5px_0_#25314d] lg:hidden">
+              <div className="grid gap-2">
               {PRIMARY_LINKS.map((link) => (
-                <NavLink key={link.href} {...link} onNavigate={() => setOpen(false)} />
+                <NavLink key={link.href} {...link} mobile onNavigate={() => setOpen(false)} />
               ))}
-              <a
-                className="tb-focus-ring tb-button-secondary w-full text-sm"
-                href="https://github.com/TaskBeacon"
-                target="_blank"
-                rel="noreferrer"
-              >
-                GitHub Org
-              </a>
-              <a
-                className="tb-focus-ring tb-button-primary w-full text-sm"
-                href="https://taskbeacon.github.io/psyflow-web"
-                target="_blank"
-                rel="noreferrer"
-              >
-                Open Preview
-              </a>
+              </div>
+              <div className="mt-3 grid gap-2">
+                <a
+                  className="tb-focus-ring tb-button-secondary w-full text-sm"
+                  href="https://github.com/TaskBeacon"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  GitHub Org
+                </a>
+                <a
+                  className="tb-focus-ring tb-button-primary w-full text-sm"
+                  href="https://taskbeacon.github.io/psyflow-web"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  Open Preview
+                </a>
+              </div>
             </div>
           ) : null}
         </div>

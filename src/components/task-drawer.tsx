@@ -1,11 +1,10 @@
 "use client";
 
-import Link from "next/link";
 import { useEffect, useState } from "react";
 import { Markdown } from "@/components/markdown";
 import { TaskChannelCard } from "@/components/task-channel-card";
 import type { TaskIndexItem } from "@/lib/task-index";
-import { taskDetailHref } from "@/lib/routes";
+import { taskDetailStaticHref } from "@/lib/routes";
 import {
   localCloneCommand,
   taskHandle,
@@ -102,12 +101,12 @@ export function TaskDrawer({
             </div>
 
             <div className="flex items-center gap-2">
-              <Link
+              <a
                 className="tb-focus-ring rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm font-semibold text-slate-800 hover:border-brand-200 hover:bg-brand-50"
-                href={taskDetailHref(task.repo)}
+                href={taskDetailStaticHref(task.repo)}
               >
                 Open full page
-              </Link>
+              </a>
               <button
                 type="button"
                 className="tb-focus-ring rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm font-semibold text-slate-800 hover:border-brand-200 hover:bg-brand-50"
