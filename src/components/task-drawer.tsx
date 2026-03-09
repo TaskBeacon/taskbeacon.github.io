@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { Markdown } from "@/components/markdown";
 import { TaskChannelCard } from "@/components/task-channel-card";
 import type { TaskIndexItem } from "@/lib/task-index";
-import { taskDetailStaticHref } from "@/lib/routes";
+import { taskDetailHref } from "@/lib/routes";
 import {
   localCloneCommand,
   taskHandle,
@@ -71,6 +71,11 @@ export function TaskDrawer({
   const hasError = Boolean(errorByRepo[task.repo]);
   const isLoading = markdown === undefined && !hasError;
   const preview = task.web_variant;
+  const taskRepo = task.repo;
+
+  function openFullPage() {
+    window.location.assign(taskDetailHref(taskRepo));
+  }
 
   return (
     <div className="fixed inset-0 z-[70] bg-slate-950/35 backdrop-blur-sm" onClick={onClose}>
@@ -101,12 +106,13 @@ export function TaskDrawer({
             </div>
 
             <div className="flex items-center gap-2">
-              <a
+              <button
+                type="button"
                 className="tb-focus-ring rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm font-semibold text-slate-800 hover:border-brand-200 hover:bg-brand-50"
-                href={taskDetailStaticHref(task.repo)}
+                onClick={openFullPage}
               >
                 Open full page
-              </a>
+              </button>
               <button
                 type="button"
                 className="tb-focus-ring rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm font-semibold text-slate-800 hover:border-brand-200 hover:bg-brand-50"
