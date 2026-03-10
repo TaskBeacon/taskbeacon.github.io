@@ -12,7 +12,7 @@ export const overviewResources: ResourceLink[] = [
     eyebrow: "TAPS",
     title: "Understand the Task Package Standard",
     description:
-      "See how TAPS keeps config, runtime logic, references, and documentation in one auditable structure.",
+      "See how TAPS keeps code, config, references, and docs in one auditable package.",
     href: "#taps",
     cta: "Jump to TAPS"
   },
@@ -20,7 +20,7 @@ export const overviewResources: ResourceLink[] = [
     eyebrow: "Framework",
     title: "Inspect PsyFlow and psyflow-web",
     description:
-      "Follow the local runtime and the browser preview layer as separate parts of the same stack.",
+      "Follow the local runtime and the browser preview layer as one connected stack.",
     href: "#framework",
     cta: "Jump to framework"
   },
@@ -28,7 +28,7 @@ export const overviewResources: ResourceLink[] = [
     eyebrow: "Skills",
     title: "Use build, plot, and translation skills",
     description:
-      "TaskBeacon skills support literature-grounded task construction, flow plotting, and local-to-web transfer.",
+      "Use automation skills for building, plotting, and local-to-web transfer.",
     href: "#skills",
     cta: "Jump to skills"
   },
@@ -36,7 +36,7 @@ export const overviewResources: ResourceLink[] = [
     eyebrow: "Tutorial",
     title: "Learn localization, voice, and QA",
     description:
-      "Open practical guides for setup, localization, instruction audio, and validation workflows.",
+      "Open practical guides for setup, localization, voice, and validation.",
     href: "#tutorial",
     cta: "Jump to tutorials"
   },
@@ -44,7 +44,7 @@ export const overviewResources: ResourceLink[] = [
     eyebrow: "Contribute",
     title: "Contribute tasks and variants clearly",
     description:
-      "Start from the registry, keep local tasks canonical, and document variants without hiding major changes.",
+      "Start from the registry and keep variants explicit and reviewable.",
     href: "#contribute",
     cta: "Jump to contribute"
   }
@@ -55,7 +55,7 @@ export const frameworkHighlights: ResourceLink[] = [
     eyebrow: "PsyFlow",
     title: "Local runtime and authoring workflow",
     description:
-      "Author canonical tasks, run QA and sim modes, and keep implementation details reviewable inside one local repository.",
+      "Author canonical tasks, run QA and sim modes, and keep the local repo canonical.",
     href: "https://taskbeacon.github.io/psyflow/",
     cta: "Open PsyFlow",
     external: true
@@ -64,7 +64,7 @@ export const frameworkHighlights: ResourceLink[] = [
     eyebrow: "psyflow-web",
     title: "Shared browser preview runtime",
     description:
-      "Launch HTML companions from a common runner so preview tasks stay aligned to the local canonical task.",
+      "Launch HTML companions from one shared runner and keep them aligned to local tasks.",
     href: "https://taskbeacon.github.io/psyflow-web",
     cta: "Open psyflow-web",
     external: true
@@ -76,7 +76,7 @@ export const frameworkResources: ResourceLink[] = [
     eyebrow: "TAPS",
     title: "Task structure standard",
     description:
-      "Reference the TAPS document for the canonical directory model, documentation boundaries, and reusable repository shape.",
+      "Reference the canonical directory model, documentation boundaries, and repo shape.",
     href: "https://github.com/TaskBeacon/taskbeacon.github.io/blob/main/source/taps.md",
     cta: "Read TAPS",
     external: true
@@ -85,7 +85,7 @@ export const frameworkResources: ResourceLink[] = [
     eyebrow: "PsyFlow",
     title: "Local experiment runtime",
     description:
-      "Use the PsyFlow docs for scaffolding, runtime primitives, QA workflows, and local task execution.",
+      "Use PsyFlow for scaffolding, runtime primitives, QA workflows, and local execution.",
     href: "https://taskbeacon.github.io/psyflow/",
     cta: "Open PsyFlow",
     external: true
@@ -94,7 +94,7 @@ export const frameworkResources: ResourceLink[] = [
     eyebrow: "psyflow-web",
     title: "Browser preview layer",
     description:
-      "Inspect the HTML runtime that mirrors canonical tasks for browser walkthroughs and validation.",
+      "Inspect the HTML runtime that mirrors canonical tasks for browser walkthroughs.",
     href: "https://github.com/TaskBeacon/psyflow-web",
     cta: "Open psyflow-web",
     external: true
@@ -103,7 +103,7 @@ export const frameworkResources: ResourceLink[] = [
     eyebrow: "Skills",
     title: "Build and automation support",
     description:
-      "Review TaskBeacon skills and tooling for task construction, plotting, localization, and aligned web translation.",
+      "Review skills and tooling for task construction, plotting, and aligned web translation.",
     href: "https://github.com/TaskBeacon/skills",
     cta: "Open skills",
     external: true
@@ -115,7 +115,7 @@ export const skillResources: ResourceLink[] = [
     eyebrow: "task-build",
     title: "Build literature-grounded PsyFlow tasks",
     description:
-      "Create or refactor cognitive tasks into validated PsyFlow/TAPS projects with strict reference-backed stimulus implementation.",
+      "Create or refactor cognitive tasks into validated PsyFlow/TAPS projects from literature evidence.",
     href: "https://github.com/TaskBeacon/skills/tree/main/task-build",
     cta: "Open task-build",
     external: true
@@ -124,7 +124,7 @@ export const skillResources: ResourceLink[] = [
     eyebrow: "task-plot",
     title: "Generate auditable task flow plots",
     description:
-      "Render condition-wise timeline diagrams and write reference artifacts for task flow review.",
+      "Render condition-wise flow diagrams with audit artifacts for review.",
     href: "https://github.com/TaskBeacon/skills/tree/main/task-plot",
     cta: "Open task-plot",
     external: true
@@ -133,7 +133,7 @@ export const skillResources: ResourceLink[] = [
     eyebrow: "task-py2js",
     title: "Port local tasks into aligned web previews",
     description:
-      "Convert a canonical PsyFlow task into a browser-native psyflow-web companion while preserving the local task contract.",
+      "Convert a canonical PsyFlow task into an aligned psyflow-web companion.",
     href: "https://github.com/TaskBeacon/skills/tree/main/task-py2js",
     cta: "Open task-py2js",
     external: true
@@ -145,7 +145,7 @@ export const tutorialResources: ResourceLink[] = [
     eyebrow: "Getting Started",
     title: "Scaffold your first task",
     description:
-      "Start with the PsyFlow introduction for project setup, task structure, and the first runnable experiment.",
+      "Start with project setup, task structure, and the first runnable experiment.",
     href: "https://github.com/TaskBeacon/psyflow/blob/main/docs/tutorials/getting_started.md",
     cta: "Open guide",
     external: true
@@ -154,7 +154,7 @@ export const tutorialResources: ResourceLink[] = [
     eyebrow: "Localization",
     title: "Translate task content without touching logic",
     description:
-      "Use config-driven localization and API-assisted translation workflows instead of rewriting runtime code.",
+      "Use config-driven localization instead of rewriting runtime code.",
     href: "https://github.com/TaskBeacon/taskbeacon.github.io/blob/main/source/localization.md",
     cta: "Open localization",
     external: true
@@ -163,7 +163,7 @@ export const tutorialResources: ResourceLink[] = [
     eyebrow: "Voice",
     title: "Create instruction audio from config",
     description:
-      "See a concrete task README that declares instruction voice assets and keeps audio guidance inside the task configuration.",
+      "See a concrete task example that keeps instruction audio inside task config.",
     href: "https://github.com/TaskBeacon/T000001-ax-cpt/blob/main/README.md",
     cta: "Open voice example",
     external: true
@@ -172,7 +172,7 @@ export const tutorialResources: ResourceLink[] = [
     eyebrow: "CLI + QA",
     title: "Validate tasks before release",
     description:
-      "Use the CLI and QA tutorials to scaffold, inspect metadata, and smoke-test local tasks quickly.",
+      "Use the CLI and QA tutorials to inspect metadata and smoke-test tasks.",
     href: "https://github.com/TaskBeacon/psyflow/blob/main/docs/tutorials/cli_usage.md",
     cta: "Open CLI guide",
     external: true
@@ -184,7 +184,7 @@ export const contributeResources: ResourceLink[] = [
     eyebrow: "Registry",
     title: "Submit a new task",
     description:
-      "Start with the task-registry issue templates so new tasks arrive with the expected metadata and review context.",
+      "Start with task-registry issue templates and bring metadata with the task.",
     href: "https://github.com/TaskBeacon/task-registry/issues/new/choose",
     cta: "Open registry",
     external: true
@@ -193,7 +193,7 @@ export const contributeResources: ResourceLink[] = [
     eyebrow: "Variants",
     title: "Track meaningful branches",
     description:
-      "Use versioning notes to keep major task variants explicit instead of hiding incompatible changes in place.",
+      "Keep major task variants explicit instead of hiding incompatible changes in place.",
     href: "https://github.com/TaskBeacon/taskbeacon.github.io/blob/main/source/versioning.md",
     cta: "Read versioning",
     external: true
@@ -202,7 +202,7 @@ export const contributeResources: ResourceLink[] = [
     eyebrow: "Review",
     title: "Check repository expectations",
     description:
-      "Review the task-registry README before proposing a task or preview companion.",
+      "Review repository expectations before proposing a task or preview companion.",
     href: "https://github.com/TaskBeacon/task-registry/blob/main/README.md",
     cta: "Open README",
     external: true
@@ -211,7 +211,7 @@ export const contributeResources: ResourceLink[] = [
     eyebrow: "Org",
     title: "Browse current repositories",
     description:
-      "Use the TaskBeacon GitHub organization as the source of truth for active task repos, runtimes, and support tooling.",
+      "Use the GitHub organization as the source of truth for active repos and tooling.",
     href: "https://github.com/TaskBeacon",
     cta: "Open GitHub org",
     external: true

@@ -119,11 +119,16 @@ export default function Page() {
           </p>
 
           <div className="mt-8 flex flex-wrap gap-4">
-            <Link className="tb-focus-ring tb-button-primary" href="/tasks/">
-              Open Task Explorer
-            </Link>
-            <Link className="tb-focus-ring tb-button-secondary" href="#overview">
-              See Overview
+            <a
+              className="tb-focus-ring tb-button-primary"
+              href="https://taskbeacon.github.io/psyflow-web"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Preview Tasks
+            </a>
+            <Link className="tb-focus-ring tb-button-secondary" href="/tasks/">
+              See Tasks
             </Link>
           </div>
 
@@ -152,16 +157,18 @@ export default function Page() {
         <div className="text-center">
           <div className="tb-section-chip">Overview</div>
           <h2 className="mt-5 font-heading text-4xl font-bold text-[#25314d]">
-            The Main Building Blocks Of TaskBeacon
+            Explore The Main TaskBeacon Sections
           </h2>
           <p className="mt-3 text-base text-slate-600">
-            Start here for the big picture, then jump into the section that matches your current task.
+            Start here for the big picture, then jump into the section you need next.
           </p>
         </div>
 
-        <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
-          {overviewResources.map((card) => (
-            <ResourceCard key={card.title} {...card} />
+        <div className="grid gap-5 md:grid-cols-2">
+          {overviewResources.map((card, index) => (
+            <div key={card.title} className={index === overviewResources.length - 1 ? "md:col-span-2" : undefined}>
+              <ResourceCard {...card} />
+            </div>
           ))}
         </div>
       </section>
@@ -271,7 +278,7 @@ export default function Page() {
             </h2>
             <p className="mt-4 text-base leading-8 text-slate-700">
               Contribution should start with a clear registry path, explicit variant handling, and
-              docs that remain usable before somebody opens the source code.
+              docs that stay usable before someone opens the source code.
             </p>
             <div className="mt-6">
               <Link className="tb-focus-ring tb-button-primary" href="/contribute/">

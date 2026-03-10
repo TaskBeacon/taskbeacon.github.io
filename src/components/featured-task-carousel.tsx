@@ -1,6 +1,5 @@
 "use client";
 
-import Link from "next/link";
 import { useEffect, useState } from "react";
 import { IconChevronLeft, IconChevronRight, IconPlay } from "@/components/icons";
 import { MaturityBadge } from "@/components/maturity-badge";
@@ -48,36 +47,25 @@ export function FeaturedTaskCarousel({
 
   return (
     <>
-      <div className="tb-frame bg-[#fffdf9] p-6">
-        <div className="flex flex-wrap items-center justify-between gap-3">
-          <div>
-            <div className="text-sm font-bold text-slate-600">Featured Tasks</div>
-            <div className="mt-1 font-heading text-3xl font-bold text-[#25314d]">
-              Rotate through flagship paradigms
-            </div>
-          </div>
+      <div className="relative tb-frame bg-[#fffdf9] px-6 py-8">
+        <button
+          type="button"
+          className="tb-focus-ring absolute left-3 top-1/2 z-10 -translate-y-1/2 rounded-full border-2 border-[#25314d] bg-white p-3 shadow-[0_4px_0_#25314d] lg:-left-5"
+          onClick={() => goTo(activeIndex - 1)}
+          aria-label="Show previous featured task"
+        >
+          <IconChevronLeft className="size-4" />
+        </button>
+        <button
+          type="button"
+          className="tb-focus-ring absolute right-3 top-1/2 z-10 -translate-y-1/2 rounded-full border-2 border-[#25314d] bg-white p-3 shadow-[0_4px_0_#25314d] lg:-right-5"
+          onClick={() => goTo(activeIndex + 1)}
+          aria-label="Show next featured task"
+        >
+          <IconChevronRight className="size-4" />
+        </button>
 
-          <div className="flex items-center gap-2">
-            <button
-              type="button"
-              className="tb-focus-ring tb-button-ghost p-3"
-              onClick={() => goTo(activeIndex - 1)}
-              aria-label="Show previous featured task"
-            >
-              <IconChevronLeft className="size-4" />
-            </button>
-            <button
-              type="button"
-              className="tb-focus-ring tb-button-ghost p-3"
-              onClick={() => goTo(activeIndex + 1)}
-              aria-label="Show next featured task"
-            >
-              <IconChevronRight className="size-4" />
-            </button>
-          </div>
-        </div>
-
-        <div className="mt-5 flex flex-wrap gap-2">
+        <div className="flex flex-wrap justify-center gap-2">
           {tasks.map((task, index) => (
             <button
               key={task.repo}
@@ -94,7 +82,7 @@ export function FeaturedTaskCarousel({
           ))}
         </div>
 
-        <div className="mt-5 tb-frame-soft bg-[#f8fcff] p-5">
+        <div className="mt-5 tb-frame-soft bg-[#f8fcff] p-5 sm:px-8">
           <div className="flex flex-wrap items-center gap-2 text-xs text-slate-600">
             <code className="rounded-full border-2 border-[#25314d] bg-white px-2.5 py-1 font-mono text-[11px] font-semibold text-[#25314d]">
               {taskHandle(activeTask)}
@@ -102,7 +90,7 @@ export function FeaturedTaskCarousel({
             {activeTask.maturity ? <MaturityBadge maturity={activeTask.maturity} /> : null}
             {preview ? (
               <span className="rounded-full bg-[#ecffe5] px-3 py-1 text-[11px] font-bold text-[#25314d]">
-                Preview available
+                Preview ready
               </span>
             ) : null}
             <span className="rounded-full bg-[#e2f3fb] px-3 py-1 text-[11px] font-bold text-[#25314d]">
@@ -138,15 +126,6 @@ export function FeaturedTaskCarousel({
               </a>
             ) : null}
           </div>
-        </div>
-
-        <div className="mt-6 flex flex-wrap items-center justify-between gap-4">
-          <div className="text-sm leading-6 text-slate-700">
-            Highlighted here: BART, SST, and MID as fast entry points into the broader task catalog.
-          </div>
-          <Link className="tb-focus-ring tb-button-primary" href="/tasks/">
-            Continue to Tasks
-          </Link>
         </div>
       </div>
 

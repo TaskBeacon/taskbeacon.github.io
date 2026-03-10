@@ -27,28 +27,35 @@ export function ResourceCard({
 
   const body = (
     <>
-      <div className="flex items-start justify-between gap-4">
-        <span className={`rounded-full px-3 py-1 text-xs font-bold text-[#25314d] ${tone.pill}`}>
-          {eyebrow}
-        </span>
+      <div className="flex items-start gap-4">
         <span
-          className={`mt-1 block h-3 w-14 shrink-0 rounded-full border-2 border-[#25314d] ${tone.bg}`}
+          className={`mt-1 block size-14 shrink-0 rounded-[18px] border-2 border-[#25314d] ${tone.bg} shadow-[0_4px_0_#25314d]`}
           aria-hidden="true"
         />
-      </div>
+        <div className="min-w-0 flex-1">
+          <div className="flex flex-wrap items-start justify-between gap-3">
+            <span className={`rounded-full px-3 py-1 text-xs font-bold text-[#25314d] ${tone.pill}`}>
+              {eyebrow}
+            </span>
+            <span className="text-xs font-bold uppercase tracking-[0.18em] text-slate-500">
+              Resource
+            </span>
+          </div>
 
-      <div className="mt-4 font-heading text-2xl font-bold leading-tight text-[#25314d] sm:text-[1.95rem]">
-        {title}
-      </div>
-      <div className="mt-3 text-sm leading-6 text-slate-700">{description}</div>
-      <div className="mt-5 inline-flex items-center gap-2 text-sm font-bold text-[#25314d]">
-        {cta}
-        <IconArrowRight className="size-4" />
+          <div className="mt-3 font-heading text-[1.75rem] font-bold leading-tight text-[#25314d]">
+            {title}
+          </div>
+          <div className="mt-2 max-w-[34ch] text-sm leading-6 text-slate-700">{description}</div>
+          <div className="mt-4 inline-flex items-center gap-2 text-sm font-bold text-[#25314d]">
+            {cta}
+            <IconArrowRight className="size-4" />
+          </div>
+        </div>
       </div>
     </>
   );
 
-  const className = "tb-frame-soft flex min-h-[240px] flex-col justify-between p-5";
+  const className = "tb-frame-soft flex min-h-[190px] flex-col justify-between p-5";
 
   if (external) {
     return (
