@@ -7,54 +7,66 @@ export type ResourceLink = {
   external?: boolean;
 };
 
-export const landingDestinations: ResourceLink[] = [
+export const overviewResources: ResourceLink[] = [
   {
-    eyebrow: "Tasks",
-    title: "Browse canonical tasks",
+    eyebrow: "TAPS",
+    title: "Understand the Task Package Standard",
     description:
-      "Open the dedicated explorer for local PsyFlow tasks, aligned previews, filters, and README-backed details.",
-    href: "/tasks/",
-    cta: "Open tasks"
-  },
-  {
-    eyebrow: "Tutorial",
-    title: "Learn the workflow",
-    description:
-      "Follow setup, CLI, QA, localization, and Chinese onboarding guides without overloading the homepage.",
-    href: "/tutorial/",
-    cta: "Open tutorials"
+      "See how TAPS keeps config, runtime logic, references, and documentation in one auditable structure.",
+    href: "#taps",
+    cta: "Jump to TAPS"
   },
   {
     eyebrow: "Framework",
-    title: "Inspect the stack",
+    title: "Inspect PsyFlow and psyflow-web",
     description:
-      "Review TAPS, PsyFlow, psyflow-web, and agent tooling as separate framework references.",
-    href: "/framework/",
-    cta: "Open framework"
+      "Follow the local runtime and the browser preview layer as separate parts of the same stack.",
+    href: "#framework",
+    cta: "Jump to framework"
+  },
+  {
+    eyebrow: "Skills",
+    title: "Use build, plot, and translation skills",
+    description:
+      "TaskBeacon skills support literature-grounded task construction, flow plotting, and local-to-web transfer.",
+    href: "#skills",
+    cta: "Jump to skills"
+  },
+  {
+    eyebrow: "Tutorial",
+    title: "Learn localization, voice, and QA",
+    description:
+      "Open practical guides for setup, localization, instruction audio, and validation workflows.",
+    href: "#tutorial",
+    cta: "Jump to tutorials"
   },
   {
     eyebrow: "Contribute",
-    title: "Add tasks and variants",
+    title: "Contribute tasks and variants clearly",
     description:
-      "See contribution paths for canonical tasks, HTML variants, metadata, and review expectations.",
-    href: "/contribute/",
-    cta: "Open contribute"
+      "Start from the registry, keep local tasks canonical, and document variants without hiding major changes.",
+    href: "#contribute",
+    cta: "Jump to contribute"
+  }
+];
+
+export const frameworkHighlights: ResourceLink[] = [
+  {
+    eyebrow: "PsyFlow",
+    title: "Local runtime and authoring workflow",
+    description:
+      "Author canonical tasks, run QA and sim modes, and keep implementation details reviewable inside one local repository.",
+    href: "https://taskbeacon.github.io/psyflow/",
+    cta: "Open PsyFlow",
+    external: true
   },
   {
-    eyebrow: "Teams",
-    title: "Track people and ownership",
+    eyebrow: "psyflow-web",
+    title: "Shared browser preview runtime",
     description:
-      "Reserve a dedicated page for maintainers, collaborators, partner labs, and future public team profiles.",
-    href: "/teams/",
-    cta: "Open teams"
-  },
-  {
-    eyebrow: "Preview",
-    title: "Launch the web runner",
-    description:
-      "Go straight to the psyflow-web preview environment for runnable browser-based task companions.",
+      "Launch HTML companions from a common runner so preview tasks stay aligned to the local canonical task.",
     href: "https://taskbeacon.github.io/psyflow-web",
-    cta: "Open preview",
+    cta: "Open psyflow-web",
     external: true
   }
 ];
@@ -88,12 +100,42 @@ export const frameworkResources: ResourceLink[] = [
     external: true
   },
   {
-    eyebrow: "Agent Skills",
-    title: "MCP and AI tooling",
+    eyebrow: "Skills",
+    title: "Build and automation support",
     description:
-      "Review taskbeacon-mcp and related skills for build, localization, voice, and workflow automation support.",
-    href: "https://github.com/TaskBeacon/taskbeacon-mcp",
-    cta: "Open tooling",
+      "Review TaskBeacon skills and tooling for task construction, plotting, localization, and aligned web translation.",
+    href: "https://github.com/TaskBeacon/skills",
+    cta: "Open skills",
+    external: true
+  }
+];
+
+export const skillResources: ResourceLink[] = [
+  {
+    eyebrow: "task-build",
+    title: "Build literature-grounded PsyFlow tasks",
+    description:
+      "Create or refactor cognitive tasks into validated PsyFlow/TAPS projects with strict reference-backed stimulus implementation.",
+    href: "https://github.com/TaskBeacon/skills/tree/main/task-build",
+    cta: "Open task-build",
+    external: true
+  },
+  {
+    eyebrow: "task-plot",
+    title: "Generate auditable task flow plots",
+    description:
+      "Render condition-wise timeline diagrams and write reference artifacts for task flow review.",
+    href: "https://github.com/TaskBeacon/skills/tree/main/task-plot",
+    cta: "Open task-plot",
+    external: true
+  },
+  {
+    eyebrow: "task-py2js",
+    title: "Port local tasks into aligned web previews",
+    description:
+      "Convert a canonical PsyFlow task into a browser-native psyflow-web companion while preserving the local task contract.",
+    href: "https://github.com/TaskBeacon/skills/tree/main/task-py2js",
+    cta: "Open task-py2js",
     external: true
   }
 ];
@@ -103,36 +145,36 @@ export const tutorialResources: ResourceLink[] = [
     eyebrow: "Getting Started",
     title: "Scaffold your first task",
     description:
-      "Follow the PsyFlow introduction for project setup, task structure, and the first runnable experiment.",
+      "Start with the PsyFlow introduction for project setup, task structure, and the first runnable experiment.",
     href: "https://github.com/TaskBeacon/psyflow/blob/main/docs/tutorials/getting_started.md",
     cta: "Open guide",
     external: true
   },
   {
-    eyebrow: "CLI + QA",
-    title: "Validate tasks quickly",
-    description:
-      "Use the CLI and QA tutorials to scaffold, inspect metadata, and smoke-test local tasks.",
-    href: "https://github.com/TaskBeacon/psyflow/blob/main/docs/tutorials/cli_usage.md",
-    cta: "Open CLI guide",
-    external: true
-  },
-  {
     eyebrow: "Localization",
-    title: "Translate without rewriting logic",
+    title: "Translate task content without touching logic",
     description:
-      "Keep participant-facing strings configurable so localization and TTS can be layered onto the same task logic.",
+      "Use config-driven localization and API-assisted translation workflows instead of rewriting runtime code.",
     href: "https://github.com/TaskBeacon/taskbeacon.github.io/blob/main/source/localization.md",
     cta: "Open localization",
     external: true
   },
   {
-    eyebrow: "中文教程",
-    title: "Chinese onboarding paths",
+    eyebrow: "Voice",
+    title: "Create instruction audio from config",
     description:
-      "Use the Chinese-language PsyFlow tutorial entry points for setup, config, and command-line usage.",
-    href: "https://github.com/TaskBeacon/psyflow/blob/main/docs/tutorials/getting_started_cn.md",
-    cta: "打开教程",
+      "See a concrete task README that declares instruction voice assets and keeps audio guidance inside the task configuration.",
+    href: "https://github.com/TaskBeacon/T000001-ax-cpt/blob/main/README.md",
+    cta: "Open voice example",
+    external: true
+  },
+  {
+    eyebrow: "CLI + QA",
+    title: "Validate tasks before release",
+    description:
+      "Use the CLI and QA tutorials to scaffold, inspect metadata, and smoke-test local tasks quickly.",
+    href: "https://github.com/TaskBeacon/psyflow/blob/main/docs/tutorials/cli_usage.md",
+    cta: "Open CLI guide",
     external: true
   }
 ];
@@ -151,7 +193,7 @@ export const contributeResources: ResourceLink[] = [
     eyebrow: "Variants",
     title: "Track meaningful branches",
     description:
-      "Use the versioning notes to keep major task variants explicit instead of hiding incompatible changes in place.",
+      "Use versioning notes to keep major task variants explicit instead of hiding incompatible changes in place.",
     href: "https://github.com/TaskBeacon/taskbeacon.github.io/blob/main/source/versioning.md",
     cta: "Read versioning",
     external: true

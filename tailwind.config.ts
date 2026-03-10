@@ -24,7 +24,7 @@ export default {
         }
       },
       fontFamily: {
-        heading: ["Baloo 2", "ui-sans-serif", "system-ui", "sans-serif"],
+        heading: ["Space Grotesk", "ui-sans-serif", "system-ui", "sans-serif"],
         sans: ["DM Sans", "ui-sans-serif", "system-ui", "sans-serif"],
         mono: [
           "ui-monospace",

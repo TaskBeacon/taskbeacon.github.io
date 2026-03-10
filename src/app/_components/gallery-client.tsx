@@ -87,7 +87,6 @@ export function GalleryClient({
   const allPreviewValues = useMemo(() => facetValues(tasks, "preview"), [tasks]);
   const allParadigms = useMemo(() => facetValues(tasks, "paradigm"), [tasks]);
   const previewCount = useMemo(() => tasks.filter((task) => task.web_variant).length, [tasks]);
-  const voiceCount = useMemo(() => tasks.filter((task) => task.has_voiceover).length, [tasks]);
   const filtered = useMemo(
     () => filterTasks(tasks, deferredQuery, selected),
     [deferredQuery, selected, tasks]
@@ -152,10 +151,6 @@ export function GalleryClient({
             <div>
               <div className="font-heading text-3xl font-bold text-[#25314d]">{previewCount}</div>
               <div className="text-sm text-slate-600">With preview</div>
-            </div>
-            <div>
-              <div className="font-heading text-3xl font-bold text-[#25314d]">{voiceCount}</div>
-              <div className="text-sm text-slate-600">Voice-ready</div>
             </div>
           </div>
         </div>
