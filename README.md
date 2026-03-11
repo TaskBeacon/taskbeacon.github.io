@@ -4,7 +4,7 @@ Public, statically deployed website that lists TaskBeacon task repositories as a
 
 - Gallery: list and card views, maturity + paradigm filters, last updated, repo/download links
 - Task detail pages: README rendering, quick start, metadata, local access panel, optional web preview panel
-- Companion detection: baseline tasks automatically pick up matching HTML repos when they share the same `slug` and the companion declares `variant: html`
+- Companion detection: baseline tasks automatically pick up matching HTML repos at runtime from the shared `psyflow-web` manifest when they share the same `slug` and the companion declares `variant: html`
 - Deployment: static export to GitHub Pages via GitHub Actions
 
 ## Tech
@@ -55,7 +55,7 @@ It:
 2. Excludes non-task repos via `DENYLIST`.
 3. Fetches README content, repo root contents, and optional metadata files.
 4. Builds a normalized task record for each task repo.
-5. Merges matching HTML companions into the main task card as `web_variant`.
+5. Keeps the canonical task index focused on task repos and excludes duplicate HTML companions when a baseline task with the same `slug` exists.
 
 Supported metadata files, in priority order:
 
@@ -83,6 +83,14 @@ If both exist, the website keeps the main task card and adds:
 - `Download`
 
 for the matched HTML companion.
+
+The companion buttons are attached at runtime by fetching:
+
+```text
+/psyflow-web/task-manifest.json
+```
+
+This keeps `taskbeacon.github.io` independent from HTML companion rebuilds. Only the shared `psyflow-web` runner needs to refresh when new `Hxxxxxx-*` repos appear.
 
 By default, HTML companions run through the shared `psyflow-web` GitHub Pages runner:
 

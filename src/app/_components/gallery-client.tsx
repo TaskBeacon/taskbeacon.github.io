@@ -2,12 +2,14 @@
 
 import { useDeferredValue, useMemo, useState } from "react";
 import type { TaskFacet, TaskIndexItem } from "@/lib/task-index";
+import { taskHasPreview } from "@/lib/html-companions";
 import {
   emptySelectedFacets,
   facetValues,
   filterTasks,
   type SelectedFacets
 } from "@/lib/task-filter";
+import { useTasksWithHtmlCompanions } from "@/lib/use-html-companions";
 import { TagChip } from "@/components/tag-chip";
 import { TaskRow } from "@/components/task-row";
 import { TaskDrawer } from "@/components/task-drawer";
@@ -66,6 +68,7 @@ export function GalleryClient({
 }: {
   tasks: TaskIndexItem[];
 }) {
+  const mergedTasks = useTasksWithHtmlCompanions(tasks);
   const [query, setQuery] = useState<string>("");
   const [selected, setSelected] = useState<SelectedFacets>(() => emptySelectedFacets());
   const [activeRepo, setActiveRepo] = useState<string | null>(null);
@@ -80,17 +83,17 @@ export function GalleryClient({
   });
 
   const deferredQuery = useDeferredValue(query);
-  const allMaturities = useMemo(() => facetValues(tasks, "maturity"), [tasks]);
-  const allPreviewValues = useMemo(() => facetValues(tasks, "preview"), [tasks]);
-  const allParadigms = useMemo(() => facetValues(tasks, "paradigm"), [tasks]);
-  const previewCount = useMemo(() => tasks.filter((task) => task.web_variant).length, [tasks]);
+  const allMaturities = useMemo(() => facetValues(mergedTasks, "maturity"), [mergedTasks]);
+  const allPreviewValues = useMemo(() => facetValues(mergedTasks, "preview"), [mergedTasks]);
+  const allParadigms = useMemo(() => facetValues(mergedTasks, "paradigm"), [mergedTasks]);
+  const previewCount = useMemo(() => mergedTasks.filter((task) => taskHasPreview(task)).length, [mergedTasks]);
   const filtered = useMemo(
-    () => filterTasks(tasks, deferredQuery, selected),
-    [deferredQuery, selected, tasks]
+    () => filterTasks(mergedTasks, deferredQuery, selected),
+    [deferredQuery, mergedTasks, selected]
   );
   const activeTask = useMemo(
-    () => tasks.find((task) => task.repo === activeRepo) ?? null,
-    [activeRepo, tasks]
+    () => mergedTasks.find((task) => task.repo === activeRepo) ?? null,
+    [activeRepo, mergedTasks]
   );
 
   const anyFilters =
@@ -140,8 +143,8 @@ export function GalleryClient({
         </div>
 
         <div className="mt-8 flex flex-wrap gap-4">
-          <div className="tb-frame-soft min-w-[160px] bg-[#fffdf9] px-5 py-4">
-            <div className="font-heading text-3xl font-bold text-[#25314d]">{tasks.length}</div>
+            <div className="tb-frame-soft min-w-[160px] bg-[#fffdf9] px-5 py-4">
+            <div className="font-heading text-3xl font-bold text-[#25314d]">{mergedTasks.length}</div>
             <div className="text-sm text-slate-600">Total tasks</div>
           </div>
           <div className="tb-frame-soft min-w-[160px] bg-[#eef8ff] px-5 py-4">
@@ -171,7 +174,7 @@ export function GalleryClient({
               <div className="mt-4 flex flex-wrap items-center justify-between gap-3">
                 <div className="text-sm text-slate-700">
                   Showing <span className="font-bold text-[#25314d]">{filtered.length}</span> of{" "}
-                  <span className="font-bold text-[#25314d]">{tasks.length}</span>
+                  <span className="font-bold text-[#25314d]">{mergedTasks.length}</span>
                 </div>
                 {anyFilters ? (
                   <button type="button" className="tb-focus-ring tb-button-secondary text-sm" onClick={clearAll}>

@@ -22,6 +22,8 @@ This Go/No-Go implementation measures inhibitory control by requiring a key pres
 
 ## 2. Task Flow
 
+![Task flow](./task_flow.png)
+
 ### Block-Level Flow
 
 | Step | Description |

@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { FeaturedTaskCarousel } from "@/components/featured-task-carousel";
+import { HomeHeroStats } from "@/components/home-hero-stats";
 import { ResourceCard } from "@/components/resource-card";
 import { getIndex } from "@/lib/task-index";
 import {
@@ -95,7 +96,6 @@ function TapsDiagram() {
 export default function Page() {
   const index = getIndex();
   const tasks = index.tasks ?? [];
-  const previewCount = tasks.filter((task) => task.web_variant).length;
   const featuredTasks = FEATURED_REPOS.map((repo) => tasks.find((task) => task.repo === repo)).filter(
     (task): task is (typeof tasks)[number] => Boolean(task)
   );
@@ -132,22 +132,7 @@ export default function Page() {
             </Link>
           </div>
 
-          <div className="mt-10 flex flex-wrap gap-8">
-            <div>
-              <div className="font-heading text-3xl font-bold text-[#25314d]">{tasks.length}+</div>
-              <div className="text-sm text-slate-600">Canonical tasks</div>
-            </div>
-            <div>
-              <div className="font-heading text-3xl font-bold text-[#25314d]">{previewCount}+</div>
-              <div className="text-sm text-slate-600">Web previews</div>
-            </div>
-            <div>
-              <div className="font-heading text-3xl font-bold text-[#25314d]">
-                {skillResources.length}
-              </div>
-              <div className="text-sm text-slate-600">Automation skills</div>
-            </div>
-          </div>
+          <HomeHeroStats tasks={tasks} skillCount={skillResources.length} />
         </div>
 
         <div className="lg:justify-self-end">

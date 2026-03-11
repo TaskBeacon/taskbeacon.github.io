@@ -1,8 +1,482 @@
 {
-  "schema_version": 4,
-  "generated_at": "2026-03-08T14:02:38.477Z",
+  "schema_version": 5,
+  "generated_at": "2026-03-11T00:37:30.571Z",
   "org": "TaskBeacon",
   "tasks": [
+    {
+      "id": "T000003",
+      "slug": "emodot",
+      "title": "Emotional Dot-Probe Task (EmoDot)",
+      "acquisition": "EEG",
+      "variant": "baseline",
+      "release_tag": "v1.1.3",
+      "repo": "T000003-emodot",
+      "full_name": "TaskBeacon/T000003-emodot",
+      "html_url": "https://github.com/TaskBeacon/T000003-emodot",
+      "default_branch": "main",
+      "short_description": "Emotional/neutral face-pair dot-probe task for attentional bias and EEG",
+      "maturity": "piloted",
+      "tags": {
+        "paradigm": [],
+        "response": [],
+        "modality": [
+          "EEG",
+          "behavior"
+        ],
+        "language": [
+          "Chinese"
+        ]
+      },
+      "keywords": [
+        "emodot"
+      ],
+      "psyflow_version": "0.1.9",
+      "has_voiceover": true,
+      "last_updated": "2026-03-09T16:30:51Z",
+      "structure": {
+        "config": true,
+        "assets": true,
+        "src": true
+      },
+      "readme_snapshot_path": "/readmes/T000003-emodot.md",
+      "readme_run_anchor": "#run",
+      "run_url": null,
+      "web_variant": null
+    },
+    {
+      "id": "T000004",
+      "slug": "flanker",
+      "title": "Flanker Task",
+      "acquisition": "EEG",
+      "variant": "baseline",
+      "release_tag": "v1.2.0",
+      "repo": "T000004-flanker",
+      "full_name": "TaskBeacon/T000004-flanker",
+      "html_url": "https://github.com/TaskBeacon/T000004-flanker",
+      "default_branch": "main",
+      "short_description": "Arrow-based Flanker task for selective attention and interference control (behavior/EEG).",
+      "maturity": "smoke_tested",
+      "tags": {
+        "paradigm": [
+          "Flanker"
+        ],
+        "response": [],
+        "modality": [
+          "EEG",
+          "behavior"
+        ],
+        "language": [
+          "Chinese"
+        ]
+      },
+      "keywords": [
+        "Flanker"
+      ],
+      "psyflow_version": "0.1.9",
+      "has_voiceover": true,
+      "last_updated": "2026-03-09T16:30:46Z",
+      "structure": {
+        "config": true,
+        "assets": true,
+        "src": true
+      },
+      "readme_snapshot_path": "/readmes/T000004-flanker.md",
+      "readme_run_anchor": "#run",
+      "run_url": null,
+      "web_variant": null
+    },
+    {
+      "id": "T000005",
+      "slug": "go-nogo",
+      "title": "Go/No-Go Task",
+      "acquisition": "EEG",
+      "variant": "baseline",
+      "release_tag": "v1.2.0",
+      "repo": "T000005-go-nogo",
+      "full_name": "TaskBeacon/T000005-go-nogo",
+      "html_url": "https://github.com/TaskBeacon/T000005-go-nogo",
+      "default_branch": "main",
+      "short_description": "Response inhibition task with prepotent Go trials and NoGo withholding.",
+      "maturity": "smoke_tested",
+      "tags": {
+        "paradigm": [
+          "Go/No-Go"
+        ],
+        "response": [
+          "go/no-go"
+        ],
+        "modality": [
+          "EEG",
+          "behavior"
+        ],
+        "language": [
+          "Chinese"
+        ]
+      },
+      "keywords": [
+        "Go/No-Go",
+        "go-nogo",
+        "go",
+        "nogo"
+      ],
+      "psyflow_version": "0.1.8",
+      "has_voiceover": true,
+      "last_updated": "2026-03-09T16:30:41Z",
+      "structure": {
+        "config": true,
+        "assets": true,
+        "src": true
+      },
+      "readme_snapshot_path": "/readmes/T000005-go-nogo.md",
+      "readme_run_anchor": "#run",
+      "run_url": null,
+      "web_variant": null
+    },
+    {
+      "id": "T000006",
+      "slug": "mid",
+      "title": "Monetary Incentive Delay (MID) Task",
+      "acquisition": "EEG",
+      "variant": "baseline",
+      "release_tag": "1.1.2",
+      "repo": "T000006-mid",
+      "full_name": "TaskBeacon/T000006-mid",
+      "html_url": "https://github.com/TaskBeacon/T000006-mid",
+      "default_branch": "main",
+      "short_description": "A task measuring reward anticipation and feedback processing using adaptive timing",
+      "maturity": "piloted",
+      "tags": {
+        "paradigm": [
+          "MID"
+        ],
+        "response": [],
+        "modality": [
+          "EEG",
+          "fMRI",
+          "behavior"
+        ],
+        "language": [
+          "Chinese"
+        ]
+      },
+      "keywords": [
+        "MID"
+      ],
+      "psyflow_version": "0.1.8",
+      "has_voiceover": true,
+      "last_updated": "2026-03-09T16:30:30Z",
+      "structure": {
+        "config": true,
+        "assets": true,
+        "src": true
+      },
+      "readme_snapshot_path": "/readmes/T000006-mid.md",
+      "readme_run_anchor": "#run",
+      "run_url": null,
+      "web_variant": null
+    },
+    {
+      "id": "T000007",
+      "slug": "movie",
+      "title": "Movie Watching Task",
+      "acquisition": "EEG",
+      "variant": "baseline",
+      "release_tag": "1.1.2",
+      "repo": "T000007-movie",
+      "full_name": "TaskBeacon/T000007-movie",
+      "html_url": "https://github.com/TaskBeacon/T000007-movie",
+      "default_branch": "main",
+      "short_description": "Passive movie-viewing EEG task with centered movie stimulus",
+      "maturity": "piloted",
+      "tags": {
+        "paradigm": [
+          "Movie"
+        ],
+        "response": [],
+        "modality": [
+          "EEG",
+          "behavior"
+        ],
+        "language": [
+          "Chinese"
+        ]
+      },
+      "keywords": [
+        "Movie"
+      ],
+      "psyflow_version": "0.1.9",
+      "has_voiceover": true,
+      "last_updated": "2026-03-09T16:30:02Z",
+      "structure": {
+        "config": true,
+        "assets": true,
+        "src": true
+      },
+      "readme_snapshot_path": "/readmes/T000007-movie.md",
+      "readme_run_anchor": "#run",
+      "run_url": null,
+      "web_variant": null
+    },
+    {
+      "id": "T000008",
+      "slug": "nback",
+      "title": "N-Back Task",
+      "acquisition": "EEG",
+      "variant": "baseline",
+      "release_tag": "1.1.2",
+      "repo": "T000008-nback",
+      "full_name": "TaskBeacon/T000008-nback",
+      "html_url": "https://github.com/TaskBeacon/T000008-nback",
+      "default_branch": "main",
+      "short_description": "An N-Back task with 1-back and 2-back conditions.",
+      "maturity": "smoke_tested",
+      "tags": {
+        "paradigm": [
+          "N-back"
+        ],
+        "response": [
+          "continuous"
+        ],
+        "modality": [
+          "EEG",
+          "behavior"
+        ],
+        "language": [
+          "Chinese"
+        ]
+      },
+      "keywords": [
+        "N-back",
+        "nback"
+      ],
+      "psyflow_version": "0.1.0",
+      "has_voiceover": true,
+      "last_updated": "2026-03-09T16:29:38Z",
+      "structure": {
+        "config": true,
+        "assets": true,
+        "src": true
+      },
+      "readme_snapshot_path": "/readmes/T000008-nback.md",
+      "readme_run_anchor": "#run",
+      "run_url": null,
+      "web_variant": null
+    },
+    {
+      "id": "T000010",
+      "slug": "rest",
+      "title": "Resting-state Task (EC+EO)",
+      "acquisition": "EEG",
+      "variant": "baseline",
+      "release_tag": "v1.2.0",
+      "repo": "T000010-rest",
+      "full_name": "TaskBeacon/T000010-rest",
+      "html_url": "https://github.com/TaskBeacon/T000010-rest",
+      "default_branch": "main",
+      "short_description": "Eyes-closed / eyes-open resting-state paradigm for EEG baseline acquisition",
+      "maturity": "piloted",
+      "tags": {
+        "paradigm": [
+          "Rest"
+        ],
+        "response": [],
+        "modality": [
+          "EEG",
+          "behavior"
+        ],
+        "language": [
+          "Chinese"
+        ]
+      },
+      "keywords": [
+        "Rest"
+      ],
+      "psyflow_version": "0.1.9",
+      "has_voiceover": true,
+      "last_updated": "2026-03-09T16:29:11Z",
+      "structure": {
+        "config": true,
+        "assets": true,
+        "src": true
+      },
+      "readme_snapshot_path": "/readmes/T000010-rest.md",
+      "readme_run_anchor": "#run",
+      "run_url": null,
+      "web_variant": null
+    },
+    {
+      "id": "T000009",
+      "slug": "prl",
+      "title": "Probabilistic Reversal Learning (PRL) Task",
+      "acquisition": "EEG",
+      "variant": "baseline",
+      "release_tag": "1.1.2",
+      "repo": "T000009-prl",
+      "full_name": "TaskBeacon/T000009-prl",
+      "html_url": "https://github.com/TaskBeacon/T000009-prl",
+      "default_branch": "main",
+      "short_description": "A task where participants learn stimulus-reward associations that reverse unpredictably.",
+      "maturity": "piloted",
+      "tags": {
+        "paradigm": [
+          "PRL"
+        ],
+        "response": [],
+        "modality": [
+          "EEG",
+          "behavior"
+        ],
+        "language": [
+          "Chinese"
+        ]
+      },
+      "keywords": [
+        "PRL"
+      ],
+      "psyflow_version": "0.1.0",
+      "has_voiceover": true,
+      "last_updated": "2026-03-09T16:28:53Z",
+      "structure": {
+        "config": true,
+        "assets": true,
+        "src": true
+      },
+      "readme_snapshot_path": "/readmes/T000009-prl.md",
+      "readme_run_anchor": "#run",
+      "run_url": null,
+      "web_variant": null
+    },
+    {
+      "id": "T000001",
+      "slug": "ax-cpt",
+      "title": "AX-CPT Task",
+      "acquisition": "EEG",
+      "variant": "baseline",
+      "release_tag": null,
+      "repo": "T000001-ax-cpt",
+      "full_name": "TaskBeacon/T000001-ax-cpt",
+      "html_url": "https://github.com/TaskBeacon/T000001-ax-cpt",
+      "default_branch": "main",
+      "short_description": "A task measuring cognitive control, context processing, and goal maintenance.",
+      "maturity": "smoke_tested",
+      "tags": {
+        "paradigm": [
+          "AX-CPT",
+          "CPT"
+        ],
+        "response": [
+          "continuous"
+        ],
+        "modality": [
+          "EEG",
+          "behavior"
+        ],
+        "language": [
+          "Chinese"
+        ]
+      },
+      "keywords": [
+        "AX-CPT",
+        "CPT",
+        "ax"
+      ],
+      "psyflow_version": "0.1.8",
+      "has_voiceover": true,
+      "last_updated": "2026-03-09T16:23:22Z",
+      "structure": {
+        "config": true,
+        "assets": true,
+        "src": true
+      },
+      "readme_snapshot_path": "/readmes/T000001-ax-cpt.md",
+      "readme_run_anchor": "#run",
+      "run_url": null,
+      "web_variant": null
+    },
+    {
+      "id": "T000002",
+      "slug": "bart",
+      "title": "Balloon Analogue Risk Task (BART)",
+      "acquisition": "EEG",
+      "variant": "baseline",
+      "release_tag": "v1.1.0",
+      "repo": "T000002-bart",
+      "full_name": "TaskBeacon/T000002-bart",
+      "html_url": "https://github.com/TaskBeacon/T000002-bart",
+      "default_branch": "main",
+      "short_description": "A risk-taking task based on BART with color-specific burst profiles.",
+      "maturity": "smoke_tested",
+      "tags": {
+        "paradigm": [
+          "BART"
+        ],
+        "response": [],
+        "modality": [
+          "EEG",
+          "behavior"
+        ],
+        "language": [
+          "Chinese"
+        ]
+      },
+      "keywords": [
+        "BART"
+      ],
+      "psyflow_version": "0.1.0",
+      "has_voiceover": true,
+      "last_updated": "2026-03-09T16:23:22Z",
+      "structure": {
+        "config": true,
+        "assets": true,
+        "src": true
+      },
+      "readme_snapshot_path": "/readmes/T000002-bart.md",
+      "readme_run_anchor": "#run",
+      "run_url": null,
+      "web_variant": null
+    },
+    {
+      "id": "T000035",
+      "slug": "sternberg-working-memory",
+      "title": "Sternberg Working Memory Task",
+      "acquisition": "behavior",
+      "variant": "baseline",
+      "release_tag": "v0.1.0-dev",
+      "repo": "T000035-sternberg-working-memory",
+      "full_name": "TaskBeacon/T000035-sternberg-working-memory",
+      "html_url": "https://github.com/TaskBeacon/T000035-sternberg-working-memory",
+      "default_branch": "main",
+      "short_description": "Item-recognition working-memory task with set-size manipulation (Sternberg-style).",
+      "maturity": "draft",
+      "tags": {
+        "paradigm": [],
+        "response": [],
+        "modality": [
+          "behavior"
+        ],
+        "language": [
+          "English"
+        ]
+      },
+      "keywords": [
+        "sternberg-working-memory",
+        "sternberg",
+        "working",
+        "memory"
+      ],
+      "psyflow_version": "v0.1.x",
+      "has_voiceover": true,
+      "last_updated": "2026-03-09T14:57:42Z",
+      "structure": {
+        "config": true,
+        "assets": true,
+        "src": true
+      },
+      "readme_snapshot_path": "/readmes/T000035-sternberg-working-memory.md",
+      "readme_run_anchor": "#run",
+      "run_url": null,
+      "web_variant": null
+    },
     {
       "id": "T000012",
       "slug": "sst",
@@ -34,16 +508,16 @@
       ],
       "psyflow_version": "0.1.9",
       "has_voiceover": true,
-      "last_updated": "2026-03-04T11:57:00Z",
+      "last_updated": "2026-03-08T14:43:22Z",
       "structure": {
         "config": true,
         "assets": true,
         "src": true
       },
+      "readme_snapshot_path": "/readmes/T000012-sst.md",
       "readme_run_anchor": "#run-modes",
       "run_url": null,
-      "web_variant": null,
-      "readme_snapshot_path": "/readmes/T000012-sst.md"
+      "web_variant": null
     },
     {
       "id": "T000022",
@@ -81,10 +555,10 @@
         "assets": true,
         "src": true
       },
+      "readme_snapshot_path": "/readmes/T000022-passive-lottery.md",
       "readme_run_anchor": "#run",
       "run_url": null,
-      "web_variant": null,
-      "readme_snapshot_path": "/readmes/T000022-passive-lottery.md"
+      "web_variant": null
     },
     {
       "id": "T000021",
@@ -123,10 +597,10 @@
         "assets": true,
         "src": true
       },
+      "readme_snapshot_path": "/readmes/T000021-drifting-double-bandit.md",
       "readme_run_anchor": "#run",
       "run_url": null,
-      "web_variant": null,
-      "readme_snapshot_path": "/readmes/T000021-drifting-double-bandit.md"
+      "web_variant": null
     },
     {
       "id": "T000020",
@@ -165,10 +639,10 @@
         "assets": true,
         "src": true
       },
+      "readme_snapshot_path": "/readmes/T000020-one-armed-bandit.md",
       "readme_run_anchor": "#run",
       "run_url": null,
-      "web_variant": null,
-      "readme_snapshot_path": "/readmes/T000020-one-armed-bandit.md"
+      "web_variant": null
     },
     {
       "id": "T000019",
@@ -204,10 +678,10 @@
         "assets": true,
         "src": true
       },
+      "readme_snapshot_path": "/readmes/T000019-eefrt.md",
       "readme_run_anchor": "#run",
       "run_url": null,
-      "web_variant": null,
-      "readme_snapshot_path": "/readmes/T000019-eefrt.md"
+      "web_variant": null
     },
     {
       "id": "T000018",
@@ -245,10 +719,10 @@
         "assets": true,
         "src": true
       },
+      "readme_snapshot_path": "/readmes/T000018-oddball-mmn.md",
       "readme_run_anchor": "#run",
       "run_url": null,
-      "web_variant": null,
-      "readme_snapshot_path": "/readmes/T000018-oddball-mmn.md"
+      "web_variant": null
     },
     {
       "id": "T000017",
@@ -286,10 +760,10 @@
         "assets": true,
         "src": true
       },
+      "readme_snapshot_path": "/readmes/T000017-delay-discounting.md",
       "readme_run_anchor": "#run",
       "run_url": null,
-      "web_variant": null,
-      "readme_snapshot_path": "/readmes/T000017-delay-discounting.md"
+      "web_variant": null
     },
     {
       "id": "T000016",
@@ -327,10 +801,10 @@
         "assets": true,
         "src": true
       },
+      "readme_snapshot_path": "/readmes/T000016-card-sorting.md",
       "readme_run_anchor": "#run",
       "run_url": null,
-      "web_variant": null,
-      "readme_snapshot_path": "/readmes/T000016-card-sorting.md"
+      "web_variant": null
     },
     {
       "id": "T000015",
@@ -369,10 +843,10 @@
         "assets": true,
         "src": true
       },
+      "readme_snapshot_path": "/readmes/T000015-ant.md",
       "readme_run_anchor": "#run-modes",
       "run_url": null,
-      "web_variant": null,
-      "readme_snapshot_path": "/readmes/T000015-ant.md"
+      "web_variant": null
     },
     {
       "id": "T000014",
@@ -411,10 +885,10 @@
         "assets": true,
         "src": true
       },
+      "readme_snapshot_path": "/readmes/T000014-stroop.md",
       "readme_run_anchor": "#run-modes",
       "run_url": null,
-      "web_variant": null,
-      "readme_snapshot_path": "/readmes/T000014-stroop.md"
+      "web_variant": null
     },
     {
       "id": "T000013",
@@ -455,10 +929,10 @@
         "assets": true,
         "src": true
       },
+      "readme_snapshot_path": "/readmes/T000013-sst-audio.md",
       "readme_run_anchor": "#run-modes",
       "run_url": null,
-      "web_variant": null,
-      "readme_snapshot_path": "/readmes/T000013-sst-audio.md"
+      "web_variant": null
     },
     {
       "id": "T000011",
@@ -497,470 +971,10 @@
         "assets": true,
         "src": true
       },
+      "readme_snapshot_path": "/readmes/T000011-simon.md",
       "readme_run_anchor": "#run",
       "run_url": null,
-      "web_variant": null,
-      "readme_snapshot_path": "/readmes/T000011-simon.md"
-    },
-    {
-      "id": "T000010",
-      "slug": "rest",
-      "title": "Resting-state Task (EC+EO)",
-      "acquisition": "EEG",
-      "variant": "baseline",
-      "release_tag": "v1.2.0",
-      "repo": "T000010-rest",
-      "full_name": "TaskBeacon/T000010-rest",
-      "html_url": "https://github.com/TaskBeacon/T000010-rest",
-      "default_branch": "main",
-      "short_description": "Eyes-closed / eyes-open resting-state paradigm for EEG baseline acquisition",
-      "maturity": "piloted",
-      "tags": {
-        "paradigm": [
-          "Rest"
-        ],
-        "response": [],
-        "modality": [
-          "EEG",
-          "behavior"
-        ],
-        "language": [
-          "Chinese"
-        ]
-      },
-      "keywords": [
-        "Rest"
-      ],
-      "psyflow_version": "0.1.9",
-      "has_voiceover": true,
-      "last_updated": "2026-03-02T12:11:21Z",
-      "structure": {
-        "config": true,
-        "assets": true,
-        "src": true
-      },
-      "readme_run_anchor": "#run",
-      "run_url": null,
-      "web_variant": null,
-      "readme_snapshot_path": "/readmes/T000010-rest.md"
-    },
-    {
-      "id": "T000009",
-      "slug": "prl",
-      "title": "Probabilistic Reversal Learning (PRL) Task",
-      "acquisition": "EEG",
-      "variant": "baseline",
-      "release_tag": "1.1.2",
-      "repo": "T000009-prl",
-      "full_name": "TaskBeacon/T000009-prl",
-      "html_url": "https://github.com/TaskBeacon/T000009-prl",
-      "default_branch": "main",
-      "short_description": "A task where participants learn stimulus-reward associations that reverse unpredictably.",
-      "maturity": "piloted",
-      "tags": {
-        "paradigm": [
-          "PRL"
-        ],
-        "response": [],
-        "modality": [
-          "EEG",
-          "behavior"
-        ],
-        "language": [
-          "Chinese"
-        ]
-      },
-      "keywords": [
-        "PRL"
-      ],
-      "psyflow_version": "0.1.0",
-      "has_voiceover": true,
-      "last_updated": "2026-03-02T12:01:13Z",
-      "structure": {
-        "config": true,
-        "assets": true,
-        "src": true
-      },
-      "readme_run_anchor": "#run",
-      "run_url": null,
-      "web_variant": null,
-      "readme_snapshot_path": "/readmes/T000009-prl.md"
-    },
-    {
-      "id": "T000008",
-      "slug": "nback",
-      "title": "N-Back Task",
-      "acquisition": "EEG",
-      "variant": "baseline",
-      "release_tag": "1.1.2",
-      "repo": "T000008-nback",
-      "full_name": "TaskBeacon/T000008-nback",
-      "html_url": "https://github.com/TaskBeacon/T000008-nback",
-      "default_branch": "main",
-      "short_description": "An N-Back task with 1-back and 2-back conditions.",
-      "maturity": "smoke_tested",
-      "tags": {
-        "paradigm": [
-          "N-back"
-        ],
-        "response": [
-          "continuous"
-        ],
-        "modality": [
-          "EEG",
-          "behavior"
-        ],
-        "language": [
-          "Chinese"
-        ]
-      },
-      "keywords": [
-        "N-back",
-        "nback"
-      ],
-      "psyflow_version": "0.1.0",
-      "has_voiceover": true,
-      "last_updated": "2026-03-02T11:46:18Z",
-      "structure": {
-        "config": true,
-        "assets": true,
-        "src": true
-      },
-      "readme_run_anchor": "#run",
-      "run_url": null,
-      "web_variant": null,
-      "readme_snapshot_path": "/readmes/T000008-nback.md"
-    },
-    {
-      "id": "T000007",
-      "slug": "movie",
-      "title": "Movie Watching Task",
-      "acquisition": "EEG",
-      "variant": "baseline",
-      "release_tag": "1.1.2",
-      "repo": "T000007-movie",
-      "full_name": "TaskBeacon/T000007-movie",
-      "html_url": "https://github.com/TaskBeacon/T000007-movie",
-      "default_branch": "main",
-      "short_description": "Passive movie-viewing EEG task with centered movie stimulus",
-      "maturity": "piloted",
-      "tags": {
-        "paradigm": [
-          "Movie"
-        ],
-        "response": [],
-        "modality": [
-          "EEG",
-          "behavior"
-        ],
-        "language": [
-          "Chinese"
-        ]
-      },
-      "keywords": [
-        "Movie"
-      ],
-      "psyflow_version": "0.1.9",
-      "has_voiceover": true,
-      "last_updated": "2026-03-02T11:35:13Z",
-      "structure": {
-        "config": true,
-        "assets": true,
-        "src": true
-      },
-      "readme_run_anchor": "#run",
-      "run_url": null,
-      "web_variant": null,
-      "readme_snapshot_path": "/readmes/T000007-movie.md"
-    },
-    {
-      "id": "T000006",
-      "slug": "mid",
-      "title": "Monetary Incentive Delay (MID) Task",
-      "acquisition": "EEG",
-      "variant": "baseline",
-      "release_tag": "1.1.2",
-      "repo": "T000006-mid",
-      "full_name": "TaskBeacon/T000006-mid",
-      "html_url": "https://github.com/TaskBeacon/T000006-mid",
-      "default_branch": "main",
-      "short_description": "A task measuring reward anticipation and feedback processing using adaptive timing",
-      "maturity": "piloted",
-      "tags": {
-        "paradigm": [
-          "MID"
-        ],
-        "response": [],
-        "modality": [
-          "EEG",
-          "fMRI",
-          "behavior"
-        ],
-        "language": [
-          "Chinese"
-        ]
-      },
-      "keywords": [
-        "MID"
-      ],
-      "psyflow_version": "0.1.8",
-      "has_voiceover": true,
-      "last_updated": "2026-03-02T11:29:05Z",
-      "structure": {
-        "config": true,
-        "assets": true,
-        "src": true
-      },
-      "readme_run_anchor": "#run",
-      "run_url": null,
-      "web_variant": {
-        "repo": "H000006-mid",
-        "title": "Monetary Incentive Delay (MID) Task",
-        "html_url": "https://github.com/TaskBeacon/H000006-mid",
-        "default_branch": "main",
-        "short_description": "HTML/browser preview of the Monetary Incentive Delay task built with psyflow-web. The within-trial procedure, timing, controller, and ins...",
-        "maturity": "prototype",
-        "acquisition": "behavior",
-        "variant": "html",
-        "release_tag": "0.1.0",
-        "last_updated": "2026-03-07T06:23:32Z",
-        "run_url": "https://taskbeacon.github.io/psyflow-web/?task=H000006-mid",
-        "download_zip": "https://github.com/TaskBeacon/H000006-mid/archive/refs/heads/main.zip",
-        "id": "H000006"
-      },
-      "readme_snapshot_path": "/readmes/T000006-mid.md"
-    },
-    {
-      "id": "T000005",
-      "slug": "go-nogo",
-      "title": "Go/No-Go Task",
-      "acquisition": "EEG",
-      "variant": "baseline",
-      "release_tag": "v1.2.0",
-      "repo": "T000005-go-nogo",
-      "full_name": "TaskBeacon/T000005-go-nogo",
-      "html_url": "https://github.com/TaskBeacon/T000005-go-nogo",
-      "default_branch": "main",
-      "short_description": "Response inhibition task with prepotent Go trials and NoGo withholding.",
-      "maturity": "smoke_tested",
-      "tags": {
-        "paradigm": [
-          "Go/No-Go"
-        ],
-        "response": [
-          "go/no-go"
-        ],
-        "modality": [
-          "EEG",
-          "behavior"
-        ],
-        "language": [
-          "Chinese"
-        ]
-      },
-      "keywords": [
-        "Go/No-Go",
-        "go-nogo",
-        "go",
-        "nogo"
-      ],
-      "psyflow_version": "0.1.8",
-      "has_voiceover": true,
-      "last_updated": "2026-03-02T10:02:17Z",
-      "structure": {
-        "config": true,
-        "assets": true,
-        "src": true
-      },
-      "readme_run_anchor": "#run",
-      "run_url": null,
-      "web_variant": null,
-      "readme_snapshot_path": "/readmes/T000005-go-nogo.md"
-    },
-    {
-      "id": "T000004",
-      "slug": "flanker",
-      "title": "Flanker Task",
-      "acquisition": "EEG",
-      "variant": "baseline",
-      "release_tag": "v1.2.0",
-      "repo": "T000004-flanker",
-      "full_name": "TaskBeacon/T000004-flanker",
-      "html_url": "https://github.com/TaskBeacon/T000004-flanker",
-      "default_branch": "main",
-      "short_description": "Arrow-based Flanker task for selective attention and interference control (behavior/EEG).",
-      "maturity": "smoke_tested",
-      "tags": {
-        "paradigm": [
-          "Flanker"
-        ],
-        "response": [],
-        "modality": [
-          "EEG",
-          "behavior"
-        ],
-        "language": [
-          "Chinese"
-        ]
-      },
-      "keywords": [
-        "Flanker"
-      ],
-      "psyflow_version": "0.1.9",
-      "has_voiceover": true,
-      "last_updated": "2026-03-02T09:29:31Z",
-      "structure": {
-        "config": true,
-        "assets": true,
-        "src": true
-      },
-      "readme_run_anchor": "#run",
-      "run_url": null,
-      "web_variant": null,
-      "readme_snapshot_path": "/readmes/T000004-flanker.md"
-    },
-    {
-      "id": "T000003",
-      "slug": "emodot",
-      "title": "Emotional Dot-Probe Task (EmoDot)",
-      "acquisition": "EEG",
-      "variant": "baseline",
-      "release_tag": "v1.1.3",
-      "repo": "T000003-emodot",
-      "full_name": "TaskBeacon/T000003-emodot",
-      "html_url": "https://github.com/TaskBeacon/T000003-emodot",
-      "default_branch": "main",
-      "short_description": "Emotional/neutral face-pair dot-probe task for attentional bias and EEG",
-      "maturity": "piloted",
-      "tags": {
-        "paradigm": [],
-        "response": [],
-        "modality": [
-          "EEG",
-          "behavior"
-        ],
-        "language": [
-          "Chinese"
-        ]
-      },
-      "keywords": [
-        "emodot"
-      ],
-      "psyflow_version": "0.1.9",
-      "has_voiceover": true,
-      "last_updated": "2026-03-02T08:51:18Z",
-      "structure": {
-        "config": true,
-        "assets": true,
-        "src": true
-      },
-      "readme_run_anchor": "#run",
-      "run_url": null,
-      "web_variant": null,
-      "readme_snapshot_path": "/readmes/T000003-emodot.md"
-    },
-    {
-      "id": "T000002",
-      "slug": "bart",
-      "title": "Balloon Analogue Risk Task (BART)",
-      "acquisition": "EEG",
-      "variant": "baseline",
-      "release_tag": "v1.1.0",
-      "repo": "T000002-bart",
-      "full_name": "TaskBeacon/T000002-bart",
-      "html_url": "https://github.com/TaskBeacon/T000002-bart",
-      "default_branch": "main",
-      "short_description": "A risk-taking task based on BART with color-specific burst profiles.",
-      "maturity": "smoke_tested",
-      "tags": {
-        "paradigm": [
-          "BART"
-        ],
-        "response": [],
-        "modality": [
-          "EEG",
-          "behavior"
-        ],
-        "language": [
-          "Chinese"
-        ]
-      },
-      "keywords": [
-        "BART"
-      ],
-      "psyflow_version": "0.1.0",
-      "has_voiceover": true,
-      "last_updated": "2026-03-02T08:08:44Z",
-      "structure": {
-        "config": true,
-        "assets": true,
-        "src": true
-      },
-      "readme_run_anchor": "#run",
-      "run_url": null,
-      "web_variant": null,
-      "readme_snapshot_path": "/readmes/T000002-bart.md"
-    },
-    {
-      "id": "T000001",
-      "slug": "ax-cpt",
-      "title": "AX-CPT Task",
-      "acquisition": "EEG",
-      "variant": "baseline",
-      "release_tag": null,
-      "repo": "T000001-ax-cpt",
-      "full_name": "TaskBeacon/T000001-ax-cpt",
-      "html_url": "https://github.com/TaskBeacon/T000001-ax-cpt",
-      "default_branch": "main",
-      "short_description": "A task measuring cognitive control, context processing, and goal maintenance.",
-      "maturity": "smoke_tested",
-      "tags": {
-        "paradigm": [
-          "AX-CPT",
-          "CPT"
-        ],
-        "response": [
-          "continuous"
-        ],
-        "modality": [
-          "EEG",
-          "behavior"
-        ],
-        "language": [
-          "Chinese"
-        ]
-      },
-      "keywords": [
-        "AX-CPT",
-        "CPT",
-        "ax"
-      ],
-      "psyflow_version": "0.1.8",
-      "has_voiceover": true,
-      "last_updated": "2026-03-02T07:29:33Z",
-      "structure": {
-        "config": true,
-        "assets": true,
-        "src": true
-      },
-      "readme_run_anchor": "#run",
-      "run_url": null,
-      "web_variant": {
-        "repo": "H000001-ax-cpt",
-        "title": "AX-CPT Task",
-        "html_url": "https://github.com/TaskBeacon/H000001-ax-cpt",
-        "default_branch": "main",
-        "short_description": "HTML/browser preview of the AX-CPT task built with psyflow-web. The within-trial procedure, task rules, timing, weighted condition genera...",
-        "maturity": "prototype",
-        "acquisition": "behavior",
-        "variant": "html",
-        "release_tag": "0.1.0",
-        "last_updated": "2026-03-08T14:00:39Z",
-        "run_url": "https://taskbeacon.github.io/psyflow-web/?task=H000001-ax-cpt",
-        "download_zip": "https://github.com/TaskBeacon/H000001-ax-cpt/archive/refs/heads/main.zip",
-        "id": "H000001"
-      },
-      "readme_snapshot_path": "/readmes/T000001-ax-cpt.md"
+      "web_variant": null
     },
     {
       "id": "T000034",
@@ -998,10 +1012,10 @@
         "assets": true,
         "src": true
       },
+      "readme_snapshot_path": "/readmes/T000034-cyberball.md",
       "readme_run_anchor": "#run",
       "run_url": null,
-      "web_variant": null,
-      "readme_snapshot_path": "/readmes/T000034-cyberball.md"
+      "web_variant": null
     },
     {
       "id": "T000033",
@@ -1039,10 +1053,10 @@
         "assets": true,
         "src": true
       },
+      "readme_snapshot_path": "/readmes/T000033-visual-search.md",
       "readme_run_anchor": "#run",
       "run_url": null,
-      "web_variant": null,
-      "readme_snapshot_path": "/readmes/T000033-visual-search.md"
+      "web_variant": null
     },
     {
       "id": "T000032",
@@ -1078,10 +1092,10 @@
         "assets": true,
         "src": true
       },
+      "readme_snapshot_path": "/readmes/T000032-antisaccade.md",
       "readme_run_anchor": "#run",
       "run_url": null,
-      "web_variant": null,
-      "readme_snapshot_path": "/readmes/T000032-antisaccade.md"
+      "web_variant": null
     },
     {
       "id": "T000031",
@@ -1120,10 +1134,10 @@
         "assets": true,
         "src": true
       },
+      "readme_snapshot_path": "/readmes/T000031-loss-aversion-framing.md",
       "readme_run_anchor": "#run",
       "run_url": null,
-      "web_variant": null,
-      "readme_snapshot_path": "/readmes/T000031-loss-aversion-framing.md"
+      "web_variant": null
     },
     {
       "id": "T000030",
@@ -1161,10 +1175,10 @@
         "assets": true,
         "src": true
       },
+      "readme_snapshot_path": "/readmes/T000030-iowa-gambling.md",
       "readme_run_anchor": "#run",
       "run_url": null,
-      "web_variant": null,
-      "readme_snapshot_path": "/readmes/T000030-iowa-gambling.md"
+      "web_variant": null
     },
     {
       "id": "T000029",
@@ -1202,10 +1216,10 @@
         "assets": true,
         "src": true
       },
+      "readme_snapshot_path": "/readmes/T000029-cambridge-gambling.md",
       "readme_run_anchor": "#run",
       "run_url": null,
-      "web_variant": null,
-      "readme_snapshot_path": "/readmes/T000029-cambridge-gambling.md"
+      "web_variant": null
     },
     {
       "id": "T000028",
@@ -1243,10 +1257,10 @@
         "assets": true,
         "src": true
       },
+      "readme_snapshot_path": "/readmes/T000028-weather-prediction.md",
       "readme_run_anchor": "#run",
       "run_url": null,
-      "web_variant": null,
-      "readme_snapshot_path": "/readmes/T000028-weather-prediction.md"
+      "web_variant": null
     },
     {
       "id": "T000027",
@@ -1284,10 +1298,10 @@
         "assets": true,
         "src": true
       },
+      "readme_snapshot_path": "/readmes/T000027-task-switching.md",
       "readme_run_anchor": "#run",
       "run_url": null,
-      "web_variant": null,
-      "readme_snapshot_path": "/readmes/T000027-task-switching.md"
+      "web_variant": null
     },
     {
       "id": "T000026",
@@ -1323,10 +1337,10 @@
         "assets": true,
         "src": true
       },
+      "readme_snapshot_path": "/readmes/T000026-mcgurk.md",
       "readme_run_anchor": "#run",
       "run_url": null,
-      "web_variant": null,
-      "readme_snapshot_path": "/readmes/T000026-mcgurk.md"
+      "web_variant": null
     },
     {
       "id": "T000025",
@@ -1364,10 +1378,10 @@
         "assets": true,
         "src": true
       },
+      "readme_snapshot_path": "/readmes/T000025-dictator-game.md",
       "readme_run_anchor": "#run",
       "run_url": null,
-      "web_variant": null,
-      "readme_snapshot_path": "/readmes/T000025-dictator-game.md"
+      "web_variant": null
     },
     {
       "id": "T000024",
@@ -1405,10 +1419,10 @@
         "assets": true,
         "src": true
       },
+      "readme_snapshot_path": "/readmes/T000024-trust-game.md",
       "readme_run_anchor": "#run",
       "run_url": null,
-      "web_variant": null,
-      "readme_snapshot_path": "/readmes/T000024-trust-game.md"
+      "web_variant": null
     },
     {
       "id": "T000023",
@@ -1448,10 +1462,10 @@
         "assets": true,
         "src": true
       },
+      "readme_snapshot_path": "/readmes/T000023-ultimatum-game.md",
       "readme_run_anchor": "#run",
       "run_url": null,
-      "web_variant": null,
-      "readme_snapshot_path": "/readmes/T000023-ultimatum-game.md"
+      "web_variant": null
     }
   ]
 }

@@ -1,10 +1,14 @@
+"use client";
+
 import { getIndex } from "@/lib/task-index";
+import { taskHasPreview } from "@/lib/html-companions";
+import { useTasksWithHtmlCompanions } from "@/lib/use-html-companions";
 import { TaskBeaconLogo, TaskBeaconMark } from "@/components/taskbeacon-logo";
 
 export function SiteFooter() {
   const index = getIndex();
-  const tasks = index.tasks ?? [];
-  const previewCount = tasks.filter((task) => task.web_variant).length;
+  const tasks = useTasksWithHtmlCompanions(index.tasks ?? []);
+  const previewCount = tasks.filter((task) => taskHasPreview(task)).length;
 
   return (
     <footer className="mt-16 bg-[#efe7de]">

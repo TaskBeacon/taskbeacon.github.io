@@ -7,26 +7,28 @@ import { TaskDrawer } from "@/components/task-drawer";
 import type { TaskIndexItem } from "@/lib/task-index";
 import { formatShortDate } from "@/lib/format";
 import { taskHandle, taskTitle } from "@/lib/task-display";
+import { useTasksWithHtmlCompanions } from "@/lib/use-html-companions";
 
 export function FeaturedTaskCarousel({
   tasks
 }: {
   tasks: TaskIndexItem[];
 }) {
+  const mergedTasks = useTasksWithHtmlCompanions(tasks);
   const [activeIndex, setActiveIndex] = useState(0);
   const [drawerRepo, setDrawerRepo] = useState<string | null>(null);
 
   useEffect(() => {
-    if (tasks.length < 2) return undefined;
+    if (mergedTasks.length < 2) return undefined;
 
     const timer = window.setInterval(() => {
-      setActiveIndex((current) => (current + 1) % tasks.length);
+      setActiveIndex((current) => (current + 1) % mergedTasks.length);
     }, 6500);
 
     return () => window.clearInterval(timer);
-  }, [tasks.length]);
+  }, [mergedTasks.length]);
 
-  if (tasks.length === 0) {
+  if (mergedTasks.length === 0) {
     return (
       <div className="tb-frame bg-[#fffdf9] p-6">
         <div className="font-heading text-2xl font-bold text-[#25314d]">
@@ -36,12 +38,12 @@ export function FeaturedTaskCarousel({
     );
   }
 
-  const activeTask = tasks[activeIndex] ?? tasks[0];
+  const activeTask = mergedTasks[activeIndex] ?? mergedTasks[0];
   const preview = activeTask.web_variant;
-  const drawerTask = tasks.find((task) => task.repo === drawerRepo) ?? null;
+  const drawerTask = mergedTasks.find((task) => task.repo === drawerRepo) ?? null;
 
   function goTo(nextIndex: number) {
-    const total = tasks.length;
+    const total = mergedTasks.length;
     setActiveIndex(((nextIndex % total) + total) % total);
   }
 
@@ -67,7 +69,7 @@ export function FeaturedTaskCarousel({
         <div className="tb-frame h-[410px] overflow-visible bg-[#fffdf9] px-6 py-7 sm:h-[450px] sm:px-8">
           <div className="flex h-full flex-col">
             <div className="flex flex-wrap justify-center gap-2">
-              {tasks.map((task, index) => (
+              {mergedTasks.map((task, index) => (
                 <button
                   key={task.repo}
                   type="button"

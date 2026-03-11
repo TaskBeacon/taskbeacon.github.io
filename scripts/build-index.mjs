@@ -637,25 +637,7 @@ function pickPrimaryTask(items) {
   );
 }
 
-function toWebVariant(item) {
-  return {
-    id: item.id ?? null,
-    repo: item.repo,
-    title: item.title,
-    html_url: item.html_url,
-    default_branch: item.default_branch,
-    short_description: item.short_description,
-    maturity: item.maturity ?? null,
-    acquisition: item.acquisition ?? null,
-    variant: item.variant ?? null,
-    release_tag: item.release_tag ?? null,
-    last_updated: item.last_updated,
-    run_url: item.run_url ?? inferHtmlRunUrl(item.repo),
-    download_zip: downloadZipUrl(item.html_url, item.default_branch)
-  };
-}
-
-function mergeHtmlCompanions(items) {
+function collapseHtmlCompanions(items) {
   const groups = new Map();
   for (const item of items) {
     const key = item.slug || item.repo.toLowerCase();
@@ -668,20 +650,21 @@ function mergeHtmlCompanions(items) {
     const htmlItems = groupItems.filter((item) => isHtmlVariant(item));
     const nonHtmlItems = groupItems.filter((item) => !isHtmlVariant(item));
 
-    if (htmlItems.length === 0 || nonHtmlItems.length === 0) {
+    if (htmlItems.length === 0) {
       merged.push(...groupItems);
       continue;
     }
 
-    const primary = pickPrimaryTask(nonHtmlItems);
-    const webVariant = toWebVariant(
-      [...htmlItems].sort((a, b) => (a.last_updated < b.last_updated ? 1 : -1))[0]
-    );
+    if (nonHtmlItems.length === 0) {
+      merged.push(...htmlItems);
+      continue;
+    }
 
-    merged.push({ ...primary, web_variant: webVariant });
+    const primary = pickPrimaryTask(nonHtmlItems);
+    merged.push({ ...primary, web_variant: null });
     for (const item of nonHtmlItems) {
       if (item.repo !== primary.repo) {
-        merged.push(item);
+        merged.push({ ...item, web_variant: null });
       }
     }
   }
@@ -773,11 +756,11 @@ async function buildIndex() {
   const existingRepos = new Set(tasks.map((task) => task.repo));
   tasks.push(...discoverLocalHtmlTasks(existingRepos));
 
-  const mergedTasks = mergeHtmlCompanions(tasks);
+  const mergedTasks = collapseHtmlCompanions(tasks);
   mergedTasks.sort((a, b) => (a.last_updated < b.last_updated ? 1 : -1));
 
   const index = {
-    schema_version: 4,
+    schema_version: 5,
     generated_at: new Date().toISOString(),
     org: ORG,
     tasks: mergedTasks

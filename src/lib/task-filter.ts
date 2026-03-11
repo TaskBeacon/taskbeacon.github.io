@@ -1,4 +1,5 @@
 import type { TaskFacet, TaskIndexItem, TaskTagFacet } from "@/lib/task-index";
+import { taskHasPreview } from "@/lib/html-companions";
 
 function norm(s: string) {
   return s.trim().toLowerCase();
@@ -54,7 +55,7 @@ function matchesMaturity(t: TaskIndexItem, wanted: Set<string>) {
 
 function matchesPreview(t: TaskIndexItem, wanted: Set<string>) {
   if (!wanted || wanted.size === 0) return true;
-  const hasPreview = Boolean(t.web_variant);
+  const hasPreview = taskHasPreview(t);
   const normalized = Array.from(wanted).map(norm);
   if (normalized.includes("with preview") && hasPreview) return true;
   if (normalized.includes("without preview") && !hasPreview) return true;
@@ -109,8 +110,8 @@ export function facetValues(tasks: TaskIndexItem[], facet: TaskFacet) {
   }
 
   if (facet === "preview") {
-    if (tasks.some((t) => t.web_variant)) set.add("With preview");
-    if (tasks.some((t) => !t.web_variant)) set.add("Without preview");
+    if (tasks.some((t) => taskHasPreview(t))) set.add("With preview");
+    if (tasks.some((t) => !taskHasPreview(t))) set.add("Without preview");
     return Array.from(set);
   }
 
