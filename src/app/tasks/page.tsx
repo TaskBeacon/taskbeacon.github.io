@@ -10,5 +10,5 @@ export const metadata: Metadata = {
 export default function TasksPage() {
   const index = getIndex();
 
-  return <GalleryClient tasks={index.tasks ?? []} generatedAt={index.generated_at} />;
+  return <GalleryClient tasks={index.tasks ?? []} />;
 }

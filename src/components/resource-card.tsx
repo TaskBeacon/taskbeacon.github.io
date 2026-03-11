@@ -55,7 +55,7 @@ export function ResourceCard({
     </>
   );
 
-  const className = "tb-frame-soft flex min-h-[190px] flex-col justify-between p-5";
+  const className = "tb-frame-soft flex h-full min-h-[206px] flex-col justify-between p-5";
 
   if (external) {
     return (

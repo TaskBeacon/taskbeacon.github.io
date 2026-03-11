@@ -74,8 +74,7 @@ export function TaskDrawer({
   const taskRepo = task.repo;
 
   function openFullPage() {
-    const destination = new URL(taskDetailHref(taskRepo), window.location.origin);
-    window.location.assign(destination.toString());
+    window.location.assign(taskDetailHref(taskRepo));
   }
 
   return (

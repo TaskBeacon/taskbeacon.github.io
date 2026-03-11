@@ -39,14 +39,6 @@ export const overviewResources: ResourceLink[] = [
       "Open practical guides for setup, localization, voice, and validation.",
     href: "#tutorial",
     cta: "Jump to tutorials"
-  },
-  {
-    eyebrow: "Contribute",
-    title: "Contribute tasks and variants clearly",
-    description:
-      "Start from the registry and keep variants explicit and reviewable.",
-    href: "#contribute",
-    cta: "Jump to contribute"
   }
 ];
 

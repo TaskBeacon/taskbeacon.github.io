@@ -12,7 +12,6 @@ import { TagChip } from "@/components/tag-chip";
 import { TaskRow } from "@/components/task-row";
 import { TaskDrawer } from "@/components/task-drawer";
 import { formatMaturityLabel } from "@/components/maturity-badge";
-import { formatIsoDateTime } from "@/lib/format";
 
 function FacetSection({
   title,
@@ -63,11 +62,9 @@ function FacetSection({
 }
 
 export function GalleryClient({
-  tasks,
-  generatedAt
+  tasks
 }: {
   tasks: TaskIndexItem[];
-  generatedAt: string;
 }) {
   const [query, setQuery] = useState<string>("");
   const [selected, setSelected] = useState<SelectedFacets>(() => emptySelectedFacets());
@@ -128,49 +125,28 @@ export function GalleryClient({
 
   return (
     <section className="space-y-8">
-      <div className="grid gap-8 lg:grid-cols-[1fr_360px] lg:items-center">
-        <div>
-          <div className="tb-badge">Task Explorer</div>
-          <div className="mt-5 font-heading text-5xl font-bold leading-[0.94] text-[#25314d] sm:text-6xl">
+      <div className="max-w-4xl">
+        <div className="tb-section-chip bg-[#f5d7cf]">Task Explorer</div>
+        <div className="mt-5 font-heading text-5xl font-bold leading-[0.94] text-[#25314d] sm:text-6xl">
             Find The Right Task,
             <br />
             <span className="text-[#39d95d]">Filter Faster,</span>
             <br />
             Expand Only What Matters.
-          </div>
-          <div className="mt-5 max-w-2xl text-base leading-8 text-slate-700">
-            This explorer keeps the denser list workflow while adopting the clearer, stronger page
-            language from the rest of the site.
-          </div>
-
-          <div className="mt-8 flex flex-wrap gap-8">
-            <div>
-              <div className="font-heading text-3xl font-bold text-[#25314d]">{tasks.length}</div>
-              <div className="text-sm text-slate-600">Total tasks</div>
-            </div>
-            <div>
-              <div className="font-heading text-3xl font-bold text-[#25314d]">{previewCount}</div>
-              <div className="text-sm text-slate-600">With preview</div>
-            </div>
-          </div>
+        </div>
+        <div className="mt-5 max-w-2xl text-base leading-8 text-slate-700">
+          This explorer keeps the denser list workflow while adopting the clearer, stronger page
+          language from the rest of the site.
         </div>
 
-        <div className="tb-frame bg-[#fffdf9] p-5">
-          <div className="text-sm font-bold text-slate-600">Quick Snapshot</div>
-          <div className="mt-3 font-heading text-2xl font-bold text-[#25314d]">
-            Explorer Updated
+        <div className="mt-8 flex flex-wrap gap-4">
+          <div className="tb-frame-soft min-w-[160px] bg-[#fffdf9] px-5 py-4">
+            <div className="font-heading text-3xl font-bold text-[#25314d]">{tasks.length}</div>
+            <div className="text-sm text-slate-600">Total tasks</div>
           </div>
-          <div className="mt-2 text-sm text-slate-600">{formatIsoDateTime(generatedAt)}</div>
-
-          <div className="mt-5 space-y-3">
-            <div className="tb-frame-soft bg-[#eef8ff] px-4 py-3">
-              <div className="text-xs font-bold uppercase tracking-[0.18em] text-slate-500">Order</div>
-              <div className="mt-1 text-sm font-bold text-[#25314d]">Alphabetical by task title</div>
-            </div>
-            <div className="tb-frame-soft bg-[#fff8f0] px-4 py-3">
-              <div className="text-xs font-bold uppercase tracking-[0.18em] text-slate-500">Details</div>
-              <div className="mt-1 text-sm font-bold text-[#25314d]">Expand from Local / PsyFlow only</div>
-            </div>
+          <div className="tb-frame-soft min-w-[160px] bg-[#eef8ff] px-5 py-4">
+            <div className="font-heading text-3xl font-bold text-[#25314d]">{previewCount}</div>
+            <div className="text-sm text-slate-600">With preview</div>
           </div>
         </div>
       </div>

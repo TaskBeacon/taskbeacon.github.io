@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useState } from "react";
 import { IconClose, IconMenu } from "@/components/icons";
+import { TaskBeaconLogo } from "@/components/taskbeacon-logo";
 import { tasksPageHref } from "@/lib/routes";
 
 const PRIMARY_LINKS = [
@@ -13,19 +14,6 @@ const PRIMARY_LINKS = [
   { label: "Contribute", href: "/contribute/" },
   { label: "Teams", href: "/teams/" }
 ] as const;
-
-function Mark() {
-  return (
-    <span className="inline-flex items-center gap-3 font-sans text-sm font-bold text-[#25314d]">
-      <span className="grid size-10 place-items-center rounded-2xl border-2 border-[#25314d] bg-[#f5c1b5]">
-        <span className="grid size-5 place-items-center rounded-lg border-2 border-[#25314d] bg-[#b9dceb]">
-          <span className="block size-1.5 rounded-full bg-[#25314d]" aria-hidden="true" />
-        </span>
-      </span>
-      <span className="font-heading text-2xl leading-none">TaskBeacon</span>
-    </span>
-  );
-}
 
 function NavLink({
   href,
@@ -62,7 +50,7 @@ export function SiteHeader() {
         <div className="tb-frame bg-[#fffdf9] px-4 py-3">
           <div className="flex items-center justify-between gap-4">
             <Link className="tb-focus-ring rounded-xl" href="/" onClick={() => setOpen(false)}>
-              <Mark />
+              <TaskBeaconLogo markClassName="size-10 sm:size-11" textClassName="text-[1.85rem]" />
             </Link>
 
             <nav className="hidden items-center gap-1 lg:flex">
@@ -101,9 +89,9 @@ export function SiteHeader() {
           {open ? (
             <div className="mt-4 rounded-[24px] border-2 border-[#25314d] bg-[#fffdf9] p-3 shadow-[0_5px_0_#25314d] lg:hidden">
               <div className="grid gap-2">
-              {PRIMARY_LINKS.map((link) => (
-                <NavLink key={link.href} {...link} mobile onNavigate={() => setOpen(false)} />
-              ))}
+                {PRIMARY_LINKS.map((link) => (
+                  <NavLink key={link.href} {...link} mobile onNavigate={() => setOpen(false)} />
+                ))}
               </div>
               <div className="mt-3 grid gap-2">
                 <a

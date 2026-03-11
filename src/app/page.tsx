@@ -103,9 +103,9 @@ export default function Page() {
 
   return (
     <div className="space-y-20 pb-8">
-      <section className="grid gap-12 lg:grid-cols-[1.02fr_0.98fr] lg:items-center">
+      <section className="grid gap-12 lg:grid-cols-[minmax(0,1fr)_590px] lg:items-center xl:gap-16">
         <div>
-          <div className="tb-badge">New: canonical tasks, previews, docs, and skills</div>
+          <div className="tb-badge mx-auto w-fit">New: canonical tasks, previews, docs, and skills</div>
           <h1 className="mt-6 max-w-3xl font-heading text-5xl font-bold leading-[0.92] text-[#25314d] sm:text-6xl">
             Build Better Tasks,
             <br />
@@ -150,7 +150,9 @@ export default function Page() {
           </div>
         </div>
 
-        <FeaturedTaskCarousel tasks={curatedFeaturedTasks} />
+        <div className="lg:justify-self-end">
+          <FeaturedTaskCarousel tasks={curatedFeaturedTasks} />
+        </div>
       </section>
 
       <section id="overview" className="space-y-8">
@@ -165,8 +167,8 @@ export default function Page() {
         </div>
 
         <div className="grid gap-5 md:grid-cols-2">
-          {overviewResources.map((card, index) => (
-            <div key={card.title} className={index === overviewResources.length - 1 ? "md:col-span-2" : undefined}>
+          {overviewResources.map((card) => (
+            <div key={card.title}>
               <ResourceCard {...card} />
             </div>
           ))}
