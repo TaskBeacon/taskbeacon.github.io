@@ -1,5 +1,19 @@
 import Link from "next/link";
-import { IconArrowRight } from "@/components/icons";
+import {
+  IconArrowRight,
+  IconFrameworkBridge,
+  IconLocalizationGlobe,
+  IconOrgCluster,
+  IconPreviewWindow,
+  IconQaChecklist,
+  IconRegistryPath,
+  IconReviewSheet,
+  IconSkillSpark,
+  IconTapsPackage,
+  IconTutorialCompass,
+  IconVariantBranch,
+  IconVoiceWave
+} from "@/components/icons";
 
 const TONES = [
   { bg: "bg-[#f5c1b5]", pill: "bg-[#ffe2d8]" },
@@ -7,6 +21,77 @@ const TONES = [
   { bg: "bg-[#c9f7b9]", pill: "bg-[#ecffe5]" },
   { bg: "bg-[#ddd7f4]", pill: "bg-[#f1eeff]" }
 ];
+
+type ResourceCardIconKind =
+  | "taps"
+  | "framework"
+  | "preview"
+  | "skills"
+  | "tutorial"
+  | "localization"
+  | "voice"
+  | "qa"
+  | "registry"
+  | "variant"
+  | "review"
+  | "org";
+
+function getResourceCardIconKind(eyebrow: string, title: string): ResourceCardIconKind {
+  const label = `${eyebrow} ${title}`.toLowerCase();
+
+  if (label.includes("registry") || label.includes("submit")) return "registry";
+  if (label.includes("variant") || label.includes("branch")) return "variant";
+  if (label.includes("review")) return "review";
+  if (label.includes("org") || label.includes("repositories")) return "org";
+  if (label.includes("localization") || label.includes("translate")) return "localization";
+  if (label.includes("voice") || label.includes("audio")) return "voice";
+  if (label.includes("qa") || label.includes("validate") || label.includes("cli")) return "qa";
+  if (label.includes("tutorial") || label.includes("guide") || label.includes("scaffold")) return "tutorial";
+  if (label.includes("skill") || label.includes("build") || label.includes("automation") || label.includes("task-")) {
+    return "skills";
+  }
+  if (label.includes("psyflow-web") || label.includes("preview") || label.includes("browser")) {
+    return "preview";
+  }
+  if (label.includes("psyflow") || label.includes("framework") || label.includes("runtime")) {
+    return "framework";
+  }
+  if (label.includes("taps") || label.includes("package") || label.includes("structure")) {
+    return "taps";
+  }
+  return "org";
+}
+
+function ResourceCardIcon({ kind }: { kind: ResourceCardIconKind }) {
+  const className = "size-8";
+
+  switch (kind) {
+    case "taps":
+      return <IconTapsPackage className={className} />;
+    case "framework":
+      return <IconFrameworkBridge className={className} />;
+    case "preview":
+      return <IconPreviewWindow className={className} />;
+    case "skills":
+      return <IconSkillSpark className={className} />;
+    case "tutorial":
+      return <IconTutorialCompass className={className} />;
+    case "localization":
+      return <IconLocalizationGlobe className={className} />;
+    case "voice":
+      return <IconVoiceWave className={className} />;
+    case "qa":
+      return <IconQaChecklist className={className} />;
+    case "registry":
+      return <IconRegistryPath className={className} />;
+    case "variant":
+      return <IconVariantBranch className={className} />;
+    case "review":
+      return <IconReviewSheet className={className} />;
+    case "org":
+      return <IconOrgCluster className={className} />;
+  }
+}
 
 export function ResourceCard({
   eyebrow = "Resource",
@@ -24,14 +109,17 @@ export function ResourceCard({
   external?: boolean;
 }) {
   const tone = TONES[title.length % TONES.length];
+  const iconKind = getResourceCardIconKind(eyebrow, title);
 
   const body = (
     <>
       <div className="flex items-start gap-4">
         <span
-          className={`mt-1 block size-14 shrink-0 rounded-[18px] border-2 border-[#25314d] ${tone.bg} shadow-[0_4px_0_#25314d]`}
+          className={`mt-1 inline-flex size-14 shrink-0 items-center justify-center rounded-[18px] border-2 border-[#25314d] ${tone.bg} text-[#25314d] shadow-[0_4px_0_#25314d]`}
           aria-hidden="true"
-        />
+        >
+          <ResourceCardIcon kind={iconKind} />
+        </span>
         <div className="min-w-0 flex-1">
           <div className="flex flex-wrap items-start justify-between gap-3">
             <span className={`rounded-full px-3 py-1 text-xs font-bold text-[#25314d] ${tone.pill}`}>

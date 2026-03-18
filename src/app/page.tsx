@@ -2,7 +2,7 @@ import Link from "next/link";
 import { FeaturedTaskCarousel } from "@/components/featured-task-carousel";
 import { HomeHeroStats } from "@/components/home-hero-stats";
 import { ResourceCard } from "@/components/resource-card";
-import { getIndex } from "@/lib/task-index";
+import { getIndex, type TaskIndexItem } from "@/lib/task-index";
 import {
   contributeResources,
   frameworkHighlights,
@@ -11,7 +11,41 @@ import {
   tutorialResources
 } from "@/lib/site-content";
 
-const FEATURED_REPOS = ["T000002-bart", "T000012-sst", "T000006-mid"] as const;
+const FIXED_FEATURED_REPOS = ["T000002-bart", "T000012-sst", "T000006-mid"] as const;
+const FIXED_FEATURED_REPO_SET = new Set<string>(FIXED_FEATURED_REPOS);
+const RANDOM_FEATURED_COUNT = 2;
+
+function buildSeed(seedSource: string): number {
+  return Array.from(seedSource).reduce(
+    (seed, character) => ((seed * 33) ^ character.charCodeAt(0)) >>> 0,
+    5381
+  );
+}
+
+function seededShuffle<T>(items: T[], seedSource: string): T[] {
+  const shuffled = [...items];
+  let seed = buildSeed(seedSource);
+
+  for (let index = shuffled.length - 1; index > 0; index -= 1) {
+    seed = (seed * 1664525 + 1013904223) >>> 0;
+    const swapIndex = seed % (index + 1);
+    [shuffled[index], shuffled[swapIndex]] = [shuffled[swapIndex], shuffled[index]];
+  }
+
+  return shuffled;
+}
+
+function uniqueTasks(tasks: TaskIndexItem[]): TaskIndexItem[] {
+  const seen = new Set<string>();
+
+  return tasks.filter((task) => {
+    if (!task.repo || seen.has(task.repo)) {
+      return false;
+    }
+    seen.add(task.repo);
+    return true;
+  });
+}
 
 function TapsDiagram() {
   return (
@@ -96,14 +130,22 @@ function TapsDiagram() {
 export default function Page() {
   const index = getIndex();
   const tasks = index.tasks ?? [];
-  const featuredTasks = FEATURED_REPOS.map((repo) => tasks.find((task) => task.repo === repo)).filter(
-    (task): task is (typeof tasks)[number] => Boolean(task)
-  );
-  const curatedFeaturedTasks = featuredTasks.length > 0 ? featuredTasks : tasks.slice(0, 3);
+  const fixedFeaturedTasks = FIXED_FEATURED_REPOS.map((repo) =>
+    tasks.find((task) => task.repo === repo)
+  ).filter((task): task is TaskIndexItem => Boolean(task));
+  const randomFeaturedTasks = seededShuffle(
+    tasks.filter((task) => !FIXED_FEATURED_REPO_SET.has(task.repo)),
+    index.generated_at
+  ).slice(0, RANDOM_FEATURED_COUNT);
+  const curatedFeaturedTasks = uniqueTasks([
+    ...fixedFeaturedTasks,
+    ...randomFeaturedTasks,
+    ...tasks
+  ]).slice(0, FIXED_FEATURED_REPOS.length + RANDOM_FEATURED_COUNT);
 
   return (
     <div className="space-y-20 pb-8">
-      <section className="grid gap-12 lg:grid-cols-[minmax(0,1fr)_590px] lg:items-center xl:gap-16">
+      <section className="grid gap-12 pt-4 sm:pt-6 lg:grid-cols-[minmax(0,1fr)_620px] lg:items-center xl:gap-16">
         <div>
           <div className="tb-badge mx-auto w-fit">New: canonical tasks, previews, docs, and skills</div>
           <h1 className="mt-6 max-w-3xl font-heading text-5xl font-bold leading-[0.92] text-[#25314d] sm:text-6xl">

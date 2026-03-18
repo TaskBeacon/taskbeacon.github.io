@@ -38,7 +38,8 @@ export function FeaturedTaskCarousel({
     );
   }
 
-  const activeTask = mergedTasks[activeIndex] ?? mergedTasks[0];
+  const normalizedActiveIndex = activeIndex % mergedTasks.length;
+  const activeTask = mergedTasks[normalizedActiveIndex] ?? mergedTasks[0];
   const preview = activeTask.web_variant;
   const drawerTask = mergedTasks.find((task) => task.repo === drawerRepo) ?? null;
 
@@ -49,32 +50,45 @@ export function FeaturedTaskCarousel({
 
   return (
     <>
-      <div className="relative mx-auto w-full max-w-[590px]">
-        <button
-          type="button"
-          className="tb-focus-ring absolute left-3 top-1/2 z-10 -translate-y-1/2 rounded-full border-2 border-[#25314d] bg-white p-3 shadow-[0_4px_0_#25314d] sm:left-0 sm:-translate-x-1/2"
-          onClick={() => goTo(activeIndex - 1)}
-          aria-label="Show previous featured task"
-        >
-          <IconChevronLeft className="size-4" />
-        </button>
-        <button
-          type="button"
-          className="tb-focus-ring absolute right-3 top-1/2 z-10 -translate-y-1/2 rounded-full border-2 border-[#25314d] bg-white p-3 shadow-[0_4px_0_#25314d] sm:right-0 sm:translate-x-1/2"
-          onClick={() => goTo(activeIndex + 1)}
-          aria-label="Show next featured task"
-        >
-          <IconChevronRight className="size-4" />
-        </button>
-        <div className="tb-frame h-[410px] overflow-visible bg-[#fffdf9] px-6 py-7 sm:h-[450px] sm:px-8">
-          <div className="flex h-full flex-col">
-            <div className="flex flex-wrap justify-center gap-2">
+      <div className="mx-auto w-full max-w-[620px]">
+        <div className="tb-frame overflow-hidden bg-[#fffdf9] p-4 sm:p-6">
+          <div className="flex flex-col gap-5">
+            <div className="flex items-start justify-between gap-4">
+              <div className="min-w-0">
+                <div className="text-[11px] font-bold uppercase tracking-[0.24em] text-slate-500">
+                  Featured Task
+                </div>
+              </div>
+
+              <div className="flex shrink-0 items-center gap-2">
+                <button
+                  type="button"
+                  className="tb-focus-ring rounded-full border-2 border-[#25314d] bg-white p-2.5 shadow-[0_4px_0_#25314d] transition-transform hover:-translate-y-px disabled:translate-y-0 disabled:cursor-default disabled:opacity-50"
+                  onClick={() => goTo(activeIndex - 1)}
+                  aria-label="Show previous featured task"
+                  disabled={mergedTasks.length < 2}
+                >
+                  <IconChevronLeft className="size-4" />
+                </button>
+                <button
+                  type="button"
+                  className="tb-focus-ring rounded-full border-2 border-[#25314d] bg-white p-2.5 shadow-[0_4px_0_#25314d] transition-transform hover:-translate-y-px disabled:translate-y-0 disabled:cursor-default disabled:opacity-50"
+                  onClick={() => goTo(activeIndex + 1)}
+                  aria-label="Show next featured task"
+                  disabled={mergedTasks.length < 2}
+                >
+                  <IconChevronRight className="size-4" />
+                </button>
+              </div>
+            </div>
+
+            <div className="flex flex-wrap gap-2">
               {mergedTasks.map((task, index) => (
                 <button
                   key={task.repo}
                   type="button"
                   className={
-                    index === activeIndex
+                    index === normalizedActiveIndex
                       ? "tb-focus-ring rounded-full border-2 border-[#25314d] bg-[#d7ebf6] px-3 py-1.5 text-sm font-bold text-[#25314d] shadow-[0_4px_0_#25314d]"
                       : "tb-focus-ring rounded-full border-2 border-[#25314d] bg-white px-3 py-1.5 text-sm font-bold text-[#25314d]"
                   }
@@ -85,68 +99,49 @@ export function FeaturedTaskCarousel({
               ))}
             </div>
 
-            <div className="mt-6 flex-1">
-              <div className="tb-frame-soft flex h-full flex-col bg-[#f8fcff] p-5 sm:p-6">
-                <div className="flex flex-wrap items-center gap-2 text-xs text-slate-600">
-                  <code className="rounded-full border-2 border-[#25314d] bg-white px-2.5 py-1 font-mono text-[11px] font-semibold text-[#25314d]">
-                    {taskHandle(activeTask)}
-                  </code>
-                  {activeTask.maturity ? <MaturityBadge maturity={activeTask.maturity} /> : null}
-                  {preview ? (
-                    <span className="rounded-full bg-[#ecffe5] px-3 py-1 text-[11px] font-bold text-[#25314d]">
-                      Preview ready
-                    </span>
-                  ) : null}
-                  <span className="rounded-full bg-[#e2f3fb] px-3 py-1 text-[11px] font-bold text-[#25314d]">
-                    {formatShortDate(activeTask.last_updated)}
+            <div className="tb-frame-soft flex min-h-[320px] flex-col bg-[#f8fcff] p-5 sm:min-h-[360px] sm:p-6">
+              <div className="flex flex-wrap items-center gap-2 text-xs text-slate-600">
+                <code className="rounded-full border-2 border-[#25314d] bg-white px-2.5 py-1 font-mono text-[11px] font-semibold text-[#25314d]">
+                  {taskHandle(activeTask)}
+                </code>
+                {activeTask.maturity ? <MaturityBadge maturity={activeTask.maturity} /> : null}
+                {preview ? (
+                  <span className="rounded-full bg-[#ecffe5] px-3 py-1 text-[11px] font-bold text-[#25314d]">
+                    Preview ready
                   </span>
-                </div>
+                ) : null}
+                <span className="rounded-full bg-[#e2f3fb] px-3 py-1 text-[11px] font-bold text-[#25314d]">
+                  {formatShortDate(activeTask.last_updated)}
+                </span>
+              </div>
 
-                <div className="mt-4 min-h-[6.1rem] font-heading text-3xl font-bold leading-tight text-[#25314d] sm:text-[2.65rem]">
-                  <span
-                    style={{
-                      display: "-webkit-box",
-                      WebkitLineClamp: 2,
-                      WebkitBoxOrient: "vertical",
-                      overflow: "hidden"
-                    }}
-                  >
-                    {taskTitle(activeTask)}
-                  </span>
-                </div>
+              <div className="mt-4 font-heading text-[2rem] font-bold leading-[1.02] text-[#25314d] sm:text-[2.45rem]">
+                {taskTitle(activeTask)}
+              </div>
 
-                <p
-                  className="mt-3 min-h-[4.8rem] max-w-[36ch] text-sm leading-7 text-slate-700 sm:text-base"
-                  style={{
-                    display: "-webkit-box",
-                    WebkitLineClamp: 3,
-                    WebkitBoxOrient: "vertical",
-                    overflow: "hidden"
-                  }}
+              <p className="mt-3 max-w-[38ch] text-sm leading-7 text-slate-700 sm:text-base">
+                {activeTask.short_description}
+              </p>
+
+              <div className="mt-6 flex flex-wrap gap-3 sm:mt-auto">
+                <button
+                  type="button"
+                  className="tb-focus-ring tb-button-primary"
+                  onClick={() => setDrawerRepo(activeTask.repo)}
                 >
-                  {activeTask.short_description}
-                </p>
-
-                <div className="mt-auto flex flex-wrap gap-3">
-                  <button
-                    type="button"
-                    className="tb-focus-ring tb-button-primary"
-                    onClick={() => setDrawerRepo(activeTask.repo)}
+                  Expand details
+                </button>
+                {preview ? (
+                  <a
+                    className="tb-focus-ring tb-button-secondary bg-[#d7ebf6]"
+                    href={preview.run_url}
+                    target="_blank"
+                    rel="noreferrer"
                   >
-                    Expand details
-                  </button>
-                  {preview ? (
-                    <a
-                      className="tb-focus-ring tb-button-secondary bg-[#d7ebf6]"
-                      href={preview.run_url}
-                      target="_blank"
-                      rel="noreferrer"
-                    >
-                      <IconPlay className="size-4" />
-                      Run Preview
-                    </a>
-                  ) : null}
-                </div>
+                    <IconPlay className="size-4" />
+                    Run Preview
+                  </a>
+                ) : null}
               </div>
             </div>
           </div>
