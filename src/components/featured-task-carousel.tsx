@@ -99,8 +99,8 @@ export function FeaturedTaskCarousel({
               ))}
             </div>
 
-            <div className="tb-frame-soft flex min-h-[320px] flex-col bg-[#f8fcff] p-5 sm:min-h-[360px] sm:p-6">
-              <div className="flex flex-wrap items-center gap-2 text-xs text-slate-600">
+            <div className="tb-frame-soft flex h-[360px] flex-col bg-[#f8fcff] p-5 sm:h-[392px] sm:p-6">
+              <div className="min-h-[3rem] content-start flex flex-wrap items-center gap-2 text-xs text-slate-600">
                 <code className="rounded-full border-2 border-[#25314d] bg-white px-2.5 py-1 font-mono text-[11px] font-semibold text-[#25314d]">
                   {taskHandle(activeTask)}
                 </code>
@@ -115,15 +115,31 @@ export function FeaturedTaskCarousel({
                 </span>
               </div>
 
-              <div className="mt-4 font-heading text-[2rem] font-bold leading-[1.02] text-[#25314d] sm:text-[2.45rem]">
+              <div
+                className="mt-4 min-h-[4.2rem] font-heading text-[2rem] font-bold leading-[1.02] text-[#25314d] sm:min-h-[5.1rem] sm:text-[2.45rem]"
+                style={{
+                  display: "-webkit-box",
+                  WebkitLineClamp: 2,
+                  WebkitBoxOrient: "vertical",
+                  overflow: "hidden"
+                }}
+              >
                 {taskTitle(activeTask)}
               </div>
 
-              <p className="mt-3 max-w-[38ch] text-sm leading-7 text-slate-700 sm:text-base">
+              <p
+                className="mt-3 min-h-[5.25rem] max-w-[38ch] text-sm leading-7 text-slate-700 sm:min-h-[5.75rem] sm:text-base"
+                style={{
+                  display: "-webkit-box",
+                  WebkitLineClamp: 3,
+                  WebkitBoxOrient: "vertical",
+                  overflow: "hidden"
+                }}
+              >
                 {activeTask.short_description}
               </p>
 
-              <div className="mt-6 flex flex-wrap gap-3 sm:mt-auto">
+              <div className="mt-auto flex flex-col gap-3 sm:flex-row sm:flex-wrap">
                 <button
                   type="button"
                   className="tb-focus-ring tb-button-primary"
