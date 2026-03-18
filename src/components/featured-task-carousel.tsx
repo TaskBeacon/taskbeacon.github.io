@@ -50,7 +50,7 @@ export function FeaturedTaskCarousel({
 
   return (
     <>
-      <div className="mx-auto w-full max-w-[620px]">
+      <div className="mx-auto w-full max-w-[620px] lg:w-[620px]">
         <div className="tb-frame overflow-hidden bg-[#fffdf9] p-4 sm:p-6">
           <div className="flex flex-col gap-5">
             <div className="flex items-start justify-between gap-4">
@@ -99,8 +99,8 @@ export function FeaturedTaskCarousel({
               ))}
             </div>
 
-            <div className="tb-frame-soft flex h-[360px] flex-col bg-[#f8fcff] p-5 sm:h-[392px] sm:p-6">
-              <div className="min-h-[3rem] content-start flex flex-wrap items-center gap-2 text-xs text-slate-600">
+            <div className="tb-frame-soft flex h-[360px] w-full flex-col bg-[#f8fcff] p-5 sm:h-[392px] sm:p-6">
+              <div className="min-h-[3rem] w-full content-start flex flex-wrap items-center gap-2 text-xs text-slate-600">
                 <code className="rounded-full border-2 border-[#25314d] bg-white px-2.5 py-1 font-mono text-[11px] font-semibold text-[#25314d]">
                   {taskHandle(activeTask)}
                 </code>
@@ -116,7 +116,7 @@ export function FeaturedTaskCarousel({
               </div>
 
               <div
-                className="mt-4 min-h-[4.2rem] font-heading text-[2rem] font-bold leading-[1.02] text-[#25314d] sm:min-h-[5.1rem] sm:text-[2.45rem]"
+                className="mt-4 min-h-[4.2rem] w-full font-heading text-[2rem] font-bold leading-[1.02] text-[#25314d] sm:min-h-[5.1rem] sm:text-[2.45rem]"
                 style={{
                   display: "-webkit-box",
                   WebkitLineClamp: 2,
@@ -128,7 +128,7 @@ export function FeaturedTaskCarousel({
               </div>
 
               <p
-                className="mt-3 min-h-[5.25rem] max-w-[38ch] text-sm leading-7 text-slate-700 sm:min-h-[5.75rem] sm:text-base"
+                className="mt-3 min-h-[5.25rem] w-full text-sm leading-7 text-slate-700 sm:min-h-[5.75rem] sm:text-base"
                 style={{
                   display: "-webkit-box",
                   WebkitLineClamp: 3,
@@ -139,17 +139,17 @@ export function FeaturedTaskCarousel({
                 {activeTask.short_description}
               </p>
 
-              <div className="mt-auto flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+              <div className="mt-auto flex w-full flex-col gap-3 sm:flex-row sm:flex-nowrap">
                 <button
                   type="button"
-                  className="tb-focus-ring tb-button-primary"
+                  className="tb-focus-ring tb-button-primary w-full justify-center sm:w-[11.5rem]"
                   onClick={() => setDrawerRepo(activeTask.repo)}
                 >
                   Expand details
                 </button>
                 {preview ? (
                   <a
-                    className="tb-focus-ring tb-button-secondary bg-[#d7ebf6]"
+                    className="tb-focus-ring tb-button-secondary w-full justify-center bg-[#d7ebf6] sm:w-[11.5rem]"
                     href={preview.run_url}
                     target="_blank"
                     rel="noreferrer"
