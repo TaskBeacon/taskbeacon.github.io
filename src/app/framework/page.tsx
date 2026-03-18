@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 
 export default function FrameworkPage() {
   return (
-    <div className="space-y-8">
+    <div className="space-y-8 lg:pt-6">
       <section className="rounded-[32px] border border-slate-200 bg-white/90 p-8 shadow-sm">
         <div className="text-[11px] font-semibold uppercase tracking-[0.18em] text-slate-500">
           Framework

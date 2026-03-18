@@ -127,7 +127,7 @@ export function GalleryClient({
   }
 
   return (
-    <section className="space-y-8">
+    <section className="space-y-8 lg:pt-6">
       <div className="max-w-4xl">
         <div className="tb-section-chip bg-[#f5d7cf]">Task Explorer</div>
         <div className="mt-5 font-heading text-5xl font-bold leading-[0.94] text-[#25314d] sm:text-6xl">
