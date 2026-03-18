@@ -46,11 +46,15 @@ export function SiteHeader() {
 
   return (
     <header className="fixed left-0 right-0 top-0 z-50">
-      <div className="mx-auto w-full max-w-7xl px-4 pt-4 sm:px-6 lg:px-8">
-        <div className="tb-frame bg-[#fffdf9] px-4 py-3">
-          <div className="flex items-center justify-between gap-4">
-            <Link className="tb-focus-ring rounded-xl" href="/" onClick={() => setOpen(false)}>
-              <TaskBeaconLogo markClassName="size-10 sm:size-11" textClassName="text-[1.85rem]" />
+      <div className="mx-auto w-full max-w-7xl px-3 pt-3 sm:px-6 sm:pt-4 lg:px-8">
+        <div className="tb-frame bg-[#fffdf9] px-3 py-2.5 sm:px-4 sm:py-3">
+          <div className="flex items-center justify-between gap-3 sm:gap-4">
+            <Link className="tb-focus-ring min-w-0 rounded-xl" href="/" onClick={() => setOpen(false)}>
+              <TaskBeaconLogo
+                className="gap-2 sm:gap-3"
+                markClassName="size-8 sm:size-11"
+                textClassName="text-[1.2rem] sm:text-[1.85rem]"
+              />
             </Link>
 
             <nav className="hidden items-center gap-1 lg:flex">
@@ -77,7 +81,7 @@ export function SiteHeader() {
 
             <button
               type="button"
-              className="tb-focus-ring tb-frame-soft p-2 lg:hidden"
+              className="tb-focus-ring tb-frame-soft p-1.5 sm:p-2 lg:hidden"
               onClick={() => setOpen((current) => !current)}
               aria-expanded={open}
               aria-label={open ? "Close navigation menu" : "Open navigation menu"}
@@ -87,7 +91,7 @@ export function SiteHeader() {
           </div>
 
           {open ? (
-            <div className="mt-4 rounded-[24px] border-2 border-[#25314d] bg-[#fffdf9] p-3 shadow-[0_5px_0_#25314d] lg:hidden">
+            <div className="mt-3 rounded-[24px] border-2 border-[#25314d] bg-[#fffdf9] p-3 shadow-[0_5px_0_#25314d] lg:hidden">
               <div className="grid gap-2">
                 {PRIMARY_LINKS.map((link) => (
                   <NavLink key={link.href} {...link} mobile onNavigate={() => setOpen(false)} />

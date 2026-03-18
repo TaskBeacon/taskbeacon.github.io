@@ -50,7 +50,7 @@ export function FeaturedTaskCarousel({
 
   return (
     <>
-      <div className="mx-auto w-full max-w-[620px] lg:w-[620px]">
+      <div id="featured-task-carousel" className="mx-auto w-full max-w-[620px] lg:w-[620px]">
         <div className="tb-frame overflow-hidden bg-[#fffdf9] p-4 sm:p-6">
           <div className="flex flex-col gap-5">
             <div className="flex items-start justify-between gap-4">
@@ -99,7 +99,7 @@ export function FeaturedTaskCarousel({
               ))}
             </div>
 
-            <div className="tb-frame-soft flex h-[360px] w-full flex-col bg-[#f8fcff] p-5 sm:h-[392px] sm:p-6">
+            <div className="tb-frame-soft flex min-h-[320px] w-full flex-col bg-[#f8fcff] p-4 sm:h-[392px] sm:p-6">
               <div className="min-h-[3rem] w-full content-start flex flex-wrap items-center gap-2 text-xs text-slate-600">
                 <code className="rounded-full border-2 border-[#25314d] bg-white px-2.5 py-1 font-mono text-[11px] font-semibold text-[#25314d]">
                   {taskHandle(activeTask)}
@@ -116,40 +116,28 @@ export function FeaturedTaskCarousel({
               </div>
 
               <div
-                className="mt-4 min-h-[4.2rem] w-full font-heading text-[2rem] font-bold leading-[1.02] text-[#25314d] sm:min-h-[5.1rem] sm:text-[2.45rem]"
-                style={{
-                  display: "-webkit-box",
-                  WebkitLineClamp: 2,
-                  WebkitBoxOrient: "vertical",
-                  overflow: "hidden"
-                }}
+                className="mt-4 min-h-[4.2rem] w-full font-heading text-[1.75rem] font-bold leading-[1.02] text-[#25314d] sm:min-h-[5.1rem] sm:text-[2.45rem] sm:[display:-webkit-box] sm:[-webkit-box-orient:vertical] sm:[-webkit-line-clamp:2] sm:overflow-hidden"
               >
                 {taskTitle(activeTask)}
               </div>
 
               <p
-                className="mt-3 min-h-[5.25rem] w-full text-sm leading-7 text-slate-700 sm:min-h-[5.75rem] sm:text-base"
-                style={{
-                  display: "-webkit-box",
-                  WebkitLineClamp: 3,
-                  WebkitBoxOrient: "vertical",
-                  overflow: "hidden"
-                }}
+                className="mt-3 min-h-[5.25rem] w-full text-sm leading-6 text-slate-700 sm:min-h-[5.75rem] sm:text-base sm:leading-7 sm:[display:-webkit-box] sm:[-webkit-box-orient:vertical] sm:[-webkit-line-clamp:3] sm:overflow-hidden"
               >
                 {activeTask.short_description}
               </p>
 
-              <div className="mt-auto flex w-full flex-col gap-3 sm:flex-row sm:flex-nowrap">
+              <div className="mt-auto grid w-full grid-cols-2 gap-2 sm:flex sm:flex-row sm:flex-nowrap sm:gap-3">
                 <button
                   type="button"
-                  className="tb-focus-ring tb-button-primary w-full justify-center sm:w-[11.5rem]"
+                  className="tb-focus-ring tb-button-primary w-full justify-center px-3 py-3 text-[0.85rem] sm:w-[11.5rem] sm:px-5 sm:py-3 sm:text-sm"
                   onClick={() => setDrawerRepo(activeTask.repo)}
                 >
                   Expand details
                 </button>
                 {preview ? (
                   <a
-                    className="tb-focus-ring tb-button-secondary w-full justify-center bg-[#d7ebf6] sm:w-[11.5rem]"
+                    className="tb-focus-ring tb-button-secondary w-full justify-center bg-[#d7ebf6] px-3 py-3 text-[0.85rem] sm:w-[11.5rem] sm:px-5 sm:py-3 sm:text-sm"
                     href={preview.run_url}
                     target="_blank"
                     rel="noreferrer"
