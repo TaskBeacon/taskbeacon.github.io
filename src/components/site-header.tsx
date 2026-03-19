@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useState } from "react";
 import { IconClose, IconMenu } from "@/components/icons";
 import { TaskBeaconLogo } from "@/components/taskbeacon-logo";
-import { tasksPageHref } from "@/lib/routes";
+import { jobsPageHref, tasksPageHref } from "@/lib/routes";
 
 const PRIMARY_LINKS = [
   { label: "Home", href: "/" },
@@ -12,7 +12,8 @@ const PRIMARY_LINKS = [
   { label: "Tutorial", href: "/tutorial/" },
   { label: "Framework", href: "/framework/" },
   { label: "Contribute", href: "/contribute/" },
-  { label: "Teams", href: "/teams/" }
+  { label: "Teams", href: "/teams/" },
+  { label: "Jobs", href: jobsPageHref() }
 ] as const;
 
 function NavLink({
@@ -62,14 +63,6 @@ export function SiteHeader() {
                 <NavLink key={link.href} {...link} />
               ))}
               <a
-                className="tb-focus-ring rounded-full px-3 py-2 text-sm font-medium text-slate-600 transition-colors hover:text-[#25314d]"
-                href="https://github.com/TaskBeacon"
-                target="_blank"
-                rel="noreferrer"
-              >
-                GitHub
-              </a>
-              <a
                 className="tb-focus-ring tb-button-primary px-5 py-3 text-sm"
                 href="https://taskbeacon.github.io/psyflow-web"
                 target="_blank"
@@ -97,15 +90,7 @@ export function SiteHeader() {
                   <NavLink key={link.href} {...link} mobile onNavigate={() => setOpen(false)} />
                 ))}
               </div>
-              <div className="mt-3 grid gap-2">
-                <a
-                  className="tb-focus-ring tb-button-secondary w-full text-sm"
-                  href="https://github.com/TaskBeacon"
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  GitHub Org
-                </a>
+            <div className="mt-3 grid gap-2">
                 <a
                   className="tb-focus-ring tb-button-primary w-full text-sm"
                   href="https://taskbeacon.github.io/psyflow-web"
