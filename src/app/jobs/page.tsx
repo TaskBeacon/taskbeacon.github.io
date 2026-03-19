@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
+import { CopyEmailButton } from "./copy-email-button";
 
 export const metadata: Metadata = {
   title: "Jobs",
@@ -8,6 +9,7 @@ export const metadata: Metadata = {
 };
 
 const CONTACT_EMAIL = "braintrace@yeah.net";
+const RECRUITMENT_UPDATED_AT = "2026-03-19";
 
 type NumberedItem = {
   number: string;
@@ -29,8 +31,6 @@ type CopySection = {
   benefits: string[];
   workModeTitle: string;
   workModeText: string;
-  contactTitle: string;
-  contactText: string;
   templateTitle: string;
   templateText: string;
 };
@@ -46,10 +46,10 @@ function Panel({
 }) {
   return (
     <article className={`tb-frame-soft bg-[#fffdf9] p-5 sm:p-6 ${className}`}>
-      <div className="text-[11px] font-semibold uppercase tracking-[0.18em] text-slate-500">
+      <div className="text-[0.98rem] font-bold tracking-[0.02em] text-[#25314d] sm:text-[1.05rem]">
         {title}
       </div>
-      <div className="mt-3">{children}</div>
+      <div className="mt-4">{children}</div>
     </article>
   );
 }
@@ -97,12 +97,10 @@ function RecruitmentSection(copy: CopySection) {
           <p className="mt-4 text-base leading-8 text-slate-700">{copy.summary}</p>
         </div>
 
-        <a
-          className="tb-focus-ring tb-button-secondary w-full sm:w-auto"
-          href={`mailto:${CONTACT_EMAIL}`}
-        >
-          {CONTACT_EMAIL}
-        </a>
+        <div className="grid gap-3 sm:justify-items-end">
+          <span className="tb-badge">Updated {RECRUITMENT_UPDATED_AT}</span>
+          <CopyEmailButton email={CONTACT_EMAIL} />
+        </div>
       </div>
 
       <div className="mt-6 grid gap-4 md:grid-cols-2">
@@ -124,16 +122,6 @@ function RecruitmentSection(copy: CopySection) {
 
         <Panel title={copy.workModeTitle}>
           <p className="text-sm leading-7 text-slate-700">{copy.workModeText}</p>
-        </Panel>
-
-        <Panel title={copy.contactTitle}>
-          <p className="text-sm leading-7 text-slate-700">{copy.contactText}</p>
-          <a
-            className="tb-focus-ring mt-4 inline-flex rounded-full border-2 border-[#25314d] bg-white px-4 py-2 text-sm font-bold text-[#25314d] shadow-[0_4px_0_#25314d] transition-transform hover:-translate-y-px"
-            href={`mailto:${CONTACT_EMAIL}`}
-          >
-            {CONTACT_EMAIL}
-          </a>
         </Panel>
 
         <Panel title={copy.templateTitle} className="md:col-span-2">
@@ -202,8 +190,6 @@ const chineseCopy: CopySection = {
   ],
   workModeTitle: "工作形式",
   workModeText: "线上协作。",
-  contactTitle: "联系方式",
-  contactText: "邮箱：braintrace@yeah.net",
   templateTitle: "申请模板",
   templateText:
     "您好，我想应聘实习生岗位。{自我介绍}，我已阅读网站内容，并对项目整体架构有基本了解。我的专业 / 背景是 ______，相关经验包括 ______。我对该岗位感兴趣，主要原因是______，希望参与 ______ 相关工作。目前预计每周可投入 ______ 小时，可持续投入 ______ 周/月。"
@@ -265,8 +251,6 @@ const englishCopy: CopySection = {
   ],
   workModeTitle: "Work Mode",
   workModeText: "Online collaboration.",
-  contactTitle: "Contact",
-  contactText: "Email: braintrace@yeah.net",
   templateTitle: "Application Template",
   templateText:
     "Hello, I would like to apply for the internship position. {Self-introduction}. I have read the website content and have a basic understanding of the overall project structure. My major/background is ______, and related experience includes ______. I am interested in this role mainly because ______, and I hope to work on ______ related tasks. I can currently commit ______ hours per week and can continue for ______ weeks/months."
@@ -276,28 +260,15 @@ export default function JobsPage() {
   return (
     <div className="space-y-8 lg:pt-6">
       <section className="tb-frame bg-[#fffdf9] p-6 sm:p-8">
-        <div className="flex flex-wrap items-start justify-between gap-4">
-          <div className="max-w-3xl">
-            <div className="tb-section-chip bg-[#f5c1b5]">Jobs</div>
-            <h1 className="mt-4 font-heading text-4xl font-bold leading-[0.95] text-[#25314d] sm:text-5xl">
-              TaskBeacon recruitment, in Chinese and English.
-            </h1>
-            <p className="mt-4 max-w-3xl text-base leading-8 text-slate-700">
-              The notice below is shown in Chinese first and English second, with the same role
-              scope, benefits, contact path, and application template in both sections.
-            </p>
-          </div>
-
-          <div className="grid gap-3 sm:justify-items-end">
-            <span className="tb-badge">35 tasks organized</span>
-            <span className="tb-badge">Target: 99 tasks</span>
-            <a
-              className="tb-focus-ring tb-button-secondary w-full sm:w-auto"
-              href={`mailto:${CONTACT_EMAIL}`}
-            >
-              {CONTACT_EMAIL}
-            </a>
-          </div>
+        <div className="max-w-3xl">
+          <div className="tb-section-chip bg-[#f5c1b5]">Jobs</div>
+          <h1 className="mt-4 font-heading text-4xl font-bold leading-[0.95] text-[#25314d] sm:text-5xl">
+            TaskBeacon recruitment, in Chinese and English.
+          </h1>
+          <p className="mt-4 text-base leading-8 text-slate-700">
+            The notice below is shown in Chinese first and English second, with the same role
+            scope, benefits, and application template in both sections.
+          </p>
         </div>
       </section>
 
