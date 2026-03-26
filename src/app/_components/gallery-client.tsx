@@ -286,7 +286,7 @@ export function GalleryClient({
 
       <div className="grid grid-cols-1 gap-6 lg:grid-cols-12">
         <aside className="lg:col-span-4 xl:col-span-3">
-          <div className="space-y-4 lg:sticky lg:top-24">
+          <div className="space-y-4 lg:sticky lg:top-32">
             <section className="tb-frame p-4">
               <label className="block" htmlFor="task-explorer-search">
                 <span className="text-xs font-bold uppercase tracking-[0.18em] text-slate-500">
