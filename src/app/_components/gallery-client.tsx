@@ -1,6 +1,8 @@
 "use client";
 
-import { useDeferredValue, useMemo, useState } from "react";
+import clsx from "@/components/utils/clsx";
+import { IconChevronLeft, IconChevronRight } from "@/components/icons";
+import { useDeferredValue, useEffect, useMemo, useState } from "react";
 import type { TaskFacet, TaskIndexItem } from "@/lib/task-index";
 import { taskHasPreview } from "@/lib/html-companions";
 import {
@@ -63,6 +65,93 @@ function FacetSection({
   );
 }
 
+const TASKS_PER_PAGE = 15;
+
+function parsePageParam(value: string | null) {
+  const parsed = Number.parseInt(value ?? "1", 10);
+  if (!Number.isFinite(parsed) || parsed < 1) return 1;
+  return parsed;
+}
+
+function PaginationControls({
+  currentPage,
+  totalPages,
+  totalItems,
+  startIndex,
+  endIndex,
+  onPageChange
+}: {
+  currentPage: number;
+  totalPages: number;
+  totalItems: number;
+  startIndex: number;
+  endIndex: number;
+  onPageChange: (page: number) => void;
+}) {
+  if (totalPages <= 1) return null;
+
+  const pages = Array.from({ length: totalPages }, (_, index) => index + 1);
+
+  return (
+    <div className="tb-frame flex flex-col gap-4 bg-[#fffdf9] px-4 py-4 sm:flex-row sm:items-center sm:justify-between sm:px-5">
+      <div className="text-sm text-slate-700">
+        Showing <span className="font-bold text-[#25314d]">{startIndex + 1}</span>-
+        <span className="font-bold text-[#25314d]">{endIndex}</span> of{" "}
+        <span className="font-bold text-[#25314d]">{totalItems}</span> tasks
+      </div>
+
+      <div className="flex flex-wrap items-center gap-2">
+        <button
+          type="button"
+          className={clsx(
+            "tb-focus-ring inline-flex min-w-[112px] items-center justify-center gap-2 rounded-[16px] border-2 border-[#25314d] px-4 py-2 text-sm font-bold text-[#25314d]",
+            currentPage === 1 ? "cursor-not-allowed bg-slate-100 text-slate-400" : "bg-white hover:bg-[#eef8ff]"
+          )}
+          onClick={() => onPageChange(currentPage - 1)}
+          disabled={currentPage === 1}
+        >
+          <IconChevronLeft className="size-4" />
+          Previous
+        </button>
+
+        <div className="flex flex-wrap items-center gap-2">
+          {pages.map((page) => (
+            <button
+              key={page}
+              type="button"
+              className={clsx(
+                "tb-focus-ring min-w-11 rounded-[14px] border-2 px-3 py-2 text-sm font-bold",
+                page === currentPage
+                  ? "border-[#25314d] bg-[#25314d] text-white"
+                  : "border-[#25314d] bg-white text-[#25314d] hover:bg-[#eef8ff]"
+              )}
+              onClick={() => onPageChange(page)}
+              aria-current={page === currentPage ? "page" : undefined}
+            >
+              {page}
+            </button>
+          ))}
+        </div>
+
+        <button
+          type="button"
+          className={clsx(
+            "tb-focus-ring inline-flex min-w-[112px] items-center justify-center gap-2 rounded-[16px] border-2 border-[#25314d] px-4 py-2 text-sm font-bold text-[#25314d]",
+            currentPage === totalPages
+              ? "cursor-not-allowed bg-slate-100 text-slate-400"
+              : "bg-white hover:bg-[#eef8ff]"
+          )}
+          onClick={() => onPageChange(currentPage + 1)}
+          disabled={currentPage === totalPages}
+        >
+          Next
+          <IconChevronRight className="size-4" />
+        </button>
+      </div>
+    </div>
+  );
+}
+
 export function GalleryClient({
   tasks
 }: {
@@ -72,6 +161,7 @@ export function GalleryClient({
   const [query, setQuery] = useState<string>("");
   const [selected, setSelected] = useState<SelectedFacets>(() => emptySelectedFacets());
   const [activeRepo, setActiveRepo] = useState<string | null>(null);
+  const [currentPage, setCurrentPage] = useState(1);
   const [openFacets, setOpenFacets] = useState<{
     maturity: boolean;
     preview: boolean;
@@ -91,6 +181,11 @@ export function GalleryClient({
     () => filterTasks(mergedTasks, deferredQuery, selected),
     [deferredQuery, mergedTasks, selected]
   );
+  const totalPages = Math.max(1, Math.ceil(filtered.length / TASKS_PER_PAGE));
+  const safeCurrentPage = Math.min(currentPage, totalPages);
+  const startIndex = (safeCurrentPage - 1) * TASKS_PER_PAGE;
+  const endIndex = Math.min(startIndex + TASKS_PER_PAGE, filtered.length);
+  const visibleTasks = filtered.slice(startIndex, endIndex);
   const activeTask = useMemo(
     () => mergedTasks.find((task) => task.repo === activeRepo) ?? null,
     [activeRepo, mergedTasks]
@@ -105,7 +200,41 @@ export function GalleryClient({
     selected.modality.size > 0 ||
     selected.language.size > 0;
 
+  useEffect(() => {
+    if (typeof window === "undefined") return undefined;
+
+    const syncPageFromLocation = () => {
+      const params = new URLSearchParams(window.location.search);
+      setCurrentPage(parsePageParam(params.get("page")));
+    };
+
+    syncPageFromLocation();
+    window.addEventListener("popstate", syncPageFromLocation);
+    return () => window.removeEventListener("popstate", syncPageFromLocation);
+  }, []);
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+
+    const params = new URLSearchParams(window.location.search);
+    if (safeCurrentPage === 1) params.delete("page");
+    else params.set("page", String(safeCurrentPage));
+
+    const queryString = params.toString();
+    const nextUrl = queryString ? `${window.location.pathname}?${queryString}` : window.location.pathname;
+    window.history.replaceState(null, "", nextUrl);
+  }, [safeCurrentPage]);
+
+  function updatePage(page: number) {
+    setCurrentPage(Math.max(1, Math.min(page, totalPages)));
+  }
+
+  function resetToFirstPage() {
+    if (safeCurrentPage !== 1) updatePage(1);
+  }
+
   function toggleFacet(facet: TaskFacet, value: string) {
+    resetToFirstPage();
     setSelected((current) => {
       const next: SelectedFacets = {
         maturity: new Set(current.maturity),
@@ -122,6 +251,7 @@ export function GalleryClient({
   }
 
   function clearAll() {
+    resetToFirstPage();
     setQuery("");
     setSelected(emptySelectedFacets());
   }
@@ -165,7 +295,10 @@ export function GalleryClient({
                 <input
                   id="task-explorer-search"
                   value={query}
-                  onChange={(event) => setQuery(event.target.value)}
+                  onChange={(event) => {
+                    resetToFirstPage();
+                    setQuery(event.target.value);
+                  }}
                   placeholder="Search title, task ID, preview ID, repo..."
                   className="tb-focus-ring mt-3 w-full rounded-[18px] border-2 border-[#25314d] bg-white px-4 py-3 text-sm text-[#25314d] placeholder:text-slate-400"
                 />
@@ -221,6 +354,15 @@ export function GalleryClient({
         </aside>
 
         <section className="space-y-4 lg:col-span-8 xl:col-span-9">
+          <PaginationControls
+            currentPage={safeCurrentPage}
+            totalPages={totalPages}
+            totalItems={filtered.length}
+            startIndex={startIndex}
+            endIndex={endIndex}
+            onPageChange={updatePage}
+          />
+
           {filtered.length === 0 ? (
             <div className="tb-frame p-10 text-center">
               <div className="font-heading text-3xl font-bold text-[#25314d]">No matches</div>
@@ -234,7 +376,7 @@ export function GalleryClient({
               </div>
             </div>
           ) : (
-            filtered.map((task) => (
+            visibleTasks.map((task) => (
               <TaskRow
                 key={task.repo}
                 task={task}
@@ -242,6 +384,15 @@ export function GalleryClient({
               />
             ))
           )}
+
+          <PaginationControls
+            currentPage={safeCurrentPage}
+            totalPages={totalPages}
+            totalItems={filtered.length}
+            startIndex={startIndex}
+            endIndex={endIndex}
+            onPageChange={updatePage}
+          />
         </section>
       </div>
 
