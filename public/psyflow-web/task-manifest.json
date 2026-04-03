@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-04-03T13:05:44.2838962Z",
+  "generated_at": "2026-04-03T15:13:08.7191831Z",
   "org": "TaskBeacon",
   "runner_repo": "psyflow-web",
   "runner_url": "https://taskbeacon.github.io/psyflow-web/",
@@ -34,6 +34,21 @@
       "download_url": "https://github.com/TaskBeacon/H000037-game-of-dice/archive/refs/heads/main.zip",
       "run_url": "https://taskbeacon.github.io/psyflow-web/?task=H000037-game-of-dice",
       "last_updated": "2026-04-03T13:05:44Z"
+    },
+    {
+      "directory": "H000038-two-armed-bandit",
+      "id": "H000038",
+      "slug": "two-armed-bandit",
+      "title": "Two-Armed Bandit Task",
+      "acquisition": "behavior",
+      "maturity": "prototype",
+      "release_tag": "v0.2.3-dev",
+      "short_description": "Browser preview of the two-choice probabilistic reward learning task with block-wise contingencies",
+      "repo_url": "https://github.com/TaskBeacon/H000038-two-armed-bandit",
+      "default_branch": "main",
+      "download_url": "https://github.com/TaskBeacon/H000038-two-armed-bandit/archive/refs/heads/main.zip",
+      "run_url": "https://taskbeacon.github.io/psyflow-web/?task=H000038-two-armed-bandit",
+      "last_updated": "2026-04-03T15:06:58Z"
     }
   ]
 }

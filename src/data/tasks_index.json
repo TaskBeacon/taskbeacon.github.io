@@ -1,8 +1,50 @@
 {
   "schema_version": 5,
-  "generated_at": "2026-04-03T12:15:55.925039Z",
+  "generated_at": "2026-04-03T15:16:27.4810719Z",
   "org": "TaskBeacon",
   "tasks": [
+    {
+      "id": "T000038",
+      "slug": "two-armed-bandit",
+      "title": "Two-Armed Bandit Task",
+      "acquisition": "behavior",
+      "variant": "baseline",
+      "release_tag": "v0.2.3-dev",
+      "repo": "T000038-two-armed-bandit",
+      "full_name": "TaskBeacon/T000038-two-armed-bandit",
+      "html_url": "https://github.com/TaskBeacon/T000038-two-armed-bandit",
+      "default_branch": "main",
+      "short_description": "Two-option bandit learning task with block-wise probability reversals.",
+      "maturity": "draft",
+      "tags": {
+        "paradigm": [],
+        "response": [],
+        "modality": [
+          "behavior"
+        ],
+        "language": [
+          "Chinese"
+        ]
+      },
+      "keywords": [
+        "two-armed-bandit",
+        "two",
+        "armed",
+        "bandit"
+      ],
+      "psyflow_version": "0.1.9",
+      "has_voiceover": true,
+      "last_updated": "2026-04-03T15:06:52Z",
+      "structure": {
+        "config": true,
+        "assets": true,
+        "src": true
+      },
+      "readme_snapshot_path": "/readmes/T000038-two-armed-bandit.md",
+      "readme_run_anchor": "#run",
+      "run_url": null,
+      "web_variant": null
+    },
     {
       "id": "T000036",
       "slug": "risk-perception-estimation",
