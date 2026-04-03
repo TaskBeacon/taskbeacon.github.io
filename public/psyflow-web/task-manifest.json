@@ -1,0 +1,39 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-04-03T13:05:44.2838962Z",
+  "org": "TaskBeacon",
+  "runner_repo": "psyflow-web",
+  "runner_url": "https://taskbeacon.github.io/psyflow-web/",
+  "tasks": [
+    {
+      "directory": "H000036-risk-perception-estimation",
+      "id": "H000036",
+      "slug": "risk-perception-estimation",
+      "title": "Risk Perception Estimation Task",
+      "acquisition": "behavior",
+      "maturity": "prototype",
+      "release_tag": "v0.1.0-dev",
+      "short_description": "Browser preview of the Chinese health-risk judgment task with 3 scenario levels and 1-7 ratings",
+      "repo_url": "https://github.com/TaskBeacon/H000036-risk-perception-estimation",
+      "default_branch": "main",
+      "download_url": "https://github.com/TaskBeacon/H000036-risk-perception-estimation/archive/refs/heads/main.zip",
+      "run_url": "https://taskbeacon.github.io/psyflow-web/?task=H000036-risk-perception-estimation",
+      "last_updated": "2026-04-03T12:02:17Z"
+    },
+    {
+      "directory": "H000037-game-of-dice",
+      "id": "H000037",
+      "slug": "game-of-dice",
+      "title": "Game of Dice Task",
+      "acquisition": "behavior",
+      "maturity": "prototype",
+      "release_tag": "v0.1.0-dev",
+      "short_description": "Browser preview of the Chinese explicit-risk dice gambling task with four known-probability options and cumulative capital feedback",
+      "repo_url": "https://github.com/TaskBeacon/H000037-game-of-dice",
+      "default_branch": "main",
+      "download_url": "https://github.com/TaskBeacon/H000037-game-of-dice/archive/refs/heads/main.zip",
+      "run_url": "https://taskbeacon.github.io/psyflow-web/?task=H000037-game-of-dice",
+      "last_updated": "2026-04-03T13:05:44Z"
+    }
+  ]
+}

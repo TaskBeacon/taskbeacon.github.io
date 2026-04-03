@@ -1,8 +1,91 @@
 {
   "schema_version": 5,
-  "generated_at": "2026-03-11T00:37:30.571Z",
+  "generated_at": "2026-04-03T12:15:55.925039Z",
   "org": "TaskBeacon",
   "tasks": [
+    {
+      "id": "T000036",
+      "slug": "risk-perception-estimation",
+      "title": "Risk Perception Estimation Task",
+      "acquisition": "behavior",
+      "variant": "baseline",
+      "release_tag": "v0.1.0-dev",
+      "repo": "T000036-risk-perception-estimation",
+      "full_name": "TaskBeacon/T000036-risk-perception-estimation",
+      "html_url": "https://github.com/TaskBeacon/T000036-risk-perception-estimation",
+      "default_branch": "main",
+      "short_description": "Chinese health-risk judgment task with 3 scenario levels and 1-7 ordinal ratings",
+      "maturity": "draft",
+      "tags": {
+        "paradigm": [],
+        "response": [],
+        "modality": [
+          "behavior"
+        ],
+        "language": [
+          "Chinese"
+        ]
+      },
+      "keywords": [
+        "risk-perception-estimation",
+        "risk",
+        "perception",
+        "estimation"
+      ],
+      "psyflow_version": "local checkout",
+      "has_voiceover": null,
+      "last_updated": "2026-04-03T11:29:46Z",
+      "structure": {
+        "config": true,
+        "assets": true,
+        "src": true
+      },
+      "readme_snapshot_path": "/readmes/T000036-risk-perception-estimation.md",
+      "readme_run_anchor": "#run",
+      "run_url": null,
+      "web_variant": null
+    },
+    {
+      "id": "T000037",
+      "slug": "game-of-dice",
+      "title": "Game of Dice Task",
+      "acquisition": "behavior",
+      "variant": "baseline",
+      "release_tag": "v0.1.0-dev",
+      "repo": "T000037-game-of-dice",
+      "full_name": "TaskBeacon/T000037-game-of-dice",
+      "html_url": "https://github.com/TaskBeacon/T000037-game-of-dice",
+      "default_branch": "main",
+      "short_description": "Chinese explicit-risk dice gambling task with four known-probability options and cumulative capital feedback",
+      "maturity": "draft",
+      "tags": {
+        "paradigm": [],
+        "response": [],
+        "modality": [
+          "behavior"
+        ],
+        "language": [
+          "Chinese"
+        ]
+      },
+      "keywords": [
+        "game-of-dice",
+        "game",
+        "dice"
+      ],
+      "psyflow_version": "local checkout",
+      "has_voiceover": true,
+      "last_updated": "2026-04-03T13:05:44Z",
+      "structure": {
+        "config": true,
+        "assets": true,
+        "src": true
+      },
+      "readme_snapshot_path": "/readmes/T000037-game-of-dice.md",
+      "readme_run_anchor": "#run",
+      "run_url": null,
+      "web_variant": null
+    },
     {
       "id": "T000003",
       "slug": "emodot",
