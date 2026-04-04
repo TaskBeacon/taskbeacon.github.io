@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-04-04T03:27:49Z",
+  "generated_at": "2026-04-04T03:42:01Z",
   "org": "TaskBeacon",
   "runner_repo": "psyflow-web",
   "runner_url": "https://taskbeacon.github.io/psyflow-web/",
@@ -49,6 +49,21 @@
       "download_url": "https://github.com/TaskBeacon/H000038-two-armed-bandit/archive/refs/heads/main.zip",
       "run_url": "https://taskbeacon.github.io/psyflow-web/?task=H000038-two-armed-bandit",
       "last_updated": "2026-04-04T03:27:49Z"
+    },
+    {
+      "directory": "H000039-probabilistic-reward-task",
+      "id": "H000039",
+      "slug": "probabilistic-reward-task",
+      "title": "Probabilistic Reward Task",
+      "acquisition": "behavior",
+      "maturity": "prototype",
+      "release_tag": "v0.1.0-dev",
+      "short_description": "Browser companion for the Chinese probabilistic reward task with short-vs-long mouth discrimination, deferred reward carryover, and psyflow-web trial-context stamping",
+      "repo_url": "https://github.com/TaskBeacon/H000039-probabilistic-reward-task",
+      "default_branch": "main",
+      "download_url": "https://github.com/TaskBeacon/H000039-probabilistic-reward-task/archive/refs/heads/main.zip",
+      "run_url": "https://taskbeacon.github.io/psyflow-web/?task=H000039-probabilistic-reward-task",
+      "last_updated": "2026-04-04T03:42:01Z"
     },
     {
       "directory": "H000040-probabilistic-stimulus-selection",
