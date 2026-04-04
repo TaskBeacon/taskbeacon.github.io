@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-04-03T15:13:08.7191831Z",
+  "generated_at": "2026-04-04T02:55:09.4450074Z",
   "org": "TaskBeacon",
   "runner_repo": "psyflow-web",
   "runner_url": "https://taskbeacon.github.io/psyflow-web/",
@@ -13,12 +13,12 @@
       "acquisition": "behavior",
       "maturity": "prototype",
       "release_tag": "v0.1.0-dev",
-      "short_description": "Browser preview of the Chinese health-risk judgment task with 3 scenario levels and 1-7 ratings",
+      "short_description": "Browser companion for the Chinese health-risk judgment task with the same trial-data semantics as the local task",
       "repo_url": "https://github.com/TaskBeacon/H000036-risk-perception-estimation",
       "default_branch": "main",
       "download_url": "https://github.com/TaskBeacon/H000036-risk-perception-estimation/archive/refs/heads/main.zip",
       "run_url": "https://taskbeacon.github.io/psyflow-web/?task=H000036-risk-perception-estimation",
-      "last_updated": "2026-04-03T12:02:17Z"
+      "last_updated": "2026-04-04T02:55:09Z"
     },
     {
       "directory": "H000037-game-of-dice",
