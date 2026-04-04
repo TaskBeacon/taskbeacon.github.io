@@ -1591,6 +1591,48 @@
       "readme_run_anchor": "#run",
       "run_url": null,
       "web_variant": null
+    },
+    {
+      "id": "T000040",
+      "slug": "probabilistic-stimulus-selection",
+      "title": "Probabilistic Stimulus Selection Task",
+      "acquisition": "behavior",
+      "variant": "baseline",
+      "release_tag": "v0.1.0-dev",
+      "repo": "T000040-probabilistic-stimulus-selection",
+      "full_name": "TaskBeacon/T000040-probabilistic-stimulus-selection",
+      "html_url": "https://github.com/TaskBeacon/T000040-probabilistic-stimulus-selection",
+      "default_branch": "main",
+      "short_description": "Kana-based probabilistic stimulus selection task with AB/CD/EF learning and transfer testing.",
+      "maturity": "draft",
+      "tags": {
+        "paradigm": [],
+        "response": [],
+        "modality": [
+          "behavior"
+        ],
+        "language": [
+          "Chinese"
+        ]
+      },
+      "keywords": [
+        "probabilistic-stimulus-selection",
+        "probabilistic",
+        "stimulus",
+        "selection"
+      ],
+      "psyflow_version": "local checkout",
+      "has_voiceover": false,
+      "last_updated": "2026-04-04T02:21:39Z",
+      "structure": {
+        "config": true,
+        "assets": true,
+        "src": true
+      },
+      "readme_snapshot_path": "/readmes/T000040-probabilistic-stimulus-selection.md",
+      "readme_run_anchor": "#run",
+      "run_url": null,
+      "web_variant": null
     }
   ]
 }

@@ -49,6 +49,21 @@
       "download_url": "https://github.com/TaskBeacon/H000038-two-armed-bandit/archive/refs/heads/main.zip",
       "run_url": "https://taskbeacon.github.io/psyflow-web/?task=H000038-two-armed-bandit",
       "last_updated": "2026-04-03T15:06:58Z"
+    },
+    {
+      "directory": "H000040-probabilistic-stimulus-selection",
+      "id": "H000040",
+      "slug": "probabilistic-stimulus-selection",
+      "title": "Probabilistic Stimulus Selection Task",
+      "acquisition": "behavior",
+      "maturity": "prototype",
+      "release_tag": "v0.1.0-dev",
+      "short_description": "Browser preview of the kana-based probabilistic stimulus selection task with learning and transfer phases",
+      "repo_url": "https://github.com/TaskBeacon/H000040-probabilistic-stimulus-selection",
+      "default_branch": "main",
+      "download_url": "https://github.com/TaskBeacon/H000040-probabilistic-stimulus-selection/archive/refs/heads/main.zip",
+      "run_url": "https://taskbeacon.github.io/psyflow-web/?task=H000040-probabilistic-stimulus-selection",
+      "last_updated": "2026-04-04T02:21:39Z"
     }
   ]
 }
