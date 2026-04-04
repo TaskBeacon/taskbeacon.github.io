@@ -7,15 +7,15 @@
 | Name | Two-Armed Bandit Task |
 | Version | html (v0.2.3-dev) |
 | URL / Repository | https://github.com/TaskBeacon/H000038-two-armed-bandit |
-| Short Description | Browser preview of the two-choice probabilistic reward learning task with block-wise contingencies |
+| Short Description | Browser companion for the two-choice probabilistic reward learning task with block-wise contingencies and psyflow-web trial-context stamping |
 | Created By | TaskBeacon py2js port |
-| Date Updated | 2026-04-03 |
+| Date Updated | 2026-04-04 |
 | Modality | Behavior |
 | Language | Chinese |
 
 ## 1. Task Overview
 
-This HTML companion mirrors the local `T000038-two-armed-bandit` task. Participants repeatedly choose between a left and a right machine, receive stochastic reward feedback, and learn which side is better within each block. The browser preview preserves the local trial contract and response mapping, while shortening the run to a 2-block, 12-trial preview for fast review in the shared runner.
+This HTML companion mirrors the local `T000038-two-armed-bandit` task. Participants repeatedly choose between a left and a right machine, receive stochastic reward feedback, and learn which side is better within each block. The browser companion preserves the local trial contract, response mapping, and blockwise contingency structure, while shortening the run to a 2-block, 12-trial preview for fast review in the shared runner. Participant-visible screens now stamp trial context through the shared psyflow-web unit API so the browser port stays aligned with current runner behavior.
 
 ## 2. Task Flow
 
@@ -27,7 +27,7 @@ This HTML companion mirrors the local `T000038-two-armed-bandit` task. Participa
 | Show Instructions | Present the Chinese instruction screen. |
 | Initialize Reward Tracker | Start cumulative reward at 0 points. |
 | Generate Conditions | Expand the block-wise left/right reward probabilities into repeated trial conditions. |
-| Run Trials | Execute the same fixation -> choice -> confirmation -> feedback -> ITI flow as the local task. |
+| Run Trials | Execute the same fixation -> choice -> confirmation -> feedback -> ITI flow as the local task with `set_trial_context(...)` annotations on each visible phase. |
 | Block Summary | Show per-block response and reward summary when more than one block remains. |
 | Finalize | Show the final total score and export data through the shared runner. |
 
@@ -49,6 +49,7 @@ This HTML companion mirrors the local `T000038-two-armed-bandit` task. Participa
 | Reward sampling | The chosen side is sampled with Bernoulli reward using the configured probability. |
 | No-response fallback | If the response deadline expires, a configurable fallback choice is imputed. |
 | State tracking | A cumulative reward tracker updates the running score after every trial. |
+| Trial context | Each visible phase stamps `trial_context` metadata through the shared psyflow-web API. |
 | Adaptive control | None. This is a static probabilistic learning task, not a staircase or reversal task. |
 
 ### Other Logic
@@ -56,6 +57,7 @@ This HTML companion mirrors the local `T000038-two-armed-bandit` task. Participa
 | Feature | Description |
 |---|---|
 | Trial context | Every participant-visible screen emits trial context before `show()` or `captureResponse()`. |
+| Trial ids | Web translation now uses a local monotonically increasing trial id instead of importing `next_trial_id` from the desktop runtime. |
 | Deterministic QA seed | Preview sampling uses the configured block seeds for reproducible browser QA runs. |
 | Summary metrics | Block and final summaries report left-choice rate, win rate, response rate, and total score. |
 
@@ -117,7 +119,7 @@ Settings are defined in `config/config.yaml`.
 
 ## 4. Methods (for academic publication)
 
-The HTML companion presents the same two-armed bandit learning task as the local PsychoPy build, but inside the shared browser runner. On each trial, participants choose one of two machines with block-specific reward probabilities, receive stochastic feedback, and update their choice strategy over time. The preview keeps the same stage order, scoring meaning, and timeout/fallback behavior as the local task while shortening the overall run length for browser testing and gallery navigation.
+The HTML companion presents the same two-armed bandit learning task as the local PsychoPy build, but inside the shared browser runner. On each trial, participants choose one of two machines with block-specific reward probabilities, receive stochastic feedback, and update their choice strategy over time. The preview keeps the same stage order, scoring meaning, and timeout/fallback behavior as the local task while shortening the overall run length for browser testing and gallery navigation. The JS port also mirrors the current psyflow-web unit/context pattern so the browser task can be audited phase by phase.
 
 ## Run
 

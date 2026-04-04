@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-04-04T03:11:29Z",
+  "generated_at": "2026-04-04T03:27:49Z",
   "org": "TaskBeacon",
   "runner_repo": "psyflow-web",
   "runner_url": "https://taskbeacon.github.io/psyflow-web/",
@@ -43,12 +43,12 @@
       "acquisition": "behavior",
       "maturity": "prototype",
       "release_tag": "v0.2.3-dev",
-      "short_description": "Browser preview of the two-choice probabilistic reward learning task with block-wise contingencies",
+      "short_description": "Browser companion for the two-choice probabilistic reward learning task with block-wise contingencies and psyflow-web trial-context stamping",
       "repo_url": "https://github.com/TaskBeacon/H000038-two-armed-bandit",
       "default_branch": "main",
       "download_url": "https://github.com/TaskBeacon/H000038-two-armed-bandit/archive/refs/heads/main.zip",
       "run_url": "https://taskbeacon.github.io/psyflow-web/?task=H000038-two-armed-bandit",
-      "last_updated": "2026-04-03T15:06:58Z"
+      "last_updated": "2026-04-04T03:27:49Z"
     },
     {
       "directory": "H000040-probabilistic-stimulus-selection",
