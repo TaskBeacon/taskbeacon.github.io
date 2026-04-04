@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-04-04T02:55:09.4450074Z",
+  "generated_at": "2026-04-04T03:11:29Z",
   "org": "TaskBeacon",
   "runner_repo": "psyflow-web",
   "runner_url": "https://taskbeacon.github.io/psyflow-web/",
@@ -28,12 +28,12 @@
       "acquisition": "behavior",
       "maturity": "prototype",
       "release_tag": "v0.1.0-dev",
-      "short_description": "Browser preview of the Chinese explicit-risk dice gambling task with four known-probability options and cumulative capital feedback",
+      "short_description": "Browser companion for the Chinese explicit-risk dice gambling task with four known-probability options, cumulative capital feedback, and psyflow-web trial-context stamping",
       "repo_url": "https://github.com/TaskBeacon/H000037-game-of-dice",
       "default_branch": "main",
       "download_url": "https://github.com/TaskBeacon/H000037-game-of-dice/archive/refs/heads/main.zip",
       "run_url": "https://taskbeacon.github.io/psyflow-web/?task=H000037-game-of-dice",
-      "last_updated": "2026-04-03T13:05:44Z"
+      "last_updated": "2026-04-04T03:11:29Z"
     },
     {
       "directory": "H000038-two-armed-bandit",
