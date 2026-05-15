@@ -1,10 +1,10 @@
 ﻿import fs from "node:fs";
 import path from "node:path";
+import { execFileSync } from "node:child_process";
 import { parse as parseYaml } from "yaml";
 
 const ORG = process.env.TASKBEACON_ORG || "TaskBeacon";
-const TOKEN =
-  process.env.GITHUB_TOKEN || process.env.GH_TOKEN || process.env.GITHUB_PAT || "";
+const TOKEN = resolveToken();
 const PAGES_ORIGIN =
   process.env.TASKBEACON_PAGES_ORIGIN || `https://${String(ORG).toLowerCase()}.github.io`;
 const HTML_RUNNER_REPO = process.env.TASKBEACON_HTML_RUNNER_REPO || "psyflow-web";
@@ -22,6 +22,12 @@ const OUT_SOURCE_READMES_DIR = path.join(
   "readmes"
 );
 const OUT_PUBLIC_READMES_DIR = path.join(process.cwd(), "public", "readmes");
+const OUT_HTML_RUNNER_MANIFEST = path.join(
+  process.cwd(),
+  "public",
+  HTML_RUNNER_REPO,
+  "task-manifest.json"
+);
 const TMP_ROOT = path.join(process.cwd(), ".tmp", "index-build");
 const TMP_INDEX = path.join(TMP_ROOT, "tasks_index.json");
 const TMP_SOURCE_READMES_DIR = path.join(TMP_ROOT, "source-readmes");
@@ -61,6 +67,36 @@ const METADATA_FILES = [
   "task.yml",
   "task.json"
 ];
+
+function resolveToken() {
+  const envToken =
+    process.env.GITHUB_TOKEN || process.env.GH_TOKEN || process.env.GITHUB_PAT || "";
+  if (envToken) return envToken;
+  if (process.env.CI) return "";
+
+  const ghCandidates = [
+    "gh",
+    process.env.ProgramFiles
+      ? path.join(process.env.ProgramFiles, "GitHub CLI", "gh.exe")
+      : "",
+    process.env["ProgramFiles(x86)"]
+      ? path.join(process.env["ProgramFiles(x86)"], "GitHub CLI", "gh.exe")
+      : ""
+  ].filter(Boolean);
+
+  for (const ghBin of ghCandidates) {
+    try {
+      return execFileSync(ghBin, ["auth", "token"], {
+        encoding: "utf8",
+        stdio: ["ignore", "pipe", "ignore"]
+      }).trim();
+    } catch {
+      continue;
+    }
+  }
+
+  return "";
+}
 
 function ghHeaders(extra = {}) {
   const h = {
@@ -672,6 +708,38 @@ function collapseHtmlCompanions(items) {
   return merged;
 }
 
+function writeHtmlRunnerManifest(items) {
+  const htmlItems = items
+    .filter((item) => isHtmlVariant(item))
+    .sort((left, right) => left.repo.localeCompare(right.repo));
+
+  const manifest = {
+    schema_version: 1,
+    generated_at: new Date().toISOString(),
+    org: ORG,
+    runner_repo: HTML_RUNNER_REPO,
+    runner_url: HTML_RUNNER_URL,
+    tasks: htmlItems.map((item) => ({
+      directory: item.repo,
+      id: item.id,
+      slug: item.slug,
+      title: item.title,
+      acquisition: item.acquisition,
+      maturity: item.maturity,
+      release_tag: item.release_tag,
+      short_description: item.short_description,
+      repo_url: item.html_url,
+      default_branch: item.default_branch,
+      download_url: downloadZipUrl(item.html_url, item.default_branch),
+      run_url: item.run_url ?? inferHtmlRunUrl(item.repo),
+      last_updated: item.last_updated
+    }))
+  };
+
+  ensureDir(path.dirname(OUT_HTML_RUNNER_MANIFEST));
+  fs.writeFileSync(OUT_HTML_RUNNER_MANIFEST, JSON.stringify(manifest, null, 2) + "\n", "utf8");
+}
+
 async function buildIndex() {
   ensureDir(path.dirname(OUT_INDEX));
   resetDir(TMP_ROOT);
@@ -755,6 +823,7 @@ async function buildIndex() {
 
   const existingRepos = new Set(tasks.map((task) => task.repo));
   tasks.push(...discoverLocalHtmlTasks(existingRepos));
+  writeHtmlRunnerManifest(tasks);
 
   const mergedTasks = collapseHtmlCompanions(tasks);
   mergedTasks.sort((a, b) => (a.last_updated < b.last_updated ? 1 : -1));
@@ -786,6 +855,11 @@ async function main() {
   } catch (err) {
     const msg = err instanceof Error ? err.message : String(err);
     console.error("Index build failed:\n" + msg);
+
+    if (process.env.CI) {
+      fs.rmSync(TMP_ROOT, { recursive: true, force: true });
+      process.exit(1);
+    }
 
     // Fail open if an index already exists. This keeps `npm run build` usable
     // even when GitHub rate limits are hit.

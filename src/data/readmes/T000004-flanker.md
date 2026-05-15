@@ -23,7 +23,7 @@ The task includes congruent and incongruent conditions and measures RT/accuracy 
 
 ## 2. Task Flow
 
-![Task flow](./task_flow.png)
+![Task Flow](task_flow.png)
 
 ### Block-Level Flow
 

@@ -4,8 +4,10 @@ on:
   push:
     branches: [main]
   workflow_dispatch:
+  repository_dispatch:
+    types: [task-updated, task-index, rebuild-task-index]
   schedule:
-    - cron: '17 3 * * 1' # Mondays 03:17 UTC (weekly)
+    - cron: '17 */6 * * *' # Refresh task index every 6 hours.
 
 permissions:
   contents: read

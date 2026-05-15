@@ -23,6 +23,8 @@ The task operationalizes Simon congruency effects with four condition tokens: `r
 
 ## 2. Task Flow
 
+![Task Flow](task_flow.png)
+
 ### Block-Level Flow
 
 - Initialize config, triggers, window, and stimuli.
