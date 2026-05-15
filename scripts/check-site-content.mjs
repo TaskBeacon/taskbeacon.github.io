@@ -137,13 +137,19 @@ for (const [route, docId] of renderedDocRoutes) {
 }
 
 const siteContent = readText("src/lib/site-content.ts");
+const primarySiteSources = [
+  ["src/lib/site-content.ts", siteContent],
+  ["src/app/page.tsx", readText("src/app/page.tsx")]
+];
 for (const blobPath of [
   "github.com/TaskBeacon/taskbeacon.github.io/blob/main/source/taps.md",
   "github.com/TaskBeacon/taskbeacon.github.io/blob/main/source/localization.md",
   "github.com/TaskBeacon/taskbeacon.github.io/blob/main/source/versioning.md"
 ]) {
-  if (siteContent.includes(blobPath)) {
-    fail(`Resource cards should not point primary links at GitHub blob: ${blobPath}`);
+  for (const [sourcePath, sourceText] of primarySiteSources) {
+    if (sourceText.includes(blobPath)) {
+      fail(`Primary site links should not point at GitHub blob in ${sourcePath}: ${blobPath}`);
+    }
   }
 }
 

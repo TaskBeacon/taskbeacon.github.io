@@ -175,9 +175,7 @@ export default function Page() {
             <div className="mt-6">
               <a
                 className="tb-focus-ring tb-button-primary"
-                href="https://github.com/TaskBeacon/taskbeacon.github.io/blob/main/source/taps.md"
-                target="_blank"
-                rel="noreferrer"
+                href="/framework/taps/"
               >
                 Read TAPS
               </a>
