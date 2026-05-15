@@ -9,8 +9,14 @@ Every task manifest must use:
 
 ```yaml
 contracts:
-  taps: v0.1.0
+  taps: v0.2.0
+runtime:
+  profile: psyflow
 ```
+
+`runtime.profile` selects the runtime-specific TAPS checks. Current profiles are
+`psyflow` for Python/PsychoPy tasks, `web` for TypeScript browser tasks, and
+`godot` as a minimal future extension point.
 
 The Task and Paradigm Structure (TAPS) provides a standardized folder layout for organizing cognitive tasks in a modular and reproducible way. This structure promotes clarity, cross-task consistency, and ease of reuse—whether in individual research projects or shared task libraries.
 
