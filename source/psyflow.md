@@ -1,3 +1,7 @@
+PsyFlow implements Python/PsychoPy task runtime utilities. TAPS contracts and
+static validation are owned by `TaskBeacon/taps` and `TaskBeacon/taps-utils`,
+not by PsyFlow.
+
 ```mermaid
 flowchart LR
     A[YAML<br>Subinfo:<br>- field<br>- mapping] --> B[SubInfo<br>Subinfo Collection]

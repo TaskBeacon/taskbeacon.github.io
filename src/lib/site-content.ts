@@ -107,7 +107,7 @@ export const skillResources: ResourceLink[] = [
     eyebrow: "task-build",
     title: "Build literature-grounded PsyFlow tasks",
     description:
-      "Create or refactor cognitive tasks into validated PsyFlow/TAPS projects from literature evidence.",
+      "Create or refactor cognitive tasks into strict TAPS projects implemented with PsyFlow from literature evidence.",
     href: "https://github.com/TaskBeacon/skills/tree/main/task-build",
     cta: "Open task-build",
     external: true

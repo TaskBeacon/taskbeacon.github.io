@@ -1,5 +1,17 @@
 # TAPS
 
+## Source And Tools
+
+`TaskBeacon/taps` is the source of truth for TAPS contracts and docs.
+`TaskBeacon/taps-utils` provides validation and one-time migration tools.
+
+Every task manifest must use:
+
+```yaml
+contracts:
+  taps: v0.1.0
+```
+
 The Task and Paradigm Structure (TAPS) provides a standardized folder layout for organizing cognitive tasks in a modular and reproducible way. This structure promotes clarity, cross-task consistency, and ease of reuse—whether in individual research projects or shared task libraries.
 
 A sample directory tree might look like this:

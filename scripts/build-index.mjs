@@ -522,8 +522,8 @@ function buildTaskItem({
       variant === "html"
         ? `${title} web preview built for browser-based task walkthroughs.`
         : p
-          ? `${p} task template (PsyFlow/TAPS).`
-          : `${repo} task template (PsyFlow/TAPS).`;
+          ? `${p} task template (PsyFlow and TAPS).`
+          : `${repo} task template (PsyFlow and TAPS).`;
   }
 
   short_description = truncate(short_description);

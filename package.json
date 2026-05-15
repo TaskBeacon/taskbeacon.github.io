@@ -2,7 +2,7 @@
   "name": "taskbeacon-org-website",
   "version": "0.1.0",
   "private": true,
-  "description": "Public gallery for TaskBeacon task template repositories (PsyFlow/TAPS).",
+  "description": "Public gallery for TaskBeacon task template repositories (PsyFlow and TAPS).",
   "scripts": {
     "dev": "next dev",
     "index": "node scripts/build-index.mjs",
