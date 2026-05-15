@@ -69,9 +69,9 @@ export const frameworkResources: ResourceLink[] = [
     title: "Task structure standard",
     description:
       "Reference the canonical directory model, documentation boundaries, and repo shape.",
-    href: "https://github.com/TaskBeacon/taskbeacon.github.io/blob/main/source/taps.md",
+    href: "/framework/taps/",
     cta: "Read TAPS",
-    external: true
+    external: false
   },
   {
     eyebrow: "PsyFlow",
@@ -147,9 +147,9 @@ export const tutorialResources: ResourceLink[] = [
     title: "Translate task content without touching logic",
     description:
       "Use config-driven localization instead of rewriting runtime code.",
-    href: "https://github.com/TaskBeacon/taskbeacon.github.io/blob/main/source/localization.md",
+    href: "/tutorial/localization/",
     cta: "Open localization",
-    external: true
+    external: false
   },
   {
     eyebrow: "Voice",
@@ -186,9 +186,9 @@ export const contributeResources: ResourceLink[] = [
     title: "Track meaningful branches",
     description:
       "Keep major task variants explicit instead of hiding incompatible changes in place.",
-    href: "https://github.com/TaskBeacon/taskbeacon.github.io/blob/main/source/versioning.md",
+    href: "/contribute/versioning/",
     cta: "Read versioning",
-    external: true
+    external: false
   },
   {
     eyebrow: "Review",

@@ -1,11 +1,13 @@
 "use client";
 
+import Link from "next/link";
 import type { TaskIndexItem } from "@/lib/task-index";
 import { formatShortDate } from "@/lib/format";
 import { taskHandle, taskTitle } from "@/lib/task-display";
 import { MaturityBadge } from "@/components/maturity-badge";
 import { IconDownload, IconGithub, IconPlay } from "@/components/icons";
 import clsx from "@/components/utils/clsx";
+import { taskDetailHref } from "@/lib/routes";
 
 const ACTION_ICONS = {
   download: IconDownload,
@@ -62,7 +64,9 @@ export function TaskRow({
     <article className="tb-frame bg-[#fffdf9] p-4 sm:p-5">
       <div className="min-w-0">
         <h2 className="min-w-0 font-heading text-[2rem] font-bold leading-[0.95] text-[#25314d] sm:text-[2.35rem]">
-          {taskTitle(task)}
+          <Link className="tb-focus-ring rounded-lg hover:text-[#1b6f86]" href={taskDetailHref(task.repo)}>
+            {taskTitle(task)}
+          </Link>
         </h2>
 
         <div className="mt-3 flex flex-wrap items-center gap-2 text-xs text-slate-600">
@@ -103,6 +107,12 @@ export function TaskRow({
               className="min-w-[190px] whitespace-nowrap justify-center"
             />
           ) : null}
+          <Link
+            className="tb-focus-ring tb-button-secondary min-w-[190px] whitespace-nowrap justify-center"
+            href={taskDetailHref(task.repo)}
+          >
+            Open full page
+          </Link>
         </div>
       </div>
 

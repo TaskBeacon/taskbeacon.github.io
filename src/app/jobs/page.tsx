@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
 import { CopyEmailButton } from "./copy-email-button";
+import { getIndex } from "@/lib/task-index";
 
 export const metadata: Metadata = {
   title: "Jobs",
@@ -9,7 +10,7 @@ export const metadata: Metadata = {
 };
 
 const CONTACT_EMAIL = "braintrace@yeah.net";
-const RECRUITMENT_UPDATED_AT = "2026-03-19";
+const RECRUITMENT_UPDATED_AT = "2026-05-15";
 
 type NumberedItem = {
   number: string;
@@ -134,129 +135,136 @@ function RecruitmentSection(copy: CopySection) {
   );
 }
 
-const chineseCopy: CopySection = {
-  lang: "zh-CN",
-  badge: "中文招募",
-  title: "TaskBeacon招募心理学背景实习生",
-  summary:
-    "面向认知任务开发、验证和文档整理的线上协作岗位，中文和英文版本都展示在本页中，方便直接查看与转发。",
-  aboutTitle: "关于 TaskBeacon",
-  aboutText:
-    "TaskBeacon（https://taskbeacon.github.io/） 是一个面向认知任务开发与整理的平台，聚合了经典任务目录、任务包标准（TAPS）、PsyFlow 本地开发框架、psyflow-web 网页预览，以及相关 Agent 自动化技能（Skills）与文档资源，目标是让认知任务的设计、实现、预览、文档和复核更加标准、清晰、可审计。当前网站已整理 35 个任务，目标是 99 个，并强调以统一结构组织任务逻辑、参数配置、参考文献和说明文档。",
-  responsibilitiesTitle: "工作内容",
-  responsibilities: [
-    {
-      number: "1",
-      text:
-        "任务校验与测试：参与人工校验任务参数、任务流程、任务输出、任务流程图，以及网页版任务的测试与实际执行，确保任务设计与实现一致、结果可靠。"
-    },
-    {
-      number: "2",
-      text:
-        "文献调研与参数确认：查阅相关文献，整理并确认任务所使用的刺激材料、流程设计及关键参数，为任务标准化提供依据。"
-    },
-    {
-      number: "3",
-      text:
-        "网站建设与文档撰写：参与网站内容建设，补充和撰写任务说明、使用文档及相关介绍材料，提升平台的清晰度与可用性。"
-    }
-  ],
-  requirementsTitle: "希望你",
-  requirements: [
-    {
-      number: "0",
-      text: "对本项目感兴趣。"
-    },
-    {
-      number: "1",
-      text:
-        "心理学背景，做事认真细致，对心理学实验、认知任务或科研工具建设有兴趣，具备基本的英文文献阅读能力。"
-    },
-    {
-      number: "2",
-      text: "有行为实验、PsychoPy、jsPsych（非必须）、GitHub、文档整理经验。"
-    },
-    {
-      number: "3",
-      text: "有 Python 以及 Vibe Coding 经验。"
-    }
-  ],
-  benefitsTitle: "你将获得",
-  benefits: [
-    "将在项目页面中以贡献者身份进行展示。",
-    "根据实际贡献，有机会获得后续论文署名。",
-    "有机会进一步参与其他项目及后续合作。",
-    "可根据经验、能力及实际投入确定是否提供报酬。"
-  ],
-  workModeTitle: "工作形式",
-  workModeText: "线上协作。",
-  templateTitle: "申请模板",
-  templateText:
-    "您好，我想应聘实习生岗位。{自我介绍}，我已阅读网站内容，并对项目整体架构有基本了解。我的专业 / 背景是 ______，相关经验包括 ______。我对该岗位感兴趣，主要原因是______，希望参与 ______ 相关工作。目前预计每周可投入 ______ 小时，可持续投入 ______ 周/月。"
-};
+function buildChineseCopy(taskCount: number): CopySection {
+  return {
+    lang: "zh-CN",
+    badge: "中文招聘",
+    title: "TaskBeacon 招募心理学背景实习生",
+    summary:
+      "这是一个面向认知任务开发、验证和文档整理的线上协作岗位。页面同时提供中文和英文说明，方便查看、转发和申请。",
+    aboutTitle: "关于 TaskBeacon",
+    aboutText:
+      `TaskBeacon（https://taskbeacon.github.io/）是一个面向认知任务开发与整理的平台，整合了任务目录、TAPS 任务包标准、PsyFlow 本地开发框架、psyflow-web 浏览器预览，以及相关自动化技能和文档资源。当前网站整理了 ${taskCount} 个任务，目标是让任务设计、实现、预览、文档和复核更标准、清晰、可审计。`,
+    responsibilitiesTitle: "工作内容",
+    responsibilities: [
+      {
+        number: "1",
+        text:
+          "任务校验与测试：参与人工检查任务参数、任务流程、输出结果、流程图和浏览器预览，确认设计与实现保持一致。"
+      },
+      {
+        number: "2",
+        text:
+          "文献调研与参数确认：查阅相关文献，整理刺激材料、流程设计和关键参数，为任务标准化提供依据。"
+      },
+      {
+        number: "3",
+        text:
+          "网站内容与文档写作：补充任务说明、使用文档和介绍材料，提升平台的清晰度和可用性。"
+      }
+    ],
+    requirementsTitle: "希望你具备",
+    requirements: [
+      {
+        number: "0",
+        text: "对本项目感兴趣，愿意认真阅读和检查任务材料。"
+      },
+      {
+        number: "1",
+        text:
+          "有心理学、认知科学、神经科学或相关背景，做事细致，具备基本英文文献阅读能力。"
+      },
+      {
+        number: "2",
+        text: "有行为实验、PsychoPy、jsPsych、GitHub 或文档整理经验者优先，但不是硬性要求。"
+      },
+      {
+        number: "3",
+        text: "有 Python 或 AI 辅助编程经验者优先。"
+      }
+    ],
+    benefitsTitle: "你将获得",
+    benefits: [
+      "根据实际贡献，在项目页面或相关仓库中展示贡献记录。",
+      "根据贡献内容，可能获得后续论文署名或项目协作机会。",
+      "可以进一步参与其他任务建设、验证和文档整理工作。",
+      "是否提供报酬将根据经验、能力和实际投入另行确认。"
+    ],
+    workModeTitle: "工作形式",
+    workModeText: "线上协作。",
+    templateTitle: "申请模板",
+    templateText:
+      "您好，我想申请 TaskBeacon 实习生岗位。{自我介绍}。我已经阅读网站内容，并对项目整体结构有基本了解。我的专业/背景是 ______，相关经验包括 ______。我对该岗位感兴趣的主要原因是 ______，希望参与 ______ 相关工作。目前预计每周可投入 ______ 小时，可持续投入 ______ 周/月。"
+  };
+}
 
-const englishCopy: CopySection = {
-  lang: "en",
-  badge: "English Recruitment",
-  title: "TaskBeacon is recruiting psychology-background interns",
-  summary:
-    "An online collaboration role focused on cognitive task development, validation, and documentation. The Chinese version appears above; this section provides the matching English notice.",
-  aboutTitle: "About TaskBeacon",
-  aboutText:
-    "TaskBeacon (https://taskbeacon.github.io/) is a platform for cognitive task development and organization. It brings together a canonical task catalog, the TAPS task package standard, the PsyFlow local development framework, psyflow-web browser previews, and related agent automation skills (Skills) and documentation resources. The goal is to make cognitive task design, implementation, previewing, documentation, and review more standardized, clearer, and auditable. The site currently organizes 35 tasks and aims to reach 99, while emphasizing a unified structure for task logic, parameter configuration, references, and documentation.",
-  responsibilitiesTitle: "Responsibilities",
-  responsibilities: [
-    {
-      number: "1",
-      text:
-        "Task validation and testing: participate in manual checks of task parameters, task flow, task outputs, task flowcharts, and browser-based task testing and execution to ensure the design and implementation stay aligned and results remain reliable."
-    },
-    {
-      number: "2",
-      text:
-        "Literature review and parameter confirmation: review relevant literature, organize and confirm the stimuli, procedure design, and key parameters used by the tasks, and help establish the basis for standardization."
-    },
-    {
-      number: "3",
-      text:
-        "Website build-out and documentation: help improve the website content, write task instructions, usage guides, and related introduction materials, and make the platform clearer and easier to use."
-    }
-  ],
-  requirementsTitle: "Desired Qualifications",
-  requirements: [
-    {
-      number: "0",
-      text: "Interested in this project."
-    },
-    {
-      number: "1",
-      text:
-        "Psychology background, careful and detail-oriented work habits, interest in psychological experiments, cognitive tasks, or research tooling, and basic English reading ability."
-    },
-    {
-      number: "2",
-      text: "Experience with behavioral experiments, PsychoPy, jsPsych (optional), GitHub, and documentation organization."
-    },
-    {
-      number: "3",
-      text: "Python and Vibe Coding experience."
-    }
-  ],
-  benefitsTitle: "What You Will Get",
-  benefits: [
-    "You will be shown as a contributor on the project page.",
-    "Depending on actual contributions, there may be opportunities for future paper authorship.",
-    "You may be able to join other projects and future collaborations.",
-    "Compensation may be provided depending on experience, ability, and actual time commitment."
-  ],
-  workModeTitle: "Work Mode",
-  workModeText: "Online collaboration.",
-  templateTitle: "Application Template",
-  templateText:
-    "Hello, I would like to apply for the internship position. {Self-introduction}. I have read the website content and have a basic understanding of the overall project structure. My major/background is ______, and related experience includes ______. I am interested in this role mainly because ______, and I hope to work on ______ related tasks. I can currently commit ______ hours per week and can continue for ______ weeks/months."
-};
+function buildEnglishCopy(taskCount: number): CopySection {
+  return {
+    lang: "en",
+    badge: "English Recruitment",
+    title: "TaskBeacon is recruiting psychology-background interns",
+    summary:
+      "An online collaboration role focused on cognitive task development, validation, and documentation. The Chinese version appears above; this section provides the matching English notice.",
+    aboutTitle: "About TaskBeacon",
+    aboutText:
+      `TaskBeacon (https://taskbeacon.github.io/) is a platform for cognitive task development and organization. It brings together a canonical task catalog, the TAPS task package standard, the PsyFlow local development framework, psyflow-web browser previews, and related automation skills and documentation resources. The site currently organizes ${taskCount} tasks while emphasizing a unified structure for task logic, parameter configuration, references, and documentation.`,
+    responsibilitiesTitle: "Responsibilities",
+    responsibilities: [
+      {
+        number: "1",
+        text:
+          "Task validation and testing: participate in manual checks of task parameters, task flow, task outputs, task flowcharts, and browser-based task testing and execution to ensure the design and implementation stay aligned and results remain reliable."
+      },
+      {
+        number: "2",
+        text:
+          "Literature review and parameter confirmation: review relevant literature, organize and confirm the stimuli, procedure design, and key parameters used by the tasks, and help establish the basis for standardization."
+      },
+      {
+        number: "3",
+        text:
+          "Website build-out and documentation: help improve the website content, write task instructions, usage guides, and related introduction materials, and make the platform clearer and easier to use."
+      }
+    ],
+    requirementsTitle: "Desired Qualifications",
+    requirements: [
+      {
+        number: "0",
+        text: "Interested in this project."
+      },
+      {
+        number: "1",
+        text:
+          "Psychology background, careful and detail-oriented work habits, interest in psychological experiments, cognitive tasks, or research tooling, and basic English reading ability."
+      },
+      {
+        number: "2",
+        text:
+          "Experience with behavioral experiments, PsychoPy, jsPsych, GitHub, and documentation organization is welcome but not required."
+      },
+      {
+        number: "3",
+        text: "Python or AI-assisted coding experience is helpful."
+      }
+    ],
+    benefitsTitle: "What You Will Get",
+    benefits: [
+      "Contributions can be acknowledged on project pages or related repositories.",
+      "Substantial contributions may create opportunities for future paper authorship or project collaboration.",
+      "You may be able to join other task-building, validation, and documentation work.",
+      "Compensation may be provided depending on experience, ability, and actual time commitment."
+    ],
+    workModeTitle: "Work Mode",
+    workModeText: "Online collaboration.",
+    templateTitle: "Application Template",
+    templateText:
+      "Hello, I would like to apply for the TaskBeacon internship position. {Self-introduction}. I have read the website content and have a basic understanding of the overall project structure. My major/background is ______, and related experience includes ______. I am interested in this role mainly because ______, and I hope to work on ______ related tasks. I can currently commit ______ hours per week and can continue for ______ weeks/months."
+  };
+}
 
 export default function JobsPage() {
+  const taskCount = getIndex().tasks?.length ?? 0;
+
   return (
     <div className="space-y-8 lg:pt-6">
       <section className="tb-frame bg-[#fffdf9] p-6 sm:p-8">
@@ -272,8 +280,8 @@ export default function JobsPage() {
         </div>
       </section>
 
-      <RecruitmentSection {...chineseCopy} />
-      <RecruitmentSection {...englishCopy} />
+      <RecruitmentSection {...buildChineseCopy(taskCount)} />
+      <RecruitmentSection {...buildEnglishCopy(taskCount)} />
     </div>
   );
 }

@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useEffect, useState } from "react";
 import { IconChevronLeft, IconChevronRight, IconPlay } from "@/components/icons";
 import { MaturityBadge } from "@/components/maturity-badge";
@@ -8,6 +9,7 @@ import type { TaskIndexItem } from "@/lib/task-index";
 import { formatShortDate } from "@/lib/format";
 import { taskHandle, taskTitle } from "@/lib/task-display";
 import { useTasksWithHtmlCompanions } from "@/lib/use-html-companions";
+import { taskDetailHref } from "@/lib/routes";
 
 export function FeaturedTaskCarousel({
   tasks
@@ -118,7 +120,9 @@ export function FeaturedTaskCarousel({
               <div
                 className="mt-4 min-h-[4.2rem] w-full font-heading text-[1.75rem] font-bold leading-[1.02] text-[#25314d] sm:min-h-[5.1rem] sm:text-[2.45rem] sm:[display:-webkit-box] sm:[-webkit-box-orient:vertical] sm:[-webkit-line-clamp:2] sm:overflow-hidden"
               >
-                {taskTitle(activeTask)}
+                <Link className="tb-focus-ring rounded-lg hover:text-[#1b6f86]" href={taskDetailHref(activeTask.repo)}>
+                  {taskTitle(activeTask)}
+                </Link>
               </div>
 
               <p

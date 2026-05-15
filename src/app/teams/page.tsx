@@ -10,19 +10,19 @@ const teamCards = [
     eyebrow: "Maintainers",
     title: "Core maintainers",
     description:
-      "Placeholder: list public maintainers, ownership boundaries, and primary contact channels here."
+      "Core maintainers coordinate task standards, site publishing, review expectations, and public repository organization."
   },
   {
     eyebrow: "Contributors",
     title: "Task and preview contributors",
     description:
-      "Placeholder: surface active contributors across canonical tasks, HTML variants, localization, and documentation."
+      "Contributors help build canonical PsyFlow tasks, browser previews, localization files, QA checks, and task documentation."
   },
   {
     eyebrow: "Partners",
     title: "Labs and collaborators",
     description:
-      "Placeholder: describe partner labs, shared repositories, and collaboration scope once that information is public."
+      "Labs and collaborators can use TaskBeacon to publish auditable task packages, compare variants, and review implementation details."
   }
 ];
 
@@ -34,12 +34,12 @@ export default function TeamsPage() {
           Teams
         </div>
         <h1 className="mt-3 font-heading text-3xl font-semibold tracking-tight text-slate-900">
-          Keep people, ownership, and collaboration visible as the project grows.
+          People, ownership, and collaboration around TaskBeacon.
         </h1>
         <p className="mt-4 max-w-3xl text-base leading-7 text-slate-700">
-          This page replaces the generic About destination. It is reserved for public maintainer
-          profiles, collaboration structure, and partner information, with placeholders where the
-          final public content is still being assembled.
+          TaskBeacon is maintained through public repositories, task review work, documentation,
+          and preview validation. This page summarizes how contributors and collaborators fit into
+          the project today.
         </p>
       </section>
 
@@ -65,8 +65,8 @@ export default function TeamsPage() {
           Current public anchor
         </div>
         <p className="mt-3 max-w-3xl text-sm leading-7 text-slate-700">
-          Until public roster details are finalized, the GitHub organization remains the clearest
-          public view of active repositories and maintenance activity.
+          The GitHub organization is the clearest public view of active repositories, task packages,
+          preview companions, and maintenance activity.
         </p>
         <div className="mt-4">
           <a

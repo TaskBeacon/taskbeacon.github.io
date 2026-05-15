@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "next dev",
     "index": "node scripts/build-index.mjs",
+    "check:site-content": "node scripts/check-site-content.mjs",
     "build": "next build",
     "build:site": "node scripts/build-index.mjs && next build",
     "start": "next start",

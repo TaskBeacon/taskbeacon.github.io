@@ -673,6 +673,40 @@ function pickPrimaryTask(items) {
   );
 }
 
+function pairedHtmlId(value) {
+  const match = /^T(\d{6})$/i.exec(String(value ?? "").trim());
+  return match ? `H${match[1]}` : null;
+}
+
+function asWebVariant(item) {
+  return {
+    id: item.id,
+    repo: item.repo,
+    title: item.title,
+    html_url: item.html_url,
+    default_branch: item.default_branch,
+    short_description: item.short_description,
+    maturity: item.maturity,
+    acquisition: item.acquisition,
+    variant: "html",
+    release_tag: item.release_tag,
+    last_updated: item.last_updated,
+    run_url: item.run_url ?? inferHtmlRunUrl(item.repo),
+    download_zip: downloadZipUrl(item.html_url, item.default_branch)
+  };
+}
+
+function findHtmlCompanionForTask(task, htmlItems) {
+  const expectedId = pairedHtmlId(task.id);
+  if (expectedId) {
+    const byId = htmlItems.find(
+      (item) => String(item.id ?? "").toLowerCase() === expectedId.toLowerCase()
+    );
+    if (byId) return byId;
+  }
+  return htmlItems[0] ?? null;
+}
+
 function collapseHtmlCompanions(items) {
   const groups = new Map();
   for (const item of items) {
@@ -697,10 +731,18 @@ function collapseHtmlCompanions(items) {
     }
 
     const primary = pickPrimaryTask(nonHtmlItems);
-    merged.push({ ...primary, web_variant: null });
+    const primaryHtml = findHtmlCompanionForTask(primary, htmlItems);
+    merged.push({
+      ...primary,
+      web_variant: primaryHtml ? asWebVariant(primaryHtml) : null
+    });
     for (const item of nonHtmlItems) {
       if (item.repo !== primary.repo) {
-        merged.push({ ...item, web_variant: null });
+        const htmlCompanion = findHtmlCompanionForTask(item, htmlItems);
+        merged.push({
+          ...item,
+          web_variant: htmlCompanion ? asWebVariant(htmlCompanion) : null
+        });
       }
     }
   }

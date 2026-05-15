@@ -1,6 +1,6 @@
 {
   "schema_version": 5,
-  "generated_at": "2026-05-15T03:53:14.028Z",
+  "generated_at": "2026-05-15T07:29:06.112Z",
   "org": "TaskBeacon",
   "tasks": [
     {
@@ -765,7 +765,21 @@
       "readme_snapshot_path": "/readmes/T000038-two-armed-bandit.md",
       "readme_run_anchor": "#run",
       "run_url": null,
-      "web_variant": null
+      "web_variant": {
+        "id": "H000038",
+        "repo": "H000038-two-armed-bandit",
+        "title": "Two-Armed Bandit Task",
+        "html_url": "https://github.com/TaskBeacon/H000038-two-armed-bandit",
+        "default_branch": "main",
+        "short_description": "Browser companion for the Chinese two-armed bandit task with block-wise reward contingencies and cumulative score feedback",
+        "maturity": "prototype",
+        "acquisition": "behavior",
+        "variant": "html",
+        "release_tag": "v0.1.0-dev",
+        "last_updated": "2026-05-15T03:49:27Z",
+        "run_url": "https://taskbeacon.github.io/psyflow-web/?task=H000038-two-armed-bandit",
+        "download_zip": "https://github.com/TaskBeacon/H000038-two-armed-bandit/archive/refs/heads/main.zip"
+      }
     },
     {
       "id": "T000037",
@@ -807,7 +821,21 @@
       "readme_snapshot_path": "/readmes/T000037-game-of-dice.md",
       "readme_run_anchor": "#run",
       "run_url": null,
-      "web_variant": null
+      "web_variant": {
+        "id": "H000037",
+        "repo": "H000037-game-of-dice",
+        "title": "Game of Dice Task",
+        "html_url": "https://github.com/TaskBeacon/H000037-game-of-dice",
+        "default_branch": "main",
+        "short_description": "Browser companion for the Chinese explicit-risk dice gambling task with four known-probability options and cumulative capital feedback",
+        "maturity": "prototype",
+        "acquisition": "behavior",
+        "variant": "html",
+        "release_tag": "v0.1.0-dev",
+        "last_updated": "2026-05-15T03:49:14Z",
+        "run_url": "https://taskbeacon.github.io/psyflow-web/?task=H000037-game-of-dice",
+        "download_zip": "https://github.com/TaskBeacon/H000037-game-of-dice/archive/refs/heads/main.zip"
+      }
     },
     {
       "id": "T000036",
@@ -849,7 +877,21 @@
       "readme_snapshot_path": "/readmes/T000036-risk-perception-estimation.md",
       "readme_run_anchor": "#run",
       "run_url": null,
-      "web_variant": null
+      "web_variant": {
+        "id": "H000036",
+        "repo": "H000036-risk-perception-estimation",
+        "title": "Risk Perception Estimation Task",
+        "html_url": "https://github.com/TaskBeacon/H000036-risk-perception-estimation",
+        "default_branch": "main",
+        "short_description": "Browser companion for the Chinese health-risk judgment task with three scenario levels and 1-7 ordinal ratings",
+        "maturity": "prototype",
+        "acquisition": "behavior",
+        "variant": "html",
+        "release_tag": "v0.1.0-dev",
+        "last_updated": "2026-05-15T03:18:21Z",
+        "run_url": "https://taskbeacon.github.io/psyflow-web/?task=H000036-risk-perception-estimation",
+        "download_zip": "https://github.com/TaskBeacon/H000036-risk-perception-estimation/archive/refs/heads/main.zip"
+      }
     },
     {
       "id": "T000035",
@@ -891,7 +933,21 @@
       "readme_snapshot_path": "/readmes/T000035-sternberg-working-memory.md",
       "readme_run_anchor": "#run",
       "run_url": null,
-      "web_variant": null
+      "web_variant": {
+        "id": "H000035",
+        "repo": "H000035-sternberg-working-memory",
+        "title": "Sternberg Working Memory Task",
+        "html_url": "https://github.com/TaskBeacon/H000035-sternberg-working-memory",
+        "default_branch": "main",
+        "short_description": "HTML/browser preview of Sternberg Working Memory Task built with psyflow-web. Memory-set generation, old/new probe logic, response scorin...",
+        "maturity": "prototype",
+        "acquisition": "behavior",
+        "variant": "html",
+        "release_tag": "0.1.0",
+        "last_updated": "2026-05-15T03:18:15Z",
+        "run_url": "https://taskbeacon.github.io/psyflow-web/?task=H000035-sternberg-working-memory",
+        "download_zip": "https://github.com/TaskBeacon/H000035-sternberg-working-memory/archive/refs/heads/main.zip"
+      }
     },
     {
       "id": "T000034",
@@ -932,7 +988,21 @@
       "readme_snapshot_path": "/readmes/T000034-cyberball.md",
       "readme_run_anchor": "#run",
       "run_url": null,
-      "web_variant": null
+      "web_variant": {
+        "id": "H000034",
+        "repo": "H000034-cyberball",
+        "title": "Cyberball Task",
+        "html_url": "https://github.com/TaskBeacon/H000034-cyberball",
+        "default_branch": "main",
+        "short_description": "HTML/browser preview of Cyberball Task built with psyflow-web. Three-player toss flow, inclusion/exclusion block policy, shared ball-hold...",
+        "maturity": "smoke_tested",
+        "acquisition": "behavior",
+        "variant": "html",
+        "release_tag": "0.1.0",
+        "last_updated": "2026-05-15T03:18:10Z",
+        "run_url": "https://taskbeacon.github.io/psyflow-web/?task=H000034-cyberball",
+        "download_zip": "https://github.com/TaskBeacon/H000034-cyberball/archive/refs/heads/main.zip"
+      }
     },
     {
       "id": "T000033",
@@ -973,7 +1043,21 @@
       "readme_snapshot_path": "/readmes/T000033-visual-search.md",
       "readme_run_anchor": "#run",
       "run_url": null,
-      "web_variant": null
+      "web_variant": {
+        "id": "H000033",
+        "repo": "H000033-visual-search",
+        "title": "Visual Search Task",
+        "html_url": "https://github.com/TaskBeacon/H000033-visual-search",
+        "default_branch": "main",
+        "short_description": "HTML/browser preview of Visual Search Task built with psyflow-web. Feature vs conjunction display generation, present/absent key mapping,...",
+        "maturity": "smoke_tested",
+        "acquisition": "behavior",
+        "variant": "html",
+        "release_tag": "0.1.0",
+        "last_updated": "2026-05-15T03:18:05Z",
+        "run_url": "https://taskbeacon.github.io/psyflow-web/?task=H000033-visual-search",
+        "download_zip": "https://github.com/TaskBeacon/H000033-visual-search/archive/refs/heads/main.zip"
+      }
     },
     {
       "id": "T000032",
@@ -1012,7 +1096,21 @@
       "readme_snapshot_path": "/readmes/T000032-antisaccade.md",
       "readme_run_anchor": "#run",
       "run_url": null,
-      "web_variant": null
+      "web_variant": {
+        "id": "H000032",
+        "repo": "H000032-antisaccade",
+        "title": "Antisaccade Task",
+        "html_url": "https://github.com/TaskBeacon/H000032-antisaccade",
+        "default_branch": "main",
+        "short_description": "HTML/browser preview of the canonical T000032-antisaccade task built with psyflow-web. The web build keeps the same condition semantics, ...",
+        "maturity": "smoke_tested",
+        "acquisition": "behavior",
+        "variant": "html",
+        "release_tag": "0.1.0",
+        "last_updated": "2026-05-15T03:17:59Z",
+        "run_url": "https://taskbeacon.github.io/psyflow-web/?task=H000032-antisaccade",
+        "download_zip": "https://github.com/TaskBeacon/H000032-antisaccade/archive/refs/heads/main.zip"
+      }
     },
     {
       "id": "T000031",
@@ -1054,7 +1152,21 @@
       "readme_snapshot_path": "/readmes/T000031-loss-aversion-framing.md",
       "readme_run_anchor": "#run",
       "run_url": null,
-      "web_variant": null
+      "web_variant": {
+        "id": "H000031",
+        "repo": "H000031-loss-aversion-framing",
+        "title": "Loss Aversion / Framing Task",
+        "html_url": "https://github.com/TaskBeacon/H000031-loss-aversion-framing",
+        "default_branch": "main",
+        "short_description": "HTML/browser preview aligned to local T000031-loss-aversion-framing. The web task mirrors the Python block schedule, config-defined offer...",
+        "maturity": "smoke_tested",
+        "acquisition": "behavior",
+        "variant": "html",
+        "release_tag": "0.1.0",
+        "last_updated": "2026-05-15T03:17:54Z",
+        "run_url": "https://taskbeacon.github.io/psyflow-web/?task=H000031-loss-aversion-framing",
+        "download_zip": "https://github.com/TaskBeacon/H000031-loss-aversion-framing/archive/refs/heads/main.zip"
+      }
     },
     {
       "id": "T000030",
@@ -1095,7 +1207,21 @@
       "readme_snapshot_path": "/readmes/T000030-iowa-gambling.md",
       "readme_run_anchor": "#run",
       "run_url": null,
-      "web_variant": null
+      "web_variant": {
+        "id": "H000030",
+        "repo": "H000030-iowa-gambling",
+        "title": "Iowa Gambling Task",
+        "html_url": "https://github.com/TaskBeacon/H000030-iowa-gambling",
+        "default_branch": "main",
+        "short_description": "HTML/browser preview of Iowa Gambling Task built with psyflow-web. The stage order, deck outcome schedules, timeout behavior, and summary...",
+        "maturity": "prototype",
+        "acquisition": "behavior",
+        "variant": "html",
+        "release_tag": "0.1.0",
+        "last_updated": "2026-05-15T03:17:49Z",
+        "run_url": "https://taskbeacon.github.io/psyflow-web/?task=H000030-iowa-gambling",
+        "download_zip": "https://github.com/TaskBeacon/H000030-iowa-gambling/archive/refs/heads/main.zip"
+      }
     },
     {
       "id": "T000029",
@@ -1136,7 +1262,21 @@
       "readme_snapshot_path": "/readmes/T000029-cambridge-gambling.md",
       "readme_run_anchor": "#run",
       "run_url": null,
-      "web_variant": null
+      "web_variant": {
+        "id": "H000029",
+        "repo": "H000029-cambridge-gambling",
+        "title": "Cambridge Gambling Task",
+        "html_url": "https://github.com/TaskBeacon/H000029-cambridge-gambling",
+        "default_branch": "main",
+        "short_description": "Browser-native preview of the Cambridge Gambling Task aligned to the local Python canonical task.",
+        "maturity": "smoke_tested",
+        "acquisition": "behavior",
+        "variant": "html",
+        "release_tag": "0.1.0",
+        "last_updated": "2026-05-15T03:17:43Z",
+        "run_url": "https://taskbeacon.github.io/psyflow-web/?task=H000029-cambridge-gambling",
+        "download_zip": "https://github.com/TaskBeacon/H000029-cambridge-gambling/archive/refs/heads/main.zip"
+      }
     },
     {
       "id": "T000028",
@@ -1177,7 +1317,21 @@
       "readme_snapshot_path": "/readmes/T000028-weather-prediction.md",
       "readme_run_anchor": "#run",
       "run_url": null,
-      "web_variant": null
+      "web_variant": {
+        "id": "H000028",
+        "repo": "H000028-weather-prediction",
+        "title": "Weather Prediction Task",
+        "html_url": "https://github.com/TaskBeacon/H000028-weather-prediction",
+        "default_branch": "main",
+        "short_description": "HTML/browser preview of the probabilistic Weather Prediction task built with psyflow-web. Cue-pattern sampling, probabilistic weather out...",
+        "maturity": "prototype",
+        "acquisition": "behavior",
+        "variant": "html",
+        "release_tag": "0.1.0",
+        "last_updated": "2026-05-15T03:17:38Z",
+        "run_url": "https://taskbeacon.github.io/psyflow-web/?task=H000028-weather-prediction",
+        "download_zip": "https://github.com/TaskBeacon/H000028-weather-prediction/archive/refs/heads/main.zip"
+      }
     },
     {
       "id": "T000027",
@@ -1218,7 +1372,21 @@
       "readme_snapshot_path": "/readmes/T000027-task-switching.md",
       "readme_run_anchor": "#run",
       "run_url": null,
-      "web_variant": null
+      "web_variant": {
+        "id": "H000027",
+        "repo": "H000027-task-switching",
+        "title": "Task Switching Task",
+        "html_url": "https://github.com/TaskBeacon/H000027-task-switching",
+        "default_branch": "main",
+        "short_description": "HTML/browser preview of the cue-based Task Switching task built with psyflow-web. Rule-cue transitions (start/repeat/switch), digit class...",
+        "maturity": "prototype",
+        "acquisition": "behavior",
+        "variant": "html",
+        "release_tag": "0.1.0",
+        "last_updated": "2026-05-15T03:17:33Z",
+        "run_url": "https://taskbeacon.github.io/psyflow-web/?task=H000027-task-switching",
+        "download_zip": "https://github.com/TaskBeacon/H000027-task-switching/archive/refs/heads/main.zip"
+      }
     },
     {
       "id": "T000026",
@@ -1257,7 +1425,21 @@
       "readme_snapshot_path": "/readmes/T000026-mcgurk.md",
       "readme_run_anchor": "#run",
       "run_url": null,
-      "web_variant": null
+      "web_variant": {
+        "id": "H000026",
+        "repo": "H000026-mcgurk",
+        "title": "McGurk Effect Task",
+        "html_url": "https://github.com/TaskBeacon/H000026-mcgurk",
+        "default_branch": "main",
+        "short_description": "HTML/browser preview of the McGurk Effect task built with psyflow-web. Audiovisual congruent/incongruent/audio-only trial logic, syllable...",
+        "maturity": "prototype",
+        "acquisition": "behavior",
+        "variant": "html",
+        "release_tag": "0.1.0",
+        "last_updated": "2026-05-15T03:17:28Z",
+        "run_url": "https://taskbeacon.github.io/psyflow-web/?task=H000026-mcgurk",
+        "download_zip": "https://github.com/TaskBeacon/H000026-mcgurk/archive/refs/heads/main.zip"
+      }
     },
     {
       "id": "T000025",
@@ -1298,7 +1480,21 @@
       "readme_snapshot_path": "/readmes/T000025-dictator-game.md",
       "readme_run_anchor": "#run",
       "run_url": null,
-      "web_variant": null
+      "web_variant": {
+        "id": "H000025",
+        "repo": "H000025-dictator-game",
+        "title": "Dictator Game",
+        "html_url": "https://github.com/TaskBeacon/H000025-dictator-game",
+        "default_branch": "main",
+        "short_description": "HTML/browser preview of the Dictator Game built with psyflow-web. Three-way allocation decisions (generous, equal, selfish) under low/med...",
+        "maturity": "prototype",
+        "acquisition": "behavior",
+        "variant": "html",
+        "release_tag": "0.1.0",
+        "last_updated": "2026-05-15T03:17:22Z",
+        "run_url": "https://taskbeacon.github.io/psyflow-web/?task=H000025-dictator-game",
+        "download_zip": "https://github.com/TaskBeacon/H000025-dictator-game/archive/refs/heads/main.zip"
+      }
     },
     {
       "id": "T000024",
@@ -1339,7 +1535,21 @@
       "readme_snapshot_path": "/readmes/T000024-trust-game.md",
       "readme_run_anchor": "#run",
       "run_url": null,
-      "web_variant": null
+      "web_variant": {
+        "id": "H000024",
+        "repo": "H000024-trust-game",
+        "title": "Trust Game",
+        "html_url": "https://github.com/TaskBeacon/H000024-trust-game",
+        "default_branch": "main",
+        "short_description": "HTML/browser preview of the investor-side Trust Game built with psyflow-web. Partner-condition scheduling (high/medium/low trust), invest...",
+        "maturity": "prototype",
+        "acquisition": "behavior",
+        "variant": "html",
+        "release_tag": "0.1.0",
+        "last_updated": "2026-05-15T03:17:17Z",
+        "run_url": "https://taskbeacon.github.io/psyflow-web/?task=H000024-trust-game",
+        "download_zip": "https://github.com/TaskBeacon/H000024-trust-game/archive/refs/heads/main.zip"
+      }
     },
     {
       "id": "T000023",
@@ -1382,7 +1592,21 @@
       "readme_snapshot_path": "/readmes/T000023-ultimatum-game.md",
       "readme_run_anchor": "#run",
       "run_url": null,
-      "web_variant": null
+      "web_variant": {
+        "id": "H000023",
+        "repo": "H000023-ultimatum-game",
+        "title": "Ultimatum Game",
+        "html_url": "https://github.com/TaskBeacon/H000023-ultimatum-game",
+        "default_branch": "main",
+        "short_description": "HTML/browser preview of the responder-side Ultimatum Game built with psyflow-web. Offer scheduling (fair/unfair/very_unfair), accept/reje...",
+        "maturity": "prototype",
+        "acquisition": "behavior",
+        "variant": "html",
+        "release_tag": "0.1.0",
+        "last_updated": "2026-05-15T03:17:12Z",
+        "run_url": "https://taskbeacon.github.io/psyflow-web/?task=H000023-ultimatum-game",
+        "download_zip": "https://github.com/TaskBeacon/H000023-ultimatum-game/archive/refs/heads/main.zip"
+      }
     },
     {
       "id": "T000022",
@@ -1423,7 +1647,21 @@
       "readme_snapshot_path": "/readmes/T000022-passive-lottery.md",
       "readme_run_anchor": "#run",
       "run_url": null,
-      "web_variant": null
+      "web_variant": {
+        "id": "H000022",
+        "repo": "H000022-passive-lottery",
+        "title": "Passive Lottery Task",
+        "html_url": "https://github.com/TaskBeacon/H000022-passive-lottery",
+        "default_branch": "main",
+        "short_description": "HTML/browser preview of the Passive Lottery task built with psyflow-web. Condition cue -> fixation -> lottery reveal -> outcome feedback ...",
+        "maturity": "prototype",
+        "acquisition": "behavior",
+        "variant": "html",
+        "release_tag": "0.1.0",
+        "last_updated": "2026-05-15T03:17:07Z",
+        "run_url": "https://taskbeacon.github.io/psyflow-web/?task=H000022-passive-lottery",
+        "download_zip": "https://github.com/TaskBeacon/H000022-passive-lottery/archive/refs/heads/main.zip"
+      }
     },
     {
       "id": "T000021",
@@ -1465,7 +1703,21 @@
       "readme_snapshot_path": "/readmes/T000021-drifting-double-bandit.md",
       "readme_run_anchor": "#run",
       "run_url": null,
-      "web_variant": null
+      "web_variant": {
+        "id": "H000021",
+        "repo": "H000021-drifting-double-bandit",
+        "title": "Drifting Double-Bandit Task",
+        "html_url": "https://github.com/TaskBeacon/H000021-drifting-double-bandit",
+        "default_branch": "main",
+        "short_description": "HTML/browser preview of the Drifting Double-Bandit task built with psyflow-web. Trial procedure, drifting reward probabilities, no-respon...",
+        "maturity": "prototype",
+        "acquisition": "behavior",
+        "variant": "html",
+        "release_tag": "0.1.0",
+        "last_updated": "2026-05-15T03:17:01Z",
+        "run_url": "https://taskbeacon.github.io/psyflow-web/?task=H000021-drifting-double-bandit",
+        "download_zip": "https://github.com/TaskBeacon/H000021-drifting-double-bandit/archive/refs/heads/main.zip"
+      }
     },
     {
       "id": "T000020",
@@ -1507,7 +1759,21 @@
       "readme_snapshot_path": "/readmes/T000020-one-armed-bandit.md",
       "readme_run_anchor": "#run",
       "run_url": null,
-      "web_variant": null
+      "web_variant": {
+        "id": "H000020",
+        "repo": "H000020-one-armed-bandit",
+        "title": "One-Armed Bandit Task",
+        "html_url": "https://github.com/TaskBeacon/H000020-one-armed-bandit",
+        "default_branch": "main",
+        "short_description": "HTML/browser preview of the One-Armed Bandit task built with psyflow-web. Trial procedure, side-choice semantics, timeout fallback, rewar...",
+        "maturity": "prototype",
+        "acquisition": "behavior",
+        "variant": "html",
+        "release_tag": "0.1.0",
+        "last_updated": "2026-05-15T03:16:56Z",
+        "run_url": "https://taskbeacon.github.io/psyflow-web/?task=H000020-one-armed-bandit",
+        "download_zip": "https://github.com/TaskBeacon/H000020-one-armed-bandit/archive/refs/heads/main.zip"
+      }
     },
     {
       "id": "T000019",
@@ -1546,7 +1812,21 @@
       "readme_snapshot_path": "/readmes/T000019-eefrt.md",
       "readme_run_anchor": "#run",
       "run_url": null,
-      "web_variant": null
+      "web_variant": {
+        "id": "H000019",
+        "repo": "H000019-eefrt",
+        "title": "EEfRT Task",
+        "html_url": "https://github.com/TaskBeacon/H000019-eefrt",
+        "default_branch": "main",
+        "short_description": "HTML/browser preview of the EEfRT task built with psyflow-web. Offer generation, low/high effort choice flow, effort execution, and proba...",
+        "maturity": "prototype",
+        "acquisition": "behavior",
+        "variant": "html",
+        "release_tag": "0.1.0",
+        "last_updated": "2026-05-15T03:16:51Z",
+        "run_url": "https://taskbeacon.github.io/psyflow-web/?task=H000019-eefrt",
+        "download_zip": "https://github.com/TaskBeacon/H000019-eefrt/archive/refs/heads/main.zip"
+      }
     },
     {
       "id": "T000018",
@@ -1587,7 +1867,21 @@
       "readme_snapshot_path": "/readmes/T000018-oddball-mmn.md",
       "readme_run_anchor": "#run",
       "run_url": null,
-      "web_variant": null
+      "web_variant": {
+        "id": "H000018",
+        "repo": "H000018-oddball-mmn",
+        "title": "Oddball Task (MMN/P3)",
+        "html_url": "https://github.com/TaskBeacon/H000018-oddball-mmn",
+        "default_branch": "main",
+        "short_description": "HTML/browser preview of the three-stimulus Oddball task built with psyflow-web. The standard/deviant/target trial semantics, target-only ...",
+        "maturity": "prototype",
+        "acquisition": "EEG",
+        "variant": "html",
+        "release_tag": "0.1.0",
+        "last_updated": "2026-05-15T03:16:46Z",
+        "run_url": "https://taskbeacon.github.io/psyflow-web/?task=H000018-oddball-mmn",
+        "download_zip": "https://github.com/TaskBeacon/H000018-oddball-mmn/archive/refs/heads/main.zip"
+      }
     },
     {
       "id": "T000017",
@@ -1628,7 +1922,21 @@
       "readme_snapshot_path": "/readmes/T000017-delay-discounting.md",
       "readme_run_anchor": "#run",
       "run_url": null,
-      "web_variant": null
+      "web_variant": {
+        "id": "H000017",
+        "repo": "H000017-delay-discounting",
+        "title": "Delay Discounting Task",
+        "html_url": "https://github.com/TaskBeacon/H000017-delay-discounting",
+        "default_branch": "main",
+        "short_description": "HTML/browser preview of the MCQ-27 style Delay Discounting task built with psyflow-web. Trial planning (deterministic item reconstruction...",
+        "maturity": "prototype",
+        "acquisition": "behavior",
+        "variant": "html",
+        "release_tag": "0.1.0",
+        "last_updated": "2026-05-15T03:16:41Z",
+        "run_url": "https://taskbeacon.github.io/psyflow-web/?task=H000017-delay-discounting",
+        "download_zip": "https://github.com/TaskBeacon/H000017-delay-discounting/archive/refs/heads/main.zip"
+      }
     },
     {
       "id": "T000016",
@@ -1669,7 +1977,21 @@
       "readme_snapshot_path": "/readmes/T000016-card-sorting.md",
       "readme_run_anchor": "#run",
       "run_url": null,
-      "web_variant": null
+      "web_variant": {
+        "id": "H000016",
+        "repo": "H000016-card-sorting",
+        "title": "Card Sorting Task (WCST-style)",
+        "html_url": "https://github.com/TaskBeacon/H000016-card-sorting",
+        "default_branch": "main",
+        "short_description": "HTML/browser preview of the WCST-style Card Sorting task built with psyflow-web. The block rule schedule (color -> shape -> number), seed...",
+        "maturity": "prototype",
+        "acquisition": "behavior",
+        "variant": "html",
+        "release_tag": "0.1.0",
+        "last_updated": "2026-05-15T03:16:35Z",
+        "run_url": "https://taskbeacon.github.io/psyflow-web/?task=H000016-card-sorting",
+        "download_zip": "https://github.com/TaskBeacon/H000016-card-sorting/archive/refs/heads/main.zip"
+      }
     },
     {
       "id": "T000015",
@@ -1711,7 +2033,21 @@
       "readme_snapshot_path": "/readmes/T000015-ant.md",
       "readme_run_anchor": "#run-modes",
       "run_url": null,
-      "web_variant": null
+      "web_variant": {
+        "id": "H000015",
+        "repo": "H000015-ant",
+        "title": "Attention Network Test (ANT)",
+        "html_url": "https://github.com/TaskBeacon/H000015-ant",
+        "default_branch": "main",
+        "short_description": "HTML/browser preview of the Attention Network Test built with psyflow-web. The trial structure, cue/flanker condition semantics, key mapp...",
+        "maturity": "prototype",
+        "acquisition": "behavior",
+        "variant": "html",
+        "release_tag": "0.1.0",
+        "last_updated": "2026-05-15T03:16:30Z",
+        "run_url": "https://taskbeacon.github.io/psyflow-web/?task=H000015-ant",
+        "download_zip": "https://github.com/TaskBeacon/H000015-ant/archive/refs/heads/main.zip"
+      }
     },
     {
       "id": "T000014",
@@ -1753,7 +2089,21 @@
       "readme_snapshot_path": "/readmes/T000014-stroop.md",
       "readme_run_anchor": "#run-modes",
       "run_url": null,
-      "web_variant": null
+      "web_variant": {
+        "id": "H000014",
+        "repo": "H000014-stroop",
+        "title": "Stroop Task",
+        "html_url": "https://github.com/TaskBeacon/H000014-stroop",
+        "default_branch": "main",
+        "short_description": "HTML/browser preview of the Stroop task built with psyflow-web. The trial procedure, congruent/incongruent condition semantics, key mappi...",
+        "maturity": "prototype",
+        "acquisition": "behavior",
+        "variant": "html",
+        "release_tag": "0.1.0",
+        "last_updated": "2026-05-15T03:16:25Z",
+        "run_url": "https://taskbeacon.github.io/psyflow-web/?task=H000014-stroop",
+        "download_zip": "https://github.com/TaskBeacon/H000014-stroop/archive/refs/heads/main.zip"
+      }
     },
     {
       "id": "T000013",
@@ -1797,7 +2147,21 @@
       "readme_snapshot_path": "/readmes/T000013-sst-audio.md",
       "readme_run_anchor": "#run-modes",
       "run_url": null,
-      "web_variant": null
+      "web_variant": {
+        "id": "H000013",
+        "repo": "H000013-sst-audio",
+        "title": "Stop-Signal Task (SST-Audio)",
+        "html_url": "https://github.com/TaskBeacon/H000013-sst-audio",
+        "default_branch": "main",
+        "short_description": "HTML/browser preview of the auditory Stop-Signal Task built with psyflow-web. The trial procedure, go/stop condition semantics, auditory ...",
+        "maturity": "prototype",
+        "acquisition": "behavior",
+        "variant": "html",
+        "release_tag": "0.1.0",
+        "last_updated": "2026-05-15T03:16:19Z",
+        "run_url": "https://taskbeacon.github.io/psyflow-web/?task=H000013-sst-audio",
+        "download_zip": "https://github.com/TaskBeacon/H000013-sst-audio/archive/refs/heads/main.zip"
+      }
     },
     {
       "id": "T000012",
@@ -1839,7 +2203,21 @@
       "readme_snapshot_path": "/readmes/T000012-sst.md",
       "readme_run_anchor": "#run-modes",
       "run_url": null,
-      "web_variant": null
+      "web_variant": {
+        "id": "H000012",
+        "repo": "H000012-sst",
+        "title": "Stop-Signal Task (SST)",
+        "html_url": "https://github.com/TaskBeacon/H000012-sst",
+        "default_branch": "main",
+        "short_description": "HTML/browser preview of the Stop-Signal Task built with psyflow-web. The within-trial procedure, go/stop condition semantics, instruction...",
+        "maturity": "prototype",
+        "acquisition": "behavior",
+        "variant": "html",
+        "release_tag": "0.1.0",
+        "last_updated": "2026-05-15T03:16:14Z",
+        "run_url": "https://taskbeacon.github.io/psyflow-web/?task=H000012-sst",
+        "download_zip": "https://github.com/TaskBeacon/H000012-sst/archive/refs/heads/main.zip"
+      }
     },
     {
       "id": "T000011",
@@ -1881,7 +2259,21 @@
       "readme_snapshot_path": "/readmes/T000011-simon.md",
       "readme_run_anchor": "#run",
       "run_url": null,
-      "web_variant": null
+      "web_variant": {
+        "id": "H000011",
+        "repo": "H000011-simon",
+        "title": "Simon Task",
+        "html_url": "https://github.com/TaskBeacon/H000011-simon",
+        "default_branch": "main",
+        "short_description": "HTML/browser preview of the Simon task built with psyflow-web. The trial procedure, response mapping, congruent/incongruent condition sem...",
+        "maturity": "prototype",
+        "acquisition": "behavior",
+        "variant": "html",
+        "release_tag": "0.1.0",
+        "last_updated": "2026-05-15T03:16:08Z",
+        "run_url": "https://taskbeacon.github.io/psyflow-web/?task=H000011-simon",
+        "download_zip": "https://github.com/TaskBeacon/H000011-simon/archive/refs/heads/main.zip"
+      }
     },
     {
       "id": "T000010",
@@ -1923,7 +2315,21 @@
       "readme_snapshot_path": "/readmes/T000010-rest.md",
       "readme_run_anchor": "#run",
       "run_url": null,
-      "web_variant": null
+      "web_variant": {
+        "id": "H000010",
+        "repo": "H000010-rest",
+        "title": "Resting-state Task (EC+EO)",
+        "html_url": "https://github.com/TaskBeacon/H000010-rest",
+        "default_branch": "main",
+        "short_description": "HTML/browser preview of the Resting-state task (EC+EO) built with psyflow-web. The condition sequence, stage order, and EO/EC semantics a...",
+        "maturity": "prototype",
+        "acquisition": "behavior",
+        "variant": "html",
+        "release_tag": "0.1.0",
+        "last_updated": "2026-05-15T02:57:39Z",
+        "run_url": "https://taskbeacon.github.io/psyflow-web/?task=H000010-rest",
+        "download_zip": "https://github.com/TaskBeacon/H000010-rest/archive/refs/heads/main.zip"
+      }
     },
     {
       "id": "T000009",
@@ -1965,7 +2371,21 @@
       "readme_snapshot_path": "/readmes/T000009-prl.md",
       "readme_run_anchor": "#run",
       "run_url": null,
-      "web_variant": null
+      "web_variant": {
+        "id": "H000009",
+        "repo": "H000009-prl",
+        "title": "Probabilistic Reversal Learning (PRL) Task",
+        "html_url": "https://github.com/TaskBeacon/H000009-prl",
+        "default_branch": "main",
+        "short_description": "HTML/browser preview of the Probabilistic Reversal Learning task built with psyflow-web. The trial procedure, per-block controller revers...",
+        "maturity": "prototype",
+        "acquisition": "behavior",
+        "variant": "html",
+        "release_tag": "0.1.0",
+        "last_updated": "2026-05-15T02:57:28Z",
+        "run_url": "https://taskbeacon.github.io/psyflow-web/?task=H000009-prl",
+        "download_zip": "https://github.com/TaskBeacon/H000009-prl/archive/refs/heads/main.zip"
+      }
     },
     {
       "id": "T000008",
@@ -2010,7 +2430,21 @@
       "readme_snapshot_path": "/readmes/T000008-nback.md",
       "readme_run_anchor": "#run",
       "run_url": null,
-      "web_variant": null
+      "web_variant": {
+        "id": "H000008",
+        "repo": "H000008-nback",
+        "title": "N-Back Task",
+        "html_url": "https://github.com/TaskBeacon/H000008-nback",
+        "default_branch": "main",
+        "short_description": "HTML/browser preview of the N-Back task built with psyflow-web. The trial procedure, block-wise 1-back/2-back split, response mapping, an...",
+        "maturity": "prototype",
+        "acquisition": "behavior",
+        "variant": "html",
+        "release_tag": "0.1.0",
+        "last_updated": "2026-05-15T02:57:17Z",
+        "run_url": "https://taskbeacon.github.io/psyflow-web/?task=H000008-nback",
+        "download_zip": "https://github.com/TaskBeacon/H000008-nback/archive/refs/heads/main.zip"
+      }
     },
     {
       "id": "T000007",
@@ -2052,7 +2486,21 @@
       "readme_snapshot_path": "/readmes/T000007-movie.md",
       "readme_run_anchor": "#run",
       "run_url": null,
-      "web_variant": null
+      "web_variant": {
+        "id": "H000007",
+        "repo": "H000007-movie",
+        "title": "Movie Watching Task",
+        "html_url": "https://github.com/TaskBeacon/H000007-movie",
+        "default_branch": "main",
+        "short_description": "HTML/browser preview of the Movie Watching task built with psyflow-web. The trial procedure and timing are aligned to local T000007-movie...",
+        "maturity": "prototype",
+        "acquisition": "behavior",
+        "variant": "html",
+        "release_tag": "0.1.0",
+        "last_updated": "2026-05-15T02:56:31Z",
+        "run_url": "https://taskbeacon.github.io/psyflow-web/?task=H000007-movie",
+        "download_zip": "https://github.com/TaskBeacon/H000007-movie/archive/refs/heads/main.zip"
+      }
     },
     {
       "id": "T000006",
@@ -2095,7 +2543,21 @@
       "readme_snapshot_path": "/readmes/T000006-mid.md",
       "readme_run_anchor": "#run",
       "run_url": null,
-      "web_variant": null
+      "web_variant": {
+        "id": "H000006",
+        "repo": "H000006-mid",
+        "title": "Monetary Incentive Delay (MID) Task",
+        "html_url": "https://github.com/TaskBeacon/H000006-mid",
+        "default_branch": "main",
+        "short_description": "HTML/browser preview of the Monetary Incentive Delay task built with psyflow-web. The within-trial procedure, timing, controller, and ins...",
+        "maturity": "prototype",
+        "acquisition": "behavior",
+        "variant": "html",
+        "release_tag": "0.1.0",
+        "last_updated": "2026-05-15T02:56:20Z",
+        "run_url": "https://taskbeacon.github.io/psyflow-web/?task=H000006-mid",
+        "download_zip": "https://github.com/TaskBeacon/H000006-mid/archive/refs/heads/main.zip"
+      }
     },
     {
       "id": "T000005",
@@ -2142,7 +2604,21 @@
       "readme_snapshot_path": "/readmes/T000005-go-nogo.md",
       "readme_run_anchor": "#run",
       "run_url": null,
-      "web_variant": null
+      "web_variant": {
+        "id": "H000005",
+        "repo": "H000005-go-nogo",
+        "title": "Go/No-Go Task",
+        "html_url": "https://github.com/TaskBeacon/H000005-go-nogo",
+        "default_branch": "main",
+        "short_description": "HTML/browser preview of the Go/No-Go task built with psyflow-web. The within-trial sequence, condition weighting semantics, response logi...",
+        "maturity": "prototype",
+        "acquisition": "behavior",
+        "variant": "html",
+        "release_tag": "0.1.0",
+        "last_updated": "2026-05-15T02:56:09Z",
+        "run_url": "https://taskbeacon.github.io/psyflow-web/?task=H000005-go-nogo",
+        "download_zip": "https://github.com/TaskBeacon/H000005-go-nogo/archive/refs/heads/main.zip"
+      }
     },
     {
       "id": "T000004",
@@ -2184,7 +2660,21 @@
       "readme_snapshot_path": "/readmes/T000004-flanker.md",
       "readme_run_anchor": "#run",
       "run_url": null,
-      "web_variant": null
+      "web_variant": {
+        "id": "H000004",
+        "repo": "H000004-flanker",
+        "title": "Flanker Task",
+        "html_url": "https://github.com/TaskBeacon/H000004-flanker",
+        "default_branch": "main",
+        "short_description": "HTML/browser preview of the Flanker task built with psyflow-web. The within-trial procedure, condition semantics, response rules, timing ...",
+        "maturity": "prototype",
+        "acquisition": "behavior",
+        "variant": "html",
+        "release_tag": "0.1.0",
+        "last_updated": "2026-05-15T02:55:58Z",
+        "run_url": "https://taskbeacon.github.io/psyflow-web/?task=H000004-flanker",
+        "download_zip": "https://github.com/TaskBeacon/H000004-flanker/archive/refs/heads/main.zip"
+      }
     },
     {
       "id": "T000003",
@@ -2224,7 +2714,21 @@
       "readme_snapshot_path": "/readmes/T000003-emodot.md",
       "readme_run_anchor": "#run",
       "run_url": null,
-      "web_variant": null
+      "web_variant": {
+        "id": "H000003",
+        "repo": "H000003-emodot",
+        "title": "Emotional Dot-Probe Task (EmoDot)",
+        "html_url": "https://github.com/TaskBeacon/H000003-emodot",
+        "default_branch": "main",
+        "short_description": "HTML/browser preview of the Emotional Dot-Probe Task built with psyflow-web. The within-trial procedure, face-pair condition semantics, t...",
+        "maturity": "prototype",
+        "acquisition": "behavior",
+        "variant": "html",
+        "release_tag": "0.1.0",
+        "last_updated": "2026-05-15T02:55:48Z",
+        "run_url": "https://taskbeacon.github.io/psyflow-web/?task=H000003-emodot",
+        "download_zip": "https://github.com/TaskBeacon/H000003-emodot/archive/refs/heads/main.zip"
+      }
     },
     {
       "id": "T000002",
@@ -2266,7 +2770,21 @@
       "readme_snapshot_path": "/readmes/T000002-bart.md",
       "readme_run_anchor": "#run",
       "run_url": null,
-      "web_variant": null
+      "web_variant": {
+        "id": "H000002",
+        "repo": "H000002-bart",
+        "title": "Balloon Analogue Risk Task (BART)",
+        "html_url": "https://github.com/TaskBeacon/H000002-bart",
+        "default_branch": "main",
+        "short_description": "HTML/browser preview of the Balloon Analogue Risk Task built with psyflow-web. The within-trial pump/cash loop, deterministic explosion s...",
+        "maturity": "prototype",
+        "acquisition": "behavior",
+        "variant": "html",
+        "release_tag": "0.1.0",
+        "last_updated": "2026-05-15T02:55:37Z",
+        "run_url": "https://taskbeacon.github.io/psyflow-web/?task=H000002-bart",
+        "download_zip": "https://github.com/TaskBeacon/H000002-bart/archive/refs/heads/main.zip"
+      }
     },
     {
       "id": "T000001",
@@ -2313,7 +2831,21 @@
       "readme_snapshot_path": "/readmes/T000001-ax-cpt.md",
       "readme_run_anchor": "#run",
       "run_url": null,
-      "web_variant": null
+      "web_variant": {
+        "id": "H000001",
+        "repo": "H000001-ax-cpt",
+        "title": "AX-CPT Task",
+        "html_url": "https://github.com/TaskBeacon/H000001-ax-cpt",
+        "default_branch": "main",
+        "short_description": "HTML/browser preview of the AX-CPT task built with psyflow-web. The within-trial procedure, task rules, timing, weighted condition genera...",
+        "maturity": "prototype",
+        "acquisition": "behavior",
+        "variant": "html",
+        "release_tag": "0.1.0",
+        "last_updated": "2026-05-15T02:34:09Z",
+        "run_url": "https://taskbeacon.github.io/psyflow-web/?task=H000001-ax-cpt",
+        "download_zip": "https://github.com/TaskBeacon/H000001-ax-cpt/archive/refs/heads/main.zip"
+      }
     }
   ]
 }

@@ -2,22 +2,22 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Teams",
-  description: "Legacy alias for the Teams page."
+  title: "About",
+  description: "About TaskBeacon contributors, maintainers, and collaboration."
 };
 
 export default function AboutPage() {
   return (
     <div className="rounded-[32px] border border-slate-200 bg-white/90 p-8 shadow-sm">
       <div className="text-[11px] font-semibold uppercase tracking-[0.18em] text-slate-500">
-        Legacy alias
+        About
       </div>
       <h1 className="mt-3 font-heading text-3xl font-semibold tracking-tight text-slate-900">
-        Teams moved to a dedicated page.
+        TaskBeacon is built around shared task packages and public collaboration.
       </h1>
       <p className="mt-4 max-w-3xl text-base leading-7 text-slate-700">
-        The old About destination is no longer used in primary navigation. Use the Teams page for
-        public project ownership and collaboration context.
+        Use the Teams page to see how maintainers, contributors, and collaborators participate in
+        the project.
       </p>
       <div className="mt-6">
         <Link
