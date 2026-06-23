@@ -22,10 +22,10 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Rebuild task index
+      - name: Rebuild task index and contributors
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: npm run index
+        run: npm run index && npm run contributors
 
       - name: Upload index artifact
         uses: actions/upload-artifact@v4
@@ -34,4 +34,6 @@ jobs:
           path: |
             src/data/tasks_index.json
             src/data/readmes
+            src/data/contributors.json
+            public/readmes
             public/task-flows

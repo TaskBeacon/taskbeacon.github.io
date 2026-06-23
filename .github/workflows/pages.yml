@@ -37,16 +37,16 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Rebuild task index
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: npm run index
+      - name: Verify task-flow asset helpers
+        run: npm run test:task-flow
 
       - name: Configure Pages
         uses: actions/configure-pages@v4
 
       - name: Build static site
-        run: npm run build
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: npm run build:site
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
