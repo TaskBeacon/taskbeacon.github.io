@@ -6,6 +6,7 @@ import { CopyButton } from "@/components/copy-button";
 import { MaturityBadge } from "@/components/maturity-badge";
 import { Markdown } from "@/components/markdown";
 import { TaskAccessPanel } from "@/components/task-access-panel";
+import { TaskFlowPlaceholder } from "@/components/task-flow-placeholder";
 import { formatShortDate } from "@/lib/format";
 import { compactMeta, localCloneCommand, taskHandle, taskTitle } from "@/lib/task-display";
 import type { TaskIndexItem } from "@/lib/task-index";
@@ -15,7 +16,7 @@ import { useTaskWithHtmlCompanion } from "@/lib/use-html-companions";
 
 function Pill({ children }: { children: React.ReactNode }) {
   return (
-    <span className="inline-flex items-center rounded-full border border-slate-200 bg-white px-3 py-1 text-xs font-semibold text-slate-800">
+    <span className="inline-flex items-center rounded-full border-2 border-[#25314d] bg-white px-3 py-1 text-xs font-bold text-[#25314d]">
       {children}
     </span>
   );
@@ -49,7 +50,7 @@ export function TaskDetailPage({
     <div className="space-y-8">
       <div className="flex flex-wrap items-center justify-between gap-3">
         <Link
-          className="tb-focus-ring rounded-md text-sm font-semibold text-brand-800 hover:underline"
+          className="tb-focus-ring rounded-full border-2 border-[#25314d] bg-white px-4 py-2 text-sm font-bold text-[#25314d] shadow-[0_3px_0_#25314d] hover:bg-[#eef8ff]"
           href={tasksPageHref()}
         >
           Back to tasks
@@ -57,7 +58,7 @@ export function TaskDetailPage({
 
         <div className="flex flex-wrap items-center gap-2">
           <a
-            className="tb-focus-ring rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm font-semibold text-slate-900 shadow-sm hover:border-brand-200 hover:bg-brand-50"
+            className="tb-focus-ring rounded-[14px] border-2 border-[#25314d] bg-white px-3 py-2 text-sm font-bold text-[#25314d] hover:bg-[#eef8ff]"
             href={links.repo}
             target="_blank"
             rel="noreferrer"
@@ -66,7 +67,7 @@ export function TaskDetailPage({
           </a>
           {preview ? (
             <a
-              className="tb-focus-ring rounded-lg bg-cta-500 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-cta-600"
+              className="tb-focus-ring rounded-[14px] border-2 border-[#25314d] bg-[#39d95d] px-3 py-2 text-sm font-bold text-[#25314d] shadow-[0_3px_0_#25314d] hover:bg-[#2fb651] hover:text-white"
               href={preview.run_url}
               target="_blank"
               rel="noreferrer"
@@ -79,30 +80,36 @@ export function TaskDetailPage({
 
       <section className="grid grid-cols-1 gap-6 lg:grid-cols-12">
         <div className="lg:col-span-8">
-          <h1 className="font-heading text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl">
+          <div className="tb-section-chip bg-[#f5c1b5]">Task dossier</div>
+          <h1 className="mt-4 font-heading text-4xl font-bold leading-[0.95] text-[#25314d] sm:text-5xl">
             {taskTitle(mergedTask)}
           </h1>
-          <div className="mt-3 flex flex-wrap items-center gap-2 text-xs text-slate-600">
+          <div className="tb-meta-rail mt-5">
             <code className="rounded-full border border-slate-200 bg-white px-2.5 py-1 font-mono text-[11px] text-slate-700">
               {taskHandle(mergedTask)}
             </code>
-            <code className="rounded-full border border-slate-200 bg-white px-2.5 py-1 font-mono text-[11px] text-slate-700">
+            <code className="rounded-full border-2 border-[#25314d] bg-white px-2.5 py-1 font-mono text-[11px] font-bold text-[#25314d]">
               {mergedTask.repo}
             </code>
             {mergedTask.maturity ? <MaturityBadge maturity={mergedTask.maturity} /> : null}
             {preview ? (
-              <span className="rounded-full border border-brand-200 bg-brand-50 px-2.5 py-1 text-[11px] font-semibold text-brand-900">
+              <span className="rounded-full border-2 border-[#25314d] bg-[#ecffe5] px-3 py-1 text-[11px] font-bold text-[#25314d]">
                 Web preview available
               </span>
             ) : null}
+            <span className="rounded-full border-2 border-[#25314d] bg-white px-3 py-1 text-[11px] font-bold text-[#25314d]">
+              Updated {formatShortDate(mergedTask.last_updated)}
+            </span>
           </div>
           <p className="mt-4 max-w-3xl text-base leading-7 text-slate-700">
             {mergedTask.short_description}
           </p>
 
+          <TaskFlowPlaceholder task={mergedTask} className="mt-6" />
+
           {preview ? (
-            <section className="mt-6 rounded-2xl border border-brand-200 bg-gradient-to-br from-brand-50 via-white to-cyan-50 p-5 shadow-sm">
-              <div className="text-xs font-semibold uppercase tracking-wide text-slate-600">
+            <section className="tb-surface mt-6 p-5">
+              <div className="text-xs font-bold uppercase tracking-wide text-slate-600">
                 Preview path
               </div>
               <div className="mt-2 max-w-3xl text-sm leading-6 text-slate-700">
@@ -111,16 +118,16 @@ export function TaskDetailPage({
             </section>
           ) : null}
 
-          <div className="mt-6 rounded-2xl border border-slate-200 bg-white/85 p-5 shadow-sm">
+          <div className="tb-frame-soft mt-6 bg-[#fffdf9] p-5">
             <div>
-              <div className="text-xs font-semibold uppercase tracking-wide text-slate-600">
+              <div className="text-xs font-bold uppercase tracking-wide text-slate-600">
                 Quick start
               </div>
               <div className="mt-1 text-sm text-slate-700">
                 Clone locally, then follow the README for install and run instructions.
               </div>
             </div>
-            <pre className="mt-4 overflow-x-auto rounded-xl border border-slate-200 bg-slate-950 p-4 text-xs text-slate-50">
+            <pre className="mt-4 overflow-x-auto rounded-[18px] border-2 border-[#25314d] bg-[#172033] p-4 text-xs text-slate-50">
               <code>{quickStart}</code>
             </pre>
           </div>
@@ -160,15 +167,15 @@ export function TaskDetailPage({
               />
             ) : null}
 
-            <section className="rounded-2xl border border-slate-200 bg-white/85 p-5 shadow-sm">
-              <div className="text-xs font-semibold uppercase tracking-wide text-slate-600">
+            <section className="tb-frame-soft bg-[#fffdf9] p-5">
+              <div className="text-xs font-bold uppercase tracking-wide text-slate-600">
                 Metadata
               </div>
 
               <div className="mt-4 space-y-3 text-sm">
                 <div className="flex items-center justify-between gap-3">
                   <div className="text-slate-600">Last updated</div>
-                  <div className="font-semibold text-slate-900">
+                  <div className="font-bold text-[#25314d]">
                     {formatShortDate(mergedTask.last_updated)}
                   </div>
                 </div>
@@ -183,7 +190,7 @@ export function TaskDetailPage({
                 {mergedTask.release_tag ? (
                   <div className="flex items-center justify-between gap-3">
                     <div className="text-slate-600">Release</div>
-                    <div className="font-mono text-xs font-semibold text-slate-900">
+                    <div className="font-mono text-xs font-bold text-[#25314d]">
                       {mergedTask.release_tag}
                     </div>
                   </div>
@@ -192,14 +199,14 @@ export function TaskDetailPage({
                 {mergedTask.acquisition ? (
                   <div className="flex items-center justify-between gap-3">
                     <div className="text-slate-600">Acquisition</div>
-                    <div className="font-semibold text-slate-900">{mergedTask.acquisition}</div>
+                    <div className="font-bold text-[#25314d]">{mergedTask.acquisition}</div>
                   </div>
                 ) : null}
 
                 {mergedTask.psyflow_version ? (
                   <div className="flex items-center justify-between gap-3">
                     <div className="text-slate-600">PsyFlow</div>
-                    <div className="font-mono text-xs font-semibold text-slate-900">
+                    <div className="font-mono text-xs font-bold text-[#25314d]">
                       {mergedTask.psyflow_version}
                     </div>
                   </div>
@@ -208,7 +215,7 @@ export function TaskDetailPage({
                 {typeof mergedTask.has_voiceover === "boolean" ? (
                   <div className="flex items-center justify-between gap-3">
                     <div className="text-slate-600">Voiceover</div>
-                    <div className="font-semibold text-slate-900">
+                    <div className="font-bold text-[#25314d]">
                       {mergedTask.has_voiceover ? "Yes" : "No"}
                     </div>
                   </div>
@@ -227,8 +234,8 @@ export function TaskDetailPage({
               </div>
             </section>
 
-            <section className="rounded-2xl border border-slate-200 bg-white/85 p-5 shadow-sm">
-              <div className="text-xs font-semibold uppercase tracking-wide text-slate-600">
+            <section className="tb-frame-soft bg-[#fffdf9] p-5">
+              <div className="text-xs font-bold uppercase tracking-wide text-slate-600">
                 Tags
               </div>
               <div className="mt-3 flex flex-wrap gap-2">
@@ -247,8 +254,8 @@ export function TaskDetailPage({
               </div>
             </section>
 
-            <section className="rounded-2xl border border-slate-200 bg-brand-50 p-5 shadow-sm">
-              <div className="text-xs font-semibold uppercase tracking-wide text-slate-700">
+            <section className="tb-surface bg-[#eef8ff] p-5">
+              <div className="text-xs font-bold uppercase tracking-wide text-slate-700">
                 Access notes
               </div>
               <div className="mt-3 text-sm leading-6 text-slate-800">
@@ -259,13 +266,13 @@ export function TaskDetailPage({
         </aside>
       </section>
 
-      <section className="rounded-2xl border border-slate-200 bg-white/85 p-8 shadow-sm">
+      <section className="tb-frame bg-[#fffdf9] p-6 sm:p-8">
         <div className="flex items-center justify-between gap-4">
-          <h2 className="font-heading text-xl font-semibold tracking-tight text-slate-900">
+          <h2 className="font-heading text-2xl font-bold text-[#25314d]">
             README
           </h2>
           <a
-            className="tb-focus-ring rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm font-semibold text-slate-900 shadow-sm hover:border-brand-200 hover:bg-brand-50"
+            className="tb-focus-ring rounded-[14px] border-2 border-[#25314d] bg-white px-3 py-2 text-sm font-bold text-[#25314d] hover:bg-[#eef8ff]"
             href={links.repo}
             target="_blank"
             rel="noreferrer"
@@ -284,7 +291,7 @@ export function TaskDetailPage({
             />
           </div>
         ) : (
-          <div className="mt-6 rounded-xl border border-slate-200 bg-white p-5 text-sm text-slate-700">
+          <div className="mt-6 rounded-[18px] border-2 border-[#25314d] bg-white p-5 text-sm text-slate-700">
             README content is not available in this build.
             <div className="mt-2">
               Open the repo directly:{" "}

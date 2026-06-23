@@ -36,6 +36,18 @@ export function SiteFooter() {
               <div className="mt-5 text-xs text-slate-600">
                 TaskBeacon GitHub organization remains the public source of truth for active repositories.
               </div>
+
+              <div className="mt-5 flex flex-wrap gap-4 text-xs font-bold text-[#25314d]">
+                <a className="tb-focus-ring rounded-md hover:underline" href="mailto:braintrace@yeah.net">
+                  Contact
+                </a>
+                <a className="tb-focus-ring rounded-md hover:underline" href="/privacy/">
+                  Privacy
+                </a>
+                <a className="tb-focus-ring rounded-md hover:underline" href="/terms/">
+                  Terms
+                </a>
+              </div>
             </div>
 
             <div className="lg:justify-self-end">

@@ -6,6 +6,7 @@ import { formatShortDate } from "@/lib/format";
 import { taskHandle, taskTitle } from "@/lib/task-display";
 import { MaturityBadge } from "@/components/maturity-badge";
 import { IconDownload, IconGithub, IconPlay } from "@/components/icons";
+import { TaskFlowPlaceholder } from "@/components/task-flow-placeholder";
 import clsx from "@/components/utils/clsx";
 import { taskDetailHref } from "@/lib/routes";
 
@@ -36,9 +37,9 @@ function ActionLink({
         "tb-focus-ring",
         tone === "preview-primary"
           ? "tb-button-primary"
-          : tone === "preview"
-            ? "tb-button-ghost bg-[#ffe9de]"
-            : "tb-button-secondary bg-[#d7ebf6]",
+        : tone === "preview"
+            ? "inline-flex items-center gap-2 rounded-[14px] border-2 border-[#25314d] bg-[#fff8f0] px-3 py-2 text-sm font-bold text-[#25314d] transition-colors hover:bg-[#ffe9de]"
+            : "inline-flex items-center gap-2 rounded-[14px] border-2 border-[#25314d] bg-white px-3 py-2 text-sm font-bold text-[#25314d] transition-colors hover:bg-[#eef8ff]",
         className
       )}
       href={href}
@@ -85,38 +86,53 @@ export function TaskRow({
         </div>
       </div>
 
-      <div className="mt-4 grid gap-4 xl:grid-cols-[minmax(0,1fr)_auto] xl:items-start">
+      <div className="mt-4">
         <p className="max-w-4xl text-sm leading-7 text-slate-700 sm:text-base">
           {task.short_description || "No description provided."}
         </p>
 
-        <div className="flex flex-wrap gap-2 xl:flex-col xl:items-end">
+        <div className="mt-5 grid gap-3 md:grid-cols-3">
           <button
             type="button"
-            className="tb-focus-ring tb-button-primary min-w-[190px] whitespace-nowrap"
+            className={clsx(
+              "tb-focus-ring w-full whitespace-nowrap",
+              preview ? "tb-button-secondary" : "tb-button-primary"
+            )}
             onClick={() => onOpen(task)}
           >
             Expand details
           </button>
+          <Link
+            className="tb-focus-ring tb-button-ghost w-full whitespace-nowrap justify-center"
+            href={taskDetailHref(task.repo)}
+          >
+            Open full page
+          </Link>
           {preview ? (
             <ActionLink
               href={preview.run_url}
               label="Run Preview"
               icon="play"
               tone="preview-primary"
-              className="min-w-[190px] whitespace-nowrap justify-center"
+              className="w-full whitespace-nowrap justify-center"
             />
-          ) : null}
-          <Link
-            className="tb-focus-ring tb-button-secondary min-w-[190px] whitespace-nowrap justify-center"
-            href={taskDetailHref(task.repo)}
-          >
-            Open full page
-          </Link>
+          ) : (
+            <button
+              type="button"
+              className="inline-flex w-full cursor-not-allowed items-center justify-center gap-2 whitespace-nowrap rounded-[18px] border-2 border-slate-300 bg-slate-100 px-5 py-3 text-sm font-bold leading-none text-slate-400 shadow-[0_4px_0_#cbd5e1]"
+              disabled
+              aria-disabled="true"
+            >
+              <IconPlay className="size-4" />
+              Run Preview
+            </button>
+          )}
         </div>
       </div>
 
-      <div className="mt-6 space-y-3">
+      <TaskFlowPlaceholder task={task} compact className="mt-5" />
+
+      <div className="mt-5 grid gap-3 border-t-2 border-[#25314d]/10 pt-4">
         <div className="flex flex-col gap-2 sm:flex-row sm:items-center">
           <div className="text-[11px] font-bold uppercase tracking-[0.18em] text-slate-500 sm:min-w-[88px]">
             PsyFlow

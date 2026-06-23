@@ -4,7 +4,6 @@ import clsx from "@/components/utils/clsx";
 import { IconChevronLeft, IconChevronRight } from "@/components/icons";
 import { useDeferredValue, useEffect, useMemo, useState } from "react";
 import type { TaskFacet, TaskIndexItem } from "@/lib/task-index";
-import { taskHasPreview } from "@/lib/html-companions";
 import {
   emptySelectedFacets,
   facetValues,
@@ -176,7 +175,6 @@ export function GalleryClient({
   const allMaturities = useMemo(() => facetValues(mergedTasks, "maturity"), [mergedTasks]);
   const allPreviewValues = useMemo(() => facetValues(mergedTasks, "preview"), [mergedTasks]);
   const allParadigms = useMemo(() => facetValues(mergedTasks, "paradigm"), [mergedTasks]);
-  const previewCount = useMemo(() => mergedTasks.filter((task) => taskHasPreview(task)).length, [mergedTasks]);
   const filtered = useMemo(
     () => filterTasks(mergedTasks, deferredQuery, selected),
     [deferredQuery, mergedTasks, selected]
@@ -199,6 +197,11 @@ export function GalleryClient({
     selected.response.size > 0 ||
     selected.modality.size > 0 ||
     selected.language.size > 0;
+  const activeFilterLabels = [
+    ...Array.from(selected.maturity).map((value) => `Maturity: ${formatMaturityLabel(value)}`),
+    ...Array.from(selected.preview).map((value) => `Preview: ${value}`),
+    ...Array.from(selected.paradigm).map((value) => `Type: ${value}`)
+  ];
 
   useEffect(() => {
     if (typeof window === "undefined") return undefined;
@@ -257,33 +260,7 @@ export function GalleryClient({
   }
 
   return (
-    <section className="space-y-8 lg:pt-6">
-      <div className="max-w-4xl">
-        <div className="tb-section-chip bg-[#f5d7cf]">Task Explorer</div>
-        <div className="mt-5 font-heading text-5xl font-bold leading-[0.94] text-[#25314d] sm:text-6xl">
-            Find The Right Task,
-            <br />
-            <span className="text-[#39d95d]">Filter Faster,</span>
-            <br />
-            Expand Only What Matters.
-        </div>
-        <div className="mt-5 max-w-2xl text-base leading-8 text-slate-700">
-          This explorer keeps the denser list workflow while adopting the clearer, stronger page
-          language from the rest of the site.
-        </div>
-
-        <div className="mt-8 flex flex-wrap gap-4">
-            <div className="tb-frame-soft min-w-[160px] bg-[#fffdf9] px-5 py-4">
-            <div className="font-heading text-3xl font-bold text-[#25314d]">{mergedTasks.length}</div>
-            <div className="text-sm text-slate-600">Total tasks</div>
-          </div>
-          <div className="tb-frame-soft min-w-[160px] bg-[#eef8ff] px-5 py-4">
-            <div className="font-heading text-3xl font-bold text-[#25314d]">{previewCount}</div>
-            <div className="text-sm text-slate-600">With preview</div>
-          </div>
-        </div>
-      </div>
-
+    <section className="space-y-6 lg:pt-4">
       <div className="grid grid-cols-1 gap-6 lg:grid-cols-12">
         <aside className="lg:col-span-4 xl:col-span-3">
           <div className="space-y-4 lg:sticky lg:top-32">
@@ -316,6 +293,29 @@ export function GalleryClient({
                 ) : null}
               </div>
             </section>
+
+            {anyFilters ? (
+              <section className="tb-surface p-4">
+                <div className="text-[11px] font-bold uppercase tracking-[0.18em] text-slate-500">
+                  Active filters
+                </div>
+                <div className="mt-3 flex flex-wrap gap-2">
+                  {query.trim() ? (
+                    <span className="rounded-full bg-[#25314d] px-3 py-1 text-xs font-bold text-white">
+                      Search: {query.trim()}
+                    </span>
+                  ) : null}
+                  {activeFilterLabels.map((label) => (
+                    <span
+                      key={label}
+                      className="rounded-full border-2 border-[#25314d] bg-white px-3 py-1 text-xs font-bold text-[#25314d]"
+                    >
+                      {label}
+                    </span>
+                  ))}
+                </div>
+              </section>
+            ) : null}
 
             <FacetSection
               title="Maturity"

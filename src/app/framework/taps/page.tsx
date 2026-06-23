@@ -22,13 +22,16 @@ export default function TapsPage() {
           This page renders the maintained `source/taps.md` document as a TaskBeacon web page.
         </p>
         <div className="mt-5 flex flex-wrap gap-3">
+          <Link className="tb-focus-ring tb-button-primary" href="/#framework">
+            Back to framework
+          </Link>
           <a
             className="tb-focus-ring tb-button-secondary"
             href={siteDocGithubUrl("taps")}
             target="_blank"
             rel="noreferrer"
           >
-            View source document
+            Edit source
           </a>
           <Link className="tb-focus-ring tb-button-primary" href="/tasks/">
             Browse task packages

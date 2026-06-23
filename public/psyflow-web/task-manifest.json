@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-05-15T07:29:06.109Z",
+  "generated_at": "2026-06-23T11:44:23.314Z",
   "org": "TaskBeacon",
   "runner_repo": "psyflow-web",
   "runner_url": "https://taskbeacon.github.io/psyflow-web/",
@@ -18,7 +18,7 @@
       "default_branch": "main",
       "download_url": "https://github.com/TaskBeacon/H000001-ax-cpt/archive/refs/heads/main.zip",
       "run_url": "https://taskbeacon.github.io/psyflow-web/?task=H000001-ax-cpt",
-      "last_updated": "2026-05-15T02:34:09Z"
+      "last_updated": "2026-06-22T01:04:48Z"
     },
     {
       "directory": "H000002-bart",
@@ -33,7 +33,7 @@
       "default_branch": "main",
       "download_url": "https://github.com/TaskBeacon/H000002-bart/archive/refs/heads/main.zip",
       "run_url": "https://taskbeacon.github.io/psyflow-web/?task=H000002-bart",
-      "last_updated": "2026-05-15T02:55:37Z"
+      "last_updated": "2026-06-23T06:08:30Z"
     },
     {
       "directory": "H000003-emodot",
@@ -48,7 +48,7 @@
       "default_branch": "main",
       "download_url": "https://github.com/TaskBeacon/H000003-emodot/archive/refs/heads/main.zip",
       "run_url": "https://taskbeacon.github.io/psyflow-web/?task=H000003-emodot",
-      "last_updated": "2026-05-15T02:55:48Z"
+      "last_updated": "2026-06-23T06:17:55Z"
     },
     {
       "directory": "H000004-flanker",
@@ -63,7 +63,7 @@
       "default_branch": "main",
       "download_url": "https://github.com/TaskBeacon/H000004-flanker/archive/refs/heads/main.zip",
       "run_url": "https://taskbeacon.github.io/psyflow-web/?task=H000004-flanker",
-      "last_updated": "2026-05-15T02:55:58Z"
+      "last_updated": "2026-06-23T06:22:19Z"
     },
     {
       "directory": "H000005-go-nogo",
@@ -78,7 +78,7 @@
       "default_branch": "main",
       "download_url": "https://github.com/TaskBeacon/H000005-go-nogo/archive/refs/heads/main.zip",
       "run_url": "https://taskbeacon.github.io/psyflow-web/?task=H000005-go-nogo",
-      "last_updated": "2026-05-15T02:56:09Z"
+      "last_updated": "2026-06-23T06:25:25Z"
     },
     {
       "directory": "H000006-mid",
@@ -93,7 +93,7 @@
       "default_branch": "main",
       "download_url": "https://github.com/TaskBeacon/H000006-mid/archive/refs/heads/main.zip",
       "run_url": "https://taskbeacon.github.io/psyflow-web/?task=H000006-mid",
-      "last_updated": "2026-05-15T02:56:20Z"
+      "last_updated": "2026-06-23T06:29:17Z"
     },
     {
       "directory": "H000007-movie",
@@ -108,7 +108,7 @@
       "default_branch": "main",
       "download_url": "https://github.com/TaskBeacon/H000007-movie/archive/refs/heads/main.zip",
       "run_url": "https://taskbeacon.github.io/psyflow-web/?task=H000007-movie",
-      "last_updated": "2026-05-15T02:56:31Z"
+      "last_updated": "2026-06-23T06:32:22Z"
     },
     {
       "directory": "H000008-nback",
@@ -123,7 +123,7 @@
       "default_branch": "main",
       "download_url": "https://github.com/TaskBeacon/H000008-nback/archive/refs/heads/main.zip",
       "run_url": "https://taskbeacon.github.io/psyflow-web/?task=H000008-nback",
-      "last_updated": "2026-05-15T02:57:17Z"
+      "last_updated": "2026-06-23T06:35:40Z"
     },
     {
       "directory": "H000009-prl",
@@ -138,7 +138,7 @@
       "default_branch": "main",
       "download_url": "https://github.com/TaskBeacon/H000009-prl/archive/refs/heads/main.zip",
       "run_url": "https://taskbeacon.github.io/psyflow-web/?task=H000009-prl",
-      "last_updated": "2026-05-15T02:57:28Z"
+      "last_updated": "2026-06-23T06:42:58Z"
     },
     {
       "directory": "H000010-rest",
@@ -153,7 +153,7 @@
       "default_branch": "main",
       "download_url": "https://github.com/TaskBeacon/H000010-rest/archive/refs/heads/main.zip",
       "run_url": "https://taskbeacon.github.io/psyflow-web/?task=H000010-rest",
-      "last_updated": "2026-05-15T02:57:39Z"
+      "last_updated": "2026-06-23T06:46:12Z"
     },
     {
       "directory": "H000011-simon",
@@ -168,7 +168,7 @@
       "default_branch": "main",
       "download_url": "https://github.com/TaskBeacon/H000011-simon/archive/refs/heads/main.zip",
       "run_url": "https://taskbeacon.github.io/psyflow-web/?task=H000011-simon",
-      "last_updated": "2026-05-15T03:16:08Z"
+      "last_updated": "2026-06-23T06:51:18Z"
     },
     {
       "directory": "H000012-sst",
@@ -183,7 +183,7 @@
       "default_branch": "main",
       "download_url": "https://github.com/TaskBeacon/H000012-sst/archive/refs/heads/main.zip",
       "run_url": "https://taskbeacon.github.io/psyflow-web/?task=H000012-sst",
-      "last_updated": "2026-05-15T03:16:14Z"
+      "last_updated": "2026-06-23T06:58:13Z"
     },
     {
       "directory": "H000013-sst-audio",
@@ -198,7 +198,7 @@
       "default_branch": "main",
       "download_url": "https://github.com/TaskBeacon/H000013-sst-audio/archive/refs/heads/main.zip",
       "run_url": "https://taskbeacon.github.io/psyflow-web/?task=H000013-sst-audio",
-      "last_updated": "2026-05-15T03:16:19Z"
+      "last_updated": "2026-06-23T07:01:04Z"
     },
     {
       "directory": "H000014-stroop",
@@ -213,7 +213,7 @@
       "default_branch": "main",
       "download_url": "https://github.com/TaskBeacon/H000014-stroop/archive/refs/heads/main.zip",
       "run_url": "https://taskbeacon.github.io/psyflow-web/?task=H000014-stroop",
-      "last_updated": "2026-05-15T03:16:25Z"
+      "last_updated": "2026-06-23T07:04:44Z"
     },
     {
       "directory": "H000015-ant",
@@ -228,7 +228,7 @@
       "default_branch": "main",
       "download_url": "https://github.com/TaskBeacon/H000015-ant/archive/refs/heads/main.zip",
       "run_url": "https://taskbeacon.github.io/psyflow-web/?task=H000015-ant",
-      "last_updated": "2026-05-15T03:16:30Z"
+      "last_updated": "2026-06-23T07:08:12Z"
     },
     {
       "directory": "H000016-card-sorting",
@@ -243,7 +243,7 @@
       "default_branch": "main",
       "download_url": "https://github.com/TaskBeacon/H000016-card-sorting/archive/refs/heads/main.zip",
       "run_url": "https://taskbeacon.github.io/psyflow-web/?task=H000016-card-sorting",
-      "last_updated": "2026-05-15T03:16:35Z"
+      "last_updated": "2026-06-23T07:14:57Z"
     },
     {
       "directory": "H000017-delay-discounting",
@@ -258,7 +258,7 @@
       "default_branch": "main",
       "download_url": "https://github.com/TaskBeacon/H000017-delay-discounting/archive/refs/heads/main.zip",
       "run_url": "https://taskbeacon.github.io/psyflow-web/?task=H000017-delay-discounting",
-      "last_updated": "2026-05-15T03:16:41Z"
+      "last_updated": "2026-06-23T07:19:59Z"
     },
     {
       "directory": "H000018-oddball-mmn",
@@ -273,7 +273,7 @@
       "default_branch": "main",
       "download_url": "https://github.com/TaskBeacon/H000018-oddball-mmn/archive/refs/heads/main.zip",
       "run_url": "https://taskbeacon.github.io/psyflow-web/?task=H000018-oddball-mmn",
-      "last_updated": "2026-05-15T03:16:46Z"
+      "last_updated": "2026-06-23T07:23:21Z"
     },
     {
       "directory": "H000019-eefrt",
@@ -288,7 +288,7 @@
       "default_branch": "main",
       "download_url": "https://github.com/TaskBeacon/H000019-eefrt/archive/refs/heads/main.zip",
       "run_url": "https://taskbeacon.github.io/psyflow-web/?task=H000019-eefrt",
-      "last_updated": "2026-05-15T03:16:51Z"
+      "last_updated": "2026-06-23T07:33:11Z"
     },
     {
       "directory": "H000020-one-armed-bandit",
@@ -303,7 +303,7 @@
       "default_branch": "main",
       "download_url": "https://github.com/TaskBeacon/H000020-one-armed-bandit/archive/refs/heads/main.zip",
       "run_url": "https://taskbeacon.github.io/psyflow-web/?task=H000020-one-armed-bandit",
-      "last_updated": "2026-05-15T03:16:56Z"
+      "last_updated": "2026-06-23T07:38:40Z"
     },
     {
       "directory": "H000021-drifting-double-bandit",
@@ -318,7 +318,7 @@
       "default_branch": "main",
       "download_url": "https://github.com/TaskBeacon/H000021-drifting-double-bandit/archive/refs/heads/main.zip",
       "run_url": "https://taskbeacon.github.io/psyflow-web/?task=H000021-drifting-double-bandit",
-      "last_updated": "2026-05-15T03:17:01Z"
+      "last_updated": "2026-06-23T07:44:15Z"
     },
     {
       "directory": "H000022-passive-lottery",
@@ -333,7 +333,7 @@
       "default_branch": "main",
       "download_url": "https://github.com/TaskBeacon/H000022-passive-lottery/archive/refs/heads/main.zip",
       "run_url": "https://taskbeacon.github.io/psyflow-web/?task=H000022-passive-lottery",
-      "last_updated": "2026-05-15T03:17:07Z"
+      "last_updated": "2026-06-23T07:49:14Z"
     },
     {
       "directory": "H000023-ultimatum-game",
@@ -348,7 +348,7 @@
       "default_branch": "main",
       "download_url": "https://github.com/TaskBeacon/H000023-ultimatum-game/archive/refs/heads/main.zip",
       "run_url": "https://taskbeacon.github.io/psyflow-web/?task=H000023-ultimatum-game",
-      "last_updated": "2026-05-15T03:17:12Z"
+      "last_updated": "2026-06-23T07:53:06Z"
     },
     {
       "directory": "H000024-trust-game",
@@ -363,7 +363,7 @@
       "default_branch": "main",
       "download_url": "https://github.com/TaskBeacon/H000024-trust-game/archive/refs/heads/main.zip",
       "run_url": "https://taskbeacon.github.io/psyflow-web/?task=H000024-trust-game",
-      "last_updated": "2026-05-15T03:17:17Z"
+      "last_updated": "2026-06-23T07:58:05Z"
     },
     {
       "directory": "H000025-dictator-game",
@@ -378,7 +378,7 @@
       "default_branch": "main",
       "download_url": "https://github.com/TaskBeacon/H000025-dictator-game/archive/refs/heads/main.zip",
       "run_url": "https://taskbeacon.github.io/psyflow-web/?task=H000025-dictator-game",
-      "last_updated": "2026-05-15T03:17:22Z"
+      "last_updated": "2026-06-23T08:04:51Z"
     },
     {
       "directory": "H000026-mcgurk",
@@ -393,7 +393,7 @@
       "default_branch": "main",
       "download_url": "https://github.com/TaskBeacon/H000026-mcgurk/archive/refs/heads/main.zip",
       "run_url": "https://taskbeacon.github.io/psyflow-web/?task=H000026-mcgurk",
-      "last_updated": "2026-05-15T03:17:28Z"
+      "last_updated": "2026-06-23T08:13:34Z"
     },
     {
       "directory": "H000027-task-switching",
@@ -408,7 +408,7 @@
       "default_branch": "main",
       "download_url": "https://github.com/TaskBeacon/H000027-task-switching/archive/refs/heads/main.zip",
       "run_url": "https://taskbeacon.github.io/psyflow-web/?task=H000027-task-switching",
-      "last_updated": "2026-05-15T03:17:33Z"
+      "last_updated": "2026-06-23T08:20:16Z"
     },
     {
       "directory": "H000028-weather-prediction",
@@ -589,6 +589,246 @@
       "download_url": "https://github.com/TaskBeacon/H000039-probabilistic-reward-task/archive/refs/heads/main.zip",
       "run_url": "https://taskbeacon.github.io/psyflow-web/?task=H000039-probabilistic-reward-task",
       "last_updated": "2026-05-15T03:49:42Z"
+    },
+    {
+      "directory": "H000040-probabilistic-stimulus-selection",
+      "id": "H000040",
+      "slug": "probabilistic-stimulus-selection",
+      "title": "Probabilistic Stimulus Selection Task",
+      "acquisition": "behavior",
+      "maturity": "prototype",
+      "release_tag": "v0.1.0-dev",
+      "short_description": "Browser companion for the Chinese probabilistic stimulus selection task with kana stimuli and criterion-driven learning/transfer blocks",
+      "repo_url": "https://github.com/TaskBeacon/H000040-probabilistic-stimulus-selection",
+      "default_branch": "main",
+      "download_url": "https://github.com/TaskBeacon/H000040-probabilistic-stimulus-selection/archive/refs/heads/main.zip",
+      "run_url": "https://taskbeacon.github.io/psyflow-web/?task=H000040-probabilistic-stimulus-selection",
+      "last_updated": "2026-06-21T14:52:15Z"
+    },
+    {
+      "directory": "H000041-fixed-ratio-satiation-schedule",
+      "id": "H000041",
+      "slug": "fixed-ratio-satiation-schedule",
+      "title": "Fixed-ratio Satiation Schedule",
+      "acquisition": "behavior",
+      "maturity": "draft",
+      "release_tag": "v0.1.0-dev",
+      "short_description": "Browser companion for the fixed-ratio satiation schedule task, preserving FR5/FR10/FR20 press requirements, timeout logic, token rewards,...",
+      "repo_url": "https://github.com/TaskBeacon/H000041-fixed-ratio-satiation-schedule",
+      "default_branch": "main",
+      "download_url": "https://github.com/TaskBeacon/H000041-fixed-ratio-satiation-schedule/archive/refs/heads/main.zip",
+      "run_url": "https://taskbeacon.github.io/psyflow-web/?task=H000041-fixed-ratio-satiation-schedule",
+      "last_updated": "2026-06-21T15:08:01Z"
+    },
+    {
+      "directory": "H000042-trier-social-stress-test",
+      "id": "H000042",
+      "slug": "trier-social-stress-test",
+      "title": "Trier Social Stress Test",
+      "acquisition": "behavior",
+      "maturity": "draft",
+      "release_tag": "v0.1.0-dev",
+      "short_description": "Browser companion for the Trier Social Stress Test, preserving baseline, preparation, speech, arithmetic, recovery, and elapsed-phase sum...",
+      "repo_url": "https://github.com/TaskBeacon/H000042-trier-social-stress-test",
+      "default_branch": "main",
+      "download_url": "https://github.com/TaskBeacon/H000042-trier-social-stress-test/archive/refs/heads/main.zip",
+      "run_url": "https://taskbeacon.github.io/psyflow-web/?task=H000042-trier-social-stress-test",
+      "last_updated": "2026-06-21T15:11:41Z"
+    },
+    {
+      "directory": "H000043-temporal-bisection-task",
+      "id": "H000043",
+      "slug": "temporal-bisection-task",
+      "title": "Temporal Bisection Task",
+      "acquisition": "behavior",
+      "maturity": "draft",
+      "release_tag": "v0.1.0-dev",
+      "short_description": "Browser companion for the temporal bisection task, preserving learning anchors, probe durations, left/right short-long responses, and psy...",
+      "repo_url": "https://github.com/TaskBeacon/H000043-temporal-bisection-task",
+      "default_branch": "main",
+      "download_url": "https://github.com/TaskBeacon/H000043-temporal-bisection-task/archive/refs/heads/main.zip",
+      "run_url": "https://taskbeacon.github.io/psyflow-web/?task=H000043-temporal-bisection-task",
+      "last_updated": "2026-06-21T15:15:28Z"
+    },
+    {
+      "directory": "H000044-tapping-synchronization-task",
+      "id": "H000044",
+      "slug": "tapping-synchronization-task",
+      "title": "Tapping Synchronization Task",
+      "acquisition": "behavior",
+      "maturity": "draft",
+      "release_tag": "v0.1.0-dev",
+      "short_description": "Browser companion for the tapping synchronization task, preserving practice/test tempo scheduling, sync and continuation tapping windows,...",
+      "repo_url": "https://github.com/TaskBeacon/H000044-tapping-synchronization-task",
+      "default_branch": "main",
+      "download_url": "https://github.com/TaskBeacon/H000044-tapping-synchronization-task/archive/refs/heads/main.zip",
+      "run_url": "https://taskbeacon.github.io/psyflow-web/?task=H000044-tapping-synchronization-task",
+      "last_updated": "2026-06-22T00:57:11Z"
+    },
+    {
+      "directory": "H000045-hand-laterality-judgment",
+      "id": "H000045",
+      "slug": "hand-laterality-judgment",
+      "title": "Hand Laterality Judgment",
+      "acquisition": "behavior",
+      "maturity": "draft",
+      "release_tag": "v0.1.0-dev",
+      "short_description": "Browser companion for the hand laterality judgment task, preserving deterministic practice/test blocks, rotated hand stimuli, left/right ...",
+      "repo_url": "https://github.com/TaskBeacon/H000045-hand-laterality-judgment",
+      "default_branch": "main",
+      "download_url": "https://github.com/TaskBeacon/H000045-hand-laterality-judgment/archive/refs/heads/main.zip",
+      "run_url": "https://taskbeacon.github.io/psyflow-web/?task=H000045-hand-laterality-judgment",
+      "last_updated": "2026-06-21T15:24:28Z"
+    },
+    {
+      "directory": "H000046-anti-reach-task",
+      "id": "H000046",
+      "slug": "anti-reach-task",
+      "title": "Anti-Reach Task",
+      "acquisition": "behavior",
+      "maturity": "draft",
+      "release_tag": "v0.1.0-dev",
+      "short_description": "Browser companion for the anti-reach task, preserving pro/anti cue rules, eye-hand layouts, response keys, feedback, and block summaries.",
+      "repo_url": "https://github.com/TaskBeacon/H000046-anti-reach-task",
+      "default_branch": "main",
+      "download_url": "https://github.com/TaskBeacon/H000046-anti-reach-task/archive/refs/heads/main.zip",
+      "run_url": "https://taskbeacon.github.io/psyflow-web/?task=H000046-anti-reach-task",
+      "last_updated": "2026-06-21T15:29:01Z"
+    },
+    {
+      "directory": "H000047-language-based-visual-world-paradigm",
+      "id": "H000047",
+      "slug": "language-based-visual-world-paradigm",
+      "title": "Language-based Visual World Paradigm",
+      "acquisition": "behavior",
+      "maturity": "draft",
+      "release_tag": "v0.1.0-dev",
+      "short_description": "Browser companion for the language-based visual world paradigm, preserving four-card scenes, sentence listening, target-key selection, an...",
+      "repo_url": "https://github.com/TaskBeacon/H000047-language-based-visual-world-paradigm",
+      "default_branch": "main",
+      "download_url": "https://github.com/TaskBeacon/H000047-language-based-visual-world-paradigm/archive/refs/heads/main.zip",
+      "run_url": "https://taskbeacon.github.io/psyflow-web/?task=H000047-language-based-visual-world-paradigm",
+      "last_updated": "2026-06-21T15:33:40Z"
+    },
+    {
+      "directory": "H000048-ravens-progressive-matrices",
+      "id": "H000048",
+      "slug": "ravens-progressive-matrices",
+      "title": "Raven's Progressive Matrices",
+      "acquisition": "behavior",
+      "maturity": "draft",
+      "release_tag": "v0.1.0-dev",
+      "short_description": "Browser companion for Raven's Progressive Matrices, preserving generated matrix items, open and warning response windows, practice feedba...",
+      "repo_url": "https://github.com/TaskBeacon/H000048-ravens-progressive-matrices",
+      "default_branch": "main",
+      "download_url": "https://github.com/TaskBeacon/H000048-ravens-progressive-matrices/archive/refs/heads/main.zip",
+      "run_url": "https://taskbeacon.github.io/psyflow-web/?task=H000048-ravens-progressive-matrices",
+      "last_updated": "2026-06-21T15:39:17Z"
+    },
+    {
+      "directory": "H000049-matrix-reasoning",
+      "id": "H000049",
+      "slug": "matrix-reasoning",
+      "title": "Matrix Reasoning",
+      "acquisition": "behavior",
+      "maturity": "draft",
+      "release_tag": "v0.1.0-dev",
+      "short_description": "Browser companion for Matrix Reasoning, preserving generated matrix items, open and warning response windows, practice feedback, and reas...",
+      "repo_url": "https://github.com/TaskBeacon/H000049-matrix-reasoning",
+      "default_branch": "main",
+      "download_url": "https://github.com/TaskBeacon/H000049-matrix-reasoning/archive/refs/heads/main.zip",
+      "run_url": "https://taskbeacon.github.io/psyflow-web/?task=H000049-matrix-reasoning",
+      "last_updated": "2026-06-21T15:40:54Z"
+    },
+    {
+      "directory": "H000050-mental-rotation-task",
+      "id": "H000050",
+      "slug": "mental-rotation-task",
+      "title": "Mental Rotation Task",
+      "acquisition": "behavior",
+      "maturity": "draft",
+      "release_tag": "v0.1.0-dev",
+      "short_description": "Browser companion for the intended Mental Rotation Task, preserving angle-by-baseline stimulus scheduling, same/different scoring, practi...",
+      "repo_url": "https://github.com/TaskBeacon/H000050-mental-rotation-task",
+      "default_branch": "main",
+      "download_url": "https://github.com/TaskBeacon/H000050-mental-rotation-task/archive/refs/heads/main.zip",
+      "run_url": "https://taskbeacon.github.io/psyflow-web/?task=H000050-mental-rotation-task",
+      "last_updated": "2026-06-22T00:16:20Z"
+    },
+    {
+      "directory": "H000051-paired-associate-learning-task",
+      "id": "H000051",
+      "slug": "paired-associate-learning-task",
+      "title": "Paired-Associate Learning Task",
+      "acquisition": "behavior",
+      "maturity": "draft",
+      "release_tag": "v0.1.0-dev",
+      "short_description": "Browser companion for paired-associate learning, preserving study relation judgments, four-choice associative recognition, practice feedb...",
+      "repo_url": "https://github.com/TaskBeacon/H000051-paired-associate-learning-task",
+      "default_branch": "main",
+      "download_url": "https://github.com/TaskBeacon/H000051-paired-associate-learning-task/archive/refs/heads/main.zip",
+      "run_url": "https://taskbeacon.github.io/psyflow-web/?task=H000051-paired-associate-learning-task",
+      "last_updated": "2026-06-21T15:49:07Z"
+    },
+    {
+      "directory": "H000052-transitive-inference-task",
+      "id": "H000052",
+      "slug": "transitive-inference-task",
+      "title": "Transitive Inference Task",
+      "acquisition": "behavior",
+      "maturity": "draft",
+      "release_tag": "v0.1.0-dev",
+      "short_description": "Browser companion for transitive inference, preserving premise-pair training, feedback, probe testing, and criterion summaries.",
+      "repo_url": "https://github.com/TaskBeacon/H000052-transitive-inference-task",
+      "default_branch": "main",
+      "download_url": "https://github.com/TaskBeacon/H000052-transitive-inference-task/archive/refs/heads/main.zip",
+      "run_url": "https://taskbeacon.github.io/psyflow-web/?task=H000052-transitive-inference-task",
+      "last_updated": "2026-06-21T15:52:15Z"
+    },
+    {
+      "directory": "H000053-acquired-equivalence-task",
+      "id": "H000053",
+      "slug": "acquired-equivalence-task",
+      "title": "Acquired Equivalence Task",
+      "acquisition": "behavior",
+      "maturity": "draft",
+      "release_tag": "v0.1.0-dev",
+      "short_description": "Browser companion for acquired equivalence, preserving face-fish choices, staged training, transfer probes, feedback, and summary scoring.",
+      "repo_url": "https://github.com/TaskBeacon/H000053-acquired-equivalence-task",
+      "default_branch": "main",
+      "download_url": "https://github.com/TaskBeacon/H000053-acquired-equivalence-task/archive/refs/heads/main.zip",
+      "run_url": "https://taskbeacon.github.io/psyflow-web/?task=H000053-acquired-equivalence-task",
+      "last_updated": "2026-06-21T15:55:11Z"
+    },
+    {
+      "directory": "H000054-delayed-recall-task",
+      "id": "H000054",
+      "slug": "delayed-recall-task",
+      "title": "Delayed Recall Task",
+      "acquisition": "behavior",
+      "maturity": "draft",
+      "release_tag": "v0.1.0-dev",
+      "short_description": "Browser companion for delayed recall, preserving sequence encoding, context tones, distractor arrows, order/distance/source probes, and s...",
+      "repo_url": "https://github.com/TaskBeacon/H000054-delayed-recall-task",
+      "default_branch": "main",
+      "download_url": "https://github.com/TaskBeacon/H000054-delayed-recall-task/archive/refs/heads/main.zip",
+      "run_url": "https://taskbeacon.github.io/psyflow-web/?task=H000054-delayed-recall-task",
+      "last_updated": "2026-06-22T01:02:22Z"
+    },
+    {
+      "directory": "H000055-drm-false-memory-paradigm",
+      "id": "H000055",
+      "slug": "drm-false-memory-paradigm",
+      "title": "DRM False Memory Paradigm",
+      "acquisition": "behavior",
+      "maturity": "draft",
+      "release_tag": "v0.1.0-dev",
+      "short_description": "Browser companion for the DRM false-memory paradigm, preserving list study, recognition confidence ratings, critical lure scoring, and li...",
+      "repo_url": "https://github.com/TaskBeacon/H000055-drm-false-memory-paradigm",
+      "default_branch": "main",
+      "download_url": "https://github.com/TaskBeacon/H000055-drm-false-memory-paradigm/archive/refs/heads/main.zip",
+      "run_url": "https://taskbeacon.github.io/psyflow-web/?task=H000055-drm-false-memory-paradigm",
+      "last_updated": "2026-06-21T16:08:18Z"
     }
   ]
 }

@@ -29,6 +29,8 @@ This ANT presents a target arrow flanked by congruent or incongruent arrows, wit
 
 ## 2. Task Flow
 
+![Task Flow](task_flow.png)
+
 ### Block-Level Flow
 
 | Step | Description |

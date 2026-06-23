@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import { IconChevronLeft, IconChevronRight, IconPlay } from "@/components/icons";
 import { MaturityBadge } from "@/components/maturity-badge";
 import { TaskDrawer } from "@/components/task-drawer";
+import { TaskFlowPlaceholder } from "@/components/task-flow-placeholder";
 import type { TaskIndexItem } from "@/lib/task-index";
 import { formatShortDate } from "@/lib/format";
 import { taskHandle, taskTitle } from "@/lib/task-display";
@@ -12,9 +13,11 @@ import { useTasksWithHtmlCompanions } from "@/lib/use-html-companions";
 import { taskDetailHref } from "@/lib/routes";
 
 export function FeaturedTaskCarousel({
-  tasks
+  tasks,
+  wide = false
 }: {
   tasks: TaskIndexItem[];
+  wide?: boolean;
 }) {
   const mergedTasks = useTasksWithHtmlCompanions(tasks);
   const [activeIndex, setActiveIndex] = useState(0);
@@ -44,15 +47,40 @@ export function FeaturedTaskCarousel({
   const activeTask = mergedTasks[normalizedActiveIndex] ?? mergedTasks[0];
   const preview = activeTask.web_variant;
   const drawerTask = mergedTasks.find((task) => task.repo === drawerRepo) ?? null;
+  const shellWidthClass = wide ? "max-w-6xl" : "max-w-[620px] lg:w-[620px]";
+  const activePanelHeightClass = wide ? "min-h-[560px]" : "min-h-[640px]";
 
   function goTo(nextIndex: number) {
     const total = mergedTasks.length;
     setActiveIndex(((nextIndex % total) + total) % total);
   }
 
+  const taskActions = (
+    <div className="mt-auto grid w-full grid-cols-2 gap-2 pt-5 sm:flex sm:flex-row sm:flex-nowrap sm:gap-3">
+      <button
+        type="button"
+        className="tb-focus-ring tb-button-primary w-full justify-center px-3 py-3 text-[0.85rem] sm:w-[11.5rem] sm:px-5 sm:py-3 sm:text-sm"
+        onClick={() => setDrawerRepo(activeTask.repo)}
+      >
+        Expand details
+      </button>
+      {preview ? (
+        <a
+          className="tb-focus-ring tb-button-secondary w-full justify-center bg-[#d7ebf6] px-3 py-3 text-[0.85rem] sm:w-[11.5rem] sm:px-5 sm:py-3 sm:text-sm"
+          href={preview.run_url}
+          target="_blank"
+          rel="noreferrer"
+        >
+          <IconPlay className="size-4" />
+          Run Preview
+        </a>
+      ) : null}
+    </div>
+  );
+
   return (
     <>
-      <div id="featured-task-carousel" className="mx-auto w-full max-w-[620px] lg:w-[620px]">
+      <div id="featured-task-carousel" className={`mx-auto w-full ${shellWidthClass}`}>
         <div className="tb-frame overflow-hidden bg-[#fffdf9] p-4 sm:p-6">
           <div className="flex flex-col gap-5">
             <div className="flex items-start justify-between gap-4">
@@ -101,7 +129,7 @@ export function FeaturedTaskCarousel({
               ))}
             </div>
 
-            <div className="tb-frame-soft flex min-h-[320px] w-full flex-col bg-[#f8fcff] p-4 sm:h-[392px] sm:p-6">
+            <div className={`tb-frame-soft flex w-full flex-col bg-[#f8fcff] p-4 sm:p-6 ${activePanelHeightClass}`}>
               <div className="min-h-[3rem] w-full content-start flex flex-wrap items-center gap-2 text-xs text-slate-600">
                 <code className="rounded-full border-2 border-[#25314d] bg-white px-2.5 py-1 font-mono text-[11px] font-semibold text-[#25314d]">
                   {taskHandle(activeTask)}
@@ -117,40 +145,43 @@ export function FeaturedTaskCarousel({
                 </span>
               </div>
 
-              <div
-                className="mt-4 min-h-[4.2rem] w-full font-heading text-[1.75rem] font-bold leading-[1.02] text-[#25314d] sm:min-h-[5.1rem] sm:text-[2.45rem] sm:[display:-webkit-box] sm:[-webkit-box-orient:vertical] sm:[-webkit-line-clamp:2] sm:overflow-hidden"
-              >
-                <Link className="tb-focus-ring rounded-lg hover:text-[#1b6f86]" href={taskDetailHref(activeTask.repo)}>
-                  {taskTitle(activeTask)}
-                </Link>
-              </div>
+              {wide ? (
+                <div className="mt-4 grid flex-1 gap-5 lg:grid-cols-[minmax(0,0.82fr)_minmax(0,1.18fr)] lg:items-stretch">
+                  <div className="flex min-w-0 flex-col">
+                    <div className="min-h-[4.2rem] w-full font-heading text-[1.75rem] font-bold leading-[1.02] text-[#25314d] sm:min-h-[5.1rem] sm:text-[2.45rem] sm:[display:-webkit-box] sm:[-webkit-box-orient:vertical] sm:[-webkit-line-clamp:2] sm:overflow-hidden">
+                      <Link className="tb-focus-ring rounded-lg hover:text-[#1b6f86]" href={taskDetailHref(activeTask.repo)}>
+                        {taskTitle(activeTask)}
+                      </Link>
+                    </div>
 
-              <p
-                className="mt-3 min-h-[5.25rem] w-full text-sm leading-6 text-slate-700 sm:min-h-[5.75rem] sm:text-base sm:leading-7 sm:[display:-webkit-box] sm:[-webkit-box-orient:vertical] sm:[-webkit-line-clamp:3] sm:overflow-hidden"
-              >
-                {activeTask.short_description}
-              </p>
+                    <p className="mt-3 min-h-[5.25rem] w-full text-sm leading-6 text-slate-700 sm:text-base sm:leading-7 sm:[display:-webkit-box] sm:[-webkit-box-orient:vertical] sm:[-webkit-line-clamp:3] sm:overflow-hidden">
+                      {activeTask.short_description}
+                    </p>
 
-              <div className="mt-auto grid w-full grid-cols-2 gap-2 sm:flex sm:flex-row sm:flex-nowrap sm:gap-3">
-                <button
-                  type="button"
-                  className="tb-focus-ring tb-button-primary w-full justify-center px-3 py-3 text-[0.85rem] sm:w-[11.5rem] sm:px-5 sm:py-3 sm:text-sm"
-                  onClick={() => setDrawerRepo(activeTask.repo)}
-                >
-                  Expand details
-                </button>
-                {preview ? (
-                  <a
-                    className="tb-focus-ring tb-button-secondary w-full justify-center bg-[#d7ebf6] px-3 py-3 text-[0.85rem] sm:w-[11.5rem] sm:px-5 sm:py-3 sm:text-sm"
-                    href={preview.run_url}
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    <IconPlay className="size-4" />
-                    Run Preview
-                  </a>
-                ) : null}
-              </div>
+                    {taskActions}
+                  </div>
+
+                  <div className="flex min-w-0 items-center">
+                    <TaskFlowPlaceholder task={activeTask} compact className="w-full" />
+                  </div>
+                </div>
+              ) : (
+                <>
+                  <div className="mt-4 min-h-[4.2rem] w-full font-heading text-[1.75rem] font-bold leading-[1.02] text-[#25314d] sm:min-h-[5.1rem] sm:text-[2.45rem] sm:[display:-webkit-box] sm:[-webkit-box-orient:vertical] sm:[-webkit-line-clamp:2] sm:overflow-hidden">
+                    <Link className="tb-focus-ring rounded-lg hover:text-[#1b6f86]" href={taskDetailHref(activeTask.repo)}>
+                      {taskTitle(activeTask)}
+                    </Link>
+                  </div>
+
+                  <p className="mt-3 min-h-[4.5rem] w-full text-sm leading-6 text-slate-700 sm:text-base sm:leading-7 sm:[display:-webkit-box] sm:[-webkit-box-orient:vertical] sm:[-webkit-line-clamp:3] sm:overflow-hidden">
+                    {activeTask.short_description}
+                  </p>
+
+                  <TaskFlowPlaceholder task={activeTask} compact className="mt-4" />
+
+                  {taskActions}
+                </>
+              )}
             </div>
           </div>
         </div>

@@ -22,17 +22,17 @@ export default function LocalizationPage() {
           This page renders the maintained `source/localization.md` document as a TaskBeacon web page.
         </p>
         <div className="mt-5 flex flex-wrap gap-3">
+          <Link className="tb-focus-ring tb-button-primary" href="/tutorial/">
+            Back to tutorials
+          </Link>
           <a
             className="tb-focus-ring tb-button-secondary"
             href={siteDocGithubUrl("localization")}
             target="_blank"
             rel="noreferrer"
           >
-            View source document
+            Edit source
           </a>
-          <Link className="tb-focus-ring tb-button-primary" href="/tutorial/">
-            Back to tutorials
-          </Link>
         </div>
       </section>
 

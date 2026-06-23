@@ -16,19 +16,22 @@ export function generateStaticParams() {
 export function generateMetadata({
   params
 }: {
-  params: { repo: string };
-}): Metadata {
-  const task = findTaskByRepo(params.repo);
-  if (!task) return { title: "Task" };
+  params: Promise<{ repo: string }>;
+}): Promise<Metadata> {
+  return params.then(({ repo }) => {
+    const task = findTaskByRepo(repo);
+    if (!task) return { title: "Task" };
 
-  return {
-    title: taskTitle(task),
-    description: task.short_description
-  };
+    return {
+      title: taskTitle(task),
+      description: task.short_description
+    };
+  });
 }
 
-export default function TaskPage({ params }: { params: { repo: string } }) {
-  const task = findTaskByRepo(params.repo);
+export default async function TaskPage({ params }: { params: Promise<{ repo: string }> }) {
+  const { repo } = await params;
+  const task = findTaskByRepo(repo);
   if (!task) notFound();
 
   const readmePath = path.join(

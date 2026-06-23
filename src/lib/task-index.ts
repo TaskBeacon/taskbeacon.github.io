@@ -28,6 +28,13 @@ export type TaskWebVariant = {
   download_zip: string;
 };
 
+export type TaskFlowAsset = {
+  thumb: string;
+  source: string;
+  updated_at: string;
+  format: "webp";
+};
+
 export type TaskIndexItem = {
   id?: string;
   slug?: string;
@@ -48,6 +55,7 @@ export type TaskIndexItem = {
   last_updated: string;
   structure?: TaskStructure;
   readme_snapshot_path: string;
+  task_flow?: TaskFlowAsset | null;
   readme_run_anchor?: string;
   run_url?: string | null;
   web_variant?: TaskWebVariant | null;

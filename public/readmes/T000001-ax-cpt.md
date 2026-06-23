@@ -20,7 +20,7 @@ This task is an AX-Continuous Performance Test (AX-CPT) designed to assess cogni
 
 ## 2. Task Flow
 
-![Task flow](./task_flow.png)
+![Task Flow](task_flow.png)
 
 ### Block-Level Flow
 | Step | Description |
@@ -39,6 +39,13 @@ This task is an AX-Continuous Performance Test (AX-CPT) designed to assess cogni
 | 4. Probe Presentation & Response | The probe letter (X or Y) is presented, and the participant responds. |
 | 4. Feedback | Feedback (`Correct`, `Incorrect`, or `Too Slow`) is displayed. |
 | 5. Inter-Trial Interval (ITI) | A blank screen is shown before the next trial. |
+
+### Controller Logic
+| Component | Description |
+|---|---|
+| Condition scheduling | `BlockUnit.generate_conditions()` uses config-defined AX/AY/BX/BY weights. |
+| Response scoring | `src/run_trial.py` derives the target response from cue-probe identity. |
+| Block summary | `main.py` computes probe accuracy for the inter-block feedback screen. |
 
 ### Runtime Context Phases
 | Phase Label | Meaning |

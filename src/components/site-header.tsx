@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { IconClose, IconMenu } from "@/components/icons";
 import { TaskBeaconLogo } from "@/components/taskbeacon-logo";
@@ -10,7 +11,6 @@ const PRIMARY_LINKS = [
   { label: "Home", href: "/" },
   { label: "Tasks", href: tasksPageHref() },
   { label: "Tutorial", href: "/tutorial/" },
-  { label: "Framework", href: "/framework/" },
   { label: "Contribute", href: "/contribute/" },
   { label: "Teams", href: "/teams/" },
   { label: "Jobs", href: jobsPageHref() }
@@ -20,22 +20,29 @@ function NavLink({
   href,
   label,
   onNavigate,
+  active,
   mobile = false
 }: {
   href: string;
   label: string;
   onNavigate?: () => void;
+  active?: boolean;
   mobile?: boolean;
 }) {
   return (
     <Link
       className={
         mobile
-          ? "tb-focus-ring block w-full rounded-[18px] border-2 border-[#25314d] bg-[#fffdf9] px-4 py-3 text-left text-base font-bold text-[#25314d] shadow-[0_4px_0_#25314d] transition-transform hover:-translate-y-px"
-          : "tb-focus-ring rounded-full px-3 py-2 text-sm font-medium text-slate-600 transition-colors hover:text-[#25314d]"
+          ? active
+            ? "tb-focus-ring block w-full rounded-[18px] border-2 border-[#25314d] bg-[#25314d] px-4 py-3 text-left text-base font-bold text-white shadow-[0_4px_0_#39d95d] transition-transform hover:-translate-y-px"
+            : "tb-focus-ring block w-full rounded-[18px] border-2 border-[#25314d] bg-[#fffdf9] px-4 py-3 text-left text-base font-bold text-[#25314d] shadow-[0_4px_0_#25314d] transition-transform hover:-translate-y-px"
+          : active
+            ? "tb-focus-ring rounded-full bg-[#25314d] px-3 py-2 text-sm font-bold text-white shadow-[0_3px_0_#39d95d]"
+            : "tb-focus-ring rounded-full px-3 py-2 text-sm font-medium text-slate-600 transition-colors hover:bg-[#eef8ff] hover:text-[#25314d]"
       }
       href={href}
       onClick={onNavigate}
+      aria-current={active ? "page" : undefined}
     >
       {label}
     </Link>
@@ -44,6 +51,16 @@ function NavLink({
 
 export function SiteHeader() {
   const [open, setOpen] = useState(false);
+  const pathname = usePathname();
+
+  function isActive(href: string) {
+    const normalize = (value: string) =>
+      value.length > 1 ? value.replace(/\/+$/, "") : value;
+    const path = normalize(pathname || "/");
+    const target = normalize(href);
+    if (target === "/") return path === "/";
+    return path === target || path.startsWith(`${target}/`);
+  }
 
   return (
     <header className="fixed left-0 right-0 top-0 z-50">
@@ -60,7 +77,7 @@ export function SiteHeader() {
 
             <nav className="hidden items-center gap-1 lg:flex">
               {PRIMARY_LINKS.map((link) => (
-                <NavLink key={link.href} {...link} />
+                <NavLink key={link.href} {...link} active={isActive(link.href)} />
               ))}
               <a
                 className="tb-focus-ring tb-button-primary px-5 py-3 text-sm"
@@ -87,7 +104,13 @@ export function SiteHeader() {
             <div className="mt-3 rounded-[24px] border-2 border-[#25314d] bg-[#fffdf9] p-3 shadow-[0_5px_0_#25314d] lg:hidden">
               <div className="grid gap-2">
                 {PRIMARY_LINKS.map((link) => (
-                  <NavLink key={link.href} {...link} mobile onNavigate={() => setOpen(false)} />
+                  <NavLink
+                    key={link.href}
+                    {...link}
+                    active={isActive(link.href)}
+                    mobile
+                    onNavigate={() => setOpen(false)}
+                  />
                 ))}
               </div>
             <div className="mt-3 grid gap-2">

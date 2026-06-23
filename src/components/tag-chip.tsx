@@ -21,7 +21,7 @@ export function TagChip({
         "tb-focus-ring inline-flex items-center gap-2 rounded-full border-2 px-3 py-1 text-xs font-bold transition-colors",
         "border-[#25314d] cursor-pointer",
         selected
-          ? "bg-[#39d95d] text-white"
+          ? "bg-[#39d95d] text-[#25314d]"
           : "bg-white text-[#25314d] hover:bg-[#e2f3fb]"
       )}
       onClick={onClick}

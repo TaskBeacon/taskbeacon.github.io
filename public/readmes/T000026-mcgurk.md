@@ -29,6 +29,8 @@ Primary outcome is fusion tendency in incongruent trials (`report=/da/`).
 
 ## 2. Task Flow
 
+![Task Flow](task_flow.png)
+
 ### Block-Level Flow
 
 | Step | Description |

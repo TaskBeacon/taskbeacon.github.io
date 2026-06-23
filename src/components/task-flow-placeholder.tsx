@@ -1,48 +1,68 @@
 import clsx from "@/components/utils/clsx";
-
-const STEPS = ["Setup", "Trial", "Feedback", "Export"];
+import type { TaskIndexItem } from "@/lib/task-index";
+import { taskTitle } from "@/lib/task-display";
 
 export function TaskFlowPlaceholder({
-  compact = false
+  task,
+  compact = false,
+  className
 }: {
+  task?: TaskIndexItem;
   compact?: boolean;
+  className?: string;
 }) {
-  return (
-    <section
-      className={clsx(
-        "rounded-2xl border border-dashed border-brand-200 bg-gradient-to-br from-white via-brand-50/70 to-cyan-50/70",
-        compact ? "p-4" : "p-5"
-      )}
-    >
-      <div className="flex items-center justify-between gap-3">
-        <div>
-          <div className="text-[11px] font-semibold uppercase tracking-[0.18em] text-brand-900">
-            Task Flow
-          </div>
-          <div className="mt-1 text-sm text-slate-700">
-            Open details to inspect the README flow diagram and protocol notes.
-          </div>
-        </div>
-        <div className="rounded-full border border-brand-200 bg-white px-3 py-1 text-[11px] font-semibold text-brand-900">
-          README-driven
-        </div>
-      </div>
+  const imageSrc = task?.task_flow?.thumb ?? null;
 
-      <div className="mt-4 grid grid-cols-4 items-center gap-3">
-        {STEPS.map((step, index) => (
-          <div key={step} className="relative">
-            {index > 0 ? (
-              <div className="absolute -left-4 top-3 hidden h-px w-5 bg-brand-300 sm:block" />
-            ) : null}
-            <div className="rounded-2xl border border-white/80 bg-white/90 px-3 py-3 text-center shadow-sm">
-              <div className="mx-auto size-3 rounded-full bg-brand-500" />
-              <div className="mt-2 text-[11px] font-semibold uppercase tracking-wide text-slate-700">
-                {step}
-              </div>
+  if (!imageSrc) {
+    return (
+      <section
+        className={clsx(
+          "rounded-[20px] border-2 border-dashed border-[#25314d]/30 bg-[#f8fcff] p-4",
+          compact ? "min-h-[9rem]" : "min-h-[11rem]",
+          className
+        )}
+      >
+        <div className="flex h-full min-h-[7rem] flex-col justify-between">
+          <div>
+            <div className="max-w-[34ch] text-sm leading-6 text-slate-700">
+              Flow diagram not published in the task repository yet.
             </div>
           </div>
-        ))}
+          <div className="mt-4 flex items-center gap-2 text-[11px] font-bold uppercase tracking-[0.14em] text-slate-500">
+            <span className="h-px flex-1 bg-[#25314d]/20" />
+            README linked
+          </div>
+        </div>
+      </section>
+    );
+  }
+
+  return (
+    <figure
+      className={clsx(
+        "overflow-hidden rounded-[20px] border-2 border-[#25314d] bg-[#f8fcff] shadow-[0_4px_0_#25314d]",
+        className
+      )}
+    >
+      <figcaption className="sr-only">
+        {task ? `${taskTitle(task)} flow diagram` : "Task flow diagram"}
+      </figcaption>
+      <div
+        className={clsx(
+          "grid place-items-center bg-white",
+          compact ? "aspect-[16/9] p-2" : "aspect-[16/9] p-3"
+        )}
+      >
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src={imageSrc}
+          alt={`${task ? taskTitle(task) : "Task"} flow diagram`}
+          className="max-h-full max-w-full object-contain"
+          loading="lazy"
+          decoding="async"
+          fetchPriority={compact ? "low" : "auto"}
+        />
       </div>
-    </section>
+    </figure>
   );
 }

@@ -1,0 +1,32 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-06-23T14:37:37.867Z",
+  "org": "TaskBeacon",
+  "repo_count": 120,
+  "contributors": [
+    {
+      "login": "zh1peng",
+      "name": "zh1peng",
+      "avatar_url": "https://avatars.githubusercontent.com/u/25647407?v=4",
+      "html_url": "https://github.com/zh1peng",
+      "contributions": 1568,
+      "repo_count": 120
+    },
+    {
+      "login": "HugoFara",
+      "name": "Hugo",
+      "avatar_url": "https://avatars.githubusercontent.com/u/72709893?v=4",
+      "html_url": "https://github.com/HugoFara",
+      "contributions": 6,
+      "repo_count": 1
+    },
+    {
+      "login": "codex",
+      "name": "Codex",
+      "avatar_url": "https://avatars.githubusercontent.com/u/267193182?v=4",
+      "html_url": "https://github.com/codex",
+      "contributions": 2,
+      "repo_count": 2
+    }
+  ]
+}

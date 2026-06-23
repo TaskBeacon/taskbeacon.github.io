@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { Markdown } from "@/components/markdown";
 import { TaskChannelCard } from "@/components/task-channel-card";
+import { TaskFlowPlaceholder } from "@/components/task-flow-placeholder";
 import type { TaskIndexItem } from "@/lib/task-index";
 import { taskDetailHref } from "@/lib/routes";
 import {
@@ -80,26 +81,26 @@ export function TaskDrawer({
   return (
     <div className="fixed inset-0 z-[70] bg-slate-950/35 backdrop-blur-sm" onClick={onClose}>
       <div
-        className="absolute inset-y-0 right-0 w-full max-w-3xl overflow-y-auto border-l border-slate-200 bg-white shadow-2xl"
+        className="absolute inset-y-0 right-0 w-full max-w-3xl overflow-y-auto border-l-2 border-[#25314d] bg-[#f4efe9] shadow-2xl"
         onClick={(event) => event.stopPropagation()}
         role="dialog"
         aria-modal="true"
         aria-label={`${taskTitle(task)} details`}
       >
-        <div className="sticky top-0 z-10 border-b border-slate-200 bg-white/95 px-5 py-4 backdrop-blur">
+        <div className="sticky top-0 z-10 border-b-2 border-[#25314d] bg-[#fffdf9]/95 px-5 py-4 backdrop-blur">
           <div className="flex items-start justify-between gap-4">
             <div className="min-w-0">
               <div className="text-[11px] font-semibold uppercase tracking-[0.18em] text-slate-500">
                 Task details
               </div>
-              <div className="mt-2 font-heading text-2xl font-semibold tracking-tight text-slate-900">
+              <div className="mt-2 font-heading text-2xl font-bold leading-tight text-[#25314d]">
                 {taskTitle(task)}
               </div>
               <div className="mt-2 flex flex-wrap items-center gap-2 text-xs text-slate-600">
-                <code className="rounded-full border border-slate-200 bg-slate-50 px-2.5 py-1 font-mono text-[11px] text-slate-700">
+                <code className="rounded-full border-2 border-[#25314d] bg-white px-2.5 py-1 font-mono text-[11px] font-bold text-[#25314d]">
                   {taskHandle(task)}
                 </code>
-                <code className="rounded-full border border-slate-200 bg-slate-50 px-2.5 py-1 font-mono text-[11px] text-slate-700">
+                <code className="rounded-full border-2 border-[#25314d] bg-white px-2.5 py-1 font-mono text-[11px] font-bold text-[#25314d]">
                   {task.repo}
                 </code>
               </div>
@@ -108,14 +109,14 @@ export function TaskDrawer({
             <div className="flex items-center gap-2">
               <button
                 type="button"
-                className="tb-focus-ring rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm font-semibold text-slate-800 hover:border-brand-200 hover:bg-brand-50"
+                className="tb-focus-ring rounded-[14px] border-2 border-[#25314d] bg-white px-3 py-2 text-sm font-bold text-[#25314d] hover:bg-[#eef8ff]"
                 onClick={openFullPage}
               >
                 Open full page
               </button>
               <button
                 type="button"
-                className="tb-focus-ring rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm font-semibold text-slate-800 hover:border-brand-200 hover:bg-brand-50"
+                className="tb-focus-ring rounded-[14px] border-2 border-[#25314d] bg-white px-3 py-2 text-sm font-bold text-[#25314d] hover:bg-[#eef8ff]"
                 onClick={onClose}
               >
                 Close
@@ -125,6 +126,8 @@ export function TaskDrawer({
         </div>
 
         <div className="space-y-6 px-5 py-5">
+          <TaskFlowPlaceholder task={task} />
+
           <div className="grid gap-3 lg:grid-cols-2">
             <TaskChannelCard
               eyebrow="Local / PsyFlow"
@@ -158,10 +161,10 @@ export function TaskDrawer({
             ) : null}
           </div>
 
-          <section className="rounded-3xl border border-slate-200 bg-white p-5 shadow-sm">
+          <section className="tb-frame-soft bg-[#fffdf9] p-5">
             <div className="flex flex-wrap items-center justify-between gap-3">
               <div>
-                <div className="text-[11px] font-semibold uppercase tracking-[0.18em] text-slate-500">
+                <div className="text-[11px] font-bold uppercase tracking-[0.18em] text-slate-500">
                   README snapshot
                 </div>
                 <div className="mt-1 text-sm text-slate-700">
@@ -169,7 +172,7 @@ export function TaskDrawer({
                 </div>
               </div>
               <a
-                className="tb-focus-ring rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm font-semibold text-slate-800 hover:border-brand-200 hover:bg-brand-50"
+                className="tb-focus-ring rounded-[14px] border-2 border-[#25314d] bg-white px-3 py-2 text-sm font-bold text-[#25314d] hover:bg-[#eef8ff]"
                 href={task.html_url}
                 target="_blank"
                 rel="noreferrer"
@@ -179,11 +182,14 @@ export function TaskDrawer({
             </div>
 
             {isLoading ? (
-              <div className="mt-6 rounded-2xl border border-slate-200 bg-slate-50 p-5 text-sm text-slate-700">
-                Loading README snapshot...
+              <div className="mt-6 space-y-3 rounded-[18px] border-2 border-[#25314d]/20 bg-[#f8fcff] p-5">
+                <div className="h-4 w-44 animate-pulse rounded-full bg-[#d9edf6]" />
+                <div className="h-3 w-full animate-pulse rounded-full bg-[#e9f4f8]" />
+                <div className="h-3 w-5/6 animate-pulse rounded-full bg-[#e9f4f8]" />
+                <div className="mt-5 h-28 animate-pulse rounded-[16px] bg-white" />
               </div>
             ) : hasError ? (
-              <div className="mt-6 rounded-2xl border border-slate-200 bg-slate-50 p-5 text-sm text-slate-700">
+              <div className="mt-6 rounded-[18px] border-2 border-[#25314d]/20 bg-[#f8fcff] p-5 text-sm text-slate-700">
                 README content is not available in this build.
               </div>
             ) : (

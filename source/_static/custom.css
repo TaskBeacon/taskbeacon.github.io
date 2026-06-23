@@ -1,17 +1,16 @@
-/* ensure Quick Links text matches other sidebar items */
+/* Keep Quick Links text visually aligned with the rest of the sidebar. */
 .sidebar-cta.entries-box,
 .sidebar-cta.entries-box a {
-  font-size: var(--font-size-small)*1.2;  /* uses the theme’s small font size */
+  font-size: calc(var(--font-size-small) * 1.2);
 }
 
-/* add a tiny bit of vertical spacing between items */
+/* Add a little vertical spacing between sidebar CTA items. */
 .sidebar-cta.entries-box li + li {
   margin-top: 0.25rem;
 }
 
-
 .sidebar-logo {
-  max-width: 200px;   /* adjust as needed */
+  max-width: 200px;
   height: auto;
 }
 

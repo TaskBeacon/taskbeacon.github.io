@@ -7,6 +7,18 @@ export type ResourceLink = {
   external?: boolean;
 };
 
+export type PublicResourceLink = Omit<ResourceLink, "cta">;
+
+export function publicResourceLinks(resources: ResourceLink[]): PublicResourceLink[] {
+  return resources.map((resource) => ({
+    eyebrow: resource.eyebrow,
+    title: resource.title,
+    description: resource.description,
+    href: resource.href,
+    external: resource.external
+  }));
+}
+
 export const overviewResources: ResourceLink[] = [
   {
     eyebrow: "TAPS",
@@ -87,7 +99,7 @@ export const frameworkResources: ResourceLink[] = [
     title: "Browser preview layer",
     description:
       "Inspect the HTML runtime that mirrors canonical tasks for browser walkthroughs.",
-    href: "https://github.com/TaskBeacon/psyflow-web",
+    href: "https://taskbeacon.github.io/psyflow-web/",
     cta: "Open psyflow-web",
     external: true
   },
@@ -138,9 +150,9 @@ export const tutorialResources: ResourceLink[] = [
     title: "Scaffold your first task",
     description:
       "Start with project setup, task structure, and the first runnable experiment.",
-    href: "https://github.com/TaskBeacon/psyflow/blob/main/docs/tutorials/getting_started.md",
+    href: "/tutorial/getting-started/",
     cta: "Open guide",
-    external: true
+    external: false
   },
   {
     eyebrow: "Localization",
@@ -155,19 +167,19 @@ export const tutorialResources: ResourceLink[] = [
     eyebrow: "Voice",
     title: "Create instruction audio from config",
     description:
-      "See a concrete task example that keeps instruction audio inside task config.",
-    href: "https://github.com/TaskBeacon/T000001-ax-cpt/blob/main/README.md",
-    cta: "Open voice example",
-    external: true
+      "Read the maintained guide for generating audio instructions from task text.",
+    href: "/tutorial/audio-instructions/",
+    cta: "Open audio guide",
+    external: false
   },
   {
     eyebrow: "CLI + QA",
     title: "Validate tasks before release",
     description:
       "Use the CLI and QA tutorials to inspect metadata and smoke-test tasks.",
-    href: "https://github.com/TaskBeacon/psyflow/blob/main/docs/tutorials/cli_usage.md",
+    href: "/tutorial/cli-qa/",
     cta: "Open CLI guide",
-    external: true
+    external: false
   }
 ];
 

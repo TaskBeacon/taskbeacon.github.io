@@ -2,6 +2,10 @@
 import path from "node:path";
 import { execFileSync } from "node:child_process";
 import { parse as parseYaml } from "yaml";
+import {
+  syncTaskFlowAsset,
+  taskFlowContentApiUrl
+} from "./task-flow-assets.mjs";
 
 const ORG = process.env.TASKBEACON_ORG || "TaskBeacon";
 const TOKEN = resolveToken();
@@ -22,6 +26,7 @@ const OUT_SOURCE_READMES_DIR = path.join(
   "readmes"
 );
 const OUT_PUBLIC_READMES_DIR = path.join(process.cwd(), "public", "readmes");
+const OUT_TASK_FLOWS_DIR = path.join(process.cwd(), "public", "task-flows");
 const OUT_HTML_RUNNER_MANIFEST = path.join(
   process.cwd(),
   "public",
@@ -32,6 +37,7 @@ const TMP_ROOT = path.join(process.cwd(), ".tmp", "index-build");
 const TMP_INDEX = path.join(TMP_ROOT, "tasks_index.json");
 const TMP_SOURCE_READMES_DIR = path.join(TMP_ROOT, "source-readmes");
 const TMP_PUBLIC_READMES_DIR = path.join(TMP_ROOT, "public-readmes");
+const TMP_TASK_FLOWS_DIR = path.join(TMP_ROOT, "task-flows");
 
 const DENYLIST = new Set([
   "task-registry",
@@ -140,6 +146,23 @@ async function ghGetRaw(url, { allow404 = false } = {}) {
   }
 
   return res.text();
+}
+
+async function ghGetBuffer(url, { allow404 = false } = {}) {
+  const res = await fetch(url, {
+    headers: ghHeaders({ Accept: "application/vnd.github.raw" })
+  });
+
+  if (allow404 && res.status === 404) return null;
+
+  if (!res.ok) {
+    const body = await safeReadText(res);
+    throw new Error(
+      `GitHub API error ${res.status} ${res.statusText} for ${url}\n${body}`
+    );
+  }
+
+  return Buffer.from(await res.arrayBuffer());
 }
 
 async function safeReadText(res) {
@@ -468,6 +491,20 @@ function resetDir(dir) {
   ensureDir(dir);
 }
 
+function readPreviousTaskFlows() {
+  if (!fs.existsSync(OUT_INDEX)) return new Map();
+
+  try {
+    const previousIndex = JSON.parse(fs.readFileSync(OUT_INDEX, "utf8"));
+    const entries = (previousIndex.tasks ?? [])
+      .filter((task) => task?.repo && task?.task_flow?.thumb)
+      .map((task) => [task.repo, task.task_flow]);
+    return new Map(entries);
+  } catch {
+    return new Map();
+  }
+}
+
 function replaceDir(sourceDir, targetDir) {
   fs.rmSync(targetDir, { recursive: true, force: true });
   ensureDir(path.dirname(targetDir));
@@ -600,6 +637,7 @@ function buildTaskItem({
     structure,
     readme_snapshot_path: `/readmes/${safeFilename(repo)}.md`,
     readme_run_anchor: run_anchor,
+    task_flow: null,
     run_url: variant === "html" ? inferHtmlRunUrl(repo, explicitRunUrl) : null,
     web_variant: null
   };
@@ -787,7 +825,9 @@ async function buildIndex() {
   resetDir(TMP_ROOT);
   resetDir(TMP_SOURCE_READMES_DIR);
   resetDir(TMP_PUBLIC_READMES_DIR);
+  resetDir(TMP_TASK_FLOWS_DIR);
 
+  const previousTaskFlows = readPreviousTaskFlows();
   const repos = await listOrgRepos();
 
   const tasks = [];
@@ -853,6 +893,20 @@ async function buildIndex() {
       readme
     });
 
+    item.task_flow = await syncTaskFlowAsset({
+      repo,
+      fullName: r.full_name,
+      defaultBranch: r.default_branch,
+      updatedAt: r.pushed_at || r.updated_at,
+      hasTaskFlow: rootNames.has("task_flow.png"),
+      tmpDir: TMP_TASK_FLOWS_DIR,
+      existingDir: OUT_TASK_FLOWS_DIR,
+      previousTaskFlow: previousTaskFlows.get(repo) ?? null,
+      downloadUrl: taskFlowContentApiUrl({ org: ORG, repo }),
+      fetchBinary: (url) => ghGetBuffer(url, { allow404: true }),
+      logger: console
+    });
+
     tasks.push(item);
 
     // Persist README into the repo for static rendering.
@@ -871,7 +925,7 @@ async function buildIndex() {
   mergedTasks.sort((a, b) => (a.last_updated < b.last_updated ? 1 : -1));
 
   const index = {
-    schema_version: 5,
+    schema_version: 6,
     generated_at: new Date().toISOString(),
     org: ORG,
     tasks: mergedTasks
@@ -880,6 +934,7 @@ async function buildIndex() {
   fs.writeFileSync(TMP_INDEX, JSON.stringify(index, null, 2) + "\n", "utf8");
   replaceDir(TMP_SOURCE_READMES_DIR, OUT_SOURCE_READMES_DIR);
   replaceDir(TMP_PUBLIC_READMES_DIR, OUT_PUBLIC_READMES_DIR);
+  replaceDir(TMP_TASK_FLOWS_DIR, OUT_TASK_FLOWS_DIR);
   replaceFile(TMP_INDEX, OUT_INDEX);
   fs.rmSync(TMP_ROOT, { recursive: true, force: true });
   return index;

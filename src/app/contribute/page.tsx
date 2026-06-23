@@ -1,6 +1,4 @@
 import type { Metadata } from "next";
-import { ResourceCard } from "@/components/resource-card";
-import { contributeResources } from "@/lib/site-content";
 
 export const metadata: Metadata = {
   title: "Contribute",
@@ -27,41 +25,33 @@ const contributionSteps = [
 
 export default function ContributePage() {
   return (
-    <div className="space-y-8 lg:pt-6">
-      <section className="rounded-[32px] border border-slate-200 bg-white/90 p-8 shadow-sm">
-        <div className="text-[11px] font-semibold uppercase tracking-[0.18em] text-slate-500">
-          Contribute
-        </div>
-        <h1 className="mt-3 font-heading text-3xl font-semibold tracking-tight text-slate-900">
-          Add new tasks, maintain aligned variants, and keep review paths explicit.
+    <div className="space-y-7 lg:pt-6">
+      <div className="text-center">
+        <h1 className="mx-auto max-w-3xl font-heading text-4xl font-bold leading-tight text-[#25314d]">
+          How to contribute a new task
         </h1>
-        <p className="mt-4 max-w-3xl text-base leading-7 text-slate-700">
-          Contribution guidance now lives on its own page instead of the landing page. Use these
-          notes for task submission, variant handling, repo expectations, and the GitHub entry
-          points that already exist today.
-        </p>
-      </section>
+      </div>
 
-      <section className="grid gap-4 lg:grid-cols-3">
+      <section className="relative mx-auto max-w-4xl space-y-5" aria-label="Contribution timeline">
+        <div className="absolute bottom-8 left-[1.4rem] top-8 hidden w-0.5 bg-[#25314d] sm:block" />
         {contributionSteps.map((step, index) => (
           <article
             key={step.title}
-            className="rounded-[28px] border border-slate-200 bg-white/90 p-6 shadow-sm"
+            className="tb-frame-soft relative grid gap-5 bg-[#fffdf9] p-6 sm:grid-cols-[4rem_1fr]"
           >
-            <div className="text-[11px] font-semibold uppercase tracking-[0.18em] text-slate-500">
-              Step {index + 1}
+            <div className="relative z-10 flex size-12 items-center justify-center rounded-[18px] border-2 border-[#25314d] bg-[#b9dceb] font-mono text-lg font-bold text-[#25314d] shadow-[0_4px_0_#25314d]">
+              {String(index + 1).padStart(2, "0")}
             </div>
-            <div className="mt-3 font-heading text-xl font-semibold tracking-tight text-slate-900">
-              {step.title}
+            <div>
+              <div className="text-[11px] font-bold uppercase tracking-[0.18em] text-slate-500">
+                Step {index + 1}
+              </div>
+              <h2 className="mt-2 font-heading text-3xl font-bold leading-tight text-[#25314d]">
+                {step.title}
+              </h2>
+              <p className="mt-3 max-w-2xl text-sm leading-7 text-slate-700">{step.description}</p>
             </div>
-            <p className="mt-3 text-sm leading-6 text-slate-700">{step.description}</p>
           </article>
-        ))}
-      </section>
-
-      <section className="grid gap-4 md:grid-cols-2">
-        {contributeResources.map((card) => (
-          <ResourceCard key={card.title} {...card} />
         ))}
       </section>
     </div>

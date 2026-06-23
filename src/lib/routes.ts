@@ -7,5 +7,5 @@ export function jobsPageHref(): string {
 }
 
 export function taskDetailHref(repo: string): string {
-  return `/tasks/${encodeURIComponent(repo)}/index.html`;
+  return `/tasks/${encodeURIComponent(repo)}/`;
 }

@@ -22,6 +22,8 @@ This task implements a restless (drifting) two-armed bandit paradigm. Participan
 
 ## 2. Task Flow
 
+![Task Flow](task_flow.png)
+
 ### Block-Level Flow
 
 | Step | Description |

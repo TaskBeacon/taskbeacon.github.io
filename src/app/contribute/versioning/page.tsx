@@ -22,17 +22,17 @@ export default function VersioningPage() {
           This page renders the maintained `source/versioning.md` document as a TaskBeacon web page.
         </p>
         <div className="mt-5 flex flex-wrap gap-3">
+          <Link className="tb-focus-ring tb-button-primary" href="/contribute/">
+            Back to contribute
+          </Link>
           <a
             className="tb-focus-ring tb-button-secondary"
             href={siteDocGithubUrl("versioning")}
             target="_blank"
             rel="noreferrer"
           >
-            View source document
+            Edit source
           </a>
-          <Link className="tb-focus-ring tb-button-primary" href="/contribute/">
-            Back to contribute
-          </Link>
         </div>
       </section>
 

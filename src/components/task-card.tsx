@@ -32,8 +32,8 @@ export function TaskCard({
   const tags = allTags(task);
 
   return (
-    <article className="group relative overflow-hidden rounded-[28px] border border-slate-200 bg-white/90 p-6 shadow-sm transition-all hover:border-brand-200 hover:shadow-lg">
-      <div className="absolute inset-x-0 top-0 h-24 bg-gradient-to-r from-brand-100/80 via-transparent to-cyan-100/80 opacity-80" />
+    <article className="tb-frame group relative overflow-hidden bg-[#fffdf9] p-6 transition-transform hover:-translate-y-0.5">
+      <div className="absolute inset-x-0 top-0 h-24 bg-gradient-to-r from-[#d9edf6] via-transparent to-[#ecffe5] opacity-80" />
 
       <div className="relative">
         <div className="flex flex-wrap items-start justify-between gap-4">
@@ -42,7 +42,7 @@ export function TaskCard({
               {preview ? "Task + browser preview" : "Task template"}
             </div>
             <Link
-              className="tb-focus-ring mt-3 inline-block rounded-md font-heading text-2xl font-semibold tracking-tight text-slate-900 hover:text-brand-900"
+              className="tb-focus-ring mt-3 inline-block rounded-md font-heading text-2xl font-bold leading-tight text-[#25314d] hover:text-[#1b6f86]"
               href={taskDetailHref(task.repo)}
             >
               {taskTitle(task)}
@@ -58,11 +58,11 @@ export function TaskCard({
             </div>
           </div>
 
-          <div className="rounded-2xl border border-slate-200 bg-white/90 px-4 py-3 text-right shadow-sm">
-            <div className="text-[11px] font-semibold uppercase tracking-wide text-slate-500">
+          <div className="rounded-[18px] border-2 border-[#25314d] bg-white px-4 py-3 text-right shadow-[0_3px_0_#25314d]">
+            <div className="text-[11px] font-bold uppercase tracking-wide text-slate-500">
               Updated
             </div>
-            <div className="mt-1 text-sm font-semibold text-slate-900">
+            <div className="mt-1 text-sm font-bold text-[#25314d]">
               {formatShortDate(task.last_updated)}
             </div>
           </div>
@@ -86,7 +86,7 @@ export function TaskCard({
         ) : null}
 
         <div className="mt-6">
-          <TaskFlowPlaceholder />
+          <TaskFlowPlaceholder task={task} />
         </div>
 
         <div className="mt-6 grid gap-3">
@@ -127,13 +127,13 @@ export function TaskCard({
         <div className="mt-6 flex flex-wrap gap-2">
           <button
             type="button"
-            className="tb-focus-ring rounded-lg bg-brand-700 px-4 py-2 text-sm font-semibold text-white shadow-sm hover:bg-brand-800"
+            className="tb-focus-ring tb-button-primary"
             onClick={() => onOpen(task)}
           >
             Expand details
           </button>
           <Link
-            className="tb-focus-ring rounded-lg border border-slate-200 bg-white px-4 py-2 text-sm font-semibold text-slate-800 shadow-sm hover:border-brand-200 hover:bg-brand-50"
+            className="tb-focus-ring tb-button-secondary"
             href={taskDetailHref(task.repo)}
           >
             Open full page
