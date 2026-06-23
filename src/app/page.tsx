@@ -81,7 +81,7 @@ function SkillShowcase({ skills }: { skills: ResourceLink[] }) {
                   <div className="flex items-center gap-1.5" aria-hidden="true">
                     <span className="size-2.5 rounded-full bg-[#ffb7a8]" />
                     <span className="size-2.5 rounded-full bg-[#bfe6f8]" />
-                    <span className="size-2.5 rounded-full bg-[#39d95d]" />
+                    <span className="size-2.5 rounded-full bg-[#a9cfc2]" />
                   </div>
                 </div>
               </div>
@@ -89,7 +89,7 @@ function SkillShowcase({ skills }: { skills: ResourceLink[] }) {
               <div className="flex flex-1 flex-col justify-between gap-5 p-5">
                 <div className="space-y-5">
                   <div className="flex items-start justify-end gap-3">
-                    <div className="max-w-[82%] rounded-[18px] rounded-tr-[4px] border-2 border-[#25314d] bg-[#39d95d] px-4 py-3 text-sm font-bold leading-6 text-[#15213a] shadow-[0_4px_0_#25314d]">
+                    <div className="max-w-[82%] rounded-[18px] rounded-tr-[4px] border-2 border-[#25314d] bg-[#d9edf6] px-4 py-3 text-sm font-bold leading-6 text-[#15213a] shadow-[0_4px_0_#25314d]">
                       {item.user}
                     </div>
                     <div
