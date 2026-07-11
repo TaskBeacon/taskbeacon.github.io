@@ -1,13 +1,13 @@
-# Matrix Reasoning
+# Mental Rotation Task
 
 | Field | Value |
 |---|---|
-| Name | Matrix Reasoning |
+| Name | Mental Rotation Task |
 | Version | v0.1.0-dev |
-| URL / Repository | `E:\Taskbeacon\T000049-matrix-reasoning` |
-| Short Description | Behavioral proxy for matrix reasoning with 3x3 abstract pattern completion |
+| URL / Repository | `E:\Taskbeacon\T000050-mental-rotation-task` |
+| Short Description | Same/different mental-rotation judgment with 3D object-pair JPG stimuli |
 | Created By | TaskBeacon build pipeline |
-| Date Updated | 2026-04-16 |
+| Date Updated | 2026-07-11 |
 | PsyFlow Version | 0.1.12 |
 | PsychoPy Version | 2025.2.4 |
 | Modality | Behavior |
@@ -15,10 +15,9 @@
 
 ## 1. Task Overview
 
-This task implements a matrix reasoning proxy in PsychoPy/PsyFlow. Participants view a 3x3 abstract matrix with one missing cell and select the best completion from four answer cards using keys 1-4.
+This task implements a 3D object-pair mental rotation paradigm in PsychoPy/PsyFlow. Participants view two objects and decide whether they are the same object rotated in depth or different mirror-image objects.
 
-The build uses a fixed 15-item ordered bank:
-3 practice items first, followed by 12 scored items. The matrices are generated from deterministic geometric rules so that the runtime remains auditable without relying on copyrighted matrix-reasoning or Raven stimuli.
+The canonical human profile presents 12 practice trials followed by two scored blocks of 48 trials. Scored trials cross angular disparity (`0`, `50`, `100`, `150` degrees) with same/different trial type. Responses use `B` for Same and `N` for Different.
 
 ## 2. Task Flow
 
@@ -31,32 +30,31 @@ The build uses a fixed 15-item ordered bank:
 | Load Config | Read the mode-specific config and task metadata. |
 | Collect Subject Info | Collect subject ID in human mode or inject deterministic IDs in QA/sim. |
 | Initialize Runtime | Create the PsychoPy window, keyboard, triggers, and stimulus bank. |
-| Show Instructions | Present the Matrix Reasoning instructions and key mapping. |
-| Run Block | Present the fixed 15-item bank in sequential order. |
-| Show Block Break | Display accuracy, mean correct RT, and timeout count. |
+| Show Instructions | Present the Mental Rotation instructions and key mapping. |
+| Run Practice | Present practice trials using reserved baseline objects and show correctness feedback. |
+| Run Scored Blocks | Present two balanced scored blocks without trial feedback. |
+| Show Block Summaries | Display block accuracy, mean correct RT, and timeout count after scored blocks. |
 | Save Outputs | Write CSV data and the settings JSON to the mode output folder. |
-| Finish | Present the goodbye screen, send the end trigger, and quit PsychoPy. |
+| Finish | Present the final summary, send the end trigger, and quit PsychoPy. |
 
 ### Trial-Level Flow
 
 | Step | Description |
 |---|---|
-| Fixation | Show a centered fixation cross for 0.5 s. |
-| Blank Screen | Show a white blank screen for 0.1 s between fixation and stimulus onset. |
-| Matrix Response Open | Show the 3x3 matrix, four answer cards, and response prompt for up to 25 s. |
-| Matrix Response Warning | Show the same matrix plus a clock warning banner for the last 5 s if needed. |
-| Practice Feedback | Show correctness feedback for practice items only. |
-| ITI | Show the fixation cross again for 0.6 s before the next trial. |
+| Blank Screen | Show a black blank screen for 0.25 s before stimulus onset. |
+| Response Window | Show one mental-rotation object-pair JPG for up to 7.5 s. |
+| Practice Feedback | Show correct / incorrect / timeout feedback only for practice trials. |
+| Advance | Scored trials advance directly to the next trial or block summary. |
 
 ### Controller Logic
 
 | Feature | Description |
 |---|---|
-| Condition Scheduling | `BlockUnit.generate_conditions(...)` runs the condition list sequentially so the practice prefix always comes first. |
-| Determinism | The item generator uses the configured overall seed plus the trial label to keep the matrix bank reproducible. |
+| Condition Scheduling | `src/utils.py` builds a deterministic practice plus scored session plan because label-level scheduling cannot represent the required baseline/angle/trial-type balance. |
+| Determinism | Scored block ordering is derived from `overall_seed`, block index, and angle index. |
 | Trial Context | Every participant-visible phase in `src/run_trial.py` calls `set_trial_context(...)` before display or response capture. |
-| Scoring | Correctness is based on matching the selected response key to the key assigned to the correct answer card. |
-| Simulation | The scripted responder exercises the response path, and the sampler responder varies accuracy, RT, and timeout behavior. |
+| Scoring | Correctness is based on matching the selected response key to the trial type: `B` for same, `N` for different. |
+| Simulation | The scripted responder exercises a fixed key path; the sampler responder varies accuracy, RT, and timeout probability by angular disparity and practice status. |
 
 ## 3. Configuration Summary
 
@@ -80,25 +78,21 @@ The build uses a fixed 15-item ordered bank:
 
 | Stimulus ID | Purpose |
 |---|---|
-| `instruction_text` | Intro screen explaining the matrix task, practice structure, and response keys. |
-| `fixation` | Center fixation cross. |
-| `blank_screen` | Brief white inter-stimulus screen. |
-| `response_prompt` | Prompt shown during the response window. |
-| `clock_warning` | Final-5-second warning banner. |
+| `instruction_text` | Intro screen explaining same/different judgment and response keys. |
+| `blank_screen` | Pre-stimulus black blank screen. |
+| `stimulus_image` | Rebuilt per trial to show the selected mental-rotation JPG. |
 | `practice_feedback_correct` / `practice_feedback_incorrect` / `practice_feedback_timeout` | Practice-only feedback screens. |
-| `block_break` | Block summary with accuracy, mean RT, and timeouts. |
+| `practice_break` | Transition from practice to scored blocks. |
+| `block_break` | Scored block summary with accuracy, mean RT, and timeouts. |
 | `good_bye` | Final task summary and exit screen. |
 
 ### d. Timing
 
 | Parameter | Value |
 |---|---|
-| `timing.fixation_duration` | `0.5` s |
-| `timing.blank_duration` | `0.1` s |
-| `timing.response_open_duration` | `25,000` ms (`25.0` s) |
-| `timing.response_warning_duration` | `5,000` ms (`5.0` s) |
-| `timing.feedback_duration` | `0.8` s |
-| `timing.iti_duration` | `0.6` s |
+| `timing.blank_duration` | `0.25` s |
+| `timing.response_deadline` | `7.5` s |
+| `timing.practice_feedback_duration` | `0.8` s |
 
 ### e. Triggers
 
@@ -106,17 +100,15 @@ The build uses a fixed 15-item ordered bank:
 |---|---|
 | `exp_onset` / `exp_end` | `1` / `2` |
 | `block_onset` / `block_end` | `10` / `11` |
-| `fixation_onset` | `20` |
 | `blank_onset` | `21` |
-| `matrix_response_open_onset` | `30` |
-| `matrix_response_warning_onset` | `31` |
-| `response_1` / `response_2` / `response_3` / `response_4` | `41` / `42` / `43` / `44` |
+| `stimulus_onset` | `30` |
+| `response_b` / `response_n` | `41` / `42` |
 | `response_timeout` | `45` |
 | `practice_feedback_onset` | `50` |
-| `iti_onset` | `60` |
+| `block_break_onset` | `55` |
 
 ## 4. Methods (for academic publication)
 
-Participants completed a nonverbal matrix reasoning task implemented in PsychoPy/PsyFlow. Each trial presented a 3x3 abstract matrix with one missing cell and four candidate answer cards. Participants selected the best completion with a 4-choice keyboard mapping.
+Participants completed a same/different mental rotation task implemented in PsychoPy/PsyFlow. Each trial presented one JPG stimulus showing a pair of three-dimensional objects. Participants judged whether the pair represented the same object rotated in depth or different mirror-image objects by pressing `B` for Same or `N` for Different.
 
-The build uses a fixed short-form bank with practice items first and scored items afterward. Matrix features are generated deterministically from the task seed and item label so the task is reproducible for auditing, simulation, and plotting while remaining free of copyrighted matrix-reasoning stimulus assets.
+The human profile included 12 practice trials followed by two scored blocks of 48 trials. Scored trials balanced angular disparity across 0, 50, 100, and 150 degrees and balanced same versus different trial type. Practice trials used baseline objects not used in the scored blocks and provided correctness feedback; scored trials did not provide trial-level feedback. The main dependent measures are accuracy, response time, timeout rate, and angle-by-trial-type performance.

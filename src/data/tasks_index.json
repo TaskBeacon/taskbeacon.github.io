@@ -1,8 +1,320 @@
 {
   "schema_version": 6,
-  "generated_at": "2026-06-23T11:44:23.317Z",
+  "generated_at": "2026-07-11T17:51:25.096Z",
   "org": "TaskBeacon",
   "tasks": [
+    {
+      "id": "T000059",
+      "slug": "object-location-memory",
+      "title": "Object-Location Memory Task",
+      "acquisition": "behavior",
+      "variant": "object-to-position-assignment",
+      "release_tag": "v0.1.0",
+      "repo": "T000059-object-location-memory",
+      "full_name": "TaskBeacon/T000059-object-location-memory",
+      "html_url": "https://github.com/TaskBeacon/T000059-object-location-memory",
+      "default_branch": "main",
+      "short_description": "This task measures immediate memory for bindings between familiar objects and spatial positions. It implements the object-to-position-ass...",
+      "maturity": "draft",
+      "tags": {
+        "paradigm": [],
+        "response": [],
+        "modality": [
+          "behavior"
+        ],
+        "language": [
+          "English"
+        ]
+      },
+      "keywords": [
+        "object-location-memory",
+        "object",
+        "location",
+        "memory"
+      ],
+      "psyflow_version": "0.1.0",
+      "has_voiceover": null,
+      "last_updated": "2026-07-11T17:43:44Z",
+      "structure": {
+        "config": true,
+        "assets": true,
+        "src": true
+      },
+      "readme_snapshot_path": "/readmes/T000059-object-location-memory.md",
+      "readme_run_anchor": "#running",
+      "task_flow": {
+        "thumb": "/task-flows/T000059-object-location-memory.webp",
+        "source": "https://raw.githubusercontent.com/TaskBeacon/T000059-object-location-memory/main/task_flow.png",
+        "updated_at": "2026-07-11T17:43:44Z",
+        "format": "webp"
+      },
+      "run_url": null,
+      "web_variant": {
+        "id": "H000059",
+        "repo": "H000059-object-location-memory",
+        "title": "Object-Location Memory Task",
+        "html_url": "https://github.com/TaskBeacon/H000059-object-location-memory",
+        "default_branch": "main",
+        "short_description": "Browser companion for T000059, preserving ten-object study arrays, silent and articulatory-suppression conditions, marked-position assign...",
+        "maturity": "draft",
+        "acquisition": "behavior",
+        "variant": "html",
+        "release_tag": "v0.1.0",
+        "last_updated": "2026-07-11T17:44:26Z",
+        "run_url": "https://taskbeacon.github.io/psyflow-web/?task=H000059-object-location-memory",
+        "download_zip": "https://github.com/TaskBeacon/H000059-object-location-memory/archive/refs/heads/main.zip"
+      }
+    },
+    {
+      "id": "T000058",
+      "slug": "attentional-blink",
+      "title": "Attentional Blink Task",
+      "acquisition": "behavior",
+      "variant": "baseline",
+      "release_tag": "v0.1.0",
+      "repo": "T000058-attentional-blink",
+      "full_name": "TaskBeacon/T000058-attentional-blink",
+      "html_url": "https://github.com/TaskBeacon/T000058-attentional-blink",
+      "default_branch": "main",
+      "short_description": "This task measures the reduced ability to report a second target presented shortly after a first target in a rapid serial visual presenta...",
+      "maturity": "draft",
+      "tags": {
+        "paradigm": [],
+        "response": [],
+        "modality": [
+          "behavior"
+        ],
+        "language": [
+          "Chinese"
+        ]
+      },
+      "keywords": [
+        "attentional-blink",
+        "attentional",
+        "blink"
+      ],
+      "psyflow_version": "0.1.0",
+      "has_voiceover": null,
+      "last_updated": "2026-07-11T17:10:31Z",
+      "structure": {
+        "config": true,
+        "assets": true,
+        "src": true
+      },
+      "readme_snapshot_path": "/readmes/T000058-attentional-blink.md",
+      "readme_run_anchor": "#running",
+      "task_flow": {
+        "thumb": "/task-flows/T000058-attentional-blink.webp",
+        "source": "https://raw.githubusercontent.com/TaskBeacon/T000058-attentional-blink/main/task_flow.png",
+        "updated_at": "2026-07-11T17:10:31Z",
+        "format": "webp"
+      },
+      "run_url": null,
+      "web_variant": {
+        "id": "H000058",
+        "repo": "H000058-attentional-blink",
+        "title": "Attentional Blink Task",
+        "html_url": "https://github.com/TaskBeacon/H000058-attentional-blink",
+        "default_branch": "main",
+        "short_description": "Browser companion for T000058, preserving digit-target RSVP timing, lag and T2-presence conditions, ordered reports, and conditional T2 s...",
+        "maturity": "draft",
+        "acquisition": "behavior",
+        "variant": "html",
+        "release_tag": "v0.1.0",
+        "last_updated": "2026-07-11T17:11:11Z",
+        "run_url": "https://taskbeacon.github.io/psyflow-web/?task=H000058-attentional-blink",
+        "download_zip": "https://github.com/TaskBeacon/H000058-attentional-blink/archive/refs/heads/main.zip"
+      }
+    },
+    {
+      "id": "T000056",
+      "slug": "psychomotor-vigilance-task",
+      "title": "Psychomotor Vigilance Task",
+      "acquisition": "behavior",
+      "variant": "baseline",
+      "release_tag": "v0.1.0",
+      "repo": "T000056-psychomotor-vigilance-task",
+      "full_name": "TaskBeacon/T000056-psychomotor-vigilance-task",
+      "html_url": "https://github.com/TaskBeacon/T000056-psychomotor-vigilance-task",
+      "default_branch": "main",
+      "short_description": "Visual sustained-attention task with unpredictable target timing and millisecond reaction-time measurement",
+      "maturity": "draft",
+      "tags": {
+        "paradigm": [],
+        "response": [
+          "continuous"
+        ],
+        "modality": [
+          "behavior"
+        ],
+        "language": [
+          "Chinese"
+        ]
+      },
+      "keywords": [
+        "psychomotor-vigilance-task",
+        "psychomotor",
+        "vigilance",
+        "task"
+      ],
+      "psyflow_version": "0.1.12",
+      "has_voiceover": null,
+      "last_updated": "2026-07-11T17:00:50Z",
+      "structure": {
+        "config": true,
+        "assets": true,
+        "src": true
+      },
+      "readme_snapshot_path": "/readmes/T000056-psychomotor-vigilance-task.md",
+      "readme_run_anchor": "#run",
+      "task_flow": {
+        "thumb": "/task-flows/T000056-psychomotor-vigilance-task.webp",
+        "source": "https://raw.githubusercontent.com/TaskBeacon/T000056-psychomotor-vigilance-task/main/task_flow.png",
+        "updated_at": "2026-07-11T17:00:50Z",
+        "format": "webp"
+      },
+      "run_url": null,
+      "web_variant": {
+        "id": "H000056",
+        "repo": "H000056-psychomotor-vigilance-task",
+        "title": "Psychomotor Vigilance Task",
+        "html_url": "https://github.com/TaskBeacon/H000056-psychomotor-vigilance-task",
+        "default_branch": "main",
+        "short_description": "Browser companion for the visual Psychomotor Vigilance Task, preserving unpredictable intervals, millisecond reaction-time feedback, fals...",
+        "maturity": "draft",
+        "acquisition": "behavior",
+        "variant": "html",
+        "release_tag": "v0.1.0",
+        "last_updated": "2026-07-11T17:01:08Z",
+        "run_url": "https://taskbeacon.github.io/psyflow-web/?task=H000056-psychomotor-vigilance-task",
+        "download_zip": "https://github.com/TaskBeacon/H000056-psychomotor-vigilance-task/archive/refs/heads/main.zip"
+      }
+    },
+    {
+      "id": "T000057",
+      "slug": "serial-reaction-time-task",
+      "title": "Serial Reaction Time Task",
+      "acquisition": "behavior",
+      "variant": "baseline",
+      "release_tag": "v0.1.0-dev",
+      "repo": "T000057-serial-reaction-time-task",
+      "full_name": "TaskBeacon/T000057-serial-reaction-time-task",
+      "html_url": "https://github.com/TaskBeacon/T000057-serial-reaction-time-task",
+      "default_branch": "main",
+      "short_description": "The Serial Reaction Time Task (SRTT) measures visuomotor sequence learning. Participants respond to a black target appearing in one of fo...",
+      "maturity": "draft",
+      "tags": {
+        "paradigm": [],
+        "response": [],
+        "modality": [
+          "behavior"
+        ],
+        "language": [
+          "Chinese"
+        ]
+      },
+      "keywords": [
+        "serial-reaction-time-task",
+        "serial",
+        "reaction",
+        "time",
+        "task"
+      ],
+      "psyflow_version": "local main / TAPS v0.2.0",
+      "has_voiceover": null,
+      "last_updated": "2026-07-11T16:59:09Z",
+      "structure": {
+        "config": true,
+        "assets": true,
+        "src": true
+      },
+      "readme_snapshot_path": "/readmes/T000057-serial-reaction-time-task.md",
+      "readme_run_anchor": "#run",
+      "task_flow": {
+        "thumb": "/task-flows/T000057-serial-reaction-time-task.webp",
+        "source": "https://raw.githubusercontent.com/TaskBeacon/T000057-serial-reaction-time-task/main/task_flow.png",
+        "updated_at": "2026-07-11T16:59:09Z",
+        "format": "webp"
+      },
+      "run_url": null,
+      "web_variant": {
+        "id": "H000057",
+        "repo": "H000057-serial-reaction-time-task",
+        "title": "Serial Reaction Time Task",
+        "html_url": "https://github.com/TaskBeacon/H000057-serial-reaction-time-task",
+        "default_branch": "main",
+        "short_description": "Browser companion for the SRTT, preserving counterbalanced SOC sequences, spatial D/F/J/K responses, transfer cost, recovery, and error-t...",
+        "maturity": "draft",
+        "acquisition": "behavior",
+        "variant": "html",
+        "release_tag": "v0.1.0-dev",
+        "last_updated": "2026-07-11T16:59:25Z",
+        "run_url": "https://taskbeacon.github.io/psyflow-web/?task=H000057-serial-reaction-time-task",
+        "download_zip": "https://github.com/TaskBeacon/H000057-serial-reaction-time-task/archive/refs/heads/main.zip"
+      }
+    },
+    {
+      "id": "T000050",
+      "slug": "mental-rotation-task",
+      "title": "Mental Rotation Task",
+      "acquisition": "behavior",
+      "variant": "baseline",
+      "release_tag": "v0.1.0-dev",
+      "repo": "T000050-mental-rotation-task",
+      "full_name": "TaskBeacon/T000050-mental-rotation-task",
+      "html_url": "https://github.com/TaskBeacon/T000050-mental-rotation-task",
+      "default_branch": "main",
+      "short_description": "Same/different mental-rotation judgment with 3D object-pair JPG stimuli",
+      "maturity": "draft",
+      "tags": {
+        "paradigm": [],
+        "response": [],
+        "modality": [
+          "behavior"
+        ],
+        "language": [
+          "English"
+        ]
+      },
+      "keywords": [
+        "mental-rotation-task",
+        "mental",
+        "rotation",
+        "task"
+      ],
+      "psyflow_version": "0.1.12",
+      "has_voiceover": null,
+      "last_updated": "2026-07-11T15:40:46Z",
+      "structure": {
+        "config": true,
+        "assets": true,
+        "src": true
+      },
+      "readme_snapshot_path": "/readmes/T000050-mental-rotation-task.md",
+      "readme_run_anchor": "#run",
+      "task_flow": {
+        "thumb": "/task-flows/T000050-mental-rotation-task.webp",
+        "source": "https://raw.githubusercontent.com/TaskBeacon/T000050-mental-rotation-task/main/task_flow.png",
+        "updated_at": "2026-07-11T15:40:46Z",
+        "format": "webp"
+      },
+      "run_url": null,
+      "web_variant": {
+        "id": "H000050",
+        "repo": "H000050-mental-rotation-task",
+        "title": "Mental Rotation Task",
+        "html_url": "https://github.com/TaskBeacon/H000050-mental-rotation-task",
+        "default_branch": "main",
+        "short_description": "Browser companion for the intended Mental Rotation Task, preserving angle-by-baseline stimulus scheduling, same/different scoring, practi...",
+        "maturity": "draft",
+        "acquisition": "behavior",
+        "variant": "html",
+        "release_tag": "v0.1.0-dev",
+        "last_updated": "2026-07-11T15:40:45Z",
+        "run_url": "https://taskbeacon.github.io/psyflow-web/?task=H000050-mental-rotation-task",
+        "download_zip": "https://github.com/TaskBeacon/H000050-mental-rotation-task/archive/refs/heads/main.zip"
+      }
+    },
     {
       "id": "T000020",
       "slug": "one-armed-bandit",
@@ -621,68 +933,6 @@
         "last_updated": "2026-06-21T15:49:07Z",
         "run_url": "https://taskbeacon.github.io/psyflow-web/?task=H000051-paired-associate-learning-task",
         "download_zip": "https://github.com/TaskBeacon/H000051-paired-associate-learning-task/archive/refs/heads/main.zip"
-      }
-    },
-    {
-      "id": "T000050",
-      "slug": "mental-rotation-task",
-      "title": "Mental Rotation Task",
-      "acquisition": "behavior",
-      "variant": "baseline",
-      "release_tag": "v0.1.0-dev",
-      "repo": "T000050-mental-rotation-task",
-      "full_name": "TaskBeacon/T000050-mental-rotation-task",
-      "html_url": "https://github.com/TaskBeacon/T000050-mental-rotation-task",
-      "default_branch": "main",
-      "short_description": "Behavioral proxy for matrix reasoning with 3x3 abstract pattern completion",
-      "maturity": "draft",
-      "tags": {
-        "paradigm": [],
-        "response": [],
-        "modality": [
-          "behavior"
-        ],
-        "language": [
-          "English"
-        ]
-      },
-      "keywords": [
-        "mental-rotation-task",
-        "mental",
-        "rotation",
-        "task"
-      ],
-      "psyflow_version": "0.1.12",
-      "has_voiceover": null,
-      "last_updated": "2026-06-20T18:40:17Z",
-      "structure": {
-        "config": true,
-        "assets": true,
-        "src": true
-      },
-      "readme_snapshot_path": "/readmes/T000050-mental-rotation-task.md",
-      "readme_run_anchor": "#run",
-      "task_flow": {
-        "thumb": "/task-flows/T000050-mental-rotation-task.webp",
-        "source": "https://raw.githubusercontent.com/TaskBeacon/T000050-mental-rotation-task/main/task_flow.png",
-        "updated_at": "2026-06-20T18:40:17Z",
-        "format": "webp"
-      },
-      "run_url": null,
-      "web_variant": {
-        "id": "H000050",
-        "repo": "H000050-mental-rotation-task",
-        "title": "Mental Rotation Task",
-        "html_url": "https://github.com/TaskBeacon/H000050-mental-rotation-task",
-        "default_branch": "main",
-        "short_description": "Browser companion for the intended Mental Rotation Task, preserving angle-by-baseline stimulus scheduling, same/different scoring, practi...",
-        "maturity": "draft",
-        "acquisition": "behavior",
-        "variant": "html",
-        "release_tag": "v0.1.0-dev",
-        "last_updated": "2026-06-22T00:16:20Z",
-        "run_url": "https://taskbeacon.github.io/psyflow-web/?task=H000050-mental-rotation-task",
-        "download_zip": "https://github.com/TaskBeacon/H000050-mental-rotation-task/archive/refs/heads/main.zip"
       }
     },
     {
@@ -3348,7 +3598,7 @@
         "acquisition": "behavior",
         "variant": "html",
         "release_tag": "0.1.0",
-        "last_updated": "2026-06-23T06:22:19Z",
+        "last_updated": "2026-07-11T17:11:20Z",
         "run_url": "https://taskbeacon.github.io/psyflow-web/?task=H000004-flanker",
         "download_zip": "https://github.com/TaskBeacon/H000004-flanker/archive/refs/heads/main.zip"
       }

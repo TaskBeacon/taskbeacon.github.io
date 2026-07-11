@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { getIndex } from "@/lib/task-index";
 import { JobLanguageNotice } from "./job-language-notice";
 
 export const metadata: Metadata = {
@@ -8,9 +9,11 @@ export const metadata: Metadata = {
 };
 
 export default function JobsPage() {
+  const taskCount = getIndex().tasks?.length ?? 0;
+
   return (
     <div className="lg:pt-6">
-      <JobLanguageNotice />
+      <JobLanguageNotice taskCount={taskCount} />
     </div>
   );
 }

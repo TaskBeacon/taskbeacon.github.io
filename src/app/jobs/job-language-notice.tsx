@@ -129,7 +129,7 @@ function NoticeBody({ body, pre = false }: { body: string | string[]; pre?: bool
   return <p className="max-w-3xl text-sm leading-7 text-slate-700">{body}</p>;
 }
 
-export function JobLanguageNotice() {
+export function JobLanguageNotice({ taskCount }: { taskCount: number }) {
   const [lang, setLang] = useState<Lang>("zh");
   const copy = NOTICE[lang];
 
@@ -153,6 +153,7 @@ export function JobLanguageNotice() {
         </div>
 
         <div className="flex flex-wrap items-center gap-3">
+          <span className="tb-badge">{taskCount} tasks</span>
           <span className="tb-badge">Updated {RECRUITMENT_UPDATED_AT}</span>
           <CopyEmailButton email={CONTACT_EMAIL} />
         </div>
