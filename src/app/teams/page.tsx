@@ -1,6 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 import type { Metadata } from "next";
-import { IconArrowRight, IconGithub } from "@/components/icons";
+import { IconArrowRight } from "@/components/icons";
 import contributorsIndex from "@/data/contributors.json";
 
 export const metadata: Metadata = {
@@ -52,12 +52,12 @@ export default function TeamsPage() {
             <div className="mt-auto flex flex-wrap justify-center gap-3">
               <a
                 className="tb-focus-ring tb-button-primary px-4 py-2 text-sm"
-                href="https://github.com/zh1peng"
+                href="https://zh1peng.top/"
                 target="_blank"
                 rel="noreferrer"
               >
-                <IconGithub className="size-4" />
-                GitHub profile
+                Personal site
+                <IconArrowRight className="size-4" />
               </a>
               <a
                 className="tb-focus-ring tb-button-secondary px-4 py-2 text-sm"
