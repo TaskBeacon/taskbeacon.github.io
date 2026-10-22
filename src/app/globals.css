@@ -191,3 +191,14 @@ body {
 .hljs-strong{font-weight:700;}
 .hljs-emphasis{font-style:italic;}
 .hljs-deletion{color:#fca5a5;}
+
+/* Keep the strong brand frame for navigation and featured content; quiet surfaces for reading. */
+.tb-content-card { border: 1px solid rgba(37,49,77,.28); border-radius: 22px; background: #fffdf9; box-shadow: 0 2px 0 rgba(37,49,77,.12); }
+.tb-frame-soft { border-color: rgba(37,49,77,.32); box-shadow: 0 2px 0 rgba(37,49,77,.14); }
+.tb-button-primary:hover { color: var(--tb-ink); }
+.tb-prose :is(h1,h2,h3), [id^="doc-line-"], #task-flow, #run-locally, #task-guide { scroll-margin-top: 8rem; }
+.tb-prose p { max-width: 70ch; }
+.tb-prose table { display: block; overflow-x: auto; }
+.tb-prose h1 { font-size: 1.7em; }
+.tb-dialog::backdrop { background: rgba(15,23,42,.55); backdrop-filter: blur(3px); }
+.tb-dialog { color: var(--tb-ink); }

@@ -40,10 +40,10 @@ function SkillShowcase({ skills }: { skills: ResourceLink[] }) {
     <section id="skills" className="space-y-7">
       <div className="text-center">
         <h2 className="mx-auto max-w-3xl font-heading text-4xl font-bold leading-tight text-[#25314d]">
-          Ask for a skill like this
+          Build and adapt your own tasks
         </h2>
         <p className="mx-auto mt-3 max-w-2xl text-base leading-8 text-slate-700">
-          These are agent workflows. Start with the skill name, the task, and the artifact you want back.
+          Use reusable agent workflows to create a task package, illustrate its procedure, or build a browser preview.
         </p>
 
         <a
@@ -137,7 +137,7 @@ function FrameworkShowcase({ resources }: { resources: PublicResourceLink[] }) {
           TAPS, PsyFlow, and psyflow-web
         </h2>
         <p className="mx-auto mt-3 max-w-3xl text-base leading-8 text-slate-700">
-          TaskBeacon separates the package standard, the canonical local runtime, and the aligned browser preview layer.
+          Use TAPS to organize a task package, PsyFlow to run it locally, and psyflow-web to explore it in your browser.
         </p>
 
       </div>
@@ -165,16 +165,23 @@ export default function Page() {
     <div className="space-y-20 pb-8">
       <section id="tasks" className="space-y-7 pt-3 sm:pt-5">
         <div className="text-center">
-          <h1 className="mx-auto max-w-3xl font-heading text-4xl font-bold leading-tight text-[#25314d]">
-            {tasks.length} canonical tasks
+          <h1 className="mx-auto max-w-4xl font-heading text-4xl font-bold leading-[1.08] tracking-tight text-[#25314d] sm:text-6xl">
+            Discover, preview and reuse cognitive tasks
           </h1>
           <p className="mx-auto mt-3 max-w-2xl text-base leading-8 text-slate-700">
-            {previewReadyCount} web previews ready. {curatedFeaturedTasks.length} featured tasks shown below.
+            Explore experiment procedures in your browser, then download the code and adapt a task for your research.
           </p>
 
-          <Link className="tb-focus-ring tb-button-secondary mt-6 w-fit" href="/tasks/">
-            Open tasks
-          </Link>
+          <div className="mt-6 flex flex-wrap justify-center gap-3">
+            <Link className="tb-focus-ring tb-button-primary" href="/tasks/">Browse tasks</Link>
+            <Link className="tb-focus-ring tb-button-secondary" href="/tutorial/getting-started/">Quick start</Link>
+          </div>
+          <p className="mt-5 text-sm text-slate-500">{tasks.length} tasks · {previewReadyCount} browser previews · Open source</p>
+          <div className="mt-6 flex flex-wrap justify-center gap-2" aria-label="Browse by research area">
+            {["Attention & control", "Memory & learning", "Decision & reward", "Social & emotion"].map((area) => (
+              <Link key={area} className="tb-focus-ring rounded-full border border-[#25314d]/20 bg-white/70 px-4 py-2 text-sm text-[#25314d] hover:bg-[#d9edf6]" href={`/tasks/?${new URLSearchParams({domain: area})}`}>{area}</Link>
+            ))}
+          </div>
         </div>
 
         <FeaturedTaskCarousel tasks={curatedFeaturedTasks} wide />

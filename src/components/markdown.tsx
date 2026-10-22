@@ -4,7 +4,7 @@ import rehypeSlug from "rehype-slug";
 import rehypeHighlight from "rehype-highlight";
 
 function isAbsoluteUrl(url: string) {
-  return /^https?:\/\//i.test(url) || /^data:/i.test(url);
+  return /^(https?:\/\/|data:|mailto:|tel:)/i.test(url);
 }
 
 function joinPath(base: string, p: string) {
@@ -33,6 +33,7 @@ export function Markdown({
       remarkPlugins={[remarkGfm]}
       rehypePlugins={[[rehypeHighlight, { ignoreMissing: true }], rehypeSlug]}
       components={{
+        h2: ({ node, children, ...props }) => <h2 {...props}><span id={`doc-line-${node?.position?.start.line}`} />{children}</h2>,
         a: ({ href, children, ...props }) => {
           const h = href ?? "";
           let nextHref = h;

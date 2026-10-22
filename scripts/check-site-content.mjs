@@ -105,7 +105,7 @@ if (/Legacy alias|moved to a dedicated page|old About destination/i.test(aboutPa
 }
 
 const taskRow = readText("src/components/task-row.tsx");
-if (!taskRow.includes("taskDetailHref") || !taskRow.includes("Open full page")) {
+if (!taskRow.includes("taskDetailHref") || !taskRow.includes("View details")) {
   fail("Task rows should provide a direct full-page task link.");
 }
 

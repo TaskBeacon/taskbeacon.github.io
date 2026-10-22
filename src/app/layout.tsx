@@ -30,8 +30,9 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <div className="min-h-dvh tb-grid-bg">
+          <a href="#main-content" className="tb-focus-ring sr-only focus:not-sr-only focus:fixed focus:left-5 focus:top-5 focus:z-[100] focus:rounded-xl focus:bg-white focus:p-4">Skip to content</a>
           <SiteHeader />
-          <main className="mx-auto w-full max-w-7xl px-4 pb-16 pt-24 sm:px-6 lg:px-8">
+          <main id="main-content" tabIndex={-1} className="mx-auto w-full max-w-7xl px-4 pb-16 pt-24 sm:px-6 lg:px-8">
             {children}
           </main>
           <SiteFooter />

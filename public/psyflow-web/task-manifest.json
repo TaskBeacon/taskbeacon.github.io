@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-07-11T17:51:25.091Z",
+  "generated_at": "2026-10-22T15:36:28.362Z",
   "org": "TaskBeacon",
   "runner_repo": "psyflow-web",
   "runner_url": "https://taskbeacon.github.io/psyflow-web/",
@@ -48,7 +48,7 @@
       "default_branch": "main",
       "download_url": "https://github.com/TaskBeacon/H000003-emodot/archive/refs/heads/main.zip",
       "run_url": "https://taskbeacon.github.io/psyflow-web/?task=H000003-emodot",
-      "last_updated": "2026-06-23T06:17:55Z"
+      "last_updated": "2026-09-08T00:45:50Z"
     },
     {
       "directory": "H000004-flanker",
@@ -63,7 +63,7 @@
       "default_branch": "main",
       "download_url": "https://github.com/TaskBeacon/H000004-flanker/archive/refs/heads/main.zip",
       "run_url": "https://taskbeacon.github.io/psyflow-web/?task=H000004-flanker",
-      "last_updated": "2026-07-11T17:11:20Z"
+      "last_updated": "2026-09-08T00:45:50Z"
     },
     {
       "directory": "H000005-go-nogo",
@@ -78,7 +78,7 @@
       "default_branch": "main",
       "download_url": "https://github.com/TaskBeacon/H000005-go-nogo/archive/refs/heads/main.zip",
       "run_url": "https://taskbeacon.github.io/psyflow-web/?task=H000005-go-nogo",
-      "last_updated": "2026-06-23T06:25:25Z"
+      "last_updated": "2026-09-08T00:45:50Z"
     },
     {
       "directory": "H000006-mid",
@@ -108,7 +108,7 @@
       "default_branch": "main",
       "download_url": "https://github.com/TaskBeacon/H000007-movie/archive/refs/heads/main.zip",
       "run_url": "https://taskbeacon.github.io/psyflow-web/?task=H000007-movie",
-      "last_updated": "2026-06-23T06:32:22Z"
+      "last_updated": "2026-09-08T00:45:50Z"
     },
     {
       "directory": "H000008-nback",
@@ -123,7 +123,7 @@
       "default_branch": "main",
       "download_url": "https://github.com/TaskBeacon/H000008-nback/archive/refs/heads/main.zip",
       "run_url": "https://taskbeacon.github.io/psyflow-web/?task=H000008-nback",
-      "last_updated": "2026-06-23T06:35:40Z"
+      "last_updated": "2026-09-08T00:45:50Z"
     },
     {
       "directory": "H000009-prl",
@@ -138,7 +138,7 @@
       "default_branch": "main",
       "download_url": "https://github.com/TaskBeacon/H000009-prl/archive/refs/heads/main.zip",
       "run_url": "https://taskbeacon.github.io/psyflow-web/?task=H000009-prl",
-      "last_updated": "2026-06-23T06:42:58Z"
+      "last_updated": "2026-09-08T00:45:50Z"
     },
     {
       "directory": "H000010-rest",
@@ -153,7 +153,7 @@
       "default_branch": "main",
       "download_url": "https://github.com/TaskBeacon/H000010-rest/archive/refs/heads/main.zip",
       "run_url": "https://taskbeacon.github.io/psyflow-web/?task=H000010-rest",
-      "last_updated": "2026-06-23T06:46:12Z"
+      "last_updated": "2026-09-08T00:45:50Z"
     },
     {
       "directory": "H000011-simon",
@@ -168,7 +168,7 @@
       "default_branch": "main",
       "download_url": "https://github.com/TaskBeacon/H000011-simon/archive/refs/heads/main.zip",
       "run_url": "https://taskbeacon.github.io/psyflow-web/?task=H000011-simon",
-      "last_updated": "2026-06-23T06:51:18Z"
+      "last_updated": "2026-09-08T00:45:50Z"
     },
     {
       "directory": "H000012-sst",
@@ -198,7 +198,7 @@
       "default_branch": "main",
       "download_url": "https://github.com/TaskBeacon/H000013-sst-audio/archive/refs/heads/main.zip",
       "run_url": "https://taskbeacon.github.io/psyflow-web/?task=H000013-sst-audio",
-      "last_updated": "2026-06-23T07:01:04Z"
+      "last_updated": "2026-09-08T00:45:58Z"
     },
     {
       "directory": "H000014-stroop",
@@ -213,7 +213,7 @@
       "default_branch": "main",
       "download_url": "https://github.com/TaskBeacon/H000014-stroop/archive/refs/heads/main.zip",
       "run_url": "https://taskbeacon.github.io/psyflow-web/?task=H000014-stroop",
-      "last_updated": "2026-06-23T07:04:44Z"
+      "last_updated": "2026-09-08T00:45:58Z"
     },
     {
       "directory": "H000015-ant",
@@ -228,7 +228,7 @@
       "default_branch": "main",
       "download_url": "https://github.com/TaskBeacon/H000015-ant/archive/refs/heads/main.zip",
       "run_url": "https://taskbeacon.github.io/psyflow-web/?task=H000015-ant",
-      "last_updated": "2026-06-23T07:08:12Z"
+      "last_updated": "2026-09-08T00:45:58Z"
     },
     {
       "directory": "H000016-card-sorting",
@@ -243,7 +243,7 @@
       "default_branch": "main",
       "download_url": "https://github.com/TaskBeacon/H000016-card-sorting/archive/refs/heads/main.zip",
       "run_url": "https://taskbeacon.github.io/psyflow-web/?task=H000016-card-sorting",
-      "last_updated": "2026-06-23T07:14:57Z"
+      "last_updated": "2026-09-08T00:45:58Z"
     },
     {
       "directory": "H000017-delay-discounting",
@@ -258,7 +258,7 @@
       "default_branch": "main",
       "download_url": "https://github.com/TaskBeacon/H000017-delay-discounting/archive/refs/heads/main.zip",
       "run_url": "https://taskbeacon.github.io/psyflow-web/?task=H000017-delay-discounting",
-      "last_updated": "2026-06-23T07:19:59Z"
+      "last_updated": "2026-09-08T00:45:58Z"
     },
     {
       "directory": "H000018-oddball-mmn",
@@ -273,7 +273,7 @@
       "default_branch": "main",
       "download_url": "https://github.com/TaskBeacon/H000018-oddball-mmn/archive/refs/heads/main.zip",
       "run_url": "https://taskbeacon.github.io/psyflow-web/?task=H000018-oddball-mmn",
-      "last_updated": "2026-06-23T07:23:21Z"
+      "last_updated": "2026-09-08T00:45:58Z"
     },
     {
       "directory": "H000019-eefrt",
@@ -288,7 +288,7 @@
       "default_branch": "main",
       "download_url": "https://github.com/TaskBeacon/H000019-eefrt/archive/refs/heads/main.zip",
       "run_url": "https://taskbeacon.github.io/psyflow-web/?task=H000019-eefrt",
-      "last_updated": "2026-06-23T07:33:11Z"
+      "last_updated": "2026-09-08T00:45:58Z"
     },
     {
       "directory": "H000020-one-armed-bandit",
@@ -303,7 +303,7 @@
       "default_branch": "main",
       "download_url": "https://github.com/TaskBeacon/H000020-one-armed-bandit/archive/refs/heads/main.zip",
       "run_url": "https://taskbeacon.github.io/psyflow-web/?task=H000020-one-armed-bandit",
-      "last_updated": "2026-06-23T07:38:40Z"
+      "last_updated": "2026-09-08T00:45:58Z"
     },
     {
       "directory": "H000021-drifting-double-bandit",
@@ -318,7 +318,7 @@
       "default_branch": "main",
       "download_url": "https://github.com/TaskBeacon/H000021-drifting-double-bandit/archive/refs/heads/main.zip",
       "run_url": "https://taskbeacon.github.io/psyflow-web/?task=H000021-drifting-double-bandit",
-      "last_updated": "2026-06-23T07:44:15Z"
+      "last_updated": "2026-09-08T00:46:05Z"
     },
     {
       "directory": "H000022-passive-lottery",
@@ -333,7 +333,7 @@
       "default_branch": "main",
       "download_url": "https://github.com/TaskBeacon/H000022-passive-lottery/archive/refs/heads/main.zip",
       "run_url": "https://taskbeacon.github.io/psyflow-web/?task=H000022-passive-lottery",
-      "last_updated": "2026-06-23T07:49:14Z"
+      "last_updated": "2026-09-08T00:46:06Z"
     },
     {
       "directory": "H000023-ultimatum-game",
@@ -348,7 +348,7 @@
       "default_branch": "main",
       "download_url": "https://github.com/TaskBeacon/H000023-ultimatum-game/archive/refs/heads/main.zip",
       "run_url": "https://taskbeacon.github.io/psyflow-web/?task=H000023-ultimatum-game",
-      "last_updated": "2026-06-23T07:53:06Z"
+      "last_updated": "2026-09-08T00:46:06Z"
     },
     {
       "directory": "H000024-trust-game",
@@ -363,7 +363,7 @@
       "default_branch": "main",
       "download_url": "https://github.com/TaskBeacon/H000024-trust-game/archive/refs/heads/main.zip",
       "run_url": "https://taskbeacon.github.io/psyflow-web/?task=H000024-trust-game",
-      "last_updated": "2026-06-23T07:58:05Z"
+      "last_updated": "2026-09-08T00:46:06Z"
     },
     {
       "directory": "H000025-dictator-game",
@@ -378,7 +378,7 @@
       "default_branch": "main",
       "download_url": "https://github.com/TaskBeacon/H000025-dictator-game/archive/refs/heads/main.zip",
       "run_url": "https://taskbeacon.github.io/psyflow-web/?task=H000025-dictator-game",
-      "last_updated": "2026-06-23T08:04:51Z"
+      "last_updated": "2026-09-08T00:46:06Z"
     },
     {
       "directory": "H000026-mcgurk",
@@ -393,7 +393,7 @@
       "default_branch": "main",
       "download_url": "https://github.com/TaskBeacon/H000026-mcgurk/archive/refs/heads/main.zip",
       "run_url": "https://taskbeacon.github.io/psyflow-web/?task=H000026-mcgurk",
-      "last_updated": "2026-06-23T08:13:34Z"
+      "last_updated": "2026-09-08T00:46:06Z"
     },
     {
       "directory": "H000027-task-switching",
@@ -408,7 +408,7 @@
       "default_branch": "main",
       "download_url": "https://github.com/TaskBeacon/H000027-task-switching/archive/refs/heads/main.zip",
       "run_url": "https://taskbeacon.github.io/psyflow-web/?task=H000027-task-switching",
-      "last_updated": "2026-06-23T08:20:16Z"
+      "last_updated": "2026-09-08T00:46:06Z"
     },
     {
       "directory": "H000028-weather-prediction",
@@ -423,7 +423,7 @@
       "default_branch": "main",
       "download_url": "https://github.com/TaskBeacon/H000028-weather-prediction/archive/refs/heads/main.zip",
       "run_url": "https://taskbeacon.github.io/psyflow-web/?task=H000028-weather-prediction",
-      "last_updated": "2026-05-15T03:17:38Z"
+      "last_updated": "2026-09-08T00:46:06Z"
     },
     {
       "directory": "H000029-cambridge-gambling",
@@ -438,7 +438,7 @@
       "default_branch": "main",
       "download_url": "https://github.com/TaskBeacon/H000029-cambridge-gambling/archive/refs/heads/main.zip",
       "run_url": "https://taskbeacon.github.io/psyflow-web/?task=H000029-cambridge-gambling",
-      "last_updated": "2026-05-15T03:17:43Z"
+      "last_updated": "2026-09-08T00:46:13Z"
     },
     {
       "directory": "H000030-iowa-gambling",
@@ -453,7 +453,7 @@
       "default_branch": "main",
       "download_url": "https://github.com/TaskBeacon/H000030-iowa-gambling/archive/refs/heads/main.zip",
       "run_url": "https://taskbeacon.github.io/psyflow-web/?task=H000030-iowa-gambling",
-      "last_updated": "2026-05-15T03:17:49Z"
+      "last_updated": "2026-09-08T00:46:14Z"
     },
     {
       "directory": "H000031-loss-aversion-framing",
@@ -468,7 +468,7 @@
       "default_branch": "main",
       "download_url": "https://github.com/TaskBeacon/H000031-loss-aversion-framing/archive/refs/heads/main.zip",
       "run_url": "https://taskbeacon.github.io/psyflow-web/?task=H000031-loss-aversion-framing",
-      "last_updated": "2026-05-15T03:17:54Z"
+      "last_updated": "2026-09-08T00:46:14Z"
     },
     {
       "directory": "H000032-antisaccade",
@@ -483,7 +483,7 @@
       "default_branch": "main",
       "download_url": "https://github.com/TaskBeacon/H000032-antisaccade/archive/refs/heads/main.zip",
       "run_url": "https://taskbeacon.github.io/psyflow-web/?task=H000032-antisaccade",
-      "last_updated": "2026-05-15T03:17:59Z"
+      "last_updated": "2026-09-08T00:46:14Z"
     },
     {
       "directory": "H000033-visual-search",
@@ -498,7 +498,7 @@
       "default_branch": "main",
       "download_url": "https://github.com/TaskBeacon/H000033-visual-search/archive/refs/heads/main.zip",
       "run_url": "https://taskbeacon.github.io/psyflow-web/?task=H000033-visual-search",
-      "last_updated": "2026-05-15T03:18:05Z"
+      "last_updated": "2026-09-08T00:46:14Z"
     },
     {
       "directory": "H000034-cyberball",
@@ -513,7 +513,7 @@
       "default_branch": "main",
       "download_url": "https://github.com/TaskBeacon/H000034-cyberball/archive/refs/heads/main.zip",
       "run_url": "https://taskbeacon.github.io/psyflow-web/?task=H000034-cyberball",
-      "last_updated": "2026-05-15T03:18:10Z"
+      "last_updated": "2026-09-08T00:46:14Z"
     },
     {
       "directory": "H000035-sternberg-working-memory",
@@ -528,7 +528,7 @@
       "default_branch": "main",
       "download_url": "https://github.com/TaskBeacon/H000035-sternberg-working-memory/archive/refs/heads/main.zip",
       "run_url": "https://taskbeacon.github.io/psyflow-web/?task=H000035-sternberg-working-memory",
-      "last_updated": "2026-05-15T03:18:15Z"
+      "last_updated": "2026-09-08T00:46:14Z"
     },
     {
       "directory": "H000036-risk-perception-estimation",
@@ -543,7 +543,7 @@
       "default_branch": "main",
       "download_url": "https://github.com/TaskBeacon/H000036-risk-perception-estimation/archive/refs/heads/main.zip",
       "run_url": "https://taskbeacon.github.io/psyflow-web/?task=H000036-risk-perception-estimation",
-      "last_updated": "2026-05-15T03:18:21Z"
+      "last_updated": "2026-09-08T00:46:11Z"
     },
     {
       "directory": "H000037-game-of-dice",
@@ -588,7 +588,7 @@
       "default_branch": "main",
       "download_url": "https://github.com/TaskBeacon/H000039-probabilistic-reward-task/archive/refs/heads/main.zip",
       "run_url": "https://taskbeacon.github.io/psyflow-web/?task=H000039-probabilistic-reward-task",
-      "last_updated": "2026-05-15T03:49:42Z"
+      "last_updated": "2026-09-08T00:46:18Z"
     },
     {
       "directory": "H000040-probabilistic-stimulus-selection",
@@ -603,7 +603,7 @@
       "default_branch": "main",
       "download_url": "https://github.com/TaskBeacon/H000040-probabilistic-stimulus-selection/archive/refs/heads/main.zip",
       "run_url": "https://taskbeacon.github.io/psyflow-web/?task=H000040-probabilistic-stimulus-selection",
-      "last_updated": "2026-06-21T14:52:15Z"
+      "last_updated": "2026-09-08T00:46:21Z"
     },
     {
       "directory": "H000041-fixed-ratio-satiation-schedule",
@@ -618,7 +618,7 @@
       "default_branch": "main",
       "download_url": "https://github.com/TaskBeacon/H000041-fixed-ratio-satiation-schedule/archive/refs/heads/main.zip",
       "run_url": "https://taskbeacon.github.io/psyflow-web/?task=H000041-fixed-ratio-satiation-schedule",
-      "last_updated": "2026-06-21T15:08:01Z"
+      "last_updated": "2026-09-08T00:46:22Z"
     },
     {
       "directory": "H000042-trier-social-stress-test",
@@ -633,7 +633,7 @@
       "default_branch": "main",
       "download_url": "https://github.com/TaskBeacon/H000042-trier-social-stress-test/archive/refs/heads/main.zip",
       "run_url": "https://taskbeacon.github.io/psyflow-web/?task=H000042-trier-social-stress-test",
-      "last_updated": "2026-06-21T15:11:41Z"
+      "last_updated": "2026-09-08T00:46:22Z"
     },
     {
       "directory": "H000043-temporal-bisection-task",
@@ -648,7 +648,7 @@
       "default_branch": "main",
       "download_url": "https://github.com/TaskBeacon/H000043-temporal-bisection-task/archive/refs/heads/main.zip",
       "run_url": "https://taskbeacon.github.io/psyflow-web/?task=H000043-temporal-bisection-task",
-      "last_updated": "2026-06-21T15:15:28Z"
+      "last_updated": "2026-09-08T00:46:22Z"
     },
     {
       "directory": "H000044-tapping-synchronization-task",
@@ -663,7 +663,7 @@
       "default_branch": "main",
       "download_url": "https://github.com/TaskBeacon/H000044-tapping-synchronization-task/archive/refs/heads/main.zip",
       "run_url": "https://taskbeacon.github.io/psyflow-web/?task=H000044-tapping-synchronization-task",
-      "last_updated": "2026-06-22T00:57:11Z"
+      "last_updated": "2026-09-08T00:46:22Z"
     },
     {
       "directory": "H000045-hand-laterality-judgment",
@@ -678,7 +678,7 @@
       "default_branch": "main",
       "download_url": "https://github.com/TaskBeacon/H000045-hand-laterality-judgment/archive/refs/heads/main.zip",
       "run_url": "https://taskbeacon.github.io/psyflow-web/?task=H000045-hand-laterality-judgment",
-      "last_updated": "2026-06-21T15:24:28Z"
+      "last_updated": "2026-09-08T00:46:23Z"
     },
     {
       "directory": "H000046-anti-reach-task",
@@ -693,7 +693,7 @@
       "default_branch": "main",
       "download_url": "https://github.com/TaskBeacon/H000046-anti-reach-task/archive/refs/heads/main.zip",
       "run_url": "https://taskbeacon.github.io/psyflow-web/?task=H000046-anti-reach-task",
-      "last_updated": "2026-06-21T15:29:01Z"
+      "last_updated": "2026-09-08T00:46:22Z"
     },
     {
       "directory": "H000047-language-based-visual-world-paradigm",
@@ -708,7 +708,7 @@
       "default_branch": "main",
       "download_url": "https://github.com/TaskBeacon/H000047-language-based-visual-world-paradigm/archive/refs/heads/main.zip",
       "run_url": "https://taskbeacon.github.io/psyflow-web/?task=H000047-language-based-visual-world-paradigm",
-      "last_updated": "2026-06-21T15:33:40Z"
+      "last_updated": "2026-09-08T00:46:25Z"
     },
     {
       "directory": "H000048-ravens-progressive-matrices",
@@ -723,7 +723,7 @@
       "default_branch": "main",
       "download_url": "https://github.com/TaskBeacon/H000048-ravens-progressive-matrices/archive/refs/heads/main.zip",
       "run_url": "https://taskbeacon.github.io/psyflow-web/?task=H000048-ravens-progressive-matrices",
-      "last_updated": "2026-06-21T15:39:17Z"
+      "last_updated": "2026-09-08T00:46:29Z"
     },
     {
       "directory": "H000049-matrix-reasoning",
@@ -738,7 +738,7 @@
       "default_branch": "main",
       "download_url": "https://github.com/TaskBeacon/H000049-matrix-reasoning/archive/refs/heads/main.zip",
       "run_url": "https://taskbeacon.github.io/psyflow-web/?task=H000049-matrix-reasoning",
-      "last_updated": "2026-06-21T15:40:54Z"
+      "last_updated": "2026-09-08T00:46:31Z"
     },
     {
       "directory": "H000050-mental-rotation-task",
@@ -753,7 +753,7 @@
       "default_branch": "main",
       "download_url": "https://github.com/TaskBeacon/H000050-mental-rotation-task/archive/refs/heads/main.zip",
       "run_url": "https://taskbeacon.github.io/psyflow-web/?task=H000050-mental-rotation-task",
-      "last_updated": "2026-07-11T15:40:45Z"
+      "last_updated": "2026-09-08T00:46:31Z"
     },
     {
       "directory": "H000051-paired-associate-learning-task",
@@ -768,7 +768,7 @@
       "default_branch": "main",
       "download_url": "https://github.com/TaskBeacon/H000051-paired-associate-learning-task/archive/refs/heads/main.zip",
       "run_url": "https://taskbeacon.github.io/psyflow-web/?task=H000051-paired-associate-learning-task",
-      "last_updated": "2026-06-21T15:49:07Z"
+      "last_updated": "2026-09-08T00:46:31Z"
     },
     {
       "directory": "H000052-transitive-inference-task",
@@ -783,7 +783,7 @@
       "default_branch": "main",
       "download_url": "https://github.com/TaskBeacon/H000052-transitive-inference-task/archive/refs/heads/main.zip",
       "run_url": "https://taskbeacon.github.io/psyflow-web/?task=H000052-transitive-inference-task",
-      "last_updated": "2026-06-21T15:52:15Z"
+      "last_updated": "2026-09-08T00:46:31Z"
     },
     {
       "directory": "H000053-acquired-equivalence-task",
@@ -798,7 +798,7 @@
       "default_branch": "main",
       "download_url": "https://github.com/TaskBeacon/H000053-acquired-equivalence-task/archive/refs/heads/main.zip",
       "run_url": "https://taskbeacon.github.io/psyflow-web/?task=H000053-acquired-equivalence-task",
-      "last_updated": "2026-06-21T15:55:11Z"
+      "last_updated": "2026-09-08T00:46:31Z"
     },
     {
       "directory": "H000054-delayed-recall-task",
@@ -813,7 +813,7 @@
       "default_branch": "main",
       "download_url": "https://github.com/TaskBeacon/H000054-delayed-recall-task/archive/refs/heads/main.zip",
       "run_url": "https://taskbeacon.github.io/psyflow-web/?task=H000054-delayed-recall-task",
-      "last_updated": "2026-06-22T01:02:22Z"
+      "last_updated": "2026-09-08T00:46:31Z"
     },
     {
       "directory": "H000055-drm-false-memory-paradigm",
@@ -828,7 +828,7 @@
       "default_branch": "main",
       "download_url": "https://github.com/TaskBeacon/H000055-drm-false-memory-paradigm/archive/refs/heads/main.zip",
       "run_url": "https://taskbeacon.github.io/psyflow-web/?task=H000055-drm-false-memory-paradigm",
-      "last_updated": "2026-06-21T16:08:18Z"
+      "last_updated": "2026-09-08T00:46:33Z"
     },
     {
       "directory": "H000056-psychomotor-vigilance-task",
@@ -858,7 +858,7 @@
       "default_branch": "main",
       "download_url": "https://github.com/TaskBeacon/H000057-serial-reaction-time-task/archive/refs/heads/main.zip",
       "run_url": "https://taskbeacon.github.io/psyflow-web/?task=H000057-serial-reaction-time-task",
-      "last_updated": "2026-07-11T16:59:25Z"
+      "last_updated": "2026-09-08T00:46:36Z"
     },
     {
       "directory": "H000058-attentional-blink",
@@ -889,6 +889,1176 @@
       "download_url": "https://github.com/TaskBeacon/H000059-object-location-memory/archive/refs/heads/main.zip",
       "run_url": "https://taskbeacon.github.io/psyflow-web/?task=H000059-object-location-memory",
       "last_updated": "2026-07-11T17:44:26Z"
+    },
+    {
+      "directory": "H000060-corsi-block-tapping-task",
+      "id": "H000060",
+      "slug": "corsi-block-tapping-task",
+      "title": "Corsi Block-Tapping Task",
+      "acquisition": "behavior",
+      "maturity": "draft",
+      "release_tag": "v0.1.0",
+      "short_description": "Browser companion for T000060, preserving forward/backward Corsi span, nine-block pointer recall, adaptive two-attempt levels, and span s...",
+      "repo_url": "https://github.com/TaskBeacon/H000060-corsi-block-tapping-task",
+      "default_branch": "main",
+      "download_url": "https://github.com/TaskBeacon/H000060-corsi-block-tapping-task/archive/refs/heads/main.zip",
+      "run_url": "https://taskbeacon.github.io/psyflow-web/?task=H000060-corsi-block-tapping-task",
+      "last_updated": "2026-07-11T18:31:20Z"
+    },
+    {
+      "directory": "H000061-posner-spatial-cueing-task",
+      "id": "H000061",
+      "slug": "posner-spatial-cueing-task",
+      "title": "Posner Spatial Cueing Task",
+      "acquisition": "behavior",
+      "maturity": "draft",
+      "release_tag": "v0.1.0",
+      "short_description": "Browser companion for T000061, preserving predictive central cues, valid/invalid/neutral/no-cue/catch conditions, dual SOAs, target detec...",
+      "repo_url": "https://github.com/TaskBeacon/H000061-posner-spatial-cueing-task",
+      "default_branch": "main",
+      "download_url": "https://github.com/TaskBeacon/H000061-posner-spatial-cueing-task/archive/refs/heads/main.zip",
+      "run_url": "https://taskbeacon.github.io/psyflow-web/?task=H000061-posner-spatial-cueing-task",
+      "last_updated": "2026-07-11T19:27:52Z"
+    },
+    {
+      "directory": "H000062-lexical-decision-task",
+      "id": "H000062",
+      "slug": "lexical-decision-task",
+      "title": "Lexical Decision Task",
+      "acquisition": "behavior",
+      "maturity": "draft",
+      "release_tag": "v0.1.0",
+      "short_description": "Browser companion for T000062, preserving high/low-frequency words, held-out-donor pseudowords, F/J lexical decisions, error feedback, an...",
+      "repo_url": "https://github.com/TaskBeacon/H000062-lexical-decision-task",
+      "default_branch": "main",
+      "download_url": "https://github.com/TaskBeacon/H000062-lexical-decision-task/archive/refs/heads/main.zip",
+      "run_url": "https://taskbeacon.github.io/psyflow-web/?task=H000062-lexical-decision-task",
+      "last_updated": "2026-07-11T20:10:04Z"
+    },
+    {
+      "directory": "H000063-navon-global-local-task",
+      "id": "H000063",
+      "slug": "navon-global-local-task",
+      "title": "Navon Global-Local Task",
+      "acquisition": "behavior",
+      "maturity": "draft",
+      "release_tag": "v0.1.0",
+      "short_description": "Browser-native companion to canonical T000063-navon-global-local-task.",
+      "repo_url": "https://github.com/TaskBeacon/H000063-navon-global-local-task",
+      "default_branch": "main",
+      "download_url": "https://github.com/TaskBeacon/H000063-navon-global-local-task/archive/refs/heads/main.zip",
+      "run_url": "https://taskbeacon.github.io/psyflow-web/?task=H000063-navon-global-local-task",
+      "last_updated": "2026-07-11T20:59:04Z"
+    },
+    {
+      "directory": "H000064-sustained-attention-to-response-task",
+      "id": "H000064",
+      "slug": "sustained-attention-to-response-task",
+      "title": "Sustained Attention to Response Task",
+      "acquisition": "behavior",
+      "maturity": "draft",
+      "release_tag": "v0.1.0",
+      "short_description": "Browser companion to canonical T000064-sustained-attention-to-response-task. It preserves exact digit counts, five sizes, 250/900 ms fixe...",
+      "repo_url": "https://github.com/TaskBeacon/H000064-sustained-attention-to-response-task",
+      "default_branch": "main",
+      "download_url": "https://github.com/TaskBeacon/H000064-sustained-attention-to-response-task/archive/refs/heads/main.zip",
+      "run_url": "https://taskbeacon.github.io/psyflow-web/?task=H000064-sustained-attention-to-response-task",
+      "last_updated": "2026-07-11T23:27:08Z"
+    },
+    {
+      "directory": "H000065-levels-of-processing-task",
+      "id": "H000065",
+      "slug": "levels-of-processing-task",
+      "title": "Levels of Processing Task",
+      "acquisition": "behavior",
+      "maturity": "draft",
+      "release_tag": "v0.1.0",
+      "short_description": "Browser companion to canonical T000065-levels-of-processing-task. It preserves the balanced 3 x 2 incidental-encoding design, 2 s questio...",
+      "repo_url": "https://github.com/TaskBeacon/H000065-levels-of-processing-task",
+      "default_branch": "main",
+      "download_url": "https://github.com/TaskBeacon/H000065-levels-of-processing-task/archive/refs/heads/main.zip",
+      "run_url": "https://taskbeacon.github.io/psyflow-web/?task=H000065-levels-of-processing-task",
+      "last_updated": "2026-07-12T00:01:51Z"
+    },
+    {
+      "directory": "H000066-fitts-law-pointing-task",
+      "id": "H000066",
+      "slug": "fitts-law-pointing-task",
+      "title": "Fitts Law Pointing Task",
+      "acquisition": "behavior",
+      "maturity": "draft",
+      "release_tag": "v0.1.0",
+      "short_description": "Browser companion to canonical T000066-fitts-law-pointing-task, preserving 16 amplitude-width conditions, grouped reciprocal alternation,...",
+      "repo_url": "https://github.com/TaskBeacon/H000066-fitts-law-pointing-task",
+      "default_branch": "main",
+      "download_url": "https://github.com/TaskBeacon/H000066-fitts-law-pointing-task/archive/refs/heads/main.zip",
+      "run_url": "https://taskbeacon.github.io/psyflow-web/?task=H000066-fitts-law-pointing-task",
+      "last_updated": "2026-07-12T00:31:11Z"
+    },
+    {
+      "directory": "H000067-directed-forgetting-task",
+      "id": "H000067",
+      "slug": "directed-forgetting-task",
+      "title": "Directed Forgetting Task",
+      "acquisition": "behavior",
+      "maturity": "draft",
+      "release_tag": "v0.1.0",
+      "short_description": "The dispatch workflow requires TASKBEACON_ORG_DISPATCH_TOKEN access to TaskBeacon/psyflow-web with Contents: Read and write.",
+      "repo_url": "https://github.com/TaskBeacon/H000067-directed-forgetting-task",
+      "default_branch": "main",
+      "download_url": "https://github.com/TaskBeacon/H000067-directed-forgetting-task/archive/refs/heads/main.zip",
+      "run_url": "https://taskbeacon.github.io/psyflow-web/?task=H000067-directed-forgetting-task",
+      "last_updated": "2026-07-12T01:02:20Z"
+    },
+    {
+      "directory": "H000068-visual-change-detection-task",
+      "id": "H000068",
+      "slug": "visual-change-detection-task",
+      "title": "Visual Change Detection Task",
+      "acquisition": "behavior",
+      "maturity": "draft",
+      "release_tag": "v0.1.0",
+      "short_description": "Browser-native companion to T000068-visual-change-detection-task, delivered by the shared psyflow-web runner.",
+      "repo_url": "https://github.com/TaskBeacon/H000068-visual-change-detection-task",
+      "default_branch": "main",
+      "download_url": "https://github.com/TaskBeacon/H000068-visual-change-detection-task/archive/refs/heads/main.zip",
+      "run_url": "https://taskbeacon.github.io/psyflow-web/?task=H000068-visual-change-detection-task",
+      "last_updated": "2026-07-12T02:00:15Z"
+    },
+    {
+      "directory": "H000069-automated-operation-span-task",
+      "id": "H000069",
+      "slug": "automated-operation-span-task",
+      "title": "Automated Operation Span Task",
+      "acquisition": "behavior",
+      "maturity": "draft",
+      "release_tag": "v0.1.0",
+      "short_description": "The notify workflow dispatches html-task-updated. TASKBEACON_ORG_DISPATCH_TOKEN requires TaskBeacon/psyflow-web Contents read/write acces...",
+      "repo_url": "https://github.com/TaskBeacon/H000069-automated-operation-span-task",
+      "default_branch": "main",
+      "download_url": "https://github.com/TaskBeacon/H000069-automated-operation-span-task/archive/refs/heads/main.zip",
+      "run_url": "https://taskbeacon.github.io/psyflow-web/?task=H000069-automated-operation-span-task",
+      "last_updated": "2026-07-12T02:28:36Z"
+    },
+    {
+      "directory": "H000070-psychological-refractory-period-task",
+      "id": "H000070",
+      "slug": "psychological-refractory-period-task",
+      "title": "Psychological Refractory Period Task",
+      "acquisition": "behavior",
+      "maturity": "draft",
+      "release_tag": "v0.1.0",
+      "short_description": "The notify workflow dispatches html-task-updated. TASKBEACON_ORG_DISPATCH_TOKEN requires TaskBeacon/psyflow-web Contents read/write acces...",
+      "repo_url": "https://github.com/TaskBeacon/H000070-psychological-refractory-period-task",
+      "default_branch": "main",
+      "download_url": "https://github.com/TaskBeacon/H000070-psychological-refractory-period-task/archive/refs/heads/main.zip",
+      "run_url": "https://taskbeacon.github.io/psyflow-web/?task=H000070-psychological-refractory-period-task",
+      "last_updated": "2026-07-12T02:57:33Z"
+    },
+    {
+      "directory": "H000071-multiple-object-tracking-task",
+      "id": "H000071",
+      "slug": "multiple-object-tracking-task",
+      "title": "Multiple Object Tracking Task",
+      "acquisition": "behavior",
+      "maturity": "draft",
+      "release_tag": "v0.1.0",
+      "short_description": "The notify workflow dispatches html-task-updated. TASKBEACON_ORG_DISPATCH_TOKEN requires TaskBeacon/psyflow-web Contents read/write acces...",
+      "repo_url": "https://github.com/TaskBeacon/H000071-multiple-object-tracking-task",
+      "default_branch": "main",
+      "download_url": "https://github.com/TaskBeacon/H000071-multiple-object-tracking-task/archive/refs/heads/main.zip",
+      "run_url": "https://taskbeacon.github.io/psyflow-web/?task=H000071-multiple-object-tracking-task",
+      "last_updated": "2026-07-12T03:33:11Z"
+    },
+    {
+      "directory": "H000072-semantic-priming-task",
+      "id": "H000072",
+      "slug": "semantic-priming-task",
+      "title": "Semantic Priming Task",
+      "acquisition": "behavior",
+      "maturity": "draft",
+      "release_tag": "v0.1.0",
+      "short_description": "Browser companion to canonical T000072-semantic-priming-task. It preserves the 200-ms prime-target SOA, 6 practice and 48 scored trials, ...",
+      "repo_url": "https://github.com/TaskBeacon/H000072-semantic-priming-task",
+      "default_branch": "main",
+      "download_url": "https://github.com/TaskBeacon/H000072-semantic-priming-task/archive/refs/heads/main.zip",
+      "run_url": "https://taskbeacon.github.io/psyflow-web/?task=H000072-semantic-priming-task",
+      "last_updated": "2026-07-26T09:59:40Z"
+    },
+    {
+      "directory": "H000073-gaze-cueing-task",
+      "id": "H000073",
+      "slug": "gaze-cueing-task",
+      "title": "Gaze Cueing Task",
+      "acquisition": "behavior",
+      "maturity": "draft",
+      "release_tag": "v0.1.0",
+      "short_description": "Browser-native companion to canonical T000073-gaze-cueing-task, implemented for the shared psyflow-web runner.",
+      "repo_url": "https://github.com/TaskBeacon/H000073-gaze-cueing-task",
+      "default_branch": "main",
+      "download_url": "https://github.com/TaskBeacon/H000073-gaze-cueing-task/archive/refs/heads/main.zip",
+      "run_url": "https://taskbeacon.github.io/psyflow-web/?task=H000073-gaze-cueing-task",
+      "last_updated": "2026-07-26T10:43:42Z"
+    },
+    {
+      "directory": "H000074-tower-of-london-task",
+      "id": "H000074",
+      "slug": "tower-of-london-task",
+      "title": "Tower of London Task",
+      "acquisition": "behavior",
+      "maturity": "draft",
+      "release_tag": "v0.1.0",
+      "short_description": "Browser-native companion to canonical T000074-tower-of-london-task, implemented for the shared psyflow-web runner.",
+      "repo_url": "https://github.com/TaskBeacon/H000074-tower-of-london-task",
+      "default_branch": "main",
+      "download_url": "https://github.com/TaskBeacon/H000074-tower-of-london-task/archive/refs/heads/main.zip",
+      "run_url": "https://taskbeacon.github.io/psyflow-web/?task=H000074-tower-of-london-task",
+      "last_updated": "2026-07-26T15:42:16Z"
+    },
+    {
+      "directory": "H000075-two-step-sequential-decision-task",
+      "id": "H000075",
+      "slug": "two-step-sequential-decision-task",
+      "title": "Two-Step Sequential Decision Task",
+      "acquisition": "behavior",
+      "maturity": "draft",
+      "release_tag": "v0.1.0",
+      "short_description": "Browser-native companion to canonical T000075-two-step-sequential-decision-task, implemented for the shared psyflow-web runner.",
+      "repo_url": "https://github.com/TaskBeacon/H000075-two-step-sequential-decision-task",
+      "default_branch": "main",
+      "download_url": "https://github.com/TaskBeacon/H000075-two-step-sequential-decision-task/archive/refs/heads/main.zip",
+      "run_url": "https://taskbeacon.github.io/psyflow-web/?task=H000075-two-step-sequential-decision-task",
+      "last_updated": "2026-07-26T16:33:16Z"
+    },
+    {
+      "directory": "H000076-random-dot-motion-confidence-task",
+      "id": "H000076",
+      "slug": "random-dot-motion-confidence-task",
+      "title": "Random-Dot Motion + Confidence Task",
+      "acquisition": "behavior",
+      "maturity": "draft",
+      "release_tag": "v0.1.0",
+      "short_description": "Browser-native companion to canonical T000076-random-dot-motion-confidence-task, implemented for the shared psyflow-web runner.",
+      "repo_url": "https://github.com/TaskBeacon/H000076-random-dot-motion-confidence-task",
+      "default_branch": "main",
+      "download_url": "https://github.com/TaskBeacon/H000076-random-dot-motion-confidence-task/archive/refs/heads/main.zip",
+      "run_url": "https://taskbeacon.github.io/psyflow-web/?task=H000076-random-dot-motion-confidence-task",
+      "last_updated": "2026-07-26T17:06:05Z"
+    },
+    {
+      "directory": "H000077-prospective-memory-task",
+      "id": "H000077",
+      "slug": "prospective-memory-task",
+      "title": "Prospective Memory Task",
+      "acquisition": "behavior",
+      "maturity": "draft",
+      "release_tag": "v0.1.0",
+      "short_description": "Browser port of the classic focal and nonfocal event-based prospective-memory paradigm.",
+      "repo_url": "https://github.com/TaskBeacon/H000077-prospective-memory-task",
+      "default_branch": "main",
+      "download_url": "https://github.com/TaskBeacon/H000077-prospective-memory-task/archive/refs/heads/main.zip",
+      "run_url": "https://taskbeacon.github.io/psyflow-web/?task=H000077-prospective-memory-task",
+      "last_updated": "2026-07-26T17:09:49Z"
+    },
+    {
+      "directory": "H000078-mnemonic-similarity-task",
+      "id": "H000078",
+      "slug": "mnemonic-similarity-task",
+      "title": "Mnemonic Similarity Task",
+      "acquisition": "behavior",
+      "maturity": "draft",
+      "release_tag": "v0.1.0",
+      "short_description": "Browser-native companion to canonical T000078-mnemonic-similarity-task, implemented for the shared psyflow-web runner.",
+      "repo_url": "https://github.com/TaskBeacon/H000078-mnemonic-similarity-task",
+      "default_branch": "main",
+      "download_url": "https://github.com/TaskBeacon/H000078-mnemonic-similarity-task/archive/refs/heads/main.zip",
+      "run_url": "https://taskbeacon.github.io/psyflow-web/?task=H000078-mnemonic-similarity-task",
+      "last_updated": "2026-08-11T15:32:00Z"
+    },
+    {
+      "directory": "H000079-slips-of-action-outcome-devaluation",
+      "id": "H000079",
+      "slug": "slips-of-action-outcome-devaluation",
+      "title": "Slips-of-Action / Outcome Devaluation Task",
+      "acquisition": "behavior",
+      "maturity": "draft",
+      "release_tag": "v0.1.0",
+      "short_description": "Browser-native companion to canonical T000079-slips-of-action-outcome-devaluation, implemented for the shared psyflow-web runner.",
+      "repo_url": "https://github.com/TaskBeacon/H000079-slips-of-action-outcome-devaluation",
+      "default_branch": "main",
+      "download_url": "https://github.com/TaskBeacon/H000079-slips-of-action-outcome-devaluation/archive/refs/heads/main.zip",
+      "run_url": "https://taskbeacon.github.io/psyflow-web/?task=H000079-slips-of-action-outcome-devaluation",
+      "last_updated": "2026-07-26T17:08:50Z"
+    },
+    {
+      "directory": "H000080-dichotic-listening",
+      "id": "H000080",
+      "slug": "dichotic-listening",
+      "title": "Dichotic Listening",
+      "acquisition": "behavior",
+      "maturity": "draft",
+      "release_tag": "v0.1.0",
+      "short_description": "This is the browser-derived companion to the canonical Python task. It preserves the complete 36-pair Bergen consonant-vowel condition se...",
+      "repo_url": "https://github.com/TaskBeacon/H000080-dichotic-listening",
+      "default_branch": "main",
+      "download_url": "https://github.com/TaskBeacon/H000080-dichotic-listening/archive/refs/heads/main.zip",
+      "run_url": "https://taskbeacon.github.io/psyflow-web/?task=H000080-dichotic-listening",
+      "last_updated": "2026-08-23T08:56:06Z"
+    },
+    {
+      "directory": "H000081-beads-task-jumping-to-conclusions",
+      "id": "H000081",
+      "slug": "beads-task-jumping-to-conclusions",
+      "title": "Beads Task / Jumping-to-Conclusions",
+      "acquisition": "behavior",
+      "maturity": "draft",
+      "release_tag": "v0.1.0",
+      "short_description": "Browser-native companion to canonical T000081-beads-task-jumping-to-conclusions, implemented for the shared psyflow-web runner.",
+      "repo_url": "https://github.com/TaskBeacon/H000081-beads-task-jumping-to-conclusions",
+      "default_branch": "main",
+      "download_url": "https://github.com/TaskBeacon/H000081-beads-task-jumping-to-conclusions/archive/refs/heads/main.zip",
+      "run_url": "https://taskbeacon.github.io/psyflow-web/?task=H000081-beads-task-jumping-to-conclusions",
+      "last_updated": "2026-07-26T17:21:02Z"
+    },
+    {
+      "directory": "H000082-artificial-grammar-learning-task",
+      "id": "H000082",
+      "slug": "artificial-grammar-learning-task",
+      "title": "Artificial Grammar Learning Task",
+      "acquisition": "behavior",
+      "maturity": "draft",
+      "release_tag": "v0.1.0",
+      "short_description": "This browser-native companion preserves the classic Reber artificial grammar learning procedure in canonical T000082. Participants incide...",
+      "repo_url": "https://github.com/TaskBeacon/H000082-artificial-grammar-learning-task",
+      "default_branch": "main",
+      "download_url": "https://github.com/TaskBeacon/H000082-artificial-grammar-learning-task/archive/refs/heads/main.zip",
+      "run_url": "https://taskbeacon.github.io/psyflow-web/?task=H000082-artificial-grammar-learning-task",
+      "last_updated": "2026-07-31T17:32:09Z"
+    },
+    {
+      "directory": "H000083-snarc-numerical-distance-task",
+      "id": "H000083",
+      "slug": "snarc-numerical-distance-task",
+      "title": "SNARC and Numerical Distance Task",
+      "acquisition": "behavior",
+      "maturity": "draft",
+      "release_tag": "v0.1.0",
+      "short_description": "This is the browser-derived companion to the canonical Python task. It preserves the two reversed parity mappings used to estimate the SN...",
+      "repo_url": "https://github.com/TaskBeacon/H000083-snarc-numerical-distance-task",
+      "default_branch": "main",
+      "download_url": "https://github.com/TaskBeacon/H000083-snarc-numerical-distance-task/archive/refs/heads/main.zip",
+      "run_url": "https://taskbeacon.github.io/psyflow-web/?task=H000083-snarc-numerical-distance-task",
+      "last_updated": "2026-07-31T17:27:39Z"
+    },
+    {
+      "directory": "H000084-temporal-order-simultaneity-judgment-task",
+      "id": "H000084",
+      "slug": "temporal-order-simultaneity-judgment-task",
+      "title": "Temporal Order and Simultaneity Judgment Task",
+      "acquisition": "behavior",
+      "maturity": "draft",
+      "release_tag": "v0.1.0",
+      "short_description": "H000084 is the browser-native companion to canonical T000084-temporal-order-simultaneity-judgment-task.",
+      "repo_url": "https://github.com/TaskBeacon/H000084-temporal-order-simultaneity-judgment-task",
+      "default_branch": "main",
+      "download_url": "https://github.com/TaskBeacon/H000084-temporal-order-simultaneity-judgment-task/archive/refs/heads/main.zip",
+      "run_url": "https://taskbeacon.github.io/psyflow-web/?task=H000084-temporal-order-simultaneity-judgment-task",
+      "last_updated": "2026-07-31T17:30:34Z"
+    },
+    {
+      "directory": "H000085-intentional-binding-task",
+      "id": "H000085",
+      "slug": "intentional-binding-task",
+      "title": "Intentional Binding Task",
+      "acquisition": "behavior",
+      "maturity": "draft",
+      "release_tag": "v0.1.0",
+      "short_description": "Browser-native port of the canonical four-condition Intentional Binding Task. Participants watch a 60-position Libet clock whose red hand...",
+      "repo_url": "https://github.com/TaskBeacon/H000085-intentional-binding-task",
+      "default_branch": "main",
+      "download_url": "https://github.com/TaskBeacon/H000085-intentional-binding-task/archive/refs/heads/main.zip",
+      "run_url": "https://taskbeacon.github.io/psyflow-web/?task=H000085-intentional-binding-task",
+      "last_updated": "2026-07-31T17:49:50Z"
+    },
+    {
+      "directory": "H000086-kamin-blocking-causal-learning-task",
+      "id": "H000086",
+      "slug": "kamin-blocking-causal-learning-task",
+      "title": "Kamin Blocking and Causal Learning Task",
+      "acquisition": "behavior",
+      "maturity": "draft",
+      "release_tag": "v0.1.0",
+      "short_description": "Browser-native companion to canonical T000086-kamin-blocking-causal-learning-task, implemented for the shared psyflow-web runner.",
+      "repo_url": "https://github.com/TaskBeacon/H000086-kamin-blocking-causal-learning-task",
+      "default_branch": "main",
+      "download_url": "https://github.com/TaskBeacon/H000086-kamin-blocking-causal-learning-task/archive/refs/heads/main.zip",
+      "run_url": "https://taskbeacon.github.io/psyflow-web/?task=H000086-kamin-blocking-causal-learning-task",
+      "last_updated": "2026-07-31T17:27:29Z"
+    },
+    {
+      "directory": "H000087-director-visual-perspective-taking-task",
+      "id": "H000087",
+      "slug": "director-visual-perspective-taking-task",
+      "title": "Director Visual Perspective-Taking Task",
+      "acquisition": "behavior",
+      "maturity": "draft",
+      "release_tag": "v0.1.0",
+      "short_description": "Browser companion for T000087, preserving Director/Rule perspective filtering, privileged competitors, spoken movement instructions, and ...",
+      "repo_url": "https://github.com/TaskBeacon/H000087-director-visual-perspective-taking-task",
+      "default_branch": "main",
+      "download_url": "https://github.com/TaskBeacon/H000087-director-visual-perspective-taking-task/archive/refs/heads/main.zip",
+      "run_url": "https://taskbeacon.github.io/psyflow-web/?task=H000087-director-visual-perspective-taking-task",
+      "last_updated": "2026-07-31T18:40:28Z"
+    },
+    {
+      "directory": "H000088-negative-priming",
+      "id": "H000088",
+      "slug": "negative-priming",
+      "title": "Negative Priming",
+      "acquisition": "behavior",
+      "maturity": "draft",
+      "release_tag": "v0.1.0",
+      "short_description": "Browser companion for T000088, preserving abstract-shape prime-probe identity negative priming and same/different keyboard responses.",
+      "repo_url": "https://github.com/TaskBeacon/H000088-negative-priming",
+      "default_branch": "main",
+      "download_url": "https://github.com/TaskBeacon/H000088-negative-priming/archive/refs/heads/main.zip",
+      "run_url": "https://taskbeacon.github.io/psyflow-web/?task=H000088-negative-priming",
+      "last_updated": "2026-09-08T00:46:39Z"
+    },
+    {
+      "directory": "H000089-brown-peterson-task",
+      "id": "H000089",
+      "slug": "brown-peterson-task",
+      "title": "Brown-Peterson Task",
+      "acquisition": "behavior",
+      "maturity": "draft",
+      "release_tag": "v0.1.0",
+      "short_description": "Browser companion for T000089, preserving consonant-trigram encoding, paced backward-counting retention intervals, serial recall, and pos...",
+      "repo_url": "https://github.com/TaskBeacon/H000089-brown-peterson-task",
+      "default_branch": "main",
+      "download_url": "https://github.com/TaskBeacon/H000089-brown-peterson-task/archive/refs/heads/main.zip",
+      "run_url": "https://taskbeacon.github.io/psyflow-web/?task=H000089-brown-peterson-task",
+      "last_updated": "2026-08-23T09:26:16Z"
+    },
+    {
+      "directory": "H000090-retrieval-induced-forgetting",
+      "id": "H000090",
+      "slug": "retrieval-induced-forgetting",
+      "title": "Retrieval-Induced Forgetting",
+      "acquisition": "behavior",
+      "maturity": "smoke_tested",
+      "release_tag": "v0.1.0",
+      "short_description": "Browser-native companion to the canonical PsychoPy implementation. Participants study 48 Chinese category-exemplar pairs, practice retrie...",
+      "repo_url": "https://github.com/TaskBeacon/H000090-retrieval-induced-forgetting",
+      "default_branch": "main",
+      "download_url": "https://github.com/TaskBeacon/H000090-retrieval-induced-forgetting/archive/refs/heads/main.zip",
+      "run_url": "https://taskbeacon.github.io/psyflow-web/?task=H000090-retrieval-induced-forgetting",
+      "last_updated": "2026-09-08T00:46:38Z"
+    },
+    {
+      "directory": "H000091-verbal-fluency",
+      "id": "H000091",
+      "slug": "verbal-fluency",
+      "title": "Verbal Fluency",
+      "acquisition": "behavior",
+      "maturity": "smoke_tested",
+      "release_tag": "v0.1.0",
+      "short_description": "Browser-native companion to T000091-verbal-fluency. The Python task is canonical. This source-only port preserves the five Chinese cue tr...",
+      "repo_url": "https://github.com/TaskBeacon/H000091-verbal-fluency",
+      "default_branch": "main",
+      "download_url": "https://github.com/TaskBeacon/H000091-verbal-fluency/archive/refs/heads/main.zip",
+      "run_url": "https://taskbeacon.github.io/psyflow-web/?task=H000091-verbal-fluency",
+      "last_updated": "2026-09-08T00:46:39Z"
+    },
+    {
+      "directory": "H000092-cognitive-reflection-test",
+      "id": "H000092",
+      "slug": "cognitive-reflection-test",
+      "title": "Cognitive Reflection Test",
+      "acquisition": "behavior",
+      "maturity": "smoke_tested",
+      "release_tag": "v0.1.0",
+      "short_description": "Browser-native companion to T000092-cognitive-reflection-test. The Python task is canonical. This repository preserves the classic three-...",
+      "repo_url": "https://github.com/TaskBeacon/H000092-cognitive-reflection-test",
+      "default_branch": "main",
+      "download_url": "https://github.com/TaskBeacon/H000092-cognitive-reflection-test/archive/refs/heads/main.zip",
+      "run_url": "https://taskbeacon.github.io/psyflow-web/?task=H000092-cognitive-reflection-test",
+      "last_updated": "2026-09-08T00:46:39Z"
+    },
+    {
+      "directory": "H000093-pavlovian-to-instrumental-transfer",
+      "id": "H000093",
+      "slug": "pavlovian-to-instrumental-transfer",
+      "title": "Pavlovian-to-Instrumental Transfer",
+      "acquisition": "behavior",
+      "maturity": "draft",
+      "release_tag": "v0.1.0",
+      "short_description": "Browser-native companion to canonical T000093-pavlovian-to-instrumental-transfer, implemented for the shared psyflow-web runner.",
+      "repo_url": "https://github.com/TaskBeacon/H000093-pavlovian-to-instrumental-transfer",
+      "default_branch": "main",
+      "download_url": "https://github.com/TaskBeacon/H000093-pavlovian-to-instrumental-transfer/archive/refs/heads/main.zip",
+      "run_url": "https://taskbeacon.github.io/psyflow-web/?task=H000093-pavlovian-to-instrumental-transfer",
+      "last_updated": "2026-08-23T09:19:31Z"
+    },
+    {
+      "directory": "H000094-prisoners-dilemma",
+      "id": "H000094",
+      "slug": "prisoners-dilemma",
+      "title": "Prisoner’s Dilemma",
+      "acquisition": "behavior",
+      "maturity": "draft",
+      "release_tag": "v0.1.0",
+      "short_description": "Browser-native companion to T000094-prisoners-dilemma. The canonical Python task remains the source of truth; this repository preserves i...",
+      "repo_url": "https://github.com/TaskBeacon/H000094-prisoners-dilemma",
+      "default_branch": "main",
+      "download_url": "https://github.com/TaskBeacon/H000094-prisoners-dilemma/archive/refs/heads/main.zip",
+      "run_url": "https://taskbeacon.github.io/psyflow-web/?task=H000094-prisoners-dilemma",
+      "last_updated": "2026-09-08T00:46:39Z"
+    },
+    {
+      "directory": "H000095-implicit-association-test",
+      "id": "H000095",
+      "slug": "implicit-association-test",
+      "title": "Implicit Association Test",
+      "acquisition": "behavior",
+      "maturity": "draft",
+      "release_tag": "v0.1.0",
+      "short_description": "Browser-native companion to T000095-implicit-association-test. The canonical Python task remains the source of truth. This repository pre...",
+      "repo_url": "https://github.com/TaskBeacon/H000095-implicit-association-test",
+      "default_branch": "main",
+      "download_url": "https://github.com/TaskBeacon/H000095-implicit-association-test/archive/refs/heads/main.zip",
+      "run_url": "https://taskbeacon.github.io/psyflow-web/?task=H000095-implicit-association-test",
+      "last_updated": "2026-08-23T09:08:10Z"
+    },
+    {
+      "directory": "H000096-approximate-number-system-task",
+      "id": "H000096",
+      "slug": "approximate-number-system-task",
+      "title": "Approximate Number System",
+      "acquisition": "behavior",
+      "maturity": "draft",
+      "release_tag": "v0.1.0",
+      "short_description": "Browser-native companion to T000096-approximate-number-system-task. The canonical Python task remains the source of truth. This repositor...",
+      "repo_url": "https://github.com/TaskBeacon/H000096-approximate-number-system-task",
+      "default_branch": "main",
+      "download_url": "https://github.com/TaskBeacon/H000096-approximate-number-system-task/archive/refs/heads/main.zip",
+      "run_url": "https://taskbeacon.github.io/psyflow-web/?task=H000096-approximate-number-system-task",
+      "last_updated": "2026-08-23T16:39:25Z"
+    },
+    {
+      "directory": "H000097-sperling-partial-report-task",
+      "id": "H000097",
+      "slug": "sperling-partial-report-task",
+      "title": "Sperling Partial Report Task",
+      "acquisition": "behavior",
+      "maturity": "draft",
+      "release_tag": "v0.1.0",
+      "short_description": "Browser-native companion to canonical T000097-sperling-partial-report-task. It preserves the 3 × 4 letter matrix, 50 ms exposure, whole r...",
+      "repo_url": "https://github.com/TaskBeacon/H000097-sperling-partial-report-task",
+      "default_branch": "main",
+      "download_url": "https://github.com/TaskBeacon/H000097-sperling-partial-report-task/archive/refs/heads/main.zip",
+      "run_url": "https://taskbeacon.github.io/psyflow-web/?task=H000097-sperling-partial-report-task",
+      "last_updated": "2026-08-23T16:53:52Z"
+    },
+    {
+      "directory": "H000098-wason-selection-task",
+      "id": "H000098",
+      "slug": "wason-selection-task",
+      "title": "Wason Selection Task",
+      "acquisition": "behavior",
+      "maturity": "smoke_tested",
+      "release_tag": "v0.1.0",
+      "short_description": "Browser-native companion to T000098-wason-selection-task. The Python task is canonical. This repository preserves four visible cards in f...",
+      "repo_url": "https://github.com/TaskBeacon/H000098-wason-selection-task",
+      "default_branch": "main",
+      "download_url": "https://github.com/TaskBeacon/H000098-wason-selection-task/archive/refs/heads/main.zip",
+      "run_url": "https://taskbeacon.github.io/psyflow-web/?task=H000098-wason-selection-task",
+      "last_updated": "2026-08-23T16:39:39Z"
+    },
+    {
+      "directory": "H000099-hick-hyman-choice-reaction-task",
+      "id": "H000099",
+      "slug": "hick-hyman-choice-reaction-task",
+      "title": "Hick–Hyman Choice Reaction Task",
+      "acquisition": "behavior",
+      "maturity": "draft",
+      "release_tag": "v0.1.0",
+      "short_description": "This repository is the browser companion to the canonical PsychoPy task in T000099-hick-hyman-choice-reaction-task. It measures how choic...",
+      "repo_url": "https://github.com/TaskBeacon/H000099-hick-hyman-choice-reaction-task",
+      "default_branch": "main",
+      "download_url": "https://github.com/TaskBeacon/H000099-hick-hyman-choice-reaction-task/archive/refs/heads/main.zip",
+      "run_url": "https://taskbeacon.github.io/psyflow-web/?task=H000099-hick-hyman-choice-reaction-task",
+      "last_updated": "2026-08-23T16:54:19Z"
+    },
+    {
+      "directory": "H000100-misinformation-effect-task",
+      "id": "H000100",
+      "slug": "misinformation-effect-task",
+      "title": "Misinformation Effect Task",
+      "acquisition": "behavior",
+      "maturity": "draft",
+      "release_tag": "v0.1.0",
+      "short_description": "Browser-native companion to the canonical T000100-misinformation-effect-task. Each trial presents a self-authored three-frame event, a co...",
+      "repo_url": "https://github.com/TaskBeacon/H000100-misinformation-effect-task",
+      "default_branch": "main",
+      "download_url": "https://github.com/TaskBeacon/H000100-misinformation-effect-task/archive/refs/heads/main.zip",
+      "run_url": "https://taskbeacon.github.io/psyflow-web/?task=H000100-misinformation-effect-task",
+      "last_updated": "2026-08-23T16:52:32Z"
+    },
+    {
+      "directory": "H000101-mirror-tracing",
+      "id": "H000101",
+      "slug": "mirror-tracing",
+      "title": "Mirror Tracing",
+      "acquisition": "behavior",
+      "maturity": "draft",
+      "release_tag": "v0.1.0",
+      "short_description": "Browser companion to canonical T000101-mirror-tracing. It preserves one unscored veridical familiarization trial, 3 blocks × 10 scored ho...",
+      "repo_url": "https://github.com/TaskBeacon/H000101-mirror-tracing",
+      "default_branch": "main",
+      "download_url": "https://github.com/TaskBeacon/H000101-mirror-tracing/archive/refs/heads/main.zip",
+      "run_url": "https://taskbeacon.github.io/psyflow-web/?task=H000101-mirror-tracing",
+      "last_updated": "2026-08-23T11:17:37Z"
+    },
+    {
+      "directory": "H000102-judgment-of-learning",
+      "id": "H000102",
+      "slug": "judgment-of-learning",
+      "title": "Judgment of Learning",
+      "acquisition": "behavior",
+      "maturity": "smoke_tested",
+      "release_tag": "v0.1.0",
+      "short_description": "Browser-native companion to T000102-judgment-of-learning, which remains the canonical source. This source-only repository preserves the p...",
+      "repo_url": "https://github.com/TaskBeacon/H000102-judgment-of-learning",
+      "default_branch": "main",
+      "download_url": "https://github.com/TaskBeacon/H000102-judgment-of-learning/archive/refs/heads/main.zip",
+      "run_url": "https://taskbeacon.github.io/psyflow-web/?task=H000102-judgment-of-learning",
+      "last_updated": "2026-08-23T11:35:34Z"
+    },
+    {
+      "directory": "H000103-binocular-rivalry",
+      "id": "H000103",
+      "slug": "binocular-rivalry",
+      "title": "Binocular Rivalry",
+      "acquisition": "behavior",
+      "maturity": "draft",
+      "release_tag": "v0.1.0",
+      "short_description": "Browser-native companion to T000103-binocular-rivalry, which remains the canonical source. The task presents incompatible red and cyan si...",
+      "repo_url": "https://github.com/TaskBeacon/H000103-binocular-rivalry",
+      "default_branch": "main",
+      "download_url": "https://github.com/TaskBeacon/H000103-binocular-rivalry/archive/refs/heads/main.zip",
+      "run_url": "https://taskbeacon.github.io/psyflow-web/?task=H000103-binocular-rivalry",
+      "last_updated": "2026-08-23T11:54:13Z"
+    },
+    {
+      "directory": "H000104-word-superiority-effect-task",
+      "id": "H000104",
+      "slug": "word-superiority-effect-task",
+      "title": "Reicher-Wheeler Word Superiority Task",
+      "acquisition": "behavior",
+      "maturity": "draft",
+      "release_tag": "v0.1.0",
+      "short_description": "Browser-native companion to the canonical PsychoPy task, T000104-word-superiority-effect-task. The task measures masked two-alternative l...",
+      "repo_url": "https://github.com/TaskBeacon/H000104-word-superiority-effect-task",
+      "default_branch": "main",
+      "download_url": "https://github.com/TaskBeacon/H000104-word-superiority-effect-task/archive/refs/heads/main.zip",
+      "run_url": "https://taskbeacon.github.io/psyflow-web/?task=H000104-word-superiority-effect-task",
+      "last_updated": "2026-08-23T16:57:12Z"
+    },
+    {
+      "directory": "H000105-visuomotor-rotation-adaptation",
+      "id": "H000105",
+      "slug": "visuomotor-rotation-adaptation",
+      "title": "Visuomotor Rotation Adaptation",
+      "acquisition": "behavior",
+      "maturity": "draft",
+      "release_tag": "v0.1.0",
+      "short_description": "Browser companion to canonical T000105-visuomotor-rotation-adaptation. It preserves the one-target protocol reported by Tsay et al. (2024...",
+      "repo_url": "https://github.com/TaskBeacon/H000105-visuomotor-rotation-adaptation",
+      "default_branch": "main",
+      "download_url": "https://github.com/TaskBeacon/H000105-visuomotor-rotation-adaptation/archive/refs/heads/main.zip",
+      "run_url": "https://taskbeacon.github.io/psyflow-web/?task=H000105-visuomotor-rotation-adaptation",
+      "last_updated": "2026-08-29T10:59:56Z"
+    },
+    {
+      "directory": "H000106-false-belief-task",
+      "id": "H000106",
+      "slug": "false-belief-task",
+      "title": "False-Belief / Unexpected Transfer Task",
+      "acquisition": "behavior",
+      "maturity": "draft",
+      "release_tag": "v0.1.0",
+      "short_description": "Browser companion for T000106, preserving timed first- and second-order true/false-belief stories, F/J choices, controls, and qualified s...",
+      "repo_url": "https://github.com/TaskBeacon/H000106-false-belief-task",
+      "default_branch": "main",
+      "download_url": "https://github.com/TaskBeacon/H000106-false-belief-task/archive/refs/heads/main.zip",
+      "run_url": "https://taskbeacon.github.io/psyflow-web/?task=H000106-false-belief-task",
+      "last_updated": "2026-08-23T16:49:08Z"
+    },
+    {
+      "directory": "H000107-heider-simmel-social-attribution-task",
+      "id": "H000107",
+      "slug": "heider-simmel-social-attribution-task",
+      "title": "Heider–Simmel Social Attribution Task",
+      "acquisition": "behavior",
+      "maturity": "draft",
+      "release_tag": "v0.1.0",
+      "short_description": "Browser companion for T000107 with twice-viewed original geometric animations, open narratives, and social/mechanical/random judgments.",
+      "repo_url": "https://github.com/TaskBeacon/H000107-heider-simmel-social-attribution-task",
+      "default_branch": "main",
+      "download_url": "https://github.com/TaskBeacon/H000107-heider-simmel-social-attribution-task/archive/refs/heads/main.zip",
+      "run_url": "https://taskbeacon.github.io/psyflow-web/?task=H000107-heider-simmel-social-attribution-task",
+      "last_updated": "2026-08-23T17:05:36Z"
+    },
+    {
+      "directory": "H000108-muller-lyer-illusion-task",
+      "id": "H000108",
+      "slug": "muller-lyer-illusion-task",
+      "title": "Muller-Lyer Illusion Task",
+      "acquisition": "behavior",
+      "maturity": "draft",
+      "release_tag": "v0.1.0",
+      "short_description": "Browser-native companion to T000108-muller-lyer-illusion-task, which remains the canonical source. Participants adjust the right outward-...",
+      "repo_url": "https://github.com/TaskBeacon/H000108-muller-lyer-illusion-task",
+      "default_branch": "main",
+      "download_url": "https://github.com/TaskBeacon/H000108-muller-lyer-illusion-task/archive/refs/heads/main.zip",
+      "run_url": "https://taskbeacon.github.io/psyflow-web/?task=H000108-muller-lyer-illusion-task",
+      "last_updated": "2026-08-23T16:27:06Z"
+    },
+    {
+      "directory": "H000109-einstellung-water-jar-task",
+      "id": "H000109",
+      "slug": "einstellung-water-jar-task",
+      "title": "Luchins Water-Jar / Einstellung Task",
+      "acquisition": "behavior",
+      "maturity": "smoke_tested",
+      "release_tag": "v0.1.0",
+      "short_description": "Browser companion for the canonical Python task T000109-einstellung-water-jar-task. It is a source-only psyflow-web task package: the sha...",
+      "repo_url": "https://github.com/TaskBeacon/H000109-einstellung-water-jar-task",
+      "default_branch": "main",
+      "download_url": "https://github.com/TaskBeacon/H000109-einstellung-water-jar-task/archive/refs/heads/main.zip",
+      "run_url": "https://taskbeacon.github.io/psyflow-web/?task=H000109-einstellung-water-jar-task",
+      "last_updated": "2026-09-08T00:46:39Z"
+    },
+    {
+      "directory": "H000110-goal-commitment-fishing-net-task",
+      "id": "H000110",
+      "slug": "goal-commitment-fishing-net-task",
+      "title": "Goal Commitment / Fishing-Net Task",
+      "acquisition": "behavior",
+      "maturity": "smoke_tested",
+      "release_tag": "v0.1.0",
+      "short_description": "Browser-native Fishing-Net task preserving dynamic offers, commitment, abandonment, and goal completion.",
+      "repo_url": "https://github.com/TaskBeacon/H000110-goal-commitment-fishing-net-task",
+      "default_branch": "main",
+      "download_url": "https://github.com/TaskBeacon/H000110-goal-commitment-fishing-net-task/archive/refs/heads/main.zip",
+      "run_url": "https://taskbeacon.github.io/psyflow-web/?task=H000110-goal-commitment-fishing-net-task",
+      "last_updated": "2026-08-29T10:22:58Z"
+    },
+    {
+      "directory": "H000111-rlwm-set-size-learning-task",
+      "id": "H000111",
+      "slug": "rlwm-set-size-learning-task",
+      "title": "RLWM Set-Size Learning Task",
+      "acquisition": "behavior",
+      "maturity": "smoke_tested",
+      "release_tag": "v0.1.0",
+      "short_description": "Browser companion for the canonical Python task T000111-rlwm-set-size-learning-task, implemented as a source-only psyflow-web package.",
+      "repo_url": "https://github.com/TaskBeacon/H000111-rlwm-set-size-learning-task",
+      "default_branch": "main",
+      "download_url": "https://github.com/TaskBeacon/H000111-rlwm-set-size-learning-task/archive/refs/heads/main.zip",
+      "run_url": "https://taskbeacon.github.io/psyflow-web/?task=H000111-rlwm-set-size-learning-task",
+      "last_updated": "2026-09-08T00:46:40Z"
+    },
+    {
+      "directory": "H000112-self-ordered-pointing-task",
+      "id": "H000112",
+      "slug": "self-ordered-pointing-task",
+      "title": "Self-Ordered Pointing Task",
+      "acquisition": "behavior",
+      "maturity": "smoke_tested",
+      "release_tag": "v0.1.0",
+      "short_description": "Monitor self-chosen item history while positions are shuffled",
+      "repo_url": "https://github.com/TaskBeacon/H000112-self-ordered-pointing-task",
+      "default_branch": "main",
+      "download_url": "https://github.com/TaskBeacon/H000112-self-ordered-pointing-task/archive/refs/heads/main.zip",
+      "run_url": "https://taskbeacon.github.io/psyflow-web/?task=H000112-self-ordered-pointing-task",
+      "last_updated": "2026-08-30T17:08:01Z"
+    },
+    {
+      "directory": "H000113-feature-rich-episodic-decision-task",
+      "id": "H000113",
+      "slug": "feature-rich-episodic-decision-task",
+      "title": "Feature-Rich Episodic Decision Task",
+      "acquisition": "behavior",
+      "maturity": "smoke_tested",
+      "release_tag": "v0.1.0",
+      "short_description": "Browser-native companion to the canonical T000113-feature-rich-episodic-decision-task, implemented for the shared psyflow-web runner.",
+      "repo_url": "https://github.com/TaskBeacon/H000113-feature-rich-episodic-decision-task",
+      "default_branch": "main",
+      "download_url": "https://github.com/TaskBeacon/H000113-feature-rich-episodic-decision-task/archive/refs/heads/main.zip",
+      "run_url": "https://taskbeacon.github.io/psyflow-web/?task=H000113-feature-rich-episodic-decision-task",
+      "last_updated": "2026-09-08T00:46:43Z"
+    },
+    {
+      "directory": "H000115-moral-strategy-outcome-learning-task",
+      "id": "H000115",
+      "slug": "moral-strategy-outcome-learning-task",
+      "title": "Moral Strategy Outcome-Learning Task",
+      "acquisition": "behavior",
+      "maturity": "draft",
+      "release_tag": "v0.1.0",
+      "short_description": "Browser companion for canonical T000115, running on the shared psyflow-web jsPsych runtime.",
+      "repo_url": "https://github.com/TaskBeacon/H000115-moral-strategy-outcome-learning-task",
+      "default_branch": "main",
+      "download_url": "https://github.com/TaskBeacon/H000115-moral-strategy-outcome-learning-task/archive/refs/heads/main.zip",
+      "run_url": "https://taskbeacon.github.io/psyflow-web/?task=H000115-moral-strategy-outcome-learning-task",
+      "last_updated": "2026-09-08T00:46:46Z"
+    },
+    {
+      "directory": "H000116-random-number-generation-task",
+      "id": "H000116",
+      "slug": "random-number-generation-task",
+      "title": "Random Number Generation Task",
+      "acquisition": "behavior",
+      "maturity": "smoke_tested",
+      "release_tag": "v0.1.0",
+      "short_description": "Self-generated digits at a visual metronome; multidimensional sequence measures",
+      "repo_url": "https://github.com/TaskBeacon/H000116-random-number-generation-task",
+      "default_branch": "main",
+      "download_url": "https://github.com/TaskBeacon/H000116-random-number-generation-task/archive/refs/heads/main.zip",
+      "run_url": "https://taskbeacon.github.io/psyflow-web/?task=H000116-random-number-generation-task",
+      "last_updated": "2026-08-30T18:03:07Z"
+    },
+    {
+      "directory": "H000117-structured-visuomotor-graph-learning",
+      "id": "H000117",
+      "slug": "structured-visuomotor-graph-learning",
+      "title": "Structured Visuomotor Graph Learning",
+      "acquisition": "behavior",
+      "maturity": "smoke_tested",
+      "release_tag": "v0.1.0",
+      "short_description": "Browser companion for the canonical Python task T000117-structured-visuomotor-graph-learning. It is a source-only psyflow-web task: the s...",
+      "repo_url": "https://github.com/TaskBeacon/H000117-structured-visuomotor-graph-learning",
+      "default_branch": "main",
+      "download_url": "https://github.com/TaskBeacon/H000117-structured-visuomotor-graph-learning/archive/refs/heads/main.zip",
+      "run_url": "https://taskbeacon.github.io/psyflow-web/?task=H000117-structured-visuomotor-graph-learning",
+      "last_updated": "2026-08-29T10:21:34Z"
+    },
+    {
+      "directory": "H000118-method-of-loci-context-binding-task",
+      "id": "H000118",
+      "slug": "method-of-loci-context-binding-task",
+      "title": "Method-of-Loci Context Binding Task",
+      "acquisition": "behavior",
+      "maturity": "smoke_tested",
+      "release_tag": "v0.1.0",
+      "short_description": "Browser companion for the canonical Python task T000118-method-of-loci-context-binding-task. This is a source-only psyflow-web task packa...",
+      "repo_url": "https://github.com/TaskBeacon/H000118-method-of-loci-context-binding-task",
+      "default_branch": "main",
+      "download_url": "https://github.com/TaskBeacon/H000118-method-of-loci-context-binding-task/archive/refs/heads/main.zip",
+      "run_url": "https://taskbeacon.github.io/psyflow-web/?task=H000118-method-of-loci-context-binding-task",
+      "last_updated": "2026-08-29T09:57:34Z"
+    },
+    {
+      "directory": "H000119-algorithm-induction-from-demonstration",
+      "id": "H000119",
+      "slug": "algorithm-induction-from-demonstration",
+      "title": "Algorithm Induction from Demonstration",
+      "acquisition": "behavior",
+      "maturity": "smoke_tested",
+      "release_tag": "v0.1.0",
+      "short_description": "Browser companion for the canonical Python task T000119-algorithm-induction-from-demonstration. This is a source-only psyflow-web task pa...",
+      "repo_url": "https://github.com/TaskBeacon/H000119-algorithm-induction-from-demonstration",
+      "default_branch": "main",
+      "download_url": "https://github.com/TaskBeacon/H000119-algorithm-induction-from-demonstration/archive/refs/heads/main.zip",
+      "run_url": "https://taskbeacon.github.io/psyflow-web/?task=H000119-algorithm-induction-from-demonstration",
+      "last_updated": "2026-08-29T10:21:04Z"
+    },
+    {
+      "directory": "H000121-triangle-completion-path-integration-task",
+      "id": "H000121",
+      "slug": "triangle-completion-path-integration-task",
+      "title": "Triangle Completion / Path Integration Task",
+      "acquisition": "behavior",
+      "maturity": "smoke_tested",
+      "release_tag": "v0.1.0",
+      "short_description": "Browser companion preserving the four-cue triangle-completion path-integration protocol and endpoint-error analysis.",
+      "repo_url": "https://github.com/TaskBeacon/H000121-triangle-completion-path-integration-task",
+      "default_branch": "main",
+      "download_url": "https://github.com/TaskBeacon/H000121-triangle-completion-path-integration-task/archive/refs/heads/main.zip",
+      "run_url": "https://taskbeacon.github.io/psyflow-web/?task=H000121-triangle-completion-path-integration-task",
+      "last_updated": "2026-08-29T16:31:36Z"
+    },
+    {
+      "directory": "H000122-public-goods-game-with-punishment",
+      "id": "H000122",
+      "slug": "public-goods-game-with-punishment",
+      "title": "Public Goods Game with Punishment",
+      "acquisition": "behavior",
+      "maturity": "smoke_tested",
+      "release_tag": "v0.1.0",
+      "short_description": "Browser companion for canonical T000122-public-goods-game-with-punishment, implemented against the shared psyflow-web runtime.",
+      "repo_url": "https://github.com/TaskBeacon/H000122-public-goods-game-with-punishment",
+      "default_branch": "main",
+      "download_url": "https://github.com/TaskBeacon/H000122-public-goods-game-with-punishment/archive/refs/heads/main.zip",
+      "run_url": "https://taskbeacon.github.io/psyflow-web/?task=H000122-public-goods-game-with-punishment",
+      "last_updated": "2026-08-29T16:28:18Z"
+    },
+    {
+      "directory": "H000123-adaptive-mentalization-game",
+      "id": "H000123",
+      "slug": "adaptive-mentalization-game",
+      "title": "Adaptive Mentalization Game",
+      "acquisition": "behavior",
+      "maturity": "smoke_tested",
+      "release_tag": "v0.1.0",
+      "short_description": "This source-only web task is the browser-native companion to canonical T000123-adaptive-mentalization-game. It preserves the three-action...",
+      "repo_url": "https://github.com/TaskBeacon/H000123-adaptive-mentalization-game",
+      "default_branch": "main",
+      "download_url": "https://github.com/TaskBeacon/H000123-adaptive-mentalization-game/archive/refs/heads/main.zip",
+      "run_url": "https://taskbeacon.github.io/psyflow-web/?task=H000123-adaptive-mentalization-game",
+      "last_updated": "2026-09-08T00:46:47Z"
+    },
+    {
+      "directory": "H000124-context-dependent-item-comparison",
+      "id": "H000124",
+      "slug": "context-dependent-item-comparison",
+      "title": "Context-Dependent Item Comparison",
+      "acquisition": "behavior",
+      "maturity": "smoke_tested",
+      "release_tag": "v0.1.0",
+      "short_description": "Browser companion for the canonical Python task T000124-context-dependent-item-comparison. This is a source-only psyflow-web task package...",
+      "repo_url": "https://github.com/TaskBeacon/H000124-context-dependent-item-comparison",
+      "default_branch": "main",
+      "download_url": "https://github.com/TaskBeacon/H000124-context-dependent-item-comparison/archive/refs/heads/main.zip",
+      "run_url": "https://taskbeacon.github.io/psyflow-web/?task=H000124-context-dependent-item-comparison",
+      "last_updated": "2026-09-08T00:46:47Z"
+    },
+    {
+      "directory": "H000125-alternative-uses-task",
+      "id": "H000125",
+      "slug": "alternative-uses-task",
+      "title": "Alternative Uses Task",
+      "acquisition": "behavior",
+      "maturity": "smoke_tested",
+      "release_tag": "v0.1.0",
+      "short_description": "Source-only web port of canonical T000125,v0.1.0,Chinese,behavioral. Shared runner: https://taskbeacon.github.io/psyflow-web/?task=H00012...",
+      "repo_url": "https://github.com/TaskBeacon/H000125-alternative-uses-task",
+      "default_branch": "main",
+      "download_url": "https://github.com/TaskBeacon/H000125-alternative-uses-task/archive/refs/heads/main.zip",
+      "run_url": "https://taskbeacon.github.io/psyflow-web/?task=H000125-alternative-uses-task",
+      "last_updated": "2026-08-30T19:50:11Z"
+    },
+    {
+      "directory": "H000126-remote-associates-task",
+      "id": "H000126",
+      "slug": "remote-associates-task",
+      "title": "Remote Associates Task",
+      "acquisition": "behavior",
+      "maturity": "smoke_tested",
+      "release_tag": "v0.1.0",
+      "short_description": "Authored Chinese triad search with matched-time hint rescue",
+      "repo_url": "https://github.com/TaskBeacon/H000126-remote-associates-task",
+      "default_branch": "main",
+      "download_url": "https://github.com/TaskBeacon/H000126-remote-associates-task/archive/refs/heads/main.zip",
+      "run_url": "https://taskbeacon.github.io/psyflow-web/?task=H000126-remote-associates-task",
+      "last_updated": "2026-08-30T19:35:54Z"
+    },
+    {
+      "directory": "H000127-analogical-transfer-task",
+      "id": "H000127",
+      "slug": "analogical-transfer-task",
+      "title": "Analogical Transfer Task",
+      "acquisition": "behavior",
+      "maturity": "smoke_tested",
+      "release_tag": "v0.1.0",
+      "short_description": "Original solved-source stories, spontaneous and hinted target solutions, blinded human coding",
+      "repo_url": "https://github.com/TaskBeacon/H000127-analogical-transfer-task",
+      "default_branch": "main",
+      "download_url": "https://github.com/TaskBeacon/H000127-analogical-transfer-task/archive/refs/heads/main.zip",
+      "run_url": "https://taskbeacon.github.io/psyflow-web/?task=H000127-analogical-transfer-task",
+      "last_updated": "2026-08-30T21:26:25Z"
+    },
+    {
+      "directory": "H000128-mental-scanning-task",
+      "id": "H000128",
+      "slug": "mental-scanning-task",
+      "title": "Mental Scanning Task",
+      "acquisition": "behavior",
+      "maturity": "smoke_tested",
+      "release_tag": "v0.1.0",
+      "short_description": "Chinese browser adaptation of Kosslyn, Ball & Reiser (1978), Experiments2–3, derived from canonical T000128. This source-only task loads ...",
+      "repo_url": "https://github.com/TaskBeacon/H000128-mental-scanning-task",
+      "default_branch": "main",
+      "download_url": "https://github.com/TaskBeacon/H000128-mental-scanning-task/archive/refs/heads/main.zip",
+      "run_url": "https://taskbeacon.github.io/psyflow-web/?task=H000128-mental-scanning-task",
+      "last_updated": "2026-08-30T22:41:55Z"
+    },
+    {
+      "directory": "H000129-autobiographical-memory-task",
+      "id": "H000129",
+      "slug": "autobiographical-memory-task",
+      "title": "Autobiographical Memory Task",
+      "acquisition": "behavior",
+      "maturity": "smoke_tested",
+      "release_tag": "v0.1.0",
+      "short_description": "Chinese typed adaptation with private local acquisition and human specificity coding",
+      "repo_url": "https://github.com/TaskBeacon/H000129-autobiographical-memory-task",
+      "default_branch": "main",
+      "download_url": "https://github.com/TaskBeacon/H000129-autobiographical-memory-task/archive/refs/heads/main.zip",
+      "run_url": "https://taskbeacon.github.io/psyflow-web/?task=H000129-autobiographical-memory-task",
+      "last_updated": "2026-08-30T22:32:41Z"
+    },
+    {
+      "directory": "H000130-tip-of-the-tongue-task",
+      "id": "H000130",
+      "slug": "tip-of-the-tongue-task",
+      "title": "Tip-of-the-Tongue Elicitation Task",
+      "acquisition": "behavior",
+      "maturity": "smoke_tested",
+      "release_tag": "v0.1.0",
+      "short_description": "Original Chinese definition elicitation with partial information and target verification",
+      "repo_url": "https://github.com/TaskBeacon/H000130-tip-of-the-tongue-task",
+      "default_branch": "main",
+      "download_url": "https://github.com/TaskBeacon/H000130-tip-of-the-tongue-task/archive/refs/heads/main.zip",
+      "run_url": "https://taskbeacon.github.io/psyflow-web/?task=H000130-tip-of-the-tongue-task",
+      "last_updated": "2026-08-30T22:36:03Z"
+    },
+    {
+      "directory": "H000131-garden-path-self-paced-reading-task",
+      "id": "H000131",
+      "slug": "garden-path-self-paced-reading-task",
+      "title": "Garden-Path Self-Paced Reading Task",
+      "acquisition": "behavior",
+      "maturity": "smoke_tested",
+      "release_tag": "v0.1.0",
+      "short_description": "Chinese paired no-所 / early-所 relative-clause moving-window reading",
+      "repo_url": "https://github.com/TaskBeacon/H000131-garden-path-self-paced-reading-task",
+      "default_branch": "main",
+      "download_url": "https://github.com/TaskBeacon/H000131-garden-path-self-paced-reading-task/archive/refs/heads/main.zip",
+      "run_url": "https://taskbeacon.github.io/psyflow-web/?task=H000131-garden-path-self-paced-reading-task",
+      "last_updated": "2026-08-30T23:12:03Z"
+    },
+    {
+      "directory": "H000132-auditory-stream-segregation-task",
+      "id": "H000132",
+      "slug": "auditory-stream-segregation-task",
+      "title": "Auditory Stream Segregation Task",
+      "acquisition": "behavior",
+      "maturity": "smoke_tested",
+      "release_tag": "v0.1.0",
+      "short_description": "ABA-family subjective stream grouping, source-only shared-runner port",
+      "repo_url": "https://github.com/TaskBeacon/H000132-auditory-stream-segregation-task",
+      "default_branch": "main",
+      "download_url": "https://github.com/TaskBeacon/H000132-auditory-stream-segregation-task/archive/refs/heads/main.zip",
+      "run_url": "https://taskbeacon.github.io/psyflow-web/?task=H000132-auditory-stream-segregation-task",
+      "last_updated": "2026-08-30T23:35:14Z"
+    },
+    {
+      "directory": "H000133-visual-crowding-task",
+      "id": "H000133",
+      "slug": "visual-crowding-task",
+      "title": "Visual Crowding Task",
+      "acquisition": "behavior",
+      "maturity": "smoke_tested",
+      "release_tag": "v0.1.0",
+      "short_description": "Peripheral letter identification across target-flanker spacing and eccentricity",
+      "repo_url": "https://github.com/TaskBeacon/H000133-visual-crowding-task",
+      "default_branch": "main",
+      "download_url": "https://github.com/TaskBeacon/H000133-visual-crowding-task/archive/refs/heads/main.zip",
+      "run_url": "https://taskbeacon.github.io/psyflow-web/?task=H000133-visual-crowding-task",
+      "last_updated": "2026-08-30T23:56:22Z"
+    },
+    {
+      "directory": "H000134-contour-integration-task",
+      "id": "H000134",
+      "slug": "contour-integration-task",
+      "title": "Contour Integration Task",
+      "acquisition": "behavior",
+      "maturity": "smoke_tested",
+      "release_tag": "v0.1.0",
+      "short_description": "Detect a12-element jagged Gabor path within256elements using temporal two-alternative choice. Five bend magnitudes manipulate the cross-e...",
+      "repo_url": "https://github.com/TaskBeacon/H000134-contour-integration-task",
+      "default_branch": "main",
+      "download_url": "https://github.com/TaskBeacon/H000134-contour-integration-task/archive/refs/heads/main.zip",
+      "run_url": "https://taskbeacon.github.io/psyflow-web/?task=H000134-contour-integration-task",
+      "last_updated": "2026-08-31T00:22:25Z"
+    },
+    {
+      "directory": "H000135-motion-aftereffect-task",
+      "id": "H000135",
+      "slug": "motion-aftereffect-task",
+      "title": "Motion Aftereffect Task",
+      "acquisition": "behavior",
+      "maturity": "smoke_tested",
+      "release_tag": "v0.1.0",
+      "short_description": "Four translating Gabor patches followed by a stationary subjective-duration test",
+      "repo_url": "https://github.com/TaskBeacon/H000135-motion-aftereffect-task",
+      "default_branch": "main",
+      "download_url": "https://github.com/TaskBeacon/H000135-motion-aftereffect-task/archive/refs/heads/main.zip",
+      "run_url": "https://taskbeacon.github.io/psyflow-web/?task=H000135-motion-aftereffect-task",
+      "last_updated": "2026-08-31T01:40:06Z"
+    },
+    {
+      "directory": "H000136-inattentional-blindness-task",
+      "id": "H000136",
+      "slug": "inattentional-blindness-task",
+      "title": "Inattentional Blindness Task",
+      "acquisition": "behavior",
+      "maturity": "smoke_tested",
+      "release_tag": "v0.1.0",
+      "short_description": "One unannounced square during line-length judgment, then attention controls",
+      "repo_url": "https://github.com/TaskBeacon/H000136-inattentional-blindness-task",
+      "default_branch": "main",
+      "download_url": "https://github.com/TaskBeacon/H000136-inattentional-blindness-task/archive/refs/heads/main.zip",
+      "run_url": "https://taskbeacon.github.io/psyflow-web/?task=H000136-inattentional-blindness-task",
+      "last_updated": "2026-08-31T01:12:15Z"
+    },
+    {
+      "directory": "H000137-pursuit-rotor-task",
+      "id": "H000137",
+      "slug": "pursuit-rotor-task",
+      "title": "Pursuit Rotor",
+      "acquisition": "behavior",
+      "maturity": "smoke_tested",
+      "release_tag": "v0.1.0",
+      "short_description": "Source-only companion to canonical T000137-pursuit-rotor-task. Shared PsyFlow web runner owns the app, fullscreen, pointer primitive and ...",
+      "repo_url": "https://github.com/TaskBeacon/H000137-pursuit-rotor-task",
+      "default_branch": "main",
+      "download_url": "https://github.com/TaskBeacon/H000137-pursuit-rotor-task/archive/refs/heads/main.zip",
+      "run_url": "https://taskbeacon.github.io/psyflow-web/?task=H000137-pursuit-rotor-task",
+      "last_updated": "2026-08-31T00:49:02Z"
+    },
+    {
+      "directory": "H000139-judge-advisor-task",
+      "id": "H000139",
+      "slug": "judge-advisor-task",
+      "title": "Judge–Advisor System",
+      "acquisition": "behavior",
+      "maturity": "smoke_tested",
+      "release_tag": "v0.1.0",
+      "short_description": "Canonical: T000139. Open the shared runner. Version 0.1.0; Chinese, SimHei; behavioral task; updated 2026-08-31.",
+      "repo_url": "https://github.com/TaskBeacon/H000139-judge-advisor-task",
+      "default_branch": "main",
+      "download_url": "https://github.com/TaskBeacon/H000139-judge-advisor-task/archive/refs/heads/main.zip",
+      "run_url": "https://taskbeacon.github.io/psyflow-web/?task=H000139-judge-advisor-task",
+      "last_updated": "2026-08-30T23:27:03Z"
+    },
+    {
+      "directory": "H000140-anchoring-estimation-task",
+      "id": "H000140",
+      "slug": "anchoring-estimation-task",
+      "title": "Anchoring in Numerical Estimation",
+      "acquisition": "behavior",
+      "maturity": "smoke_tested",
+      "release_tag": "v0.1.0",
+      "short_description": "H000140; original unvalidated pilot.",
+      "repo_url": "https://github.com/TaskBeacon/H000140-anchoring-estimation-task",
+      "default_branch": "main",
+      "download_url": "https://github.com/TaskBeacon/H000140-anchoring-estimation-task/archive/refs/heads/main.zip",
+      "run_url": "https://taskbeacon.github.io/psyflow-web/?task=H000140-anchoring-estimation-task",
+      "last_updated": "2026-08-30T22:21:59Z"
     }
   ]
 }

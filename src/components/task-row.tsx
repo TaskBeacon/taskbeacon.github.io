@@ -2,173 +2,56 @@
 
 import Link from "next/link";
 import type { TaskIndexItem } from "@/lib/task-index";
-import { formatShortDate } from "@/lib/format";
 import { taskHandle, taskTitle } from "@/lib/task-display";
 import { MaturityBadge } from "@/components/maturity-badge";
-import { IconDownload, IconGithub, IconPlay } from "@/components/icons";
-import { TaskFlowPlaceholder } from "@/components/task-flow-placeholder";
-import clsx from "@/components/utils/clsx";
+import { IconPlay } from "@/components/icons";
 import { taskDetailHref } from "@/lib/routes";
+import { rememberGalleryScroll } from "@/lib/gallery-state";
+import { taskDomains, taskSummary } from "@/lib/task-catalog";
 
-const ACTION_ICONS = {
-  download: IconDownload,
-  github: IconGithub,
-  play: IconPlay
-} as const;
-
-function ActionLink({
-  href,
-  label,
-  icon,
-  tone = "local",
-  className
-}: {
-  href: string;
-  label: string;
-  icon: keyof typeof ACTION_ICONS;
-  tone?: "local" | "preview" | "preview-primary";
-  className?: string;
-}) {
-  const Icon = ACTION_ICONS[icon];
-
-  return (
-    <a
-      className={clsx(
-        "tb-focus-ring",
-        tone === "preview-primary"
-          ? "tb-button-primary"
-        : tone === "preview"
-            ? "inline-flex items-center gap-2 rounded-[14px] border-2 border-[#25314d] bg-[#fff8f0] px-3 py-2 text-sm font-bold text-[#25314d] transition-colors hover:bg-[#ffe9de]"
-            : "inline-flex items-center gap-2 rounded-[14px] border-2 border-[#25314d] bg-white px-3 py-2 text-sm font-bold text-[#25314d] transition-colors hover:bg-[#eef8ff]",
-        className
-      )}
-      href={href}
-      target="_blank"
-      rel="noreferrer"
-    >
-      <Icon className="size-4" />
-      {label}
-    </a>
-  );
-}
-
-export function TaskRow({
-  task,
-  onOpen
-}: {
-  task: TaskIndexItem;
-  onOpen: (task: TaskIndexItem) => void;
-}) {
+export function TaskRow({ task, returnHref = "/tasks/" }: { task: TaskIndexItem; returnHref?: string }) {
   const preview = task.web_variant;
+  const detailHref = `${taskDetailHref(task.repo)}?${new URLSearchParams({ returnTo: returnHref })}`;
+  const tags = [...taskDomains(task), ...(task.tags?.language ?? [])].slice(0, 3);
+  const rememberPosition = () => rememberGalleryScroll(returnHref);
 
   return (
-    <article className="tb-frame bg-[#fffdf9] p-4 sm:p-5">
-      <div className="min-w-0">
-        <h2 className="min-w-0 font-heading text-[2rem] font-bold leading-[0.95] text-[#25314d] sm:text-[2.35rem]">
-          <Link className="tb-focus-ring rounded-lg hover:text-[#1b6f86]" href={taskDetailHref(task.repo)}>
-            {taskTitle(task)}
+    <article className="tb-content-card p-4 sm:p-5">
+      <div className="flex items-start gap-5">
+        <div className="min-w-0 flex-1">
+          <div className="mb-2 flex flex-wrap items-center gap-2 text-xs text-slate-600">
+            <code className="font-mono text-[11px]">{taskHandle(task)}</code>
+            {task.maturity ? <MaturityBadge maturity={task.maturity} /> : null}
+          </div>
+          <h2 className="font-heading text-2xl font-bold leading-tight text-[#25314d]">
+            <Link className="tb-focus-ring rounded-lg hover:text-[#1b6f86]" href={detailHref} onClick={rememberPosition}>
+              {taskTitle(task)}
+            </Link>
+          </h2>
+          <p className="mt-2 line-clamp-2 text-sm leading-6 text-slate-700">
+            {taskSummary(task)}
+          </p>
+          {tags.length ? <p className="mt-2 text-xs leading-5 text-slate-500">{tags.join(" · ")}</p> : null}
+        </div>
+        {task.task_flow?.thumb ? (
+          <Link href={detailHref} onClick={rememberPosition}
+            className="tb-focus-ring hidden w-36 shrink-0 overflow-hidden rounded-[16px] border-2 border-[#25314d]/25 bg-white sm:block xl:w-44"
+            aria-label={`View ${taskTitle(task)} flow and details`}>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src={task.task_flow.thumb} alt="" loading="lazy" decoding="async" className="aspect-[16/10] w-full object-contain p-2" />
           </Link>
-        </h2>
-
-        <div className="mt-3 flex flex-wrap items-center gap-2 text-xs text-slate-600">
-          <code className="rounded-full border-2 border-[#25314d] bg-white px-2.5 py-1 font-mono text-[11px] font-semibold text-[#25314d]">
-            {taskHandle(task)}
-          </code>
-          {task.maturity ? <MaturityBadge maturity={task.maturity} /> : null}
-          {preview ? (
-            <span className="rounded-full bg-[#ecffe5] px-3 py-1 text-[11px] font-bold text-[#25314d]">
-              Preview ready
-            </span>
-          ) : null}
-          <span className="rounded-full bg-[#e2f3fb] px-4 py-2 text-[11px] font-bold text-[#25314d]">
-            {formatShortDate(task.last_updated)}
-          </span>
-        </div>
-      </div>
-
-      <div className="mt-4">
-        <p className="max-w-4xl text-sm leading-7 text-slate-700 sm:text-base">
-          {task.short_description || "No description provided."}
-        </p>
-
-        <div className="mt-5 grid gap-3 md:grid-cols-3">
-          <button
-            type="button"
-            className={clsx(
-              "tb-focus-ring w-full whitespace-nowrap",
-              preview ? "tb-button-secondary" : "tb-button-primary"
-            )}
-            onClick={() => onOpen(task)}
-          >
-            Expand details
-          </button>
-          <Link
-            className="tb-focus-ring tb-button-ghost w-full whitespace-nowrap justify-center"
-            href={taskDetailHref(task.repo)}
-          >
-            Open full page
-          </Link>
-          {preview ? (
-            <ActionLink
-              href={preview.run_url}
-              label="Run Preview"
-              icon="play"
-              tone="preview-primary"
-              className="w-full whitespace-nowrap justify-center"
-            />
-          ) : (
-            <button
-              type="button"
-              className="inline-flex w-full cursor-not-allowed items-center justify-center gap-2 whitespace-nowrap rounded-[18px] border-2 border-slate-300 bg-slate-100 px-5 py-3 text-sm font-bold leading-none text-slate-400 shadow-[0_4px_0_#cbd5e1]"
-              disabled
-              aria-disabled="true"
-            >
-              <IconPlay className="size-4" />
-              Run Preview
-            </button>
-          )}
-        </div>
-      </div>
-
-      <TaskFlowPlaceholder task={task} compact className="mt-5" />
-
-      <div className="mt-5 grid gap-3 border-t-2 border-[#25314d]/10 pt-4">
-        <div className="flex flex-col gap-2 sm:flex-row sm:items-center">
-          <div className="text-[11px] font-bold uppercase tracking-[0.18em] text-slate-500 sm:min-w-[88px]">
-            PsyFlow
-          </div>
-          <div className="flex flex-wrap gap-2">
-            <ActionLink href={task.html_url} label="Task Repo" icon="github" tone="local" />
-            <ActionLink
-              href={`${task.html_url}/archive/refs/heads/${task.default_branch}.zip`}
-              label="Download"
-              icon="download"
-              tone="local"
-            />
-          </div>
-        </div>
-
-        {preview ? (
-          <div className="flex flex-col gap-2 sm:flex-row sm:items-center">
-            <div className="text-[11px] font-bold uppercase tracking-[0.18em] text-slate-500 sm:min-w-[88px]">
-              Preview
-            </div>
-            <div className="flex flex-wrap gap-2">
-              <ActionLink
-                href={preview.html_url}
-                label="Preview Repo"
-                icon="github"
-                tone="preview"
-              />
-              <ActionLink
-                href={`${preview.html_url}/archive/refs/heads/${preview.default_branch}.zip`}
-                label="Download"
-                icon="download"
-                tone="preview"
-              />
-            </div>
-          </div>
         ) : null}
+      </div>
+      <div className="mt-4 flex flex-wrap items-center gap-3">
+        {preview ? (
+          <a className="tb-focus-ring tb-button-primary !px-4 !py-2.5 !text-sm" href={preview.run_url} target="_blank" rel="noreferrer">
+            <IconPlay className="size-4" /> Run Preview
+          </a>
+        ) : null}
+        <Link className="tb-focus-ring tb-button-secondary !px-4 !py-2.5 !text-sm" href={detailHref} onClick={rememberPosition}>
+          View details
+        </Link>
+        {!preview ? <span className="text-xs text-slate-500">No web preview yet</span> : null}
       </div>
     </article>
   );

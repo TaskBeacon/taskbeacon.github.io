@@ -1,4 +1,5 @@
 import clsx from "@/components/utils/clsx";
+import { maturityDescription } from "@/lib/task-catalog";
 
 export function formatMaturityLabel(maturity: string) {
   const k = String(maturity ?? "").trim().toLowerCase().replace(/\s+/g, "_");
@@ -45,7 +46,7 @@ export function MaturityBadge({
 
   return (
     <span
-      title={`Maturity: ${label}`}
+      title={maturityDescription(maturity)}
       className={clsx(
         "inline-flex items-center rounded-full border-2 border-[#25314d] px-3 py-1 text-xs font-bold text-[#25314d]",
         maturityClasses(maturity),

@@ -1,5 +1,6 @@
 import type { TaskFacet, TaskIndexItem, TaskTagFacet } from "@/lib/task-index";
 import { taskHasPreview } from "@/lib/html-companions";
+import { taskDomains, taskParadigms, taskSummary } from "./task-catalog";
 
 function norm(s: string) {
   return s.trim().toLowerCase();
@@ -9,6 +10,7 @@ export type SelectedFacets = Record<TaskFacet, Set<string>>;
 
 export function emptySelectedFacets(): SelectedFacets {
   return {
+    domain: new Set(),
     maturity: new Set(),
     preview: new Set(),
     paradigm: new Set(),
@@ -27,6 +29,8 @@ export function matchesQuery(t: TaskIndexItem, query: string) {
     t.title ?? "",
     t.repo,
     t.short_description ?? "",
+    taskSummary(t),
+    ...taskDomains(t),
     t.maturity ?? "",
     t.web_variant?.id ?? "",
     t.web_variant?.repo ?? "",
@@ -65,12 +69,13 @@ function matchesPreview(t: TaskIndexItem, wanted: Set<string>) {
 export function matchesFacets(t: TaskIndexItem, selected: SelectedFacets) {
   if (!matchesMaturity(t, selected.maturity)) return false;
   if (!matchesPreview(t, selected.preview)) return false;
+  if (selected.domain?.size && !taskDomains(t).some((domain) => selected.domain.has(domain))) return false;
 
   const facets: TaskTagFacet[] = ["paradigm", "response", "modality", "language"];
   for (const facet of facets) {
     const wanted = selected[facet];
     if (!wanted || wanted.size === 0) continue;
-    const values = new Set((t.tags?.[facet] ?? []).map(norm));
+    const values = new Set((facet === "paradigm" ? taskParadigms(t) : t.tags?.[facet] ?? []).map(norm));
     let any = false;
     for (const w of wanted) {
       if (values.has(norm(w))) {
@@ -100,6 +105,8 @@ export function filterTasks(
 
 export function facetValues(tasks: TaskIndexItem[], facet: TaskFacet) {
   const set = new Set<string>();
+  if (facet === "domain") return [...new Set(tasks.flatMap(taskDomains))].sort();
+  if (facet === "paradigm") return [...new Set(tasks.flatMap(taskParadigms))].sort();
 
   if (facet === "maturity") {
     for (const t of tasks) {

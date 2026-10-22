@@ -17,6 +17,7 @@ export function TagChip({
     <button
       type="button"
       title={title}
+      aria-pressed={Boolean(selected)}
       className={clsx(
         "tb-focus-ring inline-flex items-center gap-2 rounded-full border-2 px-3 py-1 text-xs font-bold transition-colors",
         "border-[#25314d] cursor-pointer",

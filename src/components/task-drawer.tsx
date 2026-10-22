@@ -1,6 +1,8 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { Modal } from "@/components/modal";
+import { taskSummary } from "@/lib/task-catalog";
 import { Markdown } from "@/components/markdown";
 import { TaskChannelCard } from "@/components/task-channel-card";
 import { TaskFlowPlaceholder } from "@/components/task-flow-placeholder";
@@ -32,7 +34,7 @@ export function TaskDrawer({
 
     fetch(task.readme_snapshot_path)
       .then((response) => {
-        if (!response.ok) throw new Error("README snapshot missing");
+        if (!response.ok) throw new Error("Task guide missing");
         return response.text();
       })
       .then((markdown) => {
@@ -49,23 +51,6 @@ export function TaskDrawer({
     };
   }, [errorByRepo, markdownByRepo, task]);
 
-  useEffect(() => {
-    if (!task) return;
-
-    const previousOverflow = document.body.style.overflow;
-    document.body.style.overflow = "hidden";
-
-    function onKeyDown(event: KeyboardEvent) {
-      if (event.key === "Escape") onClose();
-    }
-
-    window.addEventListener("keydown", onKeyDown);
-    return () => {
-      document.body.style.overflow = previousOverflow;
-      window.removeEventListener("keydown", onKeyDown);
-    };
-  }, [onClose, task]);
-
   if (!task) return null;
 
   const markdown = markdownByRepo[task.repo];
@@ -79,16 +64,10 @@ export function TaskDrawer({
   }
 
   return (
-    <div className="fixed inset-0 z-[70] bg-slate-950/35 backdrop-blur-sm" onClick={onClose}>
-      <div
-        className="absolute inset-y-0 right-0 w-full max-w-3xl overflow-y-auto border-l-2 border-[#25314d] bg-[#f4efe9] shadow-2xl"
-        onClick={(event) => event.stopPropagation()}
-        role="dialog"
-        aria-modal="true"
-        aria-label={`${taskTitle(task)} details`}
-      >
+    <Modal open={Boolean(task)} onClose={onClose} label={`${taskTitle(task)} details`}
+      className="m-0 ml-auto h-dvh max-h-dvh w-full max-w-3xl overflow-y-auto border-0 border-l-2 border-[#25314d] bg-[#f4efe9] p-0">
         <div className="sticky top-0 z-10 border-b-2 border-[#25314d] bg-[#fffdf9]/95 px-5 py-4 backdrop-blur">
-          <div className="flex items-start justify-between gap-4">
+          <div className="flex flex-wrap items-start justify-between gap-4">
             <div className="min-w-0">
               <div className="text-[11px] font-semibold uppercase tracking-[0.18em] text-slate-500">
                 Task details
@@ -126,6 +105,7 @@ export function TaskDrawer({
         </div>
 
         <div className="space-y-6 px-5 py-5">
+          <p className="text-sm leading-7 text-slate-700">{taskSummary(task)}</p>
           <TaskFlowPlaceholder task={task} />
 
           <div className="grid gap-3 lg:grid-cols-2">
@@ -165,10 +145,10 @@ export function TaskDrawer({
             <div className="flex flex-wrap items-center justify-between gap-3">
               <div>
                 <div className="text-[11px] font-bold uppercase tracking-[0.18em] text-slate-500">
-                  README snapshot
+                  Task guide
                 </div>
                 <div className="mt-1 text-sm text-slate-700">
-                  The drawer loads the tracked markdown snapshot on demand, including any task-flow image referenced in the README.
+                  Read the procedure, setup instructions and configuration notes.
                 </div>
               </div>
               <a
@@ -190,7 +170,7 @@ export function TaskDrawer({
               </div>
             ) : hasError ? (
               <div className="mt-6 rounded-[18px] border-2 border-[#25314d]/20 bg-[#f8fcff] p-5 text-sm text-slate-700">
-                README content is not available in this build.
+                The task guide could not be loaded. Use “View on GitHub” to read it in the repository.
               </div>
             ) : (
               <div className="mt-6">
@@ -204,7 +184,6 @@ export function TaskDrawer({
             )}
           </section>
         </div>
-      </div>
-    </div>
+    </Modal>
   );
 }

@@ -1,312 +1,84 @@
 "use client";
 
 import Link from "next/link";
-
+import { useSyncExternalStore } from "react";
+import { galleryReturnHref, subscribeGalleryLocation } from "@/lib/gallery-state";
 import { CopyButton } from "@/components/copy-button";
 import { MaturityBadge } from "@/components/maturity-badge";
 import { Markdown } from "@/components/markdown";
-import { TaskAccessPanel } from "@/components/task-access-panel";
 import { TaskFlowPlaceholder } from "@/components/task-flow-placeholder";
 import { formatShortDate } from "@/lib/format";
-import { compactMeta, localCloneCommand, taskHandle, taskTitle } from "@/lib/task-display";
+import { localCloneCommand, taskHandle, taskTitle } from "@/lib/task-display";
+import { taskDomains, taskSummary, maturityDescription } from "@/lib/task-catalog";
+import { documentationHeadings } from "@/lib/documentation-headings";
 import type { TaskIndexItem } from "@/lib/task-index";
 import { taskLinks } from "@/lib/task-index";
 import { tasksPageHref } from "@/lib/routes";
 import { useTaskWithHtmlCompanion } from "@/lib/use-html-companions";
 
-function Pill({ children }: { children: React.ReactNode }) {
-  return (
-    <span className="inline-flex items-center rounded-full border-2 border-[#25314d] bg-white px-3 py-1 text-xs font-bold text-[#25314d]">
-      {children}
-    </span>
-  );
-}
-
-export function TaskDetailPage({
-  task,
-  markdown
-}: {
-  task: TaskIndexItem;
-  markdown: string;
-}) {
+export function TaskDetailPage({ task, markdown }: { task: TaskIndexItem; markdown: string }) {
   const mergedTask = useTaskWithHtmlCompanion(task);
+  const returnHref = useSyncExternalStore(subscribeGalleryLocation, () => galleryReturnHref(window.location.search), tasksPageHref);
   const links = taskLinks(mergedTask);
   const preview = mergedTask.web_variant;
-  const quickStart = `git clone ${mergedTask.html_url}.git\ncd ${mergedTask.repo}\n# Follow the README for local setup and run steps`;
-  const localMeta = compactMeta([
-    taskHandle(mergedTask),
-    mergedTask.acquisition,
-    mergedTask.release_tag ? `Release ${mergedTask.release_tag}` : null
-  ]);
-  const previewMeta = preview
-    ? compactMeta([
-        taskHandle(preview),
-        preview.acquisition,
-        preview.release_tag ? `Release ${preview.release_tag}` : null
-      ])
-    : null;
-
+  const contents = documentationHeadings(markdown);
+  const language = mergedTask.tags.language.join(", ") || "See task guide";
+  const response = mergedTask.tags.response.join(", ") || "See procedure and configuration";
+  const quickStart = `${localCloneCommand(mergedTask)}\ncd ${mergedTask.repo}`;
   return (
-    <div className="space-y-8">
-      <div className="flex flex-wrap items-center justify-between gap-3">
-        <Link
-          className="tb-focus-ring rounded-full border-2 border-[#25314d] bg-white px-4 py-2 text-sm font-bold text-[#25314d] shadow-[0_3px_0_#25314d] hover:bg-[#eef8ff]"
-          href={tasksPageHref()}
-        >
-          Back to tasks
-        </Link>
-
-        <div className="flex flex-wrap items-center gap-2">
-          <a
-            className="tb-focus-ring rounded-[14px] border-2 border-[#25314d] bg-white px-3 py-2 text-sm font-bold text-[#25314d] hover:bg-[#eef8ff]"
-            href={links.repo}
-            target="_blank"
-            rel="noreferrer"
-          >
-            GitHub Repo
-          </a>
-          {preview ? (
-            <a
-              className="tb-focus-ring rounded-[14px] border-2 border-[#25314d] bg-[#39d95d] px-3 py-2 text-sm font-bold text-[#25314d] shadow-[0_3px_0_#25314d] hover:bg-[#2fb651] hover:text-white"
-              href={preview.run_url}
-              target="_blank"
-              rel="noreferrer"
-            >
-              Run Preview
-            </a>
-          ) : null}
+    <div className="space-y-8 pt-4">
+      <Link className="tb-focus-ring inline-block rounded-lg text-sm font-bold text-[#25314d] underline underline-offset-4" href={returnHref} scroll={false}>← Back to tasks</Link>
+      <section>
+        <div className="flex flex-wrap items-center gap-3 text-xs text-slate-500"><code>{taskHandle(mergedTask)}</code><span>{taskDomains(mergedTask).join(" · ")}</span></div>
+        <h1 className="mt-3 max-w-4xl font-heading text-4xl font-bold leading-tight text-[#25314d] sm:text-5xl">{taskTitle(mergedTask)}</h1>
+        <p className="mt-4 max-w-3xl text-base leading-7 text-slate-700">{taskSummary(mergedTask)}</p>
+        <div className="mt-5 flex flex-wrap gap-3">
+          {preview ? <a className="tb-focus-ring tb-button-primary" href={preview.run_url} target="_blank" rel="noreferrer">Run Preview ↗</a> : null}
+          <a className="tb-focus-ring tb-button-secondary" href="#run-locally">Run locally</a>
+          <a className="tb-focus-ring self-center rounded-lg px-2 py-3 text-sm font-bold underline underline-offset-4" href={links.repo} target="_blank" rel="noreferrer">Source on GitHub ↗</a>
         </div>
-      </div>
-
-      <section className="grid grid-cols-1 gap-6 lg:grid-cols-12">
-        <div className="lg:col-span-8">
-          <div className="tb-section-chip bg-[#f5c1b5]">Task dossier</div>
-          <h1 className="mt-4 font-heading text-4xl font-bold leading-[0.95] text-[#25314d] sm:text-5xl">
-            {taskTitle(mergedTask)}
-          </h1>
-          <div className="tb-meta-rail mt-5">
-            <code className="rounded-full border border-slate-200 bg-white px-2.5 py-1 font-mono text-[11px] text-slate-700">
-              {taskHandle(mergedTask)}
-            </code>
-            <code className="rounded-full border-2 border-[#25314d] bg-white px-2.5 py-1 font-mono text-[11px] font-bold text-[#25314d]">
-              {mergedTask.repo}
-            </code>
-            {mergedTask.maturity ? <MaturityBadge maturity={mergedTask.maturity} /> : null}
-            {preview ? (
-              <span className="rounded-full border-2 border-[#25314d] bg-[#ecffe5] px-3 py-1 text-[11px] font-bold text-[#25314d]">
-                Web preview available
-              </span>
-            ) : null}
-            <span className="rounded-full border-2 border-[#25314d] bg-white px-3 py-1 text-[11px] font-bold text-[#25314d]">
-              Updated {formatShortDate(mergedTask.last_updated)}
-            </span>
-          </div>
-          <p className="mt-4 max-w-3xl text-base leading-7 text-slate-700">
-            {mergedTask.short_description}
-          </p>
-
-          <TaskFlowPlaceholder task={mergedTask} className="mt-6" />
-
-          {preview ? (
-            <section className="tb-surface mt-6 p-5">
-              <div className="text-xs font-bold uppercase tracking-wide text-slate-600">
-                Preview path
-              </div>
-              <div className="mt-2 max-w-3xl text-sm leading-6 text-slate-700">
-                This task ships with a matched HTML companion so the browser preview can stay aligned to the canonical local repository.
-              </div>
-            </section>
-          ) : null}
-
-          <div className="tb-frame-soft mt-6 bg-[#fffdf9] p-5">
-            <div>
-              <div className="text-xs font-bold uppercase tracking-wide text-slate-600">
-                Quick start
-              </div>
-              <div className="mt-1 text-sm text-slate-700">
-                Clone locally, then follow the README for install and run instructions.
-              </div>
+      </section>
+      <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_280px]">
+        <div className="min-w-0 space-y-8">
+          <section className="tb-content-card p-5 sm:p-6" aria-label="Task essentials">
+            <h2 className="font-heading text-2xl font-bold">Before you start</h2>
+            <dl className="mt-5 grid gap-5 sm:grid-cols-2">
+              {[['Task language', language], ['Responses', response], ['Acquisition', mergedTask.acquisition || mergedTask.tags.modality.join(', ') || 'See task guide'], ['Version', mergedTask.release_tag || 'See repository']].map(([label,value]) => (
+                <div key={label}><dt className="text-xs font-bold uppercase tracking-wide text-slate-500">{label}</dt><dd className="mt-1 text-sm leading-6 text-slate-700">{value}</dd></div>
+              ))}
+            </dl>
+            {mergedTask.maturity ? <div className="mt-5 border-t border-[#25314d]/15 pt-4"><MaturityBadge maturity={mergedTask.maturity} /><p className="mt-2 text-sm leading-6 text-slate-600">{maturityDescription(mergedTask.maturity)}</p></div> : null}
+            {preview ? <p className="mt-4 text-sm leading-6 text-slate-600">Use the browser preview to explore the procedure. Review the local setup and task documentation before collecting research data.</p> : null}
+          </section>
+          <section id="task-flow">
+            <h2 className="mb-4 font-heading text-2xl font-bold">Task flow</h2>
+            <TaskFlowPlaceholder task={mergedTask} />
+          </section>
+          <section id="run-locally" className="tb-content-card p-5 sm:p-6">
+            <h2 className="font-heading text-2xl font-bold">Run locally</h2>
+            <p className="mt-3 text-sm leading-6 text-slate-600">Get the task package, then follow its installation and run instructions in the guide below.</p>
+            <pre className="mt-4 overflow-auto rounded-[16px] bg-[#172033] p-4 text-xs leading-6 text-slate-50"><code>{quickStart}</code></pre>
+            <div className="mt-4 flex flex-wrap items-center gap-4"><CopyButton text={quickStart} label="Copy commands" /><a className="tb-focus-ring rounded-lg text-sm font-bold underline underline-offset-4" href={links.downloadZip}>Download task ZIP</a><Link className="tb-focus-ring rounded-lg text-sm underline underline-offset-4" href="/tutorial/getting-started/">Setup tutorial</Link></div>
+            {preview ? <details className="mt-5 border-t border-[#25314d]/15 pt-4 text-sm"><summary className="tb-focus-ring cursor-pointer rounded-lg font-bold">Browser preview source</summary><p className="mt-2 leading-6 text-slate-600">Use this separate browser implementation when adapting the preview.</p><div className="mt-3 flex flex-wrap gap-4"><a className="tb-focus-ring rounded underline" href={preview.html_url} target="_blank" rel="noreferrer">Preview repository ↗</a><a className="tb-focus-ring rounded underline" href={`${preview.html_url}/archive/refs/heads/${preview.default_branch}.zip`}>Download preview ZIP</a></div></details> : null}
+          </section>
+          <section id="task-guide" className="tb-content-card p-5 sm:p-8">
+            <h2 className="font-heading text-2xl font-bold">Task guide</h2>
+            <p className="mt-2 text-xs text-slate-500">Repository updated {formatShortDate(mergedTask.last_updated)} · Maintainer documentation</p>
+            {markdown ? <div className="mt-6"><Markdown markdown={markdown} repoFullName={mergedTask.full_name} defaultBranch={mergedTask.default_branch} htmlUrl={mergedTask.html_url} /></div> : <p className="mt-4 text-sm">The guide is unavailable here. <a className="underline" href={links.repo}>Read it on GitHub.</a></p>}
+          </section>
+        </div>
+        <aside className="order-first lg:order-last">
+          <nav aria-label="On this page" className="tb-content-card p-5 lg:sticky lg:top-32">
+            <h2 className="text-sm font-bold">On this page</h2>
+            <div className="mt-3 flex flex-wrap gap-3 text-sm lg:flex-col">
+              <a className="tb-focus-ring rounded hover:underline" href="#task-flow">Task flow</a>
+              <a className="tb-focus-ring rounded hover:underline" href="#run-locally">Run locally</a>
+              <a className="tb-focus-ring rounded hover:underline" href="#task-guide">Task guide</a>
             </div>
-            <pre className="mt-4 overflow-x-auto rounded-[18px] border-2 border-[#25314d] bg-[#172033] p-4 text-xs text-slate-50">
-              <code>{quickStart}</code>
-            </pre>
-          </div>
-        </div>
-
-        <aside className="lg:col-span-4">
-          <div className="space-y-4">
-            <TaskAccessPanel
-              eyebrow="Local / PsyFlow"
-              title={taskTitle(mergedTask)}
-              repo={mergedTask.repo}
-              description="Canonical repository for local execution, source review, and task modification."
-              meta={localMeta || "PsyFlow / TAPS"}
-              tone="local"
-              actions={[
-                { label: "Open Repo", href: links.repo, icon: "github", emphasis: "secondary" },
-                { label: "Download", href: links.downloadZip, icon: "download", emphasis: "secondary" }
-              ]}
-              extraActions={<CopyButton text={localCloneCommand(mergedTask)} label="Copy Clone" />}
-            />
-
-            {preview ? (
-              <TaskAccessPanel
-                eyebrow="Preview"
-                title={preview.title || taskTitle(mergedTask)}
-                repo={preview.repo}
-                description={
-                  preview.short_description ||
-                  "Browser companion for quick walkthroughs, README validation, and participant-facing previews."
-                }
-                meta={previewMeta}
-                tone="web"
-                actions={[
-                  { label: "Run Preview", href: preview.run_url, icon: "play", emphasis: "primary" },
-                  { label: "Open Repo", href: preview.html_url, icon: "github", emphasis: "secondary" }
-                ]}
-              />
-            ) : null}
-
-            <section className="tb-frame-soft bg-[#fffdf9] p-5">
-              <div className="text-xs font-bold uppercase tracking-wide text-slate-600">
-                Metadata
-              </div>
-
-              <div className="mt-4 space-y-3 text-sm">
-                <div className="flex items-center justify-between gap-3">
-                  <div className="text-slate-600">Last updated</div>
-                  <div className="font-bold text-[#25314d]">
-                    {formatShortDate(mergedTask.last_updated)}
-                  </div>
-                </div>
-
-                {mergedTask.maturity ? (
-                  <div className="flex items-center justify-between gap-3">
-                    <div className="text-slate-600">Maturity</div>
-                    <MaturityBadge maturity={mergedTask.maturity} className="shrink-0" />
-                  </div>
-                ) : null}
-
-                {mergedTask.release_tag ? (
-                  <div className="flex items-center justify-between gap-3">
-                    <div className="text-slate-600">Release</div>
-                    <div className="font-mono text-xs font-bold text-[#25314d]">
-                      {mergedTask.release_tag}
-                    </div>
-                  </div>
-                ) : null}
-
-                {mergedTask.acquisition ? (
-                  <div className="flex items-center justify-between gap-3">
-                    <div className="text-slate-600">Acquisition</div>
-                    <div className="font-bold text-[#25314d]">{mergedTask.acquisition}</div>
-                  </div>
-                ) : null}
-
-                {mergedTask.psyflow_version ? (
-                  <div className="flex items-center justify-between gap-3">
-                    <div className="text-slate-600">PsyFlow</div>
-                    <div className="font-mono text-xs font-bold text-[#25314d]">
-                      {mergedTask.psyflow_version}
-                    </div>
-                  </div>
-                ) : null}
-
-                {typeof mergedTask.has_voiceover === "boolean" ? (
-                  <div className="flex items-center justify-between gap-3">
-                    <div className="text-slate-600">Voiceover</div>
-                    <div className="font-bold text-[#25314d]">
-                      {mergedTask.has_voiceover ? "Yes" : "No"}
-                    </div>
-                  </div>
-                ) : null}
-
-                {mergedTask.structure ? (
-                  <div className="mt-3">
-                    <div className="text-slate-600">Structure</div>
-                    <div className="mt-2 flex flex-wrap gap-2">
-                      {mergedTask.structure.config ? <Pill>config/</Pill> : null}
-                      {mergedTask.structure.assets ? <Pill>assets/</Pill> : null}
-                      {mergedTask.structure.src ? <Pill>src/</Pill> : null}
-                    </div>
-                  </div>
-                ) : null}
-              </div>
-            </section>
-
-            <section className="tb-frame-soft bg-[#fffdf9] p-5">
-              <div className="text-xs font-bold uppercase tracking-wide text-slate-600">
-                Tags
-              </div>
-              <div className="mt-3 flex flex-wrap gap-2">
-                {(mergedTask.tags?.paradigm ?? []).map((value) => (
-                  <Pill key={`paradigm:${value}`}>{value}</Pill>
-                ))}
-                {(mergedTask.tags?.response ?? []).map((value) => (
-                  <Pill key={`response:${value}`}>{value}</Pill>
-                ))}
-                {(mergedTask.tags?.modality ?? []).map((value) => (
-                  <Pill key={`modality:${value}`}>{value}</Pill>
-                ))}
-                {(mergedTask.tags?.language ?? []).map((value) => (
-                  <Pill key={`language:${value}`}>{value}</Pill>
-                ))}
-              </div>
-            </section>
-
-            <section className="tb-surface bg-[#eef8ff] p-5">
-              <div className="text-xs font-bold uppercase tracking-wide text-slate-700">
-                Access notes
-              </div>
-              <div className="mt-3 text-sm leading-6 text-slate-800">
-                Local repositories remain canonical for installation and editing. Preview companions are attached at runtime from the shared psyflow-web manifest when a matching HTML variant exists.
-              </div>
-            </section>
-          </div>
+            {contents.length > 0 ? <details className="mt-4 text-sm"><summary className="tb-focus-ring cursor-pointer rounded text-slate-500">Guide sections</summary><ul className="mt-3 max-h-64 space-y-3 overflow-auto pr-2">{contents.map((heading) => <li key={heading.id}><a className="tb-focus-ring rounded text-slate-600 hover:text-[#25314d] hover:underline" href={`#${heading.id}`}>{heading.title}</a></li>)}</ul></details> : null}
+          </nav>
         </aside>
-      </section>
-
-      <section className="tb-frame bg-[#fffdf9] p-6 sm:p-8">
-        <div className="flex items-center justify-between gap-4">
-          <h2 className="font-heading text-2xl font-bold text-[#25314d]">
-            README
-          </h2>
-          <a
-            className="tb-focus-ring rounded-[14px] border-2 border-[#25314d] bg-white px-3 py-2 text-sm font-bold text-[#25314d] hover:bg-[#eef8ff]"
-            href={links.repo}
-            target="_blank"
-            rel="noreferrer"
-          >
-            View on GitHub
-          </a>
-        </div>
-
-        {markdown ? (
-          <div className="mt-6">
-            <Markdown
-              markdown={markdown}
-              repoFullName={mergedTask.full_name}
-              defaultBranch={mergedTask.default_branch}
-              htmlUrl={mergedTask.html_url}
-            />
-          </div>
-        ) : (
-          <div className="mt-6 rounded-[18px] border-2 border-[#25314d] bg-white p-5 text-sm text-slate-700">
-            README content is not available in this build.
-            <div className="mt-2">
-              Open the repo directly:{" "}
-              <a
-                className="underline"
-                href={links.repo}
-                target="_blank"
-                rel="noreferrer"
-              >
-                GitHub Repo
-              </a>
-            </div>
-          </div>
-        )}
-      </section>
+      </div>
     </div>
   );
 }
