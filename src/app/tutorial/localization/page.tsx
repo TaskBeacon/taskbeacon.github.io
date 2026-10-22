@@ -13,7 +13,7 @@ export default function LocalizationPage() {
 
   return (
     <div className="space-y-8 lg:pt-6">
-      <section className="tb-frame bg-[#fffdf9] p-6 sm:p-8">
+      <section className="tb-frame bg-[#fffdf9] p-5 sm:p-8">
         <div className="tb-section-chip bg-[#b9dceb]">Localization</div>
         <h1 className="mt-4 max-w-4xl font-heading text-4xl font-bold leading-tight text-[#25314d] sm:text-5xl">
           Translate task content without rewriting task logic.
@@ -36,7 +36,7 @@ export default function LocalizationPage() {
         </div>
       </section>
 
-      <section className="tb-frame bg-[#fffdf9] p-6 sm:p-8">
+      <section className="tb-frame bg-[#fffdf9] p-5 sm:p-8">
         <SiteMarkdown markdown={markdown} />
       </section>
     </div>

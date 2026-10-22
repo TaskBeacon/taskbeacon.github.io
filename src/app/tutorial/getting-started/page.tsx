@@ -13,7 +13,7 @@ export default function GettingStartedPage() {
 
   return (
     <div className="space-y-8 lg:pt-6">
-      <section className="tb-frame bg-[#fffdf9] p-6 sm:p-8">
+      <section className="tb-frame bg-[#fffdf9] p-5 sm:p-8">
         <h1 className="max-w-4xl font-heading text-4xl font-bold leading-tight text-[#25314d] sm:text-5xl">
           Scaffold your first task.
         </h1>
@@ -32,7 +32,7 @@ export default function GettingStartedPage() {
         </div>
       </section>
 
-      <section className="tb-frame bg-[#fffdf9] p-6 sm:p-8">
+      <section className="tb-frame bg-[#fffdf9] p-5 sm:p-8">
         <SiteMarkdown markdown={markdown} />
       </section>
     </div>

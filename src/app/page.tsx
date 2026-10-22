@@ -39,7 +39,7 @@ function SkillShowcase({ skills }: { skills: ResourceLink[] }) {
   return (
     <section id="skills" className="space-y-7">
       <div className="text-center">
-        <h2 className="mx-auto max-w-3xl font-heading text-4xl font-bold leading-tight text-[#25314d]">
+        <h2 className="mx-auto max-w-3xl font-heading text-3xl sm:text-4xl font-bold leading-tight text-[#25314d]">
           Build and adapt your own tasks
         </h2>
         <p className="mx-auto mt-3 max-w-2xl text-base leading-8 text-slate-700">
@@ -63,7 +63,7 @@ function SkillShowcase({ skills }: { skills: ResourceLink[] }) {
           return (
             <a
               key={item.eyebrow}
-              className="tb-frame-soft group flex min-h-[24rem] flex-col overflow-hidden bg-[#fffdf9] transition-transform hover:-translate-y-1"
+              className="tb-frame-soft group flex flex-col overflow-hidden bg-[#fffdf9] transition-transform hover:-translate-y-1 lg:min-h-[24rem]"
               href={skill?.href ?? "https://github.com/TaskBeacon/skills"}
               target="_blank"
               rel="noreferrer"
@@ -133,7 +133,7 @@ function FrameworkShowcase({ resources }: { resources: PublicResourceLink[] }) {
   return (
     <section id="framework" className="space-y-7">
       <div className="text-center">
-        <h2 className="mx-auto max-w-3xl font-heading text-4xl font-bold leading-tight text-[#25314d]">
+        <h2 className="mx-auto max-w-3xl font-heading text-3xl sm:text-4xl font-bold leading-tight text-[#25314d]">
           TAPS, PsyFlow, and psyflow-web
         </h2>
         <p className="mx-auto mt-3 max-w-3xl text-base leading-8 text-slate-700">
@@ -162,7 +162,7 @@ export default function Page() {
   );
 
   return (
-    <div className="space-y-20 pb-8">
+    <div className="space-y-14 pb-8 sm:space-y-20">
       <section id="tasks" className="space-y-7 pt-3 sm:pt-5">
         <div className="text-center">
           <h1 className="mx-auto max-w-4xl font-heading text-4xl font-bold leading-[1.08] tracking-tight text-[#25314d] sm:text-6xl">

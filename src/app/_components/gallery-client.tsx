@@ -111,7 +111,7 @@ export function GalleryClient({ tasks }: { tasks: TaskIndexItem[] }) {
   return (
     <section className="space-y-6 lg:pt-4">
       <div className="grid grid-cols-1 gap-6 lg:grid-cols-12">
-        <aside aria-label="Search and filters" className="lg:col-span-4 xl:col-span-3">
+        <aside aria-label="Search and filters" className="min-w-0 lg:col-span-4 xl:col-span-3">
           <div className="space-y-4 lg:sticky lg:top-32">
             <section className="tb-content-card p-4">
               <label className="block" htmlFor="task-explorer-search">
@@ -160,7 +160,7 @@ export function GalleryClient({ tasks }: { tasks: TaskIndexItem[] }) {
                     <span className="text-xs font-bold text-slate-500">{selected[key].size ? `${selected[key].size} selected` : `${values.length} options`} {open ? "−" : "+"}</span>
                   </button>
                   <div id={`facet-${key}`} hidden={!open}>
-                    <div className="mt-4 flex max-h-52 flex-wrap gap-2 overflow-y-auto p-1">{values.map((value) => <TagChip key={value}
+                    <div className="mt-4 flex max-h-72 flex-wrap gap-2 overflow-y-auto overscroll-contain p-1 lg:max-h-52">{values.map((value) => <TagChip key={value}
                       label={key === "maturity" ? formatMaturityLabel(value) : value}
                       selected={selected[key].has(value)} onClick={() => toggleFacet(key, value)} />)}</div>
                   </div>
@@ -174,7 +174,7 @@ export function GalleryClient({ tasks }: { tasks: TaskIndexItem[] }) {
           </div>
         </aside>
 
-        <section ref={resultsRef} aria-label="Task results" className="scroll-mt-28 space-y-4 lg:col-span-8 xl:col-span-9">
+        <section ref={resultsRef} aria-label="Task results" className="min-w-0 scroll-mt-28 space-y-4 lg:col-span-8 xl:col-span-9">
           <Pagination page={safePage} pages={pages} total={filtered.length} onChange={changePage} />
           {filtered.length === 0 ? <div className="tb-frame p-10 text-center">
             <h2 className="font-heading text-3xl font-bold text-[#25314d]">No matches</h2>

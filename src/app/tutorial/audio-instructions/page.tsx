@@ -13,7 +13,7 @@ export default function AudioInstructionsPage() {
 
   return (
     <div className="space-y-8 lg:pt-6">
-      <section className="tb-frame bg-[#fffdf9] p-6 sm:p-8">
+      <section className="tb-frame bg-[#fffdf9] p-5 sm:p-8">
         <h1 className="max-w-4xl font-heading text-4xl font-bold leading-tight text-[#25314d] sm:text-5xl">
           Create audio instructions from task text.
         </h1>
@@ -35,7 +35,7 @@ export default function AudioInstructionsPage() {
         </div>
       </section>
 
-      <section className="tb-frame bg-[#fffdf9] p-6 sm:p-8">
+      <section className="tb-frame bg-[#fffdf9] p-5 sm:p-8">
         <SiteMarkdown markdown={markdown} />
       </section>
     </div>

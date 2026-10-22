@@ -8,7 +8,7 @@ export const metadata: Metadata = {
 export default function TermsPage() {
   return (
     <div className="space-y-8 lg:pt-6">
-      <section className="tb-frame bg-[#fffdf9] p-8">
+      <section className="tb-frame bg-[#fffdf9] p-5 sm:p-8">
         <div className="tb-section-chip bg-[#f5c1b5]">Terms</div>
         <h1 className="mt-5 font-heading text-4xl font-bold leading-tight text-[#25314d]">
           Usage notes for TaskBeacon

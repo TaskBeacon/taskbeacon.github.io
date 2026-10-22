@@ -8,7 +8,7 @@ export const metadata: Metadata = {
 
 export default function AboutPage() {
   return (
-    <div className="tb-frame bg-[#fffdf9] p-8">
+    <div className="tb-frame bg-[#fffdf9] p-5 sm:p-8">
       <div className="tb-section-chip bg-[#f5c1b5]">
         About
       </div>

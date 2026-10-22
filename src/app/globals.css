@@ -202,3 +202,23 @@ body {
 .tb-prose h1 { font-size: 1.7em; }
 .tb-dialog::backdrop { background: rgba(15,23,42,.55); backdrop-filter: blur(3px); }
 .tb-dialog { color: var(--tb-ink); }
+
+/* Keep long repository names and documentation inside narrow layouts. */
+main, .tb-dialog { overflow-wrap: anywhere; }
+.tb-prose, .tb-content-card, .tb-frame, .tb-frame-soft { min-width: 0; }
+.tb-prose :is(pre, table) { max-width: 100%; overscroll-behavior-x: contain; }
+.tb-prose pre { overflow-wrap: normal; }
+.tb-flow-dialog[open] { display: flex; flex-direction: column; }
+.tb-button-primary, .tb-button-secondary, .tb-button-ghost { min-height: 44px; }
+
+@media (max-width: 639px) {
+  /* A 16px input avoids the automatic page zoom in iOS Safari. */
+  input, select, textarea { font-size: 16px !important; }
+  .tb-frame { border-radius: 22px; }
+  .tb-prose { font-size: 0.9375rem; }
+  .tb-prose h1 { font-size: 1.6em; }
+  .tb-prose h2 { font-size: 1.4em; }
+  #task-filters button, [aria-label="Task pagination"] button,
+  [aria-label="Active filters"] button { min-height: 44px; }
+  footer :is(a, button) { min-height: 44px; display: inline-flex; align-items: center; }
+}

@@ -32,11 +32,11 @@ export default function TeamsPage() {
       <section className="grid gap-5 lg:grid-cols-2">
         <article className="tb-frame bg-[#fffdf9] p-5">
           <div className="flex h-full flex-col gap-5">
-            <div className="flex gap-5">
+            <div className="flex flex-col gap-4 sm:flex-row sm:gap-5">
               <img
                 src="/team/zh1peng.webp"
                 alt="zh1peng GitHub avatar"
-                className="size-20 shrink-0 rounded-[18px] border-2 border-[#25314d] bg-white object-cover shadow-[0_4px_0_#25314d]"
+                className="size-16 shrink-0 sm:size-20 rounded-[18px] border-2 border-[#25314d] bg-white object-cover shadow-[0_4px_0_#25314d]"
                 loading="lazy"
               />
               <div className="min-w-0 flex-1">
@@ -74,11 +74,11 @@ export default function TeamsPage() {
 
         <article className="tb-frame bg-[#fffdf9] p-5">
           <div className="flex h-full flex-col gap-5">
-            <div className="flex gap-5">
+            <div className="flex flex-col gap-4 sm:flex-row sm:gap-5">
               <img
                 src="/team/core-maintainer-avatar-1.webp"
                 alt="Open maintainer avatar"
-                className="size-20 shrink-0 rounded-[18px] border-2 border-[#25314d] bg-slate-100 object-cover grayscale shadow-[0_4px_0_#25314d]"
+                className="size-16 shrink-0 sm:size-20 rounded-[18px] border-2 border-[#25314d] bg-slate-100 object-cover grayscale shadow-[0_4px_0_#25314d]"
                 loading="lazy"
               />
               <div className="min-w-0 flex-1">
@@ -103,11 +103,11 @@ export default function TeamsPage() {
 
         <article className="tb-frame bg-[#fffdf9] p-5">
           <div className="flex h-full flex-col gap-5">
-            <div className="flex gap-5">
+            <div className="flex flex-col gap-4 sm:flex-row sm:gap-5">
               <img
                 src="/team/core-maintainer-avatar-3.webp"
                 alt="Open maintainer avatar"
-                className="size-20 shrink-0 rounded-[18px] border-2 border-[#25314d] bg-slate-100 object-cover grayscale shadow-[0_4px_0_#25314d]"
+                className="size-16 shrink-0 sm:size-20 rounded-[18px] border-2 border-[#25314d] bg-slate-100 object-cover grayscale shadow-[0_4px_0_#25314d]"
                 loading="lazy"
               />
               <div className="min-w-0 flex-1">
@@ -132,11 +132,11 @@ export default function TeamsPage() {
 
         <article className="tb-frame bg-[#fffdf9] p-5">
           <div className="flex h-full flex-col gap-5">
-            <div className="flex gap-5">
+            <div className="flex flex-col gap-4 sm:flex-row sm:gap-5">
               <img
                 src="/team/core-maintainer-avatar-2.webp"
                 alt="Open maintainer avatar"
-                className="size-20 shrink-0 rounded-[18px] border-2 border-[#25314d] bg-slate-100 object-cover grayscale shadow-[0_4px_0_#25314d]"
+                className="size-16 shrink-0 sm:size-20 rounded-[18px] border-2 border-[#25314d] bg-slate-100 object-cover grayscale shadow-[0_4px_0_#25314d]"
                 loading="lazy"
               />
               <div className="min-w-0 flex-1">
@@ -160,7 +160,7 @@ export default function TeamsPage() {
         </article>
       </section>
 
-      <section className="tb-frame-soft bg-[#fffdf9] p-6 sm:p-8">
+      <section className="tb-frame-soft bg-[#fffdf9] p-5 sm:p-8">
         <div className="tb-section-chip bg-[#ddd7f4]">Acknowledgement</div>
 
         <div className="mt-5">

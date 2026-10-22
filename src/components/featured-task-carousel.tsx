@@ -39,7 +39,7 @@ export function FeaturedTaskCarousel({
   const preview = activeTask.web_variant;
   const drawerTask = mergedTasks.find((task) => task.repo === drawerRepo) ?? null;
   const shellWidthClass = wide ? "max-w-6xl" : "max-w-[620px] lg:w-[620px]";
-  const activePanelHeightClass = wide ? "min-h-[390px]" : "min-h-[500px]";
+  const activePanelHeightClass = wide ? "sm:min-h-[390px]" : "sm:min-h-[500px]";
 
   function goTo(nextIndex: number) {
     const total = mergedTasks.length;
@@ -146,7 +146,7 @@ export function FeaturedTaskCarousel({
                       </Link>
                     </div>
 
-                    <p className="mt-3 min-h-[5.25rem] w-full text-sm leading-6 text-slate-700 sm:text-base sm:leading-7 sm:[display:-webkit-box] sm:[-webkit-box-orient:vertical] sm:[-webkit-line-clamp:3] sm:overflow-hidden">
+                    <p className="mt-3 w-full text-sm leading-6 text-slate-700 sm:min-h-[5.25rem] sm:text-base sm:leading-7 sm:[display:-webkit-box] sm:[-webkit-box-orient:vertical] sm:[-webkit-line-clamp:3] sm:overflow-hidden">
                       {taskSummary(activeTask)}
                     </p>
 
@@ -165,7 +165,7 @@ export function FeaturedTaskCarousel({
                     </Link>
                   </div>
 
-                  <p className="mt-3 min-h-[4.5rem] w-full text-sm leading-6 text-slate-700 sm:text-base sm:leading-7 sm:[display:-webkit-box] sm:[-webkit-box-orient:vertical] sm:[-webkit-line-clamp:3] sm:overflow-hidden">
+                  <p className="mt-3 w-full text-sm leading-6 text-slate-700 sm:min-h-[4.5rem] sm:text-base sm:leading-7 sm:[display:-webkit-box] sm:[-webkit-box-orient:vertical] sm:[-webkit-line-clamp:3] sm:overflow-hidden">
                     {taskSummary(activeTask)}
                   </p>
 

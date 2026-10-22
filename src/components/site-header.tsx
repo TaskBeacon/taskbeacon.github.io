@@ -91,9 +91,10 @@ export function SiteHeader() {
 
             <button
               type="button"
-              className="tb-focus-ring tb-frame-soft p-1.5 sm:p-2 lg:hidden"
+              className="tb-focus-ring tb-frame-soft flex size-11 shrink-0 items-center justify-center lg:hidden"
               onClick={() => setOpen((current) => !current)}
               aria-expanded={open}
+              aria-controls="mobile-navigation"
               aria-label={open ? "Close navigation menu" : "Open navigation menu"}
             >
               {open ? <IconClose className="size-5" /> : <IconMenu className="size-5" />}
@@ -101,7 +102,12 @@ export function SiteHeader() {
           </div>
 
           {open ? (
-            <div className="mt-3 rounded-[24px] border-2 border-[#25314d] bg-[#fffdf9] p-3 shadow-[0_5px_0_#25314d] lg:hidden">
+            <nav id="mobile-navigation" aria-label="Main navigation" className="mt-3 max-h-[calc(100dvh-7rem)] overflow-y-auto overscroll-contain rounded-[24px] border-2 border-[#25314d] bg-[#fffdf9] p-3 pb-5 shadow-[0_5px_0_#25314d] lg:hidden" onKeyDown={(event) => {
+              if (event.key === "Escape") {
+                setOpen(false);
+                document.querySelector<HTMLButtonElement>('[aria-controls="mobile-navigation"]')?.focus();
+              }
+            }}>
               <div className="grid gap-2">
                 {PRIMARY_LINKS.map((link) => (
                   <NavLink
@@ -123,7 +129,7 @@ export function SiteHeader() {
                   Open Preview
                 </a>
               </div>
-            </div>
+            </nav>
           ) : null}
         </div>
       </div>

@@ -3,7 +3,7 @@ import { TaskBeaconLogo } from "@/components/taskbeacon-logo";
 
 export function SiteFooter() {
   return (
-    <footer id="site-footer" className="mt-16">
+    <footer id="site-footer" className="mt-8 sm:mt-16">
       <div className="mx-auto w-full max-w-7xl px-3 pb-8 sm:px-6 lg:px-8">
         <div className="tb-frame bg-[#fff8f0] px-5 py-5 sm:px-6">
           <div className="grid gap-5 md:grid-cols-[minmax(0,1fr)_auto] md:items-center">
